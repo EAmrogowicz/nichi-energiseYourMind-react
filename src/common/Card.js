@@ -11,7 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 
-export default function Card() {
+export default function SimpleCard() {
   return (
     <Card sx={{ minWidth: 275 }}>
       <CardContent>

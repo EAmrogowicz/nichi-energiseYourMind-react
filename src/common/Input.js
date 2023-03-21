@@ -1,5 +1,5 @@
-import { Input } from "@mui/material";
+import { TextField } from "@mui/material";
 
-export default function Input() {
+export default function InputField() {
   return <TextField id='name' label='Name' variant='outlined' required error />;
 }
