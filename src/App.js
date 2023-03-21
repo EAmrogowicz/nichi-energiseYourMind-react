@@ -2,7 +2,7 @@ function App() {
   return (
     <div>
       <h1>Nichi</h1>
-      <h3>Energise your MInd</h3>
+      <h3>Energise your Mind</h3>
     </div>
   );
 }
