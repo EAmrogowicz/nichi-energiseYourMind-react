@@ -1,12 +1,7 @@
 import { Card, CardContent, Typography, CardActions } from "@mui/material";
-import StandardBtn from "../StandardBtn";
+import StandardBtn from "../Button/StandardBtn";
 
-export default function StandardCard({
-  title,
-  description,
-  buttonText,
-  buttonLink,
-}) {
+export default function StandardCard({ title, description, buttonText }) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardContent>
@@ -18,11 +13,7 @@ export default function StandardCard({
         </Typography>
       </CardContent>
       <CardActions>
-        <StandardBtn
-          className={"btnPill"}
-          name={buttonText}
-          link={buttonLink}
-        />
+        <StandardBtn name={buttonText} />
       </CardActions>
     </Card>
   );
