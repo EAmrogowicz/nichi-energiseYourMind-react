@@ -6,21 +6,20 @@ import Logo from "../components/Logo/Logo";
 
 export default function Home() {
   return (
-    <div className="hero">
+    <div className='hero'>
       <Stack
-        direction="column"
-        justifyContent="space-around"
-        alignItems="center"
+        direction='column'
+        justifyContent='space-around'
+        alignItems='center'
         spacing={1}
-        height={"80vh"}
-      >
+        height={"80vh"}>
         <Box>
-          <Title text="Nitchi" classCss="h1" />
-          <SubHeading text="Energise your Mind" classCss="h4" />
+          <Title text='Nichi' classCss='h1' />
+          <SubHeading text='Energise your Mind' classCss='h4' />
         </Box>
         <Logo />
 
-        <StandardBtn name="Get Started" classCss="btnPill" link="/user-login" />
+        <StandardBtn name='Get Started' classCss='btnPill' link='/user-login' />
       </Stack>
     </div>
   );
