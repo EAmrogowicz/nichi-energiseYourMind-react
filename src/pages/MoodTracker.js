@@ -7,7 +7,7 @@ import SentimentSatisfiedAltOutlinedIcon from "@mui/icons-material/SentimentSati
 import SentimentVerySatisfiedOutlinedIcon from "@mui/icons-material/SentimentVerySatisfiedOutlined";
 import PageContainer from "../components/general/PageContainer";
 import MoodIcon from "../components/MoodIcon";
-import StandardBtn from "../components/general/StandardBtn";
+import StandardBtn from "../components/general/Button/StandardBtn";
 import SubHeading from "../components/general/Typography/SubHeading";
 
 export default function MoodTracker() {

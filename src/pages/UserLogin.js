@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
 import { Box, TextField } from "@mui/material";
-import StandardBtn from "../components/general/StandardBtn";
 import PageContainer from "../components/general/PageContainer";
 import SubHeading from "../components/general/Typography/SubHeading";
+import LinkBtn from "../components/general/Button/LinkBtn";
+import IconBtn from "../components/general/Button/IconBtn";
 
 export default function UserLogin() {
   return (
@@ -25,8 +27,10 @@ export default function UserLogin() {
           display: "flex",
           justifyContent: "space-between",
         }}>
-        <StandardBtn link={"/"} name={"<-"} />
-        <StandardBtn name={"Login"} />
+        <Link to='/'>
+          <IconBtn />
+        </Link>
+        <LinkBtn to='#' name={"Login"} />
       </Box>
     </PageContainer>
   );
