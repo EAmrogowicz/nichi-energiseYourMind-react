@@ -9,6 +9,17 @@
    --colorBlobBig: #b09ed5;
 }   
 
+h2 {
+   color: var(--fontCharcoal);
+   font-size: 2rem;
+ }
+ 
+ h3 {
+   color: var(--fontCharcoal);
+   font-size: 1.7rem;
+ }
+
+ 
 .meditateContainer {
  text-align: center;
  background-color: var(--bgColor);
