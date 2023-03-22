@@ -9,6 +9,7 @@ import MoodTracker from "./pages/MoodTracker";
 import UserLogin from "./pages/UserLogin";
 import Nav from "./components/Nav/Nav";
 import Footer from "./components/Footer/Footer";
+import Dashboard from "./pages/Dashboard";
 import { StyledEngineProvider } from "@mui/material/styles";
 
 export default function App() {
@@ -23,9 +24,10 @@ export default function App() {
           <Routes
           // key={location.path} location={location}
           >
-            <Route path="/" element={<Home />} />
-            <Route path="/mood-tracker" element={<MoodTracker />} />
-            <Route path="/user-login" element={<UserLogin />} />
+            <Route path='/' element={<Home />} />
+            <Route path='/mood-tracker' element={<MoodTracker />} />
+            <Route path='/user-login' element={<UserLogin />} />
+            <Route path='/dashboard' element={<Dashboard />} />
           </Routes>
         </main>
         <Footer />

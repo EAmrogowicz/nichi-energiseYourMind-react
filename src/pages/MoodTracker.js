@@ -11,6 +11,12 @@ import StandardBtn from "../components/general/Button/StandardBtn";
 import SubHeading from "../components/general/Typography/SubHeading";
 
 export default function MoodTracker() {
+  // function handleMoodSubmit(e) {
+  //   const userData = JSON.parse(localStorage.getItem("userData"));
+  //   userData.mood = e.target;
+  //   localStorage.setItem("userData", JSON.stringify(userData));
+  // }
+
   const moods = [
     { icon: SentimentVerySatisfiedOutlinedIcon, description: "Happy" },
     { icon: SentimentSatisfiedAltOutlinedIcon, description: "Good" },
@@ -36,7 +42,7 @@ export default function MoodTracker() {
           );
         })}
       </Grid>
-      <StandardBtn name={"Submit"} />
+      <StandardBtn name={"Submit"} onClick={handleMoodSubmit} />
     </PageContainer>
   );
 }
