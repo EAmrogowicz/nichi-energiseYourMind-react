@@ -1,25 +1,27 @@
-// import { Route, Routes } from "react-router-dom";
+import { Box, Stack } from "@mui/material";
 import StandardBtn from "../components/general/StandardBtn";
-import IconBtn from "../components/general/IconBtn";
-// import UserLogin from "./UserLogin";
-import Title from "../components/general/typography/title";
+import Title from "../components/general/Typography/Title";
+import SubHeading from "../components/general/Typography/Sub-heading";
+import Logo from "../components/Logo/Logo";
 
 export default function Home() {
   return (
     <div className="hero">
-      <Title text="Nitchi" />
-      {/* <TitleCaption text="Energise your Mind" /> */}
-      <StandardBtn name="Get Started" classCss="btnPill">
-        {/* <Routes>
-          <Route path="/user-login" element={<UserLogin />} />
-        </Routes> */}
-      </StandardBtn>
-      <br />
-      <IconBtn name="Get Started" classCss="btnPill">
-        {/* <Routes>
-          <Route path="/user-login" element={<UserLogin />} />
-        </Routes> */}
-      </IconBtn>
+      <Stack
+        direction="column"
+        justifyContent="space-around"
+        alignItems="center"
+        spacing={1}
+        height={"80vh"}
+      >
+        <Box>
+          <Title text="Nitchi" classCss="h1" />
+          <SubHeading text="Energise your Mind" classCss="h4" />
+        </Box>
+        <Logo />
+
+        <StandardBtn name="Get Started" classCss="btnPill" link="/user-login" />
+      </Stack>
     </div>
   );
 }

@@ -1,6 +1,5 @@
-import * as React from "react";
 import IconButton from "@mui/material/IconButton";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 
 export default function IconBtn() {
   return (
@@ -10,7 +9,7 @@ export default function IconBtn() {
       component="label"
     >
       <input hidden accept="image/*" type="file" />
-      <ArrowBackIcon />
+      <ArrowBackRoundedIcon />
     </IconButton>
   );
 }

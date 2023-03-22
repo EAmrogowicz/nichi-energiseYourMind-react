@@ -7,6 +7,16 @@
   --tint: #e6eaef;
   --shade: #b8cbdb;
   --accent: #ead2e1;
+
+  --lg: linear-gradient(160deg, #f0f0f0, #b8cbdb);
+  --lgHover: linear-gradient(160deg, #e6eaef, #ead2e1);
+
+  --fontRoboto: "Roboto", sans-serif;
+  --fontVidaloka: "Vidaloka", serif;
+
+  --shadow: -5px -5px 9px rgba(255, 255, 255, 0.8),
+    5px 5px 9px rgba(94, 104, 121, 0.6);
+  --transition: all 0.3s ease-in-out;
 }
 
 * {
@@ -15,7 +25,7 @@
   box-sizing: border-box;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Vidaloka&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;400;0,700;1,400;1,700&family=Vidaloka&display=swap");
 
 body {
   background-color: var(--tint);
@@ -31,9 +41,17 @@ code {
     monospace;
 }
 
-h1,
-h2 {
-  text-align: center;
+.h1,
+.h4 {
+  color: var(--primary);
+}
+
+.h1 {
+  font-family: var(--fontVidaloka);
+}
+.h4 {
+  font-family: var(--fontRoboto);
+  font-weight: 100;
 }
 
 /* HERO 
@@ -56,36 +74,70 @@ h2 {
   padding: 0 2.4rem;
 }
 
-.hero * {
-  position: relative;
+.logo {
   z-index: 2;
-}
+  background-color: var(--tint);
 
-/* BUTTONS 
--------------------------------------------------- */
-.btnPill {
-  height: 3.2rem;
-  padding: 0.4rem 3.2rem;
-  color: var(--primary);
-  font-family: "Roboto", sans-serif;
-  line-height: 1rem;
-  font-weight: 700;
-  background: #e6eaef;
-  border-radius: 32px;
+  width: 160px;
+  height: 160px;
+  display: block;
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
   box-shadow: -5px -5px 9px rgba(255, 255, 255, 0.8),
     5px 5px 9px rgba(94, 104, 121, 0.6);
 }
 
+/* .logo::after {
+  content: "";
+  position: absolute;
+  height: 90%;
+  width: 90%;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: inset -5px -5px 9px rgba(255, 255, 255, 0.8),
+    inset 5px 5px 9px rgba(94, 104, 121, 0.6);
+} */
+
+/* BUTTONS 
+-------------------------------------------------- */
+.btn {
+  text-decoration: none;
+  color: var(--primary);
+}
+
+.btnPill {
+  height: 3.2rem;
+  padding: 0.4rem 4.8rem;
+  font-family: var(--fontRoboto);
+  line-height: 1rem;
+  font-weight: 700;
+
+  border-radius: 32px;
+  border-top: 1px solid var(--white);
+  border-left: 1px solid var(--white);
+  background-color: var(--tint);
+  background: var(--lg);
+  box-shadow: var(--shadow);
+}
+
 .btnPill:hover {
-  background-color: var(--accent);
+  background: var(--lgHover);
+  transition: var(--transition);
 }
 
 .btnRound {
   padding: 0.8rem;
   color: var(--primary);
-  background: #e6eaef;
-  box-shadow: -5px -5px 9px rgba(255, 255, 255, 0.8),
-    5px 5px 9px rgba(94, 104, 121, 0.6);
+  background: var(--tint);
+  box-shadow: var(--shadow);
 }
 
 .btnRound:hover {

@@ -9,10 +9,10 @@ import Typography from "@mui/material/Typography";
 let theme = createTheme();
 theme = responsiveFontSizes(theme);
 
-export default function Title({ classCss, text }) {
+export default function SubHeading({ classCss, text }) {
   return (
     <ThemeProvider theme={theme}>
-      <Typography variant="h1" className={classCss}>
+      <Typography variant="h4" className={classCss}>
         {text}
       </Typography>
     </ThemeProvider>
