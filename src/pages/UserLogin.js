@@ -36,7 +36,7 @@ export default function UserLogin() {
             display: "flex",
             justifyContent: "space-between",
           }}>
-          <BtnRound name={"<-"} />
+          <BtnRound link={"/"} name={"<-"} />
           <BtnRound name={"Login"} />
         </Box>
       </Stack>
