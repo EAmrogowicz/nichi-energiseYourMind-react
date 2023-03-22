@@ -1,19 +1,11 @@
-import Container from "@mui/material/Container";
+import PageContainer from "../components/general/PageContainer";
 
 export default function Dashboard() {
   return (
-    <Container
-      maxWidth="sm"
-      sx={{
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+    <PageContainer>
       <div>
         <h2>Dashboard</h2>
       </div>
-    </Container>
+    </PageContainer>
   );
 }
