@@ -1,10 +1,12 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 
-export default function StandardBtn(props) {
+export default function StandardBtn({ classCss, link, name }) {
   return (
-    <Button className={props.classCss} href={props.link}>
-      {props.name}
+    <Button className={classCss}>
+      <Link to={link} className="btn">
+        {name}
+      </Link>
     </Button>
   );
 }
