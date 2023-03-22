@@ -3,12 +3,7 @@ import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 
 export default function IconBtn() {
   return (
-    <IconButton
-      className="btnRound"
-      aria-label="upload picture"
-      component="label"
-    >
-      <input hidden accept="image/*" type="file" />
+    <IconButton className='btnRound' aria-label='go back'>
       <ArrowBackRoundedIcon />
     </IconButton>
   );
