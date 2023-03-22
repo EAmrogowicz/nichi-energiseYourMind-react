@@ -31,7 +31,6 @@ body {
   background-color: var(--tint);
   color: var(--black);
   font-family: "Roboto", sans-serif;
-  font-family: "Vidaloka", serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
@@ -49,9 +48,18 @@ code {
 .h1 {
   font-family: var(--fontVidaloka);
 }
+
 .h4 {
   font-family: var(--fontRoboto);
   font-weight: 100;
+}
+
+a {
+  color: var(--primary);
+}
+
+a:hover {
+  color: var(--black);
 }
 
 /* HERO 
