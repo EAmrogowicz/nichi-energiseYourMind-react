@@ -1,5 +1,5 @@
 import React from 'react'
-import MeditateBreath from '../components/MeditateBreath';
+import MeditateBreathing from '../components/MeditateBreathing';
 import '../css/style_meditate.css';
 
 export default function Meditation() {
@@ -7,7 +7,7 @@ export default function Meditation() {
       <>
       <div className="meditate">
          <div className="meditateContainer">
-            <MeditateBreath />
+            <MeditateBreathing />
          </div>
       </div>
       </>
