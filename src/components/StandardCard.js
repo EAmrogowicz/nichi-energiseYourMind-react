@@ -1,3 +1,4 @@
+import { Link as RouterLink } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -11,10 +12,11 @@ export default function StandardCard({
   title,
   caption,
   imglink,
+  address,
 }) {
   return (
-    <Card sx={{ maxWidth: 620, minWidth: 240 }} className={classCss}>
-      <CardActionArea>
+    <Card sx={{ maxWidth: 620 }} className={classCss}>
+      <CardActionArea component={RouterLink} to={address}>
         <CardMedia
           component="img"
           height={height}
