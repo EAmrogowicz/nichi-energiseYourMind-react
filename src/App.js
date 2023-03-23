@@ -10,7 +10,7 @@ import UserLogin from "./pages/UserLogin";
 import Nav from "./components/Nav/Nav";
 import Footer from "./components/Footer/Footer";
 import Dashboard from "./pages/Dashboard";
-import Meditation from "./pages/Meditation";
+// import Meditation from "./pages/Meditation";
 import ActivityLog from "./pages/ActivityLog";
 import { StyledEngineProvider } from "@mui/material/styles";
 
