@@ -1,10 +1,10 @@
 import { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Box, Input, FormControl } from "@mui/material";
-import PageContainer from "../components/General/PageContainer";
-import SubHeading from "../components/General/Typography/SubHeading";
-import StandardBtn from "../components/General/Button/StandardBtn";
-import IconBtn from "../components/General/Button/IconBtn";
+import PageContainer from "../components/PageContainer";
+import SubHeading from "../components/Typography/SubHeading";
+import StandardBtn from "../components/Button/StandardBtn";
+import IconBtn from "../components/Button/IconBtn";
 
 export default function UserLogin() {
   const [user, setUser] = useState(

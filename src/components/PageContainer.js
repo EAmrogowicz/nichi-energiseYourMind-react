@@ -12,15 +12,17 @@ export default function PageContainer({ children, size }) {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        margin: "4rem auto",
+        margin: "2.4rem auto",
         // marginTop: `${header}px`,
-      }}>
+      }}
+    >
       <Stack
-        direction='column'
-        justifyContent='space-around'
-        alignItems='center'
+        direction="column"
+        justifyContent="space-around"
+        alignItems="center"
         spacing={1}
-        height={"75vh"}>
+        height={"75vh"}
+      >
         {children}
       </Stack>
     </Container>

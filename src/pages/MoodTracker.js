@@ -7,11 +7,11 @@ import SentimentNeutralOutlinedIcon from "@mui/icons-material/SentimentNeutralOu
 import SentimentSatisfiedIcon from "@mui/icons-material/SentimentSatisfied";
 import SentimentSatisfiedAltOutlinedIcon from "@mui/icons-material/SentimentSatisfiedAltOutlined";
 import SentimentVerySatisfiedOutlinedIcon from "@mui/icons-material/SentimentVerySatisfiedOutlined";
-import PageContainer from "../components/General/PageContainer";
+import PageContainer from "../components/PageContainer";
 import MoodIcon from "../components/MoodIcon";
-import StandardBtn from "../components/General/Button/StandardBtn";
-import MoodBtn from "../components/General/Button/MoodBtn";
-import SubHeading from "../components/General/Typography/SubHeading";
+import StandardBtn from "../components/Button/StandardBtn";
+import MoodBtn from "../components/Button/MoodBtn";
+import SubHeading from "../components/Typography/SubHeading";
 
 export default function MoodTracker() {
   const [selectedMood, setSelectedMood] = useState("");
@@ -47,16 +47,18 @@ export default function MoodTracker() {
           return (
             <MoodIcon
               key={mood.description}
-              onClick={() => setSelectedMood(mood.description)}>
+              onClick={() => setSelectedMood(mood.description)}
+            >
               <MoodBtn
-                className={selectedMood === mood.description ? "selected" : ""}>
+                className={selectedMood === mood.description ? "selected" : ""}
+              >
                 <mood.icon
-                  edge='center'
-                  color='inherit'
+                  edge="center"
+                  color="inherit"
                   sx={{ width: "3rem", height: "3rem" }}
                 />
               </MoodBtn>
-              <Typography variant='p'>{mood.description}</Typography>
+              <Typography variant="p">{mood.description}</Typography>
             </MoodIcon>
           );
         })}

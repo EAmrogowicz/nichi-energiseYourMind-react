@@ -1,9 +1,9 @@
 import { Box } from "@mui/material";
-import LinkBtn from "../components/General/Button/LinkBtn";
-import Logo from "../components/Logo/Logo";
-import PageContainer from "../components/General/PageContainer";
-import Title from "../components/General/Typography/Title";
-import SubHeading from "../components/General/Typography/SubHeading";
+import LinkBtn from "../components/Button/LinkBtn";
+import Logo from "../components/Logo";
+import PageContainer from "../components/PageContainer";
+import PageTitle from "../components/Typography/Title";
+import SubHeading from "../components/Typography/SubHeading";
 import Dashboard from "./Dashboard";
 
 export default function Home() {
@@ -19,11 +19,18 @@ export default function Home() {
         <div className="hero" style={{ textAlign: "center" }}>
           <PageContainer size="false">
             <Box>
-              <Title text={"Nichi"} />
-              <SubHeading text={"Energise Your Mind"} />
+              <PageTitle text="Nichi" />
+              <SubHeading
+                text="Energise Your Mind"
+                classCss={"fontWeight100"}
+              />
             </Box>
+            <br />
             <Logo />
-            <LinkBtn name="Get Started" classCss="btnPill" link="/user-login" />
+
+            <br />
+            <br />
+            <LinkBtn name="Get Started" link="/user-login" />
           </PageContainer>
         </div>
       ) : (
