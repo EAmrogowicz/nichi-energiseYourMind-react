@@ -5,9 +5,9 @@ import SentimentNeutralOutlinedIcon from "@mui/icons-material/SentimentNeutralOu
 import SentimentSatisfiedIcon from "@mui/icons-material/SentimentSatisfied";
 import SentimentSatisfiedAltOutlinedIcon from "@mui/icons-material/SentimentSatisfiedAltOutlined";
 import SentimentVerySatisfiedOutlinedIcon from "@mui/icons-material/SentimentVerySatisfiedOutlined";
-import PageContainer from "../components/General/PageContainer";
+import PageContainer from "../components/PageContainer";
 import MoodIcon from "../components/MoodIcon";
-import SubHeading from "../components/General/Typography/SubHeading";
+import SubHeading from "../components/Typography/SubHeading";
 
 export default function MoodLogs() {
   const moods = [
