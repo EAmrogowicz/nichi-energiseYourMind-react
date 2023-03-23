@@ -42,7 +42,12 @@ export default function MoodTracker() {
   return (
     <PageContainer>
       <SubHeading text={"How are you feeling today?"} />
-      <Grid container spacing={2} columns={6}>
+
+      <Grid
+        container
+        spacing={{ xs: 8, sm: 8, md: 12 }}
+        columns={{ xs: 6, sm: 3, md: 12 }}
+      >
         {moods.map((mood) => {
           return (
             <MoodIcon
@@ -58,11 +63,14 @@ export default function MoodTracker() {
                   sx={{ width: "3rem", height: "3rem" }}
                 />
               </MoodBtn>
-              <Typography variant="p">{mood.description}</Typography>
+              <Typography variant="p" sx={{ mt: 1, mb: 8 }}>
+                {mood.description}
+              </Typography>
             </MoodIcon>
           );
         })}
       </Grid>
+
       <StandardBtn name={"Submit"} onClick={handleMoodSubmit} />
     </PageContainer>
   );
