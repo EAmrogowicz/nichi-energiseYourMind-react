@@ -7,119 +7,138 @@ import './style.css';
 import gongBell from './audio/gong1.mp3';
 
 
-export default function meditateBreath () {
+export default function MeditateBreath () {
 
-   const zeroPad = (num, places) => String(num).padStart(places, '0');
+   //--Pei set the default meditation duration to 60s
+   const startTime = 60;
 
+   //--Pei Play the gong
+   const [hitGong] = useSound(gongBell);
+
+   //--Pei Function to display the time string
    function timePadding (num, padding) {
       let numString = (num).toString().padStart(padding, '0');
       return numString;
    }
 
-   const startTime = 60;
-
-   const [play] = useSound(gongBell);
-
-   const [timerFinished, setTimerFinished] = useState(false);
-
    const [timeInSec, setTimeInSec] = useState(startTime);
 
+   //--Pei Create the state of whether the meditation timer is currently running
    const [isActive, setIsActive] = useState(false);
 
-   const toggle = () => { 
+  //--Pei Create the state of whether the meditation timer has ended
+   const [isEnded, setIsEnded] = useState(false);
+
+   //--Pei To toggle between playing or pausing the meditation timer
+   const playPause = () => { 
       setIsActive(!isActive); 
-      setTimerFinished(false); 
+      setIsEnded(false); 
+      if (setIsActive) {
+      hitGong();
+      };
    };
 
+   //--Pei to reset the meditation session timer
    const reset = () => { 
       setTimeInSec(startTime); 
       setIsActive(false); 
-      setTimerFinished(false); 
+      setIsEnded(false); 
    };
 
+   //--Pei hit the gong when session has ended.
    const playSound = () => { 
-      if (!timerFinished) { 
-      play(); setTimeInSec(true); 
+      if (!isEnded) { 
+         hitGong(); 
+         setTimeInSec(true); 
+         reset();
       } 
    };
 
-   function setDuration (numSeconds) {
-      let durationInSec = Math.max(0, numSeconds);
-      return durationInSec;
-   }
 
    useEffect( () => {
 
       let interval = null;
 
+      //--Pei when time is up!
       if (timeInSec <= 0) {
          setIsActive(false);
          playSound();
-      }
+      };
 
+      //--Pei setinterval to reduce time by 1 second
       if (isActive) {
          interval = setInterval(() => {
             setTimeInSec((s) => s - 1);
          }, 1000);
       } else if (!isActive && timeInSec !== 0) {
          clearInterval(interval);
-      }
+      };
 
       return () => clearInterval(interval);
-
-      }
-      , [isActive, timeInSec, playSound]
+   }
+   , [isActive, timeInSec, playSound]
    );
-
+   
    return (
+
       <div className="meditateContainer">
-         <h2>blah</h2>
-         <h3>blah h2</h3>
+         <h2>
+            Breath Meditation
+         </h2>
+         <h4>
+            breath in as the blob swells &amp; <br/>
+            breath out as the blob contracts.
+         </h4>
+
          <div className="blobContainer">
-            <div className={`blobly-blob ${isActive ? 'blobly-blob-expand' : ''}`}>
+            <div className={`blobbly-blob ${isActive ? 'blobbly-blob-swell' : ''}`}>
             </div>
          </div>
-      <div className="timerCount">
-         {(Math.floor(timeInSec / 60))}:{timePadding(timeInSec % 60, 2)}
+
+         <div className="timerCount">
+            {(Math.floor(timeInSec / 60))}:{timePadding(timeInSec % 60, 2)}
+         </div>
+
+         <div className="row">
+            <button className='btnRound' onClick={() => setTimeInSec(600)}>
+               10min
+            </button>
+
+            <button className='btnRound' onClick={() => setTimeInSec(300)}>
+               5min
+            </button>
+
+            <button className='btnRound' onClick={() => setTimeInSec(120)}>
+               2min
+            </button>
+
+            <button className='btnRound' onClick={() => setTimeInSec(60)}>
+               1min
+            </button>
+         {/* //--Pei 10sec button for testing only  */}
+            <button className='btnRound' onClick={() => setTimeInSec(10)}>
+               10sec
+            </button>
+         </div>
+
+         <div className='row'>
+            <button className={`btnRound btnRound-${isActive ? 'active' : 'inactive'}`} onClick={playPause}>
+               {isActive
+                  ? <FaPause />
+                  : <FaPlay />}
+            </button>
+
+            <button className='btnRound' onClick={reset}>
+               <FaUndo />
+            </button>
+
+            {/* <button className='btnRound' onClick={() => hitGong()}>
+               <FaMusic />
+            </button> */}
+         </div>
       </div>
 
-      <div className="row">
-         <button className='circle-button button-primary-inactive' onClick={() => setTimeInSec(600)}>
-            10min
-         </button>
-
-         <button className='circle-button button-primary-inactive' onClick={() => setTimeInSec(300)}>
-            5min
-         </button>
-
-         <button className='circle-button button-primary-inactive' onClick={() => setTimeInSec(120)}>
-            2min
-         </button>
-
-         <button className='circle-button button-primary-inactive' onClick={() => setTimeInSec(60)}>
-            1min
-         </button>
-      </div>
-
-      <div className='row'>
-         <button className={`circle-button button-primary-${isActive ? 'active' : 'inactive'}`} onClick={toggle}>
-            {isActive
-               ? <FaPause />
-               : <FaPlay />}
-
-         </button>
-         
-         <button className='circle-button button-primary-inactive' onClick={reset}>
-            <FaUndo />
-
-         </button>
-         <button className='circle-button button-primary-inactive' onClick={() => play()}>
-            <FaMusic />
-
-         </button>
-      <div />
-      </div>
-      </div>
+   // End of Return  
    );
 };
 
