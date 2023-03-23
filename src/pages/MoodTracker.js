@@ -7,11 +7,11 @@ import SentimentNeutralOutlinedIcon from "@mui/icons-material/SentimentNeutralOu
 import SentimentSatisfiedIcon from "@mui/icons-material/SentimentSatisfied";
 import SentimentSatisfiedAltOutlinedIcon from "@mui/icons-material/SentimentSatisfiedAltOutlined";
 import SentimentVerySatisfiedOutlinedIcon from "@mui/icons-material/SentimentVerySatisfiedOutlined";
-import PageContainer from "../components/general/PageContainer";
+import PageContainer from "../components/General/PageContainer";
 import MoodIcon from "../components/MoodIcon";
-import StandardBtn from "../components/general/Button/StandardBtn";
-import MoodBtn from "../components/general/Button/MoodBtn";
-import SubHeading from "../components/general/Typography/SubHeading";
+import StandardBtn from "../components/General/Button/StandardBtn";
+import MoodBtn from "../components/General/Button/MoodBtn";
+import SubHeading from "../components/General/Typography/SubHeading";
 
 export default function MoodTracker() {
   const [selectedMood, setSelectedMood] = useState("");

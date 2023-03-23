@@ -5,9 +5,9 @@ import SentimentNeutralOutlinedIcon from "@mui/icons-material/SentimentNeutralOu
 import SentimentSatisfiedIcon from "@mui/icons-material/SentimentSatisfied";
 import SentimentSatisfiedAltOutlinedIcon from "@mui/icons-material/SentimentSatisfiedAltOutlined";
 import SentimentVerySatisfiedOutlinedIcon from "@mui/icons-material/SentimentVerySatisfiedOutlined";
-import PageContainer from "../components/general/PageContainer";
+import PageContainer from "../components/General/PageContainer";
 import MoodIcon from "../components/MoodIcon";
-import SubHeading from "../components/general/Typography/SubHeading";
+import SubHeading from "../components/General/Typography/SubHeading";
 
 export default function MoodLogs() {
   const moods = [
@@ -39,13 +39,13 @@ export default function MoodLogs() {
     <PageContainer>
       <SubHeading text={"Thank you for telling us how you feel!"} />
       <Box>
-        <Typography variant='h6'>Most Occurring Mood</Typography>
+        <Typography variant="h6">Most Occurring Mood</Typography>
         <Grid container spacing={2} columns={12}>
           <Grid item xs={4}>
             <MoodIcon>
               <MostOccuringMoodIcon
-                edge='center'
-                color='inherit'
+                edge="center"
+                color="inherit"
                 sx={{ width: "3rem", height: "3rem" }}
               />
             </MoodIcon>
@@ -56,9 +56,10 @@ export default function MoodLogs() {
             sx={{
               display: "flex",
               alignItems: "center",
-            }}>
+            }}
+          >
             <Box>
-              <Typography variant='p'>{mostOccurringMood}</Typography>
+              <Typography variant="p">{mostOccurringMood}</Typography>
             </Box>
           </Grid>
         </Grid>
@@ -79,11 +80,12 @@ export default function MoodLogs() {
                   sx={{
                     display: "flex",
                     alignItems: "center",
-                  }}>
+                  }}
+                >
                   <MoodIcon>
                     <MoodIconRecord
-                      edge='center'
-                      color='inherit'
+                      edge="center"
+                      color="inherit"
                       sx={{ width: "3rem", height: "3rem" }}
                     />
                   </MoodIcon>
@@ -94,12 +96,13 @@ export default function MoodLogs() {
                   sx={{
                     display: "flex",
                     alignItems: "center",
-                  }}>
+                  }}
+                >
                   <Stack>
-                    <Typography variant='p'>
+                    <Typography variant="p">
                       {matchingMood?.description || null}
                     </Typography>
-                    <Typography variant='p'>
+                    <Typography variant="p">
                       {new Date(moodRecord.time).toLocaleString("en-GB", {
                         dateStyle: "short",
                         timeStyle: "short",
