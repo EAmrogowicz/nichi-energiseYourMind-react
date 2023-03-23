@@ -10,46 +10,47 @@ export default function Nav() {
     <Box sx={{ flexGrow: 1 }}>
       <nav>
         <AppBar
-          position='fixed'
+          position="fixed"
           sx={{
             "@media (max-width:768px)": { top: "auto", bottom: 0 },
             background: "white",
-          }}>
+          }}
+        >
           <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
             <Box sx={{ gap: "1rem" }}>
-              <Link to='/'>
+              <Link to="/">
                 <HomeIcon
-                  size='large'
-                  edge='start'
-                  color='inherit'
-                  aria-label='home'
+                  size="large"
+                  edge="start"
+                  color="inherit"
+                  aria-label="home"
                   sx={{ mr: 2 }}
                 />
               </Link>
-              <Link to='/mood-tracker'>
+              <Link to="/mood-tracker">
                 <EmojiEmotionsIcon
-                  size='large'
-                  edge='start'
-                  color='inherit'
-                  aria-label='mood'
+                  size="large"
+                  edge="start"
+                  color="inherit"
+                  aria-label="mood"
                   sx={{ mr: 2 }}
                 />
               </Link>
-              <Link to='#'>
+              <Link to="/meditation">
                 <PersonIcon
-                  size='large'
-                  edge='start'
-                  color='inherit'
-                  aria-label='user'
+                  size="large"
+                  edge="start"
+                  color="inherit"
+                  aria-label="user"
                   sx={{ mr: 2 }}
                 />
               </Link>
             </Box>
             <SettingsIcon
-              size='large'
-              edge='start'
-              color='inherit'
-              aria-label='settings'
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="settings"
               sx={{ mr: 2 }}
             />
           </Toolbar>
