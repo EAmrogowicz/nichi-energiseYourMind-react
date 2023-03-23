@@ -22,6 +22,7 @@ export default function Dashboard() {
       >
         <Grid item xs={12} sm={4}>
           <StandardCard
+            address={"/meditation"}
             height={"300rem"}
             classCss={"stnCard"}
             imglink={
@@ -29,12 +30,13 @@ export default function Dashboard() {
             }
             title={"Meditate"}
             caption={
-              "Catch your breath, relax your mind. It only takes a few minutes to find some headspace."
+              "Catch your breath, relax your mind and reclaim your serenity."
             }
           />
         </Grid>
         <Grid item xs={12} sm={4}>
           <StandardCard
+            address={"/mood-tracker"}
             height={"300rem"}
             classCss={"stnCard"}
             imglink={
@@ -42,12 +44,13 @@ export default function Dashboard() {
             }
             title={"Mood Board"}
             caption={
-              "Discover the mood in your head and make good days your new normal."
+              "Discover the mood in your head and make good days your new normal. "
             }
           />
         </Grid>
         <Grid item xs={12} sm={4}>
           <StandardCard
+            address={"/activity-log"}
             height={"300rem"}
             classCss={"stnCard"}
             imglink={

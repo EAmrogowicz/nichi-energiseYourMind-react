@@ -6,7 +6,8 @@
   --primary: #35444b;
   --tint: #e6eaef;
   --shade: #b8cbdb;
-  --accent: #ead2e1;
+  --accent: #d19793;
+  --accent2: #8caea7;
 
   --lg: linear-gradient(160deg, #f0f0f0, #b8cbdb);
   --lgHover: linear-gradient(160deg, #e6eaef, #ead2e1);
@@ -16,7 +17,12 @@
 
   --shadow: -5px -5px 9px rgba(255, 255, 255, 0.8),
     5px 5px 9px rgba(94, 104, 121, 0.6);
+  --shadowSM: -2px -2px 4px rgba(255, 255, 255, 0.8),
+    2px 2px 4px rgba(94, 104, 121, 0.6);
+  --shadowNAV: 5px 5px 9px rgba(94, 104, 121, 0.6);
   --transition: all 0.3s ease-in-out;
+
+  --backdrop: blur(10px);
 }
 
 * {
@@ -74,11 +80,30 @@ a:hover {
   margin-bottom: 1rem;
 }
 
-/* .page-subheading {
-  font-size: 1.5rem;
-  font-weight: 100;
-  text-align: center;
-} */
+/* NAVIGATION 
+-------------------------------------------------- */
+.navBar {
+  background-color: var(--tint);
+  box-shadow: var(--shadowNAV);
+  border-top: 1px solid var(--white);
+}
+
+.navIcon {
+  height: 2.4rem;
+  width: 2.4rem;
+  padding: 0.2rem;
+  background-color: var(--white);
+  border-top: 1px solid var(--white);
+  border-left: 1px solid var(--white);
+  border-radius: 50%;
+  box-shadow: var(--shadowSM);
+  transition: var(--transition);
+}
+
+.navIcon:hover {
+  color: var(--white);
+  background-color: var(--primary);
+}
 
 /* HERO 
 -------------------------------------------------- */
@@ -92,6 +117,7 @@ a:hover {
   background-position: center;
   box-shadow: inset 0 0 0 2000px rgba(230, 234, 239, 0.8);
   padding: 0 2.4rem;
+  z-index: 0;
 }
 
 .logo {
