@@ -9,7 +9,7 @@ import gongBell from './audio/gong1.mp3';
 
 export default function MeditateBreath () {
 
-   //--Pei set the default meditation duration to 60s
+   //--Pei set the default meditation duration to 60s/1min
    const startTime = 60;
 
    //--Pei Play the gong
