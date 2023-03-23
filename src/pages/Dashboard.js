@@ -2,7 +2,7 @@ import PageContainer from "../components/PageContainer";
 import { useNavigate } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import SubHeading from "../components/Typography/SubHeading";
-import ActionAreaCard from "../components/Card/ActionAreaCard";
+import StandardCard from "../components/StandardCard";
 
 export default function Dashboard() {
   const username = JSON.parse(localStorage.getItem("userData")).username;
@@ -18,10 +18,9 @@ export default function Dashboard() {
       <Grid
         container
         spacing={{ xs: 2, sm: 4, md: 8 }}
-        columns={{ xs: 6, md: 12 }}
-      >
+        columns={{ xs: 6, md: 12 }}>
         <Grid item xs={6}>
-          <ActionAreaCard
+          <StandardCard
             height={"300rem"}
             classCss={"stnCard"}
             imglink={
@@ -32,7 +31,7 @@ export default function Dashboard() {
           />
         </Grid>
         <Grid item xs={6}>
-          <ActionAreaCard
+          <StandardCard
             height={"300rem"}
             classCss={"stnCard"}
             imglink={
