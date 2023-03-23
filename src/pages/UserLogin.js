@@ -1,10 +1,10 @@
 import { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Box, Input, FormControl } from "@mui/material";
-import PageContainer from "../components/general/PageContainer";
-import SubHeading from "../components/general/Typography/SubHeading";
-import StandardBtn from "../components/general/Button/StandardBtn";
-import IconBtn from "../components/general/Button/IconBtn";
+import PageContainer from "../components/General/PageContainer";
+import SubHeading from "../components/General/Typography/SubHeading";
+import StandardBtn from "../components/General/Button/StandardBtn";
+import IconBtn from "../components/General/Button/IconBtn";
 
 export default function UserLogin() {
   const [user, setUser] = useState(
@@ -38,15 +38,16 @@ export default function UserLogin() {
       </Box>
       <FormControl>
         <Box
-          component='form'
+          component="form"
           sx={{
             "& > :not(style)": { m: 1, width: "25ch" },
           }}
-          autoComplete='off'>
+          autoComplete="off"
+        >
           <Input
-            id='name'
-            label='Name'
-            variant='outlined'
+            id="name"
+            label="Name"
+            variant="outlined"
             value={username}
             onChange={handleChange}
             ref={inputRef}
@@ -56,8 +57,9 @@ export default function UserLogin() {
               width: "100%",
               display: "flex",
               justifyContent: "space-between",
-            }}>
-            <Link to='/'>
+            }}
+          >
+            <Link to="/">
               <IconBtn />
             </Link>
             <StandardBtn name={"Login"} onClick={handleLogin} />

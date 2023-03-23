@@ -1,5 +1,5 @@
-import PageContainer from "../components/general/PageContainer";
-import PageTitle from "../components/general/Typography/Title";
+import PageContainer from "../components/General/PageContainer";
+import PageTitle from "../components/General/Typography/Title";
 import { useNavigate } from "react-router-dom";
 
 export default function Dashboard() {

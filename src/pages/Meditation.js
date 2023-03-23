@@ -1,15 +1,15 @@
-import React from 'react'
-import MeditateBreath from '../components/MeditateBreath';
-import '../css/style_meditate.css';
+import React from "react";
+import MeditateBreath from "../components/MeditateBreath";
+import "../components/MeditateBreath/styles.css";
 
 export default function Meditation() {
-   return (
-      <>
+  return (
+    <>
       <div className="meditate">
-         <div className="meditateContainer">
-            <MeditateBreath />
-         </div>
+        <div className="meditateContainer">
+          <MeditateBreath />
+        </div>
       </div>
-      </>
-   )
+    </>
+  );
 }
