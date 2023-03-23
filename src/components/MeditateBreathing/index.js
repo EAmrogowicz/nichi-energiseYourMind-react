@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import useSound from 'use-sound';
-import { FaPlay, FaPause, FaUndo, FaMusic } from 'react-icons/fa';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import PauseIcon from '@mui/icons-material/Pause';
+import RestartAltIcon from '@mui/icons-material/RestartAlt';
+
 
 import './style.css';
 
@@ -124,17 +127,15 @@ export default function MeditateBreath () {
          <div className='row'>
             <button className={`btnRound btnRound-${isActive ? 'active' : 'inactive'}`} onClick={playPause}>
                {isActive
-                  ? <FaPause />
-                  : <FaPlay />}
+                  ? <PauseIcon />
+                  : <PlayArrowIcon  />}
             </button>
 
             <button className='btnRound' onClick={reset}>
-               <FaUndo />
+               <RestartAltIcon />
             </button>
 
-            {/* <button className='btnRound' onClick={() => hitGong()}>
-               <FaMusic />
-            </button> */}
+
          </div>
       </div>
 
