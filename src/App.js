@@ -10,6 +10,8 @@ import UserLogin from "./pages/UserLogin";
 import Nav from "./components/Nav/Nav";
 import Footer from "./components/Footer/Footer";
 import Dashboard from "./pages/Dashboard";
+import Meditation from "./pages/Meditation";
+import ActivityLog from "./pages/ActivityLog";
 import { StyledEngineProvider } from "@mui/material/styles";
 
 export default function App() {
@@ -28,6 +30,8 @@ export default function App() {
             <Route path='/mood-tracker' element={<MoodTracker />} />
             <Route path='/user-login' element={<UserLogin />} />
             <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/meditation' element={<Meditation />} />
+            <Route path='/activity-log' element={<ActivityLog />} />
           </Routes>
         </main>
         <Footer />

@@ -152,3 +152,8 @@ a:hover {
 .btnRound:hover {
   background-color: var(--accent);
 }
+
+.moodBtn.selected {
+  background-color: var(--primary);
+  color: var(--white);
+}
