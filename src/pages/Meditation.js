@@ -1,6 +1,6 @@
 import React from 'react'
 import MeditateBreathing from '../components/MeditateBreathing/MeditateBreathing.js';
-import '../css/style_meditate.css';
+
 
 export default function Meditation() {
    return (
