@@ -4,14 +4,20 @@ export default function MoodIcon({ children, ...props }) {
   return (
     <Grid
       item
-      sm={1}
+      md={1}
+      sm={2}
       xs={3}
-      sx={{ display: "flex", justifyContent: "center", margin: "auto" }}
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "3.2rem",
+      }}
       {...props}>
       <Box
         sx={{
-          width: 75,
-          height: 75,
+          width: 100,
+          height: 100,
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",

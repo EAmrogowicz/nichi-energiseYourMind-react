@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 import { Box } from "@mui/material";
-import LinkBtn from "../components/Button/LinkBtn";
+import StandardBtn from "../components/Button/StandardBtn";
 import Logo from "../components/Logo";
 import PageContainer from "../components/PageContainer";
 import PageTitle from "../components/Typography/Title";
@@ -16,12 +17,12 @@ export default function Home() {
   return (
     <>
       {!userData ? (
-        <div className="hero" style={{ textAlign: "center" }}>
-          <PageContainer size="false">
+        <div className='hero' style={{ textAlign: "center" }}>
+          <PageContainer size='false'>
             <Box>
-              <PageTitle text="Nichi" />
+              <PageTitle text='Nichi' />
               <SubHeading
-                text="Energise Your Mind"
+                text='Energise Your Mind'
                 classCss={"fontWeight100"}
               />
             </Box>
@@ -30,7 +31,9 @@ export default function Home() {
 
             <br />
             <br />
-            <LinkBtn name="Get Started" link="/user-login" />
+            <Link to='/user-login'>
+              <StandardBtn name='Get Started' />
+            </Link>
           </PageContainer>
         </div>
       ) : (
