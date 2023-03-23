@@ -30,7 +30,7 @@ export default function App() {
             <Route path='/mood-tracker' element={<MoodTracker />} />
             <Route path='/user-login' element={<UserLogin />} />
             <Route path='/dashboard' element={<Dashboard />} />
-            <Route path='/meditation' element={<Meditation />} />
+            {/* <Route path='/meditation' element={<Meditation />} /> */}
             <Route path='/activity-log' element={<ActivityLog />} />
           </Routes>
         </main>
