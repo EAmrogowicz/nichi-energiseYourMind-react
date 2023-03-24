@@ -9,7 +9,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import Reflections from './reflections.json';
 
 import './style.css';
-import gongBell from './audio/gong2.mp3';
+import gongBell from '../audio/gong2.mp3';
 
 const reflectionText = Reflections[Math.floor(Math.random() * Reflections.length)].toReflectOn;
 

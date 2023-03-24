@@ -7,7 +7,7 @@ import RestartAltIcon from '@mui/icons-material/RestartAlt';
 
 import './style.css';
 
-import gongBell from './audio/gong1.mp3';
+import gongBell from '../audio/gong1.mp3';
 
 
 export default function MeditateBreath () {
