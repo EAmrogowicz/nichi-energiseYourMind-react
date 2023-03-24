@@ -21,8 +21,12 @@ export default function App() {
   return (
     <StyledEngineProvider injectFirst>
       <Router>
-        <Nav />
-        <main>
+        <main
+          style={{
+            minHeight: "100%",
+          }}
+        >
+          <Nav />
           <Routes
           // key={location.path} location={location}
           >
@@ -33,8 +37,8 @@ export default function App() {
             <Route path="/meditation" element={<Meditation />} />
             <Route path="/activity-log" element={<ActivityLog />} />
           </Routes>
+          <Footer />
         </main>
-        <Footer />
       </Router>
     </StyledEngineProvider>
   );

@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 
 export default function Logo() {
   return (
-    <Box className="logo" sx={{ mt: 4, mb: 2 }}>
+    <Box className="logo" sx={{ mt: 8, mb: 8 }}>
       <svg
         id="Nichi Logo"
         className="logoSymbol"
