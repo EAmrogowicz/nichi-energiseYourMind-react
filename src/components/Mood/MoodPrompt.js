@@ -6,8 +6,9 @@ import MoodBtn from "../Button/MoodBtn";
 import PageContainer from "../PageContainer";
 import SubHeading from "../Typography/SubHeading";
 import ParagraphLg from "../Typography/ParagraphLg";
+import { moods } from "./Moods";
 
-export default function MoodPrompt({ moods, onSubmit }) {
+export default function MoodPrompt({ onSubmit }) {
   const [selectedMood, setSelectedMood] = useState("");
   const timeStamp = new Date().toISOString();
 
