@@ -1,9 +1,10 @@
-import { Box, Stack } from "@mui/material";
+import { Box, Stack, Paper } from "@mui/material";
 import { Link } from "react-router-dom";
 import PageContainer from "../PageContainer";
 import MoodIcon from "./MoodIcon";
 import StandardCard from "../StandardCard";
 import SubHeading from "../Typography/SubHeading";
+import Heading4 from "../Typography/Heading4";
 import ParagraphLg from "../Typography/ParagraphLg";
 import IconBtn from "../Button/IconBtn";
 import StandardBtn from "../Button/StandardBtn";
@@ -45,43 +46,67 @@ export default function MoodSelect({ moods, moodRecord }) {
 
   return (
     <PageContainer>
-      <SubHeading text={`You are feeling ${selectedMood}`} />
-      <MoodIcon>
-        <SelectedMoodIcon
-          edge='center'
-          color='inherit'
-          sx={{ width: "6.4rem", height: "6.4rem", borderRadius: "50%" }}
-        />
-      </MoodIcon>
-      <Stack>
+      <Paper
+        elevation={5}
+        className='mood-selection-paper'
+        sx={{ p: "2.4rem" }}>
+        <Box sx={{ textAlign: "center" }} minWidth={"50vw"}>
+          <SubHeading text={"You are feeling"} />
+          <Heading4 text={selectedMood} />
+        </Box>
+        <MoodIcon>
+          <SelectedMoodIcon
+            edge='center'
+            color='inherit'
+            className='btn moodBtn'
+            sx={{ width: "6.4rem", height: "6.4rem", borderRadius: "50%" }}
+          />
+        </MoodIcon>
         {badMood.includes(selectedMood) && (
           <Box sx={{ textAlign: "center" }}>
             <ParagraphLg text={"Sorry, you feel that way."} />
           </Box>
         )}
-        <Box sx={{ margin: "1.2rem auto" }}>
-          <ParagraphLg
-            text={`We recommed following meditation${
-              matchingMeditation > 1 ? "s" : ""
-            } for you to try:`}
-          />
-        </Box>
-        <Box sx={{ marginTop: "1.2rem" }}>
-          {matchingMeditation && (
-            <StandardCard
-              key={matchingMeditation.meditation}
-              height={"300rem"}
-              classCss={"stnCard"}
-              imglink={matchingMeditation.meditationImg}
-              title={matchingMeditation.meditation}
-            />
-          )}
-        </Box>
+      </Paper>
+      {/* <ZenQuote /> */}
+      <Stack>
         <Box
+          sx={{ m: "3.2rem auto", fontStyle: "italic" }}
+          className='zen-quote'>
+          <ParagraphLg text={"Some zen quote from API would go here"} />
+        </Box>
+        {matchingMeditation && (
+          <>
+            <Box sx={{ m: "1.2rem auto" }}>
+              <ParagraphLg
+                text={`${
+                  badMood.includes(selectedMood)
+                    ? "To improve your mood, w"
+                    : "W"
+                }e recommed following meditation${
+                  matchingMeditation > 1 ? "s" : ""
+                } for you to try:`}
+              />
+            </Box>
+            <Box>
+              <StandardCard
+                key={matchingMeditation.meditation}
+                height={"300rem"}
+                maxWidth={360}
+                classCss={"stnCard"}
+                imglink={matchingMeditation.meditationImg}
+                title={matchingMeditation.meditation}
+                sx={{ my: "2.4rem" }}
+              />
+            </Box>
+          </>
+        )}
+        <Box
+          width={"100%"}
           sx={{
             display: "flex",
             justifyContent: "space-between",
-            marginTop: "2.4rem",
+            margin: "3.2rem auto",
           }}>
           <Link to='/'>
             <IconBtn />

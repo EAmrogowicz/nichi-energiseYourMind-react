@@ -41,6 +41,7 @@ export default function MoodLogs() {
       <Box>
         {moodlog
           .sort((a, b) => new Date(b.time) - new Date(a.time))
+          .splice(0, 3)
           .map((moodRecord) => {
             const matchingMood = moods.find(
               (mood) => mood.description === moodRecord.mood
