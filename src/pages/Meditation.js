@@ -1,5 +1,7 @@
 import React from "react";
 import MeditateBreathing from "../components/MeditateBreathing/MeditateBreathing.js";
+import MeditateBodyScan from "../components/MeditateBreathing/MeditateBodyScan.js";
+import MeditateReflect from "../components/MeditateBreathing/MeditateReflect.js";
 
 
 export default function Meditation() {
@@ -8,6 +10,8 @@ export default function Meditation() {
       <div className="meditate">
         <div className="meditateContainer">
           <MeditateBreathing />
+          <MeditateBodyScan />
+          <MeditateReflect />
         </div>
       </div>
     </>
