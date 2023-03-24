@@ -7,6 +7,7 @@ export default function PageContainer({ children, size, mg }) {
     <Container
       maxWidth={size ? size : "md"}
       sx={{
+        width: "100%",
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
@@ -15,18 +16,7 @@ export default function PageContainer({ children, size, mg }) {
         margin: "4.8rem auto 4.8rem auto",
       }}
     >
-      {/*  */}
-
-      {/*  */}
-      <Stack
-        direction="column"
-        justifyContent="space-around"
-        alignItems="center"
-        spacing={1}
-        minHeight={"60vh"}
-      >
-        {children}
-      </Stack>
+      {children}
     </Container>
   );
 }
