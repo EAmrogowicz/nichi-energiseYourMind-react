@@ -15,6 +15,9 @@ export default function PageContainer({ children, size, mg }) {
         margin: "4.8rem auto 4.8rem auto",
       }}
     >
+      {/*  */}
+
+      {/*  */}
       <Stack
         direction="column"
         justifyContent="space-around"

@@ -8,7 +8,7 @@ import IconBtn from "../components/Button/IconBtn";
 import Heading4 from "../components/Typography/Heading4";
 import TextField from "@mui/material/TextField";
 
-export default function UserLogin() {
+export default function UserLogin({ onSubmit }) {
   const [user, setUser] = useState(
     localStorage.getItem("userData") !== null
       ? JSON.parse(localStorage.getItem("userData"))
@@ -21,7 +21,6 @@ export default function UserLogin() {
 
   function handleLogin(e) {
     e.preventDefault();
-    console.log(username);
     const userData = { username };
     localStorage.setItem("userData", JSON.stringify(userData));
     !user && setUser(userData);
@@ -38,6 +37,7 @@ export default function UserLogin() {
         <SubHeading text={"Hello, stranger!"} />
         <Heading4 text={"What is your name?"} />
       </Box>
+
       <FormControl className="form">
         <TextField
           className="inputField"
@@ -61,7 +61,11 @@ export default function UserLogin() {
           <Link to="/">
             <IconBtn />
           </Link>
-          <StandardBtn name={"Login"} onClick={handleLogin} />
+          <StandardBtn
+            name={"Login"}
+            onClick={handleLogin}
+            disabled={!username}
+          />
         </Box>
       </FormControl>
     </PageContainer>

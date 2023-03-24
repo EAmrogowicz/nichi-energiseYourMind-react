@@ -1,4 +1,3 @@
-import * as React from "react";
 import PageContainer from "../components/PageContainer";
 import { useNavigate } from "react-router-dom";
 import { Box, Grid } from "@mui/material";
@@ -7,6 +6,8 @@ import Heading4 from "../components/Typography/Heading4";
 import StandardCard from "../components/StandardCard";
 
 export default function Dashboard() {
+  //
+  //
   const username = JSON.parse(localStorage.getItem("userData")).username;
   const navigate = useNavigate();
 
@@ -60,6 +61,7 @@ export default function Dashboard() {
             address={"/activity-log"}
             height={"300rem"}
             classCss={"stnCard"}
+            classCssIn={"stnCard-text"}
             imglink={
               "https://images.unsplash.com/photo-1531816247963-c7b28072d65d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80"
             }
