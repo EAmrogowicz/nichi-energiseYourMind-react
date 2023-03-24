@@ -14,13 +14,7 @@ export default function Dashboard() {
   }
   return (
     <PageContainer>
-      <Box
-        sx={{
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <Box>
         <SubHeading text={`Hi, ${username}!`} />
         <Heading4 text={"Explore your meditations"} />
       </Box>
@@ -28,7 +22,8 @@ export default function Dashboard() {
       <Grid
         container
         spacing={{ xs: 2, md: 4 }}
-        columns={{ xs: 4, sm: 8, md: 12 }}>
+        columns={{ xs: 4, sm: 8, md: 12 }}
+      >
         <Grid item xs={12} sm={4}>
           <StandardCard
             address={"/meditation"}
