@@ -216,23 +216,13 @@ a:hover {
   background: var(--lgHover);
 }
 
-/* FOOTER 
+/* CALENDAR 
 -------------------------------------------------- */
 
-.footerSection {
-  position: relative;
-  bottom: 0rem;
-  left: 0;
-  right: 0;
-  z-index: 2;
-  padding-bottom: 1rem;
+.react-calendar__tile--now {
+  background: var(--shade);
 }
 
-.footer {
-  font-size: 0.8rem;
-  color: var(--primary);
-  border-top: 1px solid var(--primary);
-  text-align: center;
-  margin: 0rem 0;
-  padding-top: 0.2rem;
+.has-data {
+  background: var(--accent);
 }

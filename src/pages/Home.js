@@ -1,11 +1,11 @@
+import { Link } from "react-router-dom";
 import { Box } from "@mui/material";
-import LinkBtn from "../components/Button/LinkBtn";
+import StandardBtn from "../components/Button/StandardBtn";
 import Logo from "../components/Logo";
 import PageContainer from "../components/PageContainer";
 import PageTitle from "../components/Typography/Title";
 import SubHeading from "../components/Typography/SubHeading";
 import Dashboard from "./Dashboard";
-import Footer from "../components/Footer/Footer";
 
 export default function Home() {
   // redirects and rerender isn't perfect when deleting user from Application tab
@@ -30,7 +30,11 @@ export default function Home() {
               <Logo />
             </Box>
 
-            <LinkBtn name="Get Started" link="/user-login" />
+            <br />
+            <br />
+            <Link to="/user-login">
+              <StandardBtn name="Get Started" />
+            </Link>
           </PageContainer>
         </div>
       ) : (
