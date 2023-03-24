@@ -4,19 +4,24 @@ import useSound from 'use-sound';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+
+import Reflections from './reflections.json';
 
 import './style.css';
-import gongBell from '../audio/gong3.mp3';
+import gongBell from './audio/gong2.mp3';
+
+const reflectionText = Reflections[Math.floor(Math.random() * Reflections.length)].toReflectOn;
 
 
-
-export default function MeditateBodyScan () {
+export default function MeditateReflection () {
 
    //--PW set the default meditation duration to 60s
    const startTime = 60;
 
    //--PW Play the gong
    const [hitGong] = useSound(gongBell);
+
 
 
    //--PW Function to display the time string
@@ -41,7 +46,7 @@ export default function MeditateBodyScan () {
          hitGong();
       };
    };
-   
+
    //--PW to reset the meditation session timer
    const reset = () => { 
       setTimeInSec(startTime); 
@@ -52,9 +57,9 @@ export default function MeditateBodyScan () {
    //--PW hit the gong when session has ended.
    const playSound = () => { 
       if (!isEnded) { 
-         hitGong(); 
-         setTimeInSec(true); 
-         reset();
+      hitGong(); 
+      setTimeInSec(true); 
+      reset();
       } 
    };
 
@@ -62,6 +67,8 @@ export default function MeditateBodyScan () {
    useEffect( () => {
 
       let interval = null;
+
+
 
       //--PW when time is up!
       if (timeInSec <= 0) {
@@ -74,15 +81,6 @@ export default function MeditateBodyScan () {
          interval = setInterval(() => {
             setTimeInSec((s) => s - 1);
          }, 1000);
-         console.log("interval:", interval);
-
-         const lastTwoDigits = parseInt(interval.toString().slice(-2)); 
-
-         console.log("lastTwoDigits:", lastTwoDigits);
-
-         if (((lastTwoDigits !== 10)) && (lastTwoDigits % 5 === 0) && (lastTwoDigits % 4 === 0)) {
-            hitGong();
-         };
       } else if (!isActive && timeInSec !== 0) {
          clearInterval(interval);
       };
@@ -94,24 +92,33 @@ export default function MeditateBodyScan () {
    );
 
    return (
+
       <div className="meditateContainer">
          <h2>
-            Body Scan Meditation
+            Reflect Meditation
          </h2>
          <h4>
-            Starting from your feet, focus on the sensations there when the first bell rings.
-            <br/>With subsequent bells, move on to your abdomen, your chest and your forehead on each ring of the bell. 
-            <br/>On the next bell ring after spotlighting on your forehead, go back your feet again and restart the whole process.
-            <br/>It's alright if your mind wanders, just gently bring your mind back and start from your feet again. 
+            {reflectionText}
          </h4>
 
-         <div className="blobContainer">
-            <div className={`blobbly-blob ${isActive ? 'blobbly-blob-swell' : ''}`}>
-               <div onClick={playPause}>
+         <div className="animeContainer">
+
+            <div className="droplet dropletLeft">    
+            </div>
+
+            <div className="cup">
+               <div className="ripples"></div>
+               <div className="cupLid"></div>
+               <div className="cupBody"></div>
+               <div className="cupFeet"></div>
+               <div className="playPause" onClick={playPause}>
                   {isActive
-                     ? <PauseIcon fontSize="sm" />
-                     : <PlayArrowIcon fontSize="sm"/>}
+                  ? <PauseIcon fontSize="sm" />
+                  : <PlayArrowIcon fontSize="sm"/>}
                </div>
+               <div className="cup2Lid"></div>
+               <div className="cup2Body"></div>
+               <div className="cup2Feet"></div>
             </div>
          </div>
 
@@ -145,13 +152,17 @@ export default function MeditateBodyScan () {
             <button className={`btnRound btnRound-${isActive ? 'active' : 'inactive'}`} onClick={playPause}>
                {isActive
                   ? <PauseIcon />
-                  : <PlayArrowIcon />}
+               : <PlayArrowIcon />}
             </button>
 
             <button className='btnRound' onClick={reset}>
                <RestartAltIcon />
+
+            </button>
+            <button className='btnRound' onClick={() => hitGong()}>
+               <NotificationsIcon />
             </button>
          </div>
       </div>
-   );
+  );
 };
