@@ -5,6 +5,7 @@ import PageContainer from "../components/PageContainer";
 import SubHeading from "../components/Typography/SubHeading";
 import StandardBtn from "../components/Button/StandardBtn";
 import IconBtn from "../components/Button/IconBtn";
+import Heading4 from "../components/Typography/Heading4";
 
 export default function UserLogin() {
   const [user, setUser] = useState(
@@ -34,7 +35,7 @@ export default function UserLogin() {
     <PageContainer>
       <Box>
         <SubHeading text={"Hello, stranger!"} />
-        <SubHeading text={"What is your name?"} />
+        <Heading4 text={"What is your name?"} />
       </Box>
       <FormControl>
         <Box

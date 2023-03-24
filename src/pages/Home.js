@@ -5,6 +5,7 @@ import PageContainer from "../components/PageContainer";
 import PageTitle from "../components/Typography/Title";
 import SubHeading from "../components/Typography/SubHeading";
 import Dashboard from "./Dashboard";
+import Footer from "../components/Footer/Footer";
 
 export default function Home() {
   // redirects and rerender isn't perfect when deleting user from Application tab
@@ -25,11 +26,10 @@ export default function Home() {
                 classCss={"fontWeight100"}
               />
             </Box>
-            <br />
-            <Logo />
+            <Box>
+              <Logo />
+            </Box>
 
-            <br />
-            <br />
             <LinkBtn name="Get Started" link="/user-login" />
           </PageContainer>
         </div>

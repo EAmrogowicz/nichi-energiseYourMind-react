@@ -1,7 +1,8 @@
 import PageContainer from "../components/PageContainer";
 import { useNavigate } from "react-router-dom";
-import Grid from "@mui/material/Grid";
+import { Box, Grid } from "@mui/material";
 import SubHeading from "../components/Typography/SubHeading";
+import Heading4 from "../components/Typography/Heading4";
 import StandardCard from "../components/StandardCard";
 
 export default function Dashboard() {
@@ -13,7 +14,16 @@ export default function Dashboard() {
   }
   return (
     <PageContainer>
-      <SubHeading text={`Hi, ${username}!`} />
+      <Box
+        sx={{
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <SubHeading text={`Hi, ${username}!`} />
+        <Heading4 text={"Explore your meditations"} />
+      </Box>
 
       <Grid
         container
@@ -25,6 +35,7 @@ export default function Dashboard() {
             address={"/meditation"}
             height={"300rem"}
             classCss={"stnCard"}
+            classCssIn={"stnCard-text"}
             imglink={
               "https://images.unsplash.com/photo-1601779144646-5e6a43c5d615?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fG1lZGl0YXRlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60"
             }
@@ -39,6 +50,7 @@ export default function Dashboard() {
             address={"/mood-tracker"}
             height={"300rem"}
             classCss={"stnCard"}
+            classCssIn={"stnCard-text"}
             imglink={
               "https://images.unsplash.com/photo-1602144564887-e2be90e0ab11?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"
             }
