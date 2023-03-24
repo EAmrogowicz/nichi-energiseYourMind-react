@@ -10,8 +10,8 @@ export default function Meditation() {
       <div className="meditate">
         <div className="meditateContainer">
           <MeditateBreathing />
-          <MeditateBodyScan />
-          <MeditateReflect />
+          {/* <MeditateBodyScan />
+          <MeditateReflect /> */}
         </div>
       </div>
     </>
