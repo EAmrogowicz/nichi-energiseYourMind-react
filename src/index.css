@@ -5,12 +5,13 @@
   --black: #333;
   --primary: #35444b;
   --tint: #e6eaef;
-  --shade: #b8cbdb;
+  --shade: #718493;
   --accent: #d19793;
   --accent2: #8caea7;
 
-  --lg: linear-gradient(160deg, #f0f0f0, #b8cbdb);
-  --lgHover: linear-gradient(160deg, #e6eaef, #ead2e1);
+  --lg: linear-gradient(160deg, #f0f0f0, #b8cbdb 75%);
+  --lg-dark: linear-gradient(160deg, #718493, #35444b);
+  --lgHover: linear-gradient(160deg, #e6eaef, 20%, #d19793);
 
   --fontRoboto: "Roboto", sans-serif;
   --fontVidaloka: "Vidaloka", serif;
@@ -19,23 +20,21 @@
     5px 5px 9px rgba(94, 104, 121, 0.6);
   --shadowSM: -2px -2px 4px rgba(255, 255, 255, 0.8),
     2px 2px 4px rgba(94, 104, 121, 0.6);
+  --shadow-dark: -5px -5px 9px rgba(255, 255, 255, 0.4),
+    5px 5px 9px rgba(94, 104, 121, 0.6);
+  --shadowSM-dark: -2px -2px 4px rgba(255, 255, 255, 0.4),
+    2px 2px 4px rgba(94, 104, 121, 0.6);
   --shadowNAV: 2px 2px 4px rgba(94, 104, 121, 0.6);
   --transition: all 0.3s ease-in-out;
 
   --backdrop: blur(10px);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,700;1,400;1,700&family=Vidaloka&display=swap");
 
 body {
   background-color: var(--tint);
-  color: var(--black);
+  color: var(--primary);
   font-family: "Roboto", sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -47,9 +46,14 @@ code {
 }
 
 h1,
+h3,
+h4 {
+  text-align: center;
+}
+
+h1,
 h4 {
   font-family: var(--fontVidaloka) !important;
-  color: var(--primary);
   padding-left: 0;
   padding-right: 0;
   padding-top: 0.8rem;
@@ -58,19 +62,16 @@ h4 {
 h3 {
   font-family: var(--fontRoboto) !important;
   font-weight: 100 !important;
-  text-align: center;
 }
 
 h4 {
   line-height: 1rem !important;
-  text-align: center;
 }
 
 h5 {
   font-family: var(--fontRoboto) !important;
   text-transform: uppercase;
   font-weight: 700 !important;
-  color: var(--primary);
 }
 
 .paragraphLg {
@@ -102,20 +103,33 @@ a:hover {
 }
 
 .navIcon {
-  height: 2.4rem;
-  width: 2.4rem;
+  height: 2rem;
+  width: 2rem;
   padding: 0.2rem;
-  background-color: var(--tint);
-  border-top: 1px solid var(--white);
-  border-left: 1px solid var(--white);
+  color: var(--primary);
+  border-top: 1px solid var(--tint);
+  border-left: 1px solid var(--tint);
   border-radius: 50%;
-  box-shadow: var(--shadowSM);
   transition: var(--transition);
 }
 
 .navIcon:hover {
   color: var(--white);
   background-color: var(--accent);
+  border-top: 1px solid var(--white);
+  border-left: 1px solid var(--white);
+
+  box-shadow: var(--shadowSM);
+}
+
+.navLogo {
+  text-decoration: none;
+  color: var(--shade);
+  transition: var(--transition);
+}
+
+.navLogo:hover {
+  color: var(--accent);
 }
 
 /* HERO 
@@ -174,25 +188,21 @@ a:hover {
   border-top: 1px solid var(--white);
   border-left: 1px solid var(--white);
   transition: var(--transition);
+
+  background: var(--lg);
+}
+
+.btn:hover {
+  background: var(--lgHover);
 }
 
 .btnPill {
   max-height: 3.2rem;
   padding: 1.2rem 4.8rem;
-  background: var(--lg);
-}
-
-.btnPill:hover {
-  background: var(--lgHover);
 }
 
 .btnRound {
   padding: 0.8rem;
-  background: var(--tint);
-}
-
-.btnRound:hover {
-  background-color: var(--accent);
 }
 
 .moodBtn.selected {
@@ -263,4 +273,48 @@ a:hover {
   width: 100%;
   color: white;
   margin-bottom: 4.8rem;
+}
+
+/* DARK MODE 
+-------------------------------------------------- */
+
+body.dark {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+body.dark .navBar {
+  background-color: var(--primary);
+}
+
+body.dark .navIcon {
+  color: var(--tint);
+  border-top: 1px solid var(--primary);
+  border-left: 1px solid var(--primary);
+}
+body.dark .navIcon:hover {
+  color: var(--white);
+  background-color: var(--accent);
+}
+
+body.dark .hero {
+  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.6);
+}
+
+body.dark .stnCard {
+  background-color: var(--shade);
+  box-shadow: var(--shadow-dark);
+  color: var(--white);
+}
+
+body.dark .btn {
+  background: var(--lg-dark);
+  color: var(--tint);
+  box-shadow: var(--shadow-dark);
+  transition: var(--transition);
+}
+
+body.dark .btn:hover {
+  background: var(--lgHover);
+  color: var(--primary);
 }
