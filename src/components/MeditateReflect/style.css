@@ -1,0 +1,204 @@
+.meditateContainer {
+   text-align: center;
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   height:100%;
+}
+
+.animeContainer {
+   font-size: 3rem;
+   padding: 2rem 6rem;
+   z-index: -10;
+}
+
+.playPause {
+   z-index: 999;
+}
+
+
+.timerCount {
+   padding-bottom: 3rem;
+}
+
+
+/* Tea Pot/cup and ripple */
+
+.cup {
+   width: 100px;
+   height: 100px;
+   position: relative;
+   /* top: -90px;
+   left: 0px; */
+   z-index: 399;
+   transform: scale(2);
+ }
+ 
+ .cupLid {
+   width: 40px;
+   height: 16px;
+   border-radius: 50%;
+   position: absolute;
+   top: 0;
+   left: 0;
+   background: var(--tint);
+   border: 1px solid var(--accent);
+   z-index: 29;
+ }
+ 
+ .cupBody {
+   position: absolute;
+   width: 40px;
+   height: 28px;
+   border-radius: 0 0 18px 18px;
+   left: 0;
+   top: 10px;
+   background: var(--accent);
+   border: 1px solid var(--tint);
+   z-index: 19;
+ }
+ 
+ .cupFeet {
+   position: absolute;
+   width: 16px;
+   height: 4px;
+   border-radius: 0 0 2px 2px;
+   left: 12px;
+   top: 37px;
+   background: var(--accent);
+   border: 1px solid var(--tint);
+ }
+ 
+ .cup2Lid {
+   width: 40px;
+   height: 16px;
+   border-radius: 50%;
+   position: absolute;
+   top: -5px;
+   left: 35px;
+   background: var(--tint);
+   border: 1px solid var(--shade);
+   z-index: 27;
+ }
+ 
+ .cup2Body {
+   position: absolute;
+   width: 40px;
+   height: 28px;
+   border-radius: 0 0 18px 18px;
+   left: 35px;
+   top: 5px;
+   background: var(--shade);
+   border: 1px solid var(--primary);
+   border-bottom: 0.0px dashed var(--shade);
+   z-index: 17;
+}
+
+.cup2Feet {
+   position: absolute;
+   width: 16px;
+   height: 4px;
+   border-radius: 0 0 2px 2px;
+   left: 47px;
+   top: 32px;
+   background: var(--shade);
+   border: 1px solid var(--shade);
+}
+
+.droplet {
+   width: 20px;
+   height: 74px;
+   position: relative;
+   z-index: 990;
+   border-radius: 100%;
+}
+
+.droplet::after {
+   content: '';
+   width: 14px;
+   height: 14px;
+   border-radius: 100% 84% 96% 88%;
+   background: radial-gradient(ellipse at 22% 20%, rgba(218, 232, 232, 0.4) 0, rgba(218, 232, 232, 0.8) 28%, rgba(218, 232, 232, 1) 100%);
+   box-shadow: 2px 2px 15px 5px rgba(77, 135, 157, 0.4), 5px 5px 6px rgba(77, 135, 157, 0.8), 5px 5px 40px rgba(77, 135, 157, 0.4), 5px 5px 60px rgba(77, 135, 157, 0.6), -3px -3px 5px rgba(255, 255, 255, 0.8) inset;
+   transform: rotate(20deg);
+   position: absolute;
+   top: 7px;
+   left: 7px;
+}
+
+.dropletLeft {
+   transform: scale(1);
+   animation: anime_dropletLeft 7s ease-out infinite 1s;
+}
+
+@keyframes anime_dropletLeft {
+   0% {
+      top: -100px;
+      right: 0px;
+      opacity: 1;
+   }
+   70% {
+      top: 28px;
+      right: 20px;
+      opacity: 1;
+   }
+   74% {
+      top: 30px;
+      right: 20px;
+      opacity: 0.6;
+   }
+   78%,
+   85% {
+      top: 32px;
+      right: 20px;
+      opacity: 0.01;
+   }
+   86% {
+      top: 34px;
+      right: 20px;
+      opacity: 0;
+   }
+   98% {
+      top: -100px;
+      right: 0px;
+      opacity: 0;
+   }
+   100% { 
+      top: -100px;
+      right: 0px;
+      opacity: 1;
+   }
+}
+
+.ripples {
+   width: 30px;
+   height: 10px;
+   position: relative;
+   top: 2px;
+   left: 5px;
+   border-radius: 50%;
+   border: 2px solid var(--primary);
+   animation: anime_ripple 7s 4s infinite ease-out backwards;
+   z-index: 999;
+}
+
+@keyframes anime_ripple {
+   0% {
+      transform: scale(0);
+      opacity: 1;
+   }
+   30% {
+      transform: scale(0);
+      opacity: 1;
+   }
+   60% {
+      transform: scale(1);
+      opacity: 0;
+   }
+   100% {
+      transform: scale(1);
+      opacity: 0;
+   }
+}

@@ -1,24 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import useSound from 'use-sound';
+
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
+import NotificationsIcon from '@mui/icons-material/Notifications';
 
+import Reflections from './reflections.json';
 
 import './style.css';
+import gongBell from './audio/gong2.mp3';
 
-import gongBell from './audio/gong1.mp3';
+const reflectionText = Reflections[Math.floor(Math.random() * Reflections.length)].toReflectOn;
 
 
-export default function MeditateBreath () {
+export default function MeditateReflection () {
 
-   //--Pei set the default meditation duration to 60s
+   //--PW set the default meditation duration to 60s
    const startTime = 60;
 
-   //--Pei Play the gong
+   //--PW Play the gong
    const [hitGong] = useSound(gongBell);
 
-   //--Pei Function to display the time string
+
+
+   //--PW Function to display the time string
    function timePadding (num, padding) {
       let numString = (num).toString().padStart(padding, '0');
       return numString;
@@ -26,34 +32,34 @@ export default function MeditateBreath () {
 
    const [timeInSec, setTimeInSec] = useState(startTime);
 
-   //--Pei Create the state of whether the meditation timer is currently running
+   //--PW Create the state of whether the meditation timer is currently running
    const [isActive, setIsActive] = useState(false);
 
-  //--Pei Create the state of whether the meditation timer has ended
+   //--PW Create the state of whether the meditation timer has ended
    const [isEnded, setIsEnded] = useState(false);
 
-   //--Pei To toggle between playing or pausing the meditation timer
+   //--PW To toggle between playing or pausing the meditation timer
    const playPause = () => { 
       setIsActive(!isActive); 
       setIsEnded(false); 
       if (setIsActive) {
-      hitGong();
+         hitGong();
       };
    };
 
-   //--Pei to reset the meditation session timer
+   //--PW to reset the meditation session timer
    const reset = () => { 
       setTimeInSec(startTime); 
       setIsActive(false); 
       setIsEnded(false); 
    };
 
-   //--Pei hit the gong when session has ended.
+   //--PW hit the gong when session has ended.
    const playSound = () => { 
       if (!isEnded) { 
-         hitGong(); 
-         setTimeInSec(true); 
-         reset();
+      hitGong(); 
+      setTimeInSec(true); 
+      reset();
       } 
    };
 
@@ -62,13 +68,15 @@ export default function MeditateBreath () {
 
       let interval = null;
 
-      //--Pei when time is up!
+
+
+      //--PW when time is up!
       if (timeInSec <= 0) {
          setIsActive(false);
          playSound();
       };
 
-      //--Pei setinterval to reduce time by 1 second
+      //--PW setinterval to reduce time by 1 second
       if (isActive) {
          interval = setInterval(() => {
             setTimeInSec((s) => s - 1);
@@ -78,30 +86,44 @@ export default function MeditateBreath () {
       };
 
       return () => clearInterval(interval);
-   }
-   , [isActive, timeInSec, playSound]
+
+      }
+      , [isActive, timeInSec, playSound]
    );
-   
+
    return (
 
       <div className="meditateContainer">
          <h2>
-            Breath Meditation
+            Reflect Meditation
          </h2>
          <h4>
-            As the blob swells, breathe in and <br/>
-            then breathe out as it contracts.
+            {reflectionText}
          </h4>
 
-         <div className="blobContainer">
-            <div className={`blobbly-blob ${isActive ? 'blobbly-blob-swell' : ''}`}>
+         <div className="animeContainer">
+
+            <div className="droplet dropletLeft">    
+            </div>
+
+            <div className="cup">
+               <div className="ripples"></div>
+               <div className="cupLid"></div>
+               <div className="cupBody"></div>
+               <div className="cupFeet"></div>
+               <div className="playPause" onClick={playPause}>
+                  {isActive
+                  ? <PauseIcon fontSize="sm" />
+                  : <PlayArrowIcon fontSize="sm"/>}
+               </div>
+               <div className="cup2Lid"></div>
+               <div className="cup2Body"></div>
+               <div className="cup2Feet"></div>
             </div>
          </div>
 
          <div className="timerCount">
-            <p>
-               {(Math.floor(timeInSec / 60))}:{timePadding(timeInSec % 60, 2)}
-            </p>
+            {(Math.floor(timeInSec / 60))}:{timePadding(timeInSec % 60, 2)}
          </div>
 
          <div className="row">
@@ -120,7 +142,7 @@ export default function MeditateBreath () {
             <button className='btnRound' onClick={() => setTimeInSec(60)}>
                1min
             </button>
-         {/* //--Pei 10sec button for testing only  */}
+            {/* //--PW 10sec button for testing only  */}
             <button className='btnRound' onClick={() => setTimeInSec(10)}>
                10sec
             </button>
@@ -130,18 +152,17 @@ export default function MeditateBreath () {
             <button className={`btnRound btnRound-${isActive ? 'active' : 'inactive'}`} onClick={playPause}>
                {isActive
                   ? <PauseIcon />
-                  : <PlayArrowIcon  />}
+               : <PlayArrowIcon />}
             </button>
 
             <button className='btnRound' onClick={reset}>
                <RestartAltIcon />
+
             </button>
-
-
+            <button className='btnRound' onClick={() => hitGong()}>
+               <NotificationsIcon />
+            </button>
          </div>
       </div>
-
-   // End of Return  
-   );
+  );
 };
-
