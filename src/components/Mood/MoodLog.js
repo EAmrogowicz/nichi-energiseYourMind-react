@@ -28,10 +28,10 @@ export default function MoodLogs() {
   return (
     <>
       <Grid container columns={12}>
-        <Grid item xs={6} sm={3}>
+        <Grid item xs={3}>
           <MoodGrid icon={MostOccuringMoodIcon} iconboxsize={20} />
         </Grid>
-        <Grid item xs={6} sm={9} sx={{ display: "flex", alignItems: "center" }}>
+        <Grid item xs={9} sx={{ display: "flex", alignItems: "center" }}>
           <Box>
             <Heading5 text={"Most Occurring Mood"} />
             <ParagraphLg text={mostOccurringMood} />
