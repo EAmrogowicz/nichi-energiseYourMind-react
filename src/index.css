@@ -198,3 +198,14 @@ a:hover {
 .stnCard:hover {
   background: var(--lgHover);
 }
+
+/* CALENDAR 
+-------------------------------------------------- */
+
+.react-calendar__tile--now {
+  background: var(--shade);
+}
+
+.has-data {
+  background: var(--accent);
+}
