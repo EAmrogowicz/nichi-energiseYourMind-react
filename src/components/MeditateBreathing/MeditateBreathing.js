@@ -89,8 +89,8 @@ export default function MeditateBreath () {
             Breath Meditation
          </h2>
          <h4>
-            breath in as the blob swells &amp; <br/>
-            breath out as the blob contracts.
+            As the blob swells, breathe in and <br/>
+            then breathe out as the it contracts.
          </h4>
 
          <div className="blobContainer">
@@ -99,7 +99,9 @@ export default function MeditateBreath () {
          </div>
 
          <div className="timerCount">
-            {(Math.floor(timeInSec / 60))}:{timePadding(timeInSec % 60, 2)}
+            <p>
+               {(Math.floor(timeInSec / 60))}:{timePadding(timeInSec % 60, 2)}
+            </p>
          </div>
 
          <div className="row">

@@ -1,44 +1,26 @@
 
 .meditateContainer {
   text-align: center;
-  background-color: var(--primary);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  font-family: var(--fontVidaloka) !important;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
   height:100%;
-}
-
-
-.meditateContainer h2, h4 {
-  color: var(--tint);
-  font-family: var(--fontVidaloka) !important;
-  padding: 30px;
-}
-
-h2 {
-  font-size: 2rem;
-}
-
-h4 {
-  font-size: 1.2rem;
 }
 
 .blobContainer {
   font-size: 3rem;
   padding: 2rem 6rem;
+  z-index: -10;
 }
 
 .blobbly-blob {
-  height: 225px;
-  width: 225px;
+  height: 300px;
+  width: 300px;
   background-color: var(--shade);
   border-radius: 43% 57% 48% 52% / 47% 43% 57% 53% ;
-  line-height: 225px;
+  line-height: 300px;
   display: inline-block;
   text-align: center;
   vertical-align: middle;
@@ -57,7 +39,6 @@ h4 {
 
 .timerCount {
   padding-bottom: 3rem;
-  color: var(--tint);
 }
 
 
