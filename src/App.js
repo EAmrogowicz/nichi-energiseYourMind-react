@@ -8,7 +8,7 @@ import Home from "./pages/Home";
 import MoodTracker from "./pages/MoodTracker";
 import UserLogin from "./pages/UserLogin";
 import Nav from "./components/Nav/Nav";
-import Footer from "./components/Footer/Footer";
+import Footer from "./components/Footer";
 import Dashboard from "./pages/Dashboard";
 import Meditation from "./pages/Meditation";
 import ActivityLog from "./pages/ActivityLog";
