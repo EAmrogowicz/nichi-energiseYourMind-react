@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Grid } from "@mui/material";
+import { useState, useRef } from "react";
+import { Grid, Box, TextField, FormControl } from "@mui/material";
 import MoodIcon from "./MoodIcon";
 import StandardBtn from "../Button/StandardBtn";
 import MoodBtn from "../Button/MoodBtn";
@@ -11,14 +11,22 @@ import { moods } from "./Moods";
 export default function MoodPrompt({ onSubmit }) {
   const [selectedMood, setSelectedMood] = useState("");
   const timeStamp = new Date().toISOString();
+  const [notes, setNotes] = useState("");
+  const notesRef = useRef();
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const moodRecord = {
       mood: selectedMood,
       time: timeStamp,
+      notes: notes,
     };
     onSubmit(moodRecord);
   };
+
+  function handleChange(e) {
+    setNotes(e.target.value);
+  }
 
   return (
     <PageContainer>
@@ -46,11 +54,26 @@ export default function MoodPrompt({ onSubmit }) {
           );
         })}
       </Grid>
-      <StandardBtn
-        name={"Submit"}
-        onClick={handleSubmit}
-        disabled={!selectedMood}
-      />
+      <FormControl className='form'>
+        <Box sx={{ minWidth: "75%" }}>
+          <TextField
+            ref={notesRef}
+            id='mood-notes'
+            label='Notes'
+            multiline
+            fullWidth
+            maxRows={4}
+            onChange={handleChange}
+          />
+        </Box>
+        <Box sx={{ m: "2.4rem" }}>
+          <StandardBtn
+            name={"Submit"}
+            onClick={handleSubmit}
+            disabled={!selectedMood}
+          />
+        </Box>
+      </FormControl>
     </PageContainer>
   );
 }
