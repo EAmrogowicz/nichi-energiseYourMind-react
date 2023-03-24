@@ -3,15 +3,17 @@
 :root {
   --white: #fff;
   --black: #333;
-  --primary: #35444b;
   --tint: #e6eaef;
-  --shade: #718493;
-  --accent: #d19793;
-  --accent2: #8caea7;
+  --mid-tone: #61798e;
+  --primary: #172b29;
+  --shade: #2e4949;
+  --shade-mid: #8caea7;
+  --accent: #c26865;
+  --accent-mid: #e8bab7;
 
   --lg: linear-gradient(160deg, #f0f0f0, #b8cbdb 75%);
-  --lg-dark: linear-gradient(160deg, #718493, #35444b);
-  --lgHover: linear-gradient(160deg, #e6eaef, 20%, #d19793);
+  --lg-dark: linear-gradient(160deg, #61798e, #2e4949);
+  --lgHover: linear-gradient(160deg, #e6eaef, 20%, #e8bab7);
 
   --fontRoboto: "Roboto", sans-serif;
   --fontVidaloka: "Vidaloka", serif;
@@ -72,6 +74,7 @@ h5 {
   font-family: var(--fontRoboto) !important;
   text-transform: uppercase;
   font-weight: 700 !important;
+  color: var(--accent);
 }
 
 .paragraphLg {
@@ -124,7 +127,7 @@ a:hover {
 
 .navLogo {
   text-decoration: none;
-  color: var(--shade);
+  color: var(--accent);
   transition: var(--transition);
 }
 
