@@ -1,7 +1,8 @@
 import { Container, Stack } from "@mui/material";
 
-export default function PageContainer({ children, size, mg }) {
+export default function PageContainer({ children, size, mg, stackDisable }) {
   // const header = document.querySelector("nav").getBoundingClientRect().height;
+  const stack = stackDisable ? false : true;
 
   return (
     <Container
@@ -16,7 +17,19 @@ export default function PageContainer({ children, size, mg }) {
         margin: "4.8rem auto 4.8rem auto",
       }}
     >
-      {children}
+      {stack ? (
+        <Stack
+          direction="column"
+          justifyContent="space-around"
+          alignItems="center"
+          spacing={1}
+          minHeight={"60vh"}
+        >
+          {children}
+        </Stack>
+      ) : (
+        children
+      )}
     </Container>
   );
 }
