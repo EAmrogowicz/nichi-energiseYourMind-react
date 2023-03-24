@@ -8,6 +8,7 @@ import ParagraphLg from "./Typography/ParagraphLg";
 
 export default function StandardCard({
   classCss,
+  classCssIn,
   height,
   title,
   caption,
@@ -23,7 +24,7 @@ export default function StandardCard({
           image={imglink}
           alt={title}
         />
-        <CardContent>
+        <CardContent className={classCssIn}>
           <Heading5 text={title} classCss={"m-bottom"} />
           <ParagraphLg text={caption}></ParagraphLg>
         </CardContent>
