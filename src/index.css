@@ -226,3 +226,23 @@ a:hover {
 .has-data {
   background: var(--accent);
 }
+
+/* FOOTER 
+-------------------------------------------------- */
+.footerSection {
+  position: relative;
+  bottom: 0rem;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding-bottom: 1rem;
+}
+
+.footer {
+  font-size: 0.8rem;
+  color: var(--shade);
+  border-top: 1px solid var(--shade);
+  text-align: center;
+  margin: 0rem 0;
+  padding-top: 0.2rem;
+}
