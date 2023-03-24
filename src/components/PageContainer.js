@@ -12,7 +12,7 @@ export default function PageContainer({ children, size, mg }) {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        margin: "2.4rem auto 6.4rem auto",
+        margin: "4.8rem auto 4.8rem auto",
       }}
     >
       <Stack
@@ -20,7 +20,7 @@ export default function PageContainer({ children, size, mg }) {
         justifyContent="space-around"
         alignItems="center"
         spacing={1}
-        minHeight={"75vh"}
+        minHeight={"60vh"}
       >
         {children}
       </Stack>
