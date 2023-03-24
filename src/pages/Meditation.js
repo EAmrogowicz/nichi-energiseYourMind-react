@@ -1,5 +1,5 @@
 import React from "react";
-import MeditateBreathing from "../components/MeditateBreathing";
+import MeditateBreathing from "../components/MeditateBreathing/MeditateBreathing.js";
 
 
 export default function Meditation() {
