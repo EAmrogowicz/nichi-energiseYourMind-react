@@ -90,7 +90,7 @@ export default function MeditateBreath () {
          </h2>
          <h4>
             As the blob swells, breathe in and <br/>
-            then breathe out as the it contracts.
+            then breathe out as it contracts.
          </h4>
 
          <div className="blobContainer">
