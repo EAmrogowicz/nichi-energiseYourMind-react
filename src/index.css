@@ -34,12 +34,23 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,700;1,400;1,700&family=Vidaloka&display=swap");
 
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 body {
   background-color: var(--tint);
   color: var(--primary);
   font-family: "Roboto", sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+}
+
+body.dark {
+  background-color: var(--primary);
+  color: var(--white);
 }
 
 code {
@@ -105,6 +116,10 @@ a:hover {
   border-top: 1px solid var(--white);
 }
 
+body.dark .navBar {
+  background-color: var(--primary);
+}
+
 .navIcon {
   height: 2rem;
   width: 2rem;
@@ -116,6 +131,12 @@ a:hover {
   transition: var(--transition);
 }
 
+body.dark .navIcon {
+  color: var(--tint);
+  border-top: 1px solid var(--primary);
+  border-left: 1px solid var(--primary);
+}
+
 .navIcon:hover {
   color: var(--white);
   background-color: var(--accent);
@@ -125,6 +146,11 @@ a:hover {
   box-shadow: var(--shadowSM);
 }
 
+body.dark .navIcon:hover {
+  color: var(--white);
+  background-color: var(--accent);
+}
+
 .navLogo {
   text-decoration: none;
   color: var(--accent);
@@ -132,7 +158,7 @@ a:hover {
 }
 
 .navLogo:hover {
-  color: var(--accent);
+  color: var(--accent-mid);
 }
 
 /* HERO 
@@ -148,6 +174,10 @@ a:hover {
   box-shadow: inset 0 0 0 2000px rgba(230, 234, 239, 0.8);
 
   z-index: 0;
+}
+
+body.dark .hero {
+  box-shadow: inset 0 0 0 2000px rgba(23, 43, 41, 0.6);
 }
 
 .logo {
@@ -177,6 +207,15 @@ a:hover {
     inset 5px 5px 9px rgba(94, 104, 121, 0.6);
 }
 
+.logoSymbol path {
+  fill: var(--mid-tone);
+  opacity: 50%;
+}
+
+body.dark .logoSymbol path {
+  fill: var(--tint);
+}
+
 /* BUTTONS 
 -------------------------------------------------- */
 .btn {
@@ -194,8 +233,20 @@ a:hover {
   background: var(--lg);
 }
 
+body.dark .btn {
+  background: var(--lg-dark);
+  color: var(--tint);
+  box-shadow: var(--shadow-dark);
+  transition: var(--transition);
+}
+
 .btn:hover {
   background: var(--lgHover);
+}
+
+body.dark .btn:hover {
+  background: var(--lgHover);
+  color: var(--primary);
 }
 
 .btnPill {
@@ -231,6 +282,12 @@ a:hover {
   border-left: 1px solid var(--white);
   box-shadow: var(--shadow);
   border-radius: 4px;
+}
+
+body.dark .stnCard {
+  background-color: var(--shade);
+  box-shadow: var(--shadow-dark);
+  color: var(--white);
 }
 
 .stnCard-text {
@@ -474,48 +531,4 @@ body.dark .react-calendar__tile:enabled:focus {
 
 body.dark .streak-box {
   box-shadow: var(--shadowSM-dark);
-}
-
-/* DARK MODE 
--------------------------------------------------- */
-
-body.dark {
-  background-color: var(--primary);
-  color: var(--white);
-}
-
-body.dark .navBar {
-  background-color: var(--primary);
-}
-
-body.dark .navIcon {
-  color: var(--tint);
-  border-top: 1px solid var(--primary);
-  border-left: 1px solid var(--primary);
-}
-body.dark .navIcon:hover {
-  color: var(--white);
-  background-color: var(--accent);
-}
-
-body.dark .hero {
-  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.6);
-}
-
-body.dark .stnCard {
-  background-color: var(--shade);
-  box-shadow: var(--shadow-dark);
-  color: var(--white);
-}
-
-body.dark .btn {
-  background: var(--lg-dark);
-  color: var(--tint);
-  box-shadow: var(--shadow-dark);
-  transition: var(--transition);
-}
-
-body.dark .btn:hover {
-  background: var(--lgHover);
-  color: var(--primary);
 }
