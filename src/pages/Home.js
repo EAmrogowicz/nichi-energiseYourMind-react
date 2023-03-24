@@ -17,21 +17,18 @@ export default function Home() {
   return (
     <>
       {!userData ? (
-        <div className="hero" style={{ textAlign: "center" }}>
-          <PageContainer size="false">
-            <Box>
+        <div className="hero">
+          <PageContainer>
+            <Box sx={{ mt: "2.4rem" }}>
               <PageTitle text="Nichi" />
               <SubHeading
                 text="Energise Your Mind"
                 classCss={"fontWeight100"}
               />
             </Box>
-            <Box>
-              <Logo />
-            </Box>
 
-            <br />
-            <br />
+            <Logo />
+
             <Link to="/user-login">
               <StandardBtn name="Get Started" />
             </Link>

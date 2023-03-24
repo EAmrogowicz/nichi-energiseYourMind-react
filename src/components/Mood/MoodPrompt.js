@@ -29,7 +29,7 @@ export default function MoodPrompt({ onSubmit }) {
   }
 
   return (
-    <PageContainer>
+    <>
       <SubHeading text={"How are you feeling today?"} />
       <Grid
         container
@@ -40,12 +40,14 @@ export default function MoodPrompt({ onSubmit }) {
           return (
             <MoodIcon
               key={mood.description}
-              onClick={() => setSelectedMood(mood.description)}>
+              onClick={() => setSelectedMood(mood.description)}
+            >
               <MoodBtn
-                className={selectedMood === mood.description ? "selected" : ""}>
+                className={selectedMood === mood.description ? "selected" : ""}
+              >
                 <mood.icon
-                  edge='center'
-                  color='inherit'
+                  edge="center"
+                  color="inherit"
                   sx={{ width: "3rem", height: "3rem", borderRadius: "50%" }}
                 />
               </MoodBtn>
@@ -54,12 +56,12 @@ export default function MoodPrompt({ onSubmit }) {
           );
         })}
       </Grid>
-      <FormControl className='form'>
+      <FormControl className="form">
         <Box sx={{ minWidth: "75%" }}>
           <TextField
             ref={notesRef}
-            id='mood-notes'
-            label='Notes'
+            id="mood-notes"
+            label="Notes"
             multiline
             fullWidth
             maxRows={4}
@@ -74,6 +76,6 @@ export default function MoodPrompt({ onSubmit }) {
           />
         </Box>
       </FormControl>
-    </PageContainer>
+    </>
   );
 }

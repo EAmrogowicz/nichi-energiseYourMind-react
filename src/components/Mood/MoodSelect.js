@@ -45,20 +45,21 @@ export default function MoodSelect({ moods, moodRecord }) {
   )[0];
 
   return (
-    <PageContainer>
+    <>
       <Paper
         elevation={5}
-        className='mood-selection-paper'
-        sx={{ p: "2.4rem" }}>
+        className="mood-selection-paper"
+        sx={{ p: "2.4rem" }}
+      >
         <Box sx={{ textAlign: "center" }} minWidth={"50vw"}>
           <SubHeading text={"You are feeling"} />
           <Heading4 text={selectedMood} />
         </Box>
         <MoodIcon>
           <SelectedMoodIcon
-            edge='center'
-            color='inherit'
-            className='btn moodBtn'
+            edge="center"
+            color="inherit"
+            className="btn moodBtn"
             sx={{ width: "6.4rem", height: "6.4rem", borderRadius: "50%" }}
           />
         </MoodIcon>
@@ -72,7 +73,8 @@ export default function MoodSelect({ moods, moodRecord }) {
       <Stack>
         <Box
           sx={{ m: "3.2rem auto", fontStyle: "italic" }}
-          className='zen-quote'>
+          className="zen-quote"
+        >
           <ParagraphLg text={"Some zen quote from API would go here"} />
         </Box>
         {matchingMeditation && (
@@ -107,15 +109,16 @@ export default function MoodSelect({ moods, moodRecord }) {
             display: "flex",
             justifyContent: "space-between",
             margin: "3.2rem auto",
-          }}>
-          <Link to='/'>
+          }}
+        >
+          <Link to="/">
             <IconBtn />
           </Link>
-          <Link to='/activity-log'>
+          <Link to="/activity-log">
             <StandardBtn name={"Activity"} />
           </Link>
         </Box>
       </Stack>
-    </PageContainer>
+    </>
   );
 }

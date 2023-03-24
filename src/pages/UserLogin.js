@@ -33,7 +33,7 @@ export default function UserLogin({ onSubmit }) {
 
   return (
     <PageContainer>
-      <Box>
+      <Box sx={{ mb: "4.8rem" }}>
         <SubHeading text={"Hello, stranger!"} />
         <Heading4 text={"What is your name?"} />
       </Box>
