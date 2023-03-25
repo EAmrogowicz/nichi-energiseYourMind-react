@@ -1,11 +1,10 @@
 import { Container, Stack } from "@mui/material";
 
-export default function PageContainer({ children, size, stackDisable }) {
+export default function PageContainer({ children, size }) {
   // const header = document.querySelector("nav").getBoundingClientRect().height;
-  const stack = stackDisable ? false : true;
-
   return (
     <Container
+      maxWidth={size ?? ""}
       fixed
       sx={{
         width: "100%",
@@ -13,20 +12,14 @@ export default function PageContainer({ children, size, stackDisable }) {
         margin: "4.8rem auto 2.4rem auto",
         display: "flex",
         justifyContent: "center",
-      }}
-    >
-      {/* {stack ? ( */}
+      }}>
       <Stack
-        direction="column"
-        justifyContent="center"
-        alignItems="center"
-        spacing={{ xs: 4, sm: 6, md: 8 }}
-      >
+        direction='column'
+        justifyContent='center'
+        alignItems='center'
+        spacing={{ xs: 4, sm: 6, md: 8 }}>
         {children}
       </Stack>
-      {/* ) : (
-        children
-      )} */}
     </Container>
   );
 }
