@@ -1,13 +1,12 @@
 import { Box, Stack, Paper } from "@mui/material";
 import { Link } from "react-router-dom";
-import PageContainer from "../PageContainer";
-import MoodIcon from "./MoodIcon";
-import StandardCard from "../StandardCard";
 import SubHeading from "../Typography/SubHeading";
 import Heading4 from "../Typography/Heading4";
 import ParagraphLg from "../Typography/ParagraphLg";
-import IconBtn from "../Button/IconBtn";
+import StandardCard from "../StandardCard";
+import MoodIcon from "./MoodIcon";
 import StandardBtn from "../Button/StandardBtn";
+import IconBtn from "../Button/IconBtn";
 
 export default function MoodSelect({ moods, moodRecord }) {
   const selectedMood = moodRecord.mood;
@@ -46,20 +45,16 @@ export default function MoodSelect({ moods, moodRecord }) {
 
   return (
     <>
-      <Paper
-        elevation={5}
-        className="mood-selection-paper"
-        sx={{ p: "2.4rem" }}
-      >
+      <Paper elevation={5} className='paper-lg-bg' sx={{ p: "2.4rem" }}>
         <Box sx={{ textAlign: "center" }} minWidth={"50vw"}>
           <SubHeading text={"You are feeling"} />
           <Heading4 text={selectedMood} />
         </Box>
-        <MoodIcon>
+        <MoodIcon padding={"3.2rem"}>
           <SelectedMoodIcon
-            edge="center"
-            color="inherit"
-            className="btn moodBtn"
+            edge='center'
+            color='inherit'
+            className='btn moodBtn'
             sx={{ width: "6.4rem", height: "6.4rem", borderRadius: "50%" }}
           />
         </MoodIcon>
@@ -73,8 +68,7 @@ export default function MoodSelect({ moods, moodRecord }) {
       <Stack>
         <Box
           sx={{ m: "3.2rem auto", fontStyle: "italic" }}
-          className="zen-quote"
-        >
+          className='zen-quote'>
           <ParagraphLg text={"Some zen quote from API would go here"} />
         </Box>
         {matchingMeditation && (
@@ -109,12 +103,11 @@ export default function MoodSelect({ moods, moodRecord }) {
             display: "flex",
             justifyContent: "space-between",
             margin: "3.2rem auto",
-          }}
-        >
-          <Link to="/">
+          }}>
+          <Link to='/'>
             <IconBtn />
           </Link>
-          <Link to="/activity-log">
+          <Link to='/activity-log'>
             <StandardBtn name={"Activity"} />
           </Link>
         </Box>

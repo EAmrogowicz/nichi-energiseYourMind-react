@@ -1,11 +1,10 @@
 import { useState, useRef } from "react";
 import { Grid, Box, TextField, FormControl } from "@mui/material";
-import MoodIcon from "./MoodIcon";
-import StandardBtn from "../Button/StandardBtn";
-import MoodBtn from "../Button/MoodBtn";
-import PageContainer from "../PageContainer";
 import SubHeading from "../Typography/SubHeading";
 import ParagraphLg from "../Typography/ParagraphLg";
+import StandardBtn from "../Button/StandardBtn";
+import MoodIcon from "./MoodIcon";
+import MoodBtn from "../Button/MoodBtn";
 import { moods } from "./Moods";
 
 export default function MoodPrompt({ onSubmit }) {
@@ -41,13 +40,12 @@ export default function MoodPrompt({ onSubmit }) {
             <MoodIcon
               key={mood.description}
               onClick={() => setSelectedMood(mood.description)}
-            >
+              padding={"3.2rem"}>
               <MoodBtn
-                className={selectedMood === mood.description ? "selected" : ""}
-              >
+                className={selectedMood === mood.description ? "selected" : ""}>
                 <mood.icon
-                  edge="center"
-                  color="inherit"
+                  edge='center'
+                  color='inherit'
                   sx={{ width: "3rem", height: "3rem", borderRadius: "50%" }}
                 />
               </MoodBtn>
@@ -56,12 +54,12 @@ export default function MoodPrompt({ onSubmit }) {
           );
         })}
       </Grid>
-      <FormControl className="form">
+      <FormControl className='form'>
         <Box sx={{ minWidth: "75%" }}>
           <TextField
             ref={notesRef}
-            id="mood-notes"
-            label="Notes"
+            id='mood-notes'
+            label='Notes'
             multiline
             fullWidth
             maxRows={4}

@@ -261,20 +261,19 @@ body.dark .btn:hover {
 }
 
 .moodBtn {
-  padding: 0.6rem;
-  border-radius: 50%;
-  color: var(--primary);
-}
-
-.moodBtn {
-  padding: 0.6rem;
+  padding: 1rem;
   border-radius: 50%;
   color: var(--primary);
 }
 
 .moodBtn.selected {
-  background-color: var(--primary);
+  background: var(--lg-dark);
   color: var(--white);
+}
+
+body.dark .moodBtn.selected {
+  background: var(--lg);
+  color: var(--primary);
 }
 
 /* CARD 
@@ -440,7 +439,7 @@ body.dark .react-calendar__tile:enabled:focus {
 
 .react-calendar__tile--hasActive {
   background: #b8cbdb;
-  position: relative;
+  background: var(--mid-tone);
 }
 
 .react-calendar__tile--hasActive:enabled:hover,
@@ -449,7 +448,7 @@ body.dark .react-calendar__tile:enabled:focus {
 }
 
 .react-calendar__tile--now {
-  background: var(--accent2);
+  background: var(--shade-mid);
 }
 .react-calendar__tile--now:enabled:hover,
 .react-calendar__tile--now:enabled:focus {
@@ -459,6 +458,11 @@ body.dark .react-calendar__tile:enabled:focus {
 .react-calendar__tile--active {
   background: var(--accent);
   color: white;
+  box-shadow: var(--shadowSM);
+}
+
+body.dark .react-calendar__tile--active {
+  box-shadow: var(--shadowSM-dark);
 }
 
 .react-calendar__tile--active:enabled:hover,
@@ -509,10 +513,35 @@ body.dark .react-calendar__tile:enabled:focus {
 
 /* MOOD pages
 -------------------------------------------------- */
-.mood-selection-paper {
+.paper-lg-bg {
   background: var(--lg);
   border-top: 1px solid var(--white);
   border-left: 1px solid var(--white);
+}
+
+body.dark .paper-lg-bg {
+  background: var(--lg-dark);
+  border-color: #b8cbdb;
+  color: inherit;
+}
+
+.moodlog-wrapper {
+  border-radius: 4px;
+  border: 2px solid var(--white);
+  box-shadow: var(--shadowSM);
+}
+
+body.dark .moodlog-wrapper {
+  border-color: var(--shade);
+  box-shadow: var(--shadowSM-dark);
+}
+
+.moodlog-item:not(:last-of-type) {
+  border-bottom: 1px solid var(--white);
+}
+
+body.dark .moodlog-item {
+  border-color: var(--shade);
 }
 
 /* ACTIVITY

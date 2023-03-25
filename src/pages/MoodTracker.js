@@ -18,7 +18,7 @@ export default function MoodTracker() {
   }
 
   return (
-    <PageContainer>
+    <PageContainer size='md'>
       {submitted ? (
         <MoodSelect
           moods={moods}
