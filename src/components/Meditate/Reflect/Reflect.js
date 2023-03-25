@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PageContainer from "../../PageContainer";
 import useSound from 'use-sound';
 
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
@@ -6,7 +7,7 @@ import PauseIcon from '@mui/icons-material/Pause';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 
-import SubHeading from "../components/Typography/SubHeading";
+import SubHeading from "../../Typography/SubHeading";
 
 import Reflections from './reflections.json';
 
@@ -94,17 +95,18 @@ export default function MeditateReflect () {
    );
 
    return (
-
+      <PageContainer size='md'>
       <div className="meditateContainer">
          <h1>
             Reflect Meditation
          </h1>
          <br/>
-         <SubHeading>
+         <h3>
             {reflectionText}
-         </SubHeading>
+         </h3>
 
          <div className="animeContainer">
+
             <div className="droplet dropletLeft">    
             </div>
 
@@ -118,19 +120,19 @@ export default function MeditateReflect () {
                <div className="cup2Body"></div>
                <div className="cup2Feet"></div>
             </div>
-            <div className="playPause" onClick={playPause}>
+
+         </div>
+         <div className="playPause" onClick={playPause}>
                {isActive
                   ? <PauseIcon fontSize="sm" />
                   : <PlayArrowIcon fontSize="sm"/>
                }
             </div>
-         </div>
-
-         <SubHeading>
+         <h2>
             <div className="timerCount">
                {(Math.floor(timeInSec / 60))}:{timePadding(timeInSec % 60, 2)}
             </div>            
-         </SubHeading>      
+         </h2>      
 
 
          <div className="row">
@@ -171,5 +173,6 @@ export default function MeditateReflect () {
             </button>
          </div>
       </div>
+      </PageContainer>
    );
 };

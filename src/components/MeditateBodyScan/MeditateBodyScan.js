@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useSound from 'use-sound';
+import SubHeading from "../components/Typography/SubHeading";
 
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
@@ -99,12 +100,12 @@ export default function MeditateBodyScan () {
             Body Scan Meditation
          </h2>
          <br/>
-         <subHeading>
+         <SubHeading>
             Starting from your feet, focus on the sensations there when the first bell rings.
             <br/>With subsequent bells, move on to your abdomen, your chest and your forehead on each ring of the bell. 
             <br/>On the next bell ring after spotlighting on your forehead, go back your feet again and restart the whole process.
             <br/>It's alright if your mind wanders, just gently bring your mind back and start from your feet again. 
-         </subHeading>
+         </SubHeading>
 
          <div className="animeContainer">
             <div className="mug">
@@ -118,11 +119,11 @@ export default function MeditateBodyScan () {
                : <PlayArrowIcon fontSize="sm"/>}
          </div>
 
-         <subHeading>
+         <SubHeading>
             <div className="timerCount">
                {(Math.floor(timeInSec / 60))}:{timePadding(timeInSec % 60, 2)}
             </div>            
-         </subHeading>   
+         </SubHeading>   
 
          <div className="row">
             <button className='btnRound' onClick={() => setTimeInSec(600)}>

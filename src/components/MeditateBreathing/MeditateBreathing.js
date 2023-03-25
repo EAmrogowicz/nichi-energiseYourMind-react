@@ -3,7 +3,7 @@ import useSound from 'use-sound';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
-
+import SubHeading from "../components/Typography/SubHeading";
 
 import './style.css';
 
@@ -89,10 +89,10 @@ export default function MeditateBreath () {
             Breath Meditation
          </h2>
          <br/>
-         <subHeading>
+         <SubHeading>
             As the blob swells, breathe in and <br/>
             then breathe out as it contracts.
-         </subHeading>
+         </SubHeading>
 
          <div className="animeContainer">
             <div className={`blobbly-blob ${isActive ? 'blobbly-blob-swell' : ''}`}>
@@ -105,11 +105,11 @@ export default function MeditateBreath () {
                : <PlayArrowIcon fontSize="sm"/>}
          </div>
          
-         <subHeading>
+         <SubHeading>
             <div className="timerCount">
                {(Math.floor(timeInSec / 60))}:{timePadding(timeInSec % 60, 2)}
             </div>            
-         </subHeading>      
+         </SubHeading>      
 
 
          <div className="row">

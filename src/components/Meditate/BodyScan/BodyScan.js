@@ -1,29 +1,24 @@
 import React, { useEffect, useState } from 'react';
+import PageContainer from "../../PageContainer";
 import useSound from 'use-sound';
+import SubHeading from "../../Typography/SubHeading";
 
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-
-import SubHeading from "../components/Typography/SubHeading";
-
-import Reflections from './reflections.json';
 
 import './style.css';
-import gongBell from '../audio/gong2.mp3';
-
-const reflectionText = Reflections[Math.floor(Math.random() * Reflections.length)].toReflectOn;
+import gongBell from '../audio/gong3.mp3';
 
 
-export default function MeditateReflect () {
+
+export default function MeditateBodyScan () {
 
    //--PW set the default meditation duration to 60s
    const startTime = 60;
 
    //--PW Play the gong
    const [hitGong] = useSound(gongBell);
-
 
 
    //--PW Function to display the time string
@@ -48,7 +43,7 @@ export default function MeditateReflect () {
          hitGong();
       };
    };
-
+   
    //--PW to reset the meditation session timer
    const reset = () => { 
       setTimeInSec(startTime); 
@@ -59,9 +54,9 @@ export default function MeditateReflect () {
    //--PW hit the gong when session has ended.
    const playSound = () => { 
       if (!isEnded) { 
-      hitGong(); 
-      setTimeInSec(true); 
-      reset();
+         hitGong(); 
+         setTimeInSec(true); 
+         reset();
       } 
    };
 
@@ -69,8 +64,6 @@ export default function MeditateReflect () {
    useEffect( () => {
 
       let interval = null;
-
-
 
       //--PW when time is up!
       if (timeInSec <= 0) {
@@ -83,6 +76,15 @@ export default function MeditateReflect () {
          interval = setInterval(() => {
             setTimeInSec((s) => s - 1);
          }, 1000);
+         console.log("interval:", interval);
+
+         const lastTwoDigits = parseInt(interval.toString().slice(-2)); 
+
+         console.log("lastTwoDigits:", lastTwoDigits);
+
+         if (((lastTwoDigits !== 10)) && (lastTwoDigits % 5 === 0) && (lastTwoDigits % 4 === 0)) {
+            hitGong();
+         };
       } else if (!isActive && timeInSec !== 0) {
          clearInterval(interval);
       };
@@ -94,44 +96,36 @@ export default function MeditateReflect () {
    );
 
    return (
-
+      <PageContainer size='md'>
       <div className="meditateContainer">
          <h1>
-            Reflect Meditation
+            Body Scan Meditation
          </h1>
          <br/>
-         <SubHeading>
-            {reflectionText}
-         </SubHeading>
+         <h3>
+            Starting from your feet, focus on the sensations there when the first bell rings.
+            <br/>With subsequent bells, move on to your abdomen, your chest and your forehead on each ring of the bell. 
+            <br/>On the next bell ring after spotlighting on your forehead, go back your feet again and restart the whole process.
+            <br/>It's alright if your mind wanders, just gently bring your mind back and start from your feet again. 
+         </h3>
 
          <div className="animeContainer">
-            <div className="droplet dropletLeft">    
-            </div>
+            <div className="mug">
 
-            <div className="cup">
-               <div className="ripples"></div>
-               <div className="cupLid"></div>
-               <div className="cupBody"></div>
-               <div className="cupFeet"></div>
-
-               <div className="cup2Lid"></div>
-               <div className="cup2Body"></div>
-               <div className="cup2Feet"></div>
-            </div>
-            <div className="playPause" onClick={playPause}>
-               {isActive
-                  ? <PauseIcon fontSize="sm" />
-                  : <PlayArrowIcon fontSize="sm"/>
-               }
             </div>
          </div>
 
-         <SubHeading>
+         <div className="playPause" onClick={playPause}>
+            {isActive
+               ? <PauseIcon fontSize="sm" />
+               : <PlayArrowIcon fontSize="sm"/>}
+         </div>
+
+         <h2>
             <div className="timerCount">
                {(Math.floor(timeInSec / 60))}:{timePadding(timeInSec % 60, 2)}
             </div>            
-         </SubHeading>      
-
+         </h2>   
 
          <div className="row">
             <button className='btnRound' onClick={() => setTimeInSec(600)}>
@@ -159,17 +153,14 @@ export default function MeditateReflect () {
             <button className={`btnRound btnRound-${isActive ? 'active' : 'inactive'}`} onClick={playPause}>
                {isActive
                   ? <PauseIcon />
-               : <PlayArrowIcon />}
+                  : <PlayArrowIcon />}
             </button>
 
             <button className='btnRound' onClick={reset}>
                <RestartAltIcon />
-
-            </button>
-            <button className='btnRound' onClick={() => hitGong()}>
-               <NotificationsIcon />
             </button>
          </div>
       </div>
+      </PageContainer>
    );
 };
