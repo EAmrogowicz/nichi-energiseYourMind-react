@@ -105,9 +105,9 @@ export default function MeditateBodyScan () {
             <br/>It's alright if your mind wanders, just gently bring your mind back and start from your feet again. 
          </h4>
 
-         <div className="blobContainer">
-            <div className={`blobbly-blob ${isActive ? 'blobbly-blob-swell' : ''}`}>
-               <div onClick={playPause}>
+         <div className="animeContainer">
+            <div className="cup">
+               <div className="playPause" onClick={playPause}>
                   {isActive
                      ? <PauseIcon fontSize="sm" />
                      : <PlayArrowIcon fontSize="sm"/>}
