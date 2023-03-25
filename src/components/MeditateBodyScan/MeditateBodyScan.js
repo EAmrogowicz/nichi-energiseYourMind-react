@@ -98,26 +98,31 @@ export default function MeditateBodyScan () {
          <h2>
             Body Scan Meditation
          </h2>
-         <h4>
+         <br/>
+         <subHeading>
             Starting from your feet, focus on the sensations there when the first bell rings.
             <br/>With subsequent bells, move on to your abdomen, your chest and your forehead on each ring of the bell. 
             <br/>On the next bell ring after spotlighting on your forehead, go back your feet again and restart the whole process.
             <br/>It's alright if your mind wanders, just gently bring your mind back and start from your feet again. 
-         </h4>
+         </subHeading>
 
          <div className="animeContainer">
-            <div className="cup">
-               <div className="playPause" onClick={playPause}>
-                  {isActive
-                     ? <PauseIcon fontSize="sm" />
-                     : <PlayArrowIcon fontSize="sm"/>}
-               </div>
+            <div className="mug">
+
             </div>
          </div>
 
-         <div className="timerCount">
-            {(Math.floor(timeInSec / 60))}:{timePadding(timeInSec % 60, 2)}
+         <div className="playPause" onClick={playPause}>
+            {isActive
+               ? <PauseIcon fontSize="sm" />
+               : <PlayArrowIcon fontSize="sm"/>}
          </div>
+
+         <subHeading>
+            <div className="timerCount">
+               {(Math.floor(timeInSec / 60))}:{timePadding(timeInSec % 60, 2)}
+            </div>            
+         </subHeading>   
 
          <div className="row">
             <button className='btnRound' onClick={() => setTimeInSec(600)}>

@@ -11,6 +11,7 @@
 
 .playPause {
   z-index: 999;
+  font-size: 2.4rem;
 }
 
 .animeContainer {
@@ -19,7 +20,12 @@
   z-index: -10;
 }
 
-.cup {
+.timerCount {
+  padding-bottom: 3rem;
+  font-size: 1.4rem;
+}
+
+.mug {
   height: 120px;
   width: 100px;
   border: 6px solid var(--shade);
@@ -56,8 +62,5 @@
   }
 }
 
-.timerCount {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-}
+
 
