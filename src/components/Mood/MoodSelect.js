@@ -7,8 +7,9 @@ import StandardCard from "../StandardCard";
 import MoodIcon from "./MoodIcon";
 import StandardBtn from "../Button/StandardBtn";
 import IconBtn from "../Button/IconBtn";
+import { moods } from "../Mood/Moods";
 
-export default function MoodSelect({ moods, moodRecord }) {
+export default function MoodSelect({ moodRecord }) {
   const selectedMood = moodRecord.mood;
 
   const badMood = ["Sad", "Awful"];

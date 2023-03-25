@@ -2,7 +2,6 @@ import { useState } from "react";
 import PageContainer from "../components/PageContainer";
 import MoodPrompt from "../components/Mood/MoodPrompt";
 import MoodSelect from "../components/Mood/MoodSelect";
-import { moods } from "../components/Mood/Moods";
 
 export default function MoodTracker() {
   const userData = JSON.parse(localStorage.getItem("userData"));
@@ -21,11 +20,10 @@ export default function MoodTracker() {
     <PageContainer size='md'>
       {submitted ? (
         <MoodSelect
-          moods={moods}
           moodRecord={existingMoodData[existingMoodData.length - 1]}
         />
       ) : (
-        <MoodPrompt moods={moods} onSubmit={handleMoodSubmit} />
+        <MoodPrompt onSubmit={handleMoodSubmit} />
       )}
     </PageContainer>
   );
