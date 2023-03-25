@@ -2,6 +2,7 @@ import { Box, Grid } from "@mui/material";
 
 export default function MoodIcon({ children, ...props }) {
   const iconboxsize = props.iconboxsize ?? 100;
+  const padding = props.padding ?? "1rem";
   return (
     <Grid
       item
@@ -12,7 +13,7 @@ export default function MoodIcon({ children, ...props }) {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        padding: "3.2rem",
+        padding: padding,
       }}
       {...props}>
       <Box

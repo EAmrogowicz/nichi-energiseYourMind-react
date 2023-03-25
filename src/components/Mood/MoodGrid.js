@@ -1,17 +1,22 @@
 import { Grid, Stack } from "@mui/material";
+import Heading5 from "../Typography/Heading5";
 import ParagraphLg from "../Typography/ParagraphLg";
 import MoodIcon from "./MoodIcon";
 
-export default function MoodGrid({ icon, desc, time, ...props }) {
+export default function MoodGrid({ icon, desc, time, notes, ...props }) {
   const Icon = icon;
   return (
-    <Grid container columns={12} key={props.key}>
+    <Grid
+      container
+      columns={12}
+      key={props.key}
+      sx={{ minWidth: "40vw", maxWidth: "80vw" }}>
       <Grid
         item
-        xs={4}
+        xs={2}
         sx={{
           display: "flex",
-          alignItems: "center",
+          alignItems: "top",
         }}>
         <MoodIcon iconboxsize={props.iconboxsize}>
           <Icon
@@ -26,14 +31,15 @@ export default function MoodGrid({ icon, desc, time, ...props }) {
       </Grid>
       <Grid
         item
-        xs={8}
+        xs={10}
         sx={{
           display: "flex",
           alignItems: "center",
         }}>
         <Stack>
-          {desc && <ParagraphLg text={desc} />}
+          {desc && <Heading5 text={desc} />}
           {time && <ParagraphLg text={time} />}
+          {notes && <ParagraphLg text={notes} />}
         </Stack>
       </Grid>
     </Grid>

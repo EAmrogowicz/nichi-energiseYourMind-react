@@ -459,6 +459,11 @@ body.dark .react-calendar__tile:enabled:focus {
 .react-calendar__tile--active {
   background: var(--accent);
   color: white;
+  box-shadow: var(--shadowSM);
+}
+
+body.dark .react-calendar__tile--active {
+  box-shadow: var(--shadowSM-dark);
 }
 
 .react-calendar__tile--active:enabled:hover,
@@ -509,10 +514,29 @@ body.dark .react-calendar__tile:enabled:focus {
 
 /* MOOD pages
 -------------------------------------------------- */
-.mood-selection-paper {
+.paper-lg-bg {
   background: var(--lg);
   border-top: 1px solid var(--white);
   border-left: 1px solid var(--white);
+}
+
+body.dark .paper-lg-bg {
+  background: var(--lg-dark);
+  border-color: #b8cbdb;
+  color: inherit;
+}
+
+.moodlog-wrapper {
+  border: 2px solid var(--white);
+}
+
+.moodlog-item:not(:last-of-type) {
+  border-bottom: 1px solid var(--white);
+}
+
+body.dark .moodlog-wrapper,
+body.dark .moodlog-item {
+  border-color: var(--shade);
 }
 
 /* ACTIVITY
