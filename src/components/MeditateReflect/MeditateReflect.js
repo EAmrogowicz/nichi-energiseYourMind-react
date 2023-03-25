@@ -14,7 +14,7 @@ import gongBell from '../audio/gong2.mp3';
 const reflectionText = Reflections[Math.floor(Math.random() * Reflections.length)].toReflectOn;
 
 
-export default function MeditateReflection () {
+export default function MeditateReflect () {
 
    //--PW set the default meditation duration to 60s
    const startTime = 60;
@@ -94,15 +94,15 @@ export default function MeditateReflection () {
    return (
 
       <div className="meditateContainer">
-         <h2>
+         <h1>
             Reflect Meditation
-         </h2>
-         <h4>
+         </h1>
+         <br/>
+         <subHeading>
             {reflectionText}
-         </h4>
+         </subHeading>
 
          <div className="animeContainer">
-
             <div className="droplet dropletLeft">    
             </div>
 
@@ -111,20 +111,25 @@ export default function MeditateReflection () {
                <div className="cupLid"></div>
                <div className="cupBody"></div>
                <div className="cupFeet"></div>
-               <div className="playPause" onClick={playPause}>
-                  {isActive
-                  ? <PauseIcon fontSize="sm" />
-                  : <PlayArrowIcon fontSize="sm"/>}
-               </div>
+
                <div className="cup2Lid"></div>
                <div className="cup2Body"></div>
                <div className="cup2Feet"></div>
             </div>
+            <div className="playPause" onClick={playPause}>
+               {isActive
+                  ? <PauseIcon fontSize="sm" />
+                  : <PlayArrowIcon fontSize="sm"/>
+               }
+            </div>
          </div>
 
-         <div className="timerCount">
-            {(Math.floor(timeInSec / 60))}:{timePadding(timeInSec % 60, 2)}
-         </div>
+         <subHeading>
+            <div className="timerCount">
+               {(Math.floor(timeInSec / 60))}:{timePadding(timeInSec % 60, 2)}
+            </div>            
+         </subHeading>      
+
 
          <div className="row">
             <button className='btnRound' onClick={() => setTimeInSec(600)}>
@@ -164,5 +169,5 @@ export default function MeditateReflection () {
             </button>
          </div>
       </div>
-  );
+   );
 };

@@ -88,21 +88,29 @@ export default function MeditateBreath () {
          <h2>
             Breath Meditation
          </h2>
-         <h4>
+         <br/>
+         <subHeading>
             As the blob swells, breathe in and <br/>
             then breathe out as it contracts.
-         </h4>
+         </subHeading>
 
-         <div className="blobContainer">
+         <div className="animeContainer">
             <div className={`blobbly-blob ${isActive ? 'blobbly-blob-swell' : ''}`}>
             </div>
          </div>
 
-         <div className="timerCount">
-            <p>
-               {(Math.floor(timeInSec / 60))}:{timePadding(timeInSec % 60, 2)}
-            </p>
+         <div className="playPause" onClick={playPause}>
+            {isActive
+               ? <PauseIcon fontSize="sm" />
+               : <PlayArrowIcon fontSize="sm"/>}
          </div>
+         
+         <subHeading>
+            <div className="timerCount">
+               {(Math.floor(timeInSec / 60))}:{timePadding(timeInSec % 60, 2)}
+            </div>            
+         </subHeading>      
+
 
          <div className="row">
             <button className='btnRound' onClick={() => setTimeInSec(600)}>
