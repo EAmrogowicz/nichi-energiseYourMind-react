@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import useSound from 'use-sound';
+import SubHeading from "../../Typography/SubHeading";
 
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-
-import SubHeading from "../../Typography/SubHeading";
 
 import Reflections from './reflections.json';
-
 import './style.css';
 import gongBell from '../audio/gong2.mp3';
 
@@ -18,13 +15,37 @@ const reflectionText = Reflections[Math.floor(Math.random() * Reflections.length
 
 export default function MeditateReflect () {
 
+
+   //--PW (1) Local Storage for activity log
+   //--PW Get Data from local storage and set them into (default) state "existingMeditationData"
+
+   const userData = JSON.parse(localStorage.getItem("userData"));
+
+   const [existingMeditationData, setExistingMeditationData] = useState(userData.meditation || []);
+
+   const timeStamp = new Date().toISOString();
+
+   const meditationRecord = {
+      meditation: "Reflect",
+      time: timeStamp,
+   };
+
+
+   function addMeditationRecord(meditationRecord) {
+      const updatedMeditationData = [...existingMeditationData, meditationRecord];
+      setExistingMeditationData(updatedMeditationData);
+      userData.meditation = updatedMeditationData;
+      localStorage.setItem("userData", JSON.stringify(userData));
+      console.log("userData", userData)
+   }
+
+
+   //--PW (2) Run the meditation process   
    //--PW set the default meditation duration to 60s
    const startTime = 60;
 
    //--PW Play the gong
    const [hitGong] = useSound(gongBell);
-
-
 
    //--PW Function to display the time string
    function timePadding (num, padding) {
@@ -61,6 +82,7 @@ export default function MeditateReflect () {
       if (!isEnded) { 
       hitGong(); 
       setTimeInSec(true); 
+      addMeditationRecord(meditationRecord);    
       reset();
       } 
    };
@@ -165,10 +187,6 @@ export default function MeditateReflect () {
 
             <button className='btnRound' onClick={reset}>
                <RestartAltIcon />
-
-            </button>
-            <button className='btnRound' onClick={() => hitGong()}>
-               <NotificationsIcon />
             </button>
          </div>
       </div>
