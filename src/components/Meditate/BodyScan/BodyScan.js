@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import useSound from 'use-sound';
+
 import { Box, Stack } from "@mui/material";
 import { Link } from "react-router-dom";
 import StandardBtn from "../../Button/StandardBtn";
 import IconBtn from "../../Button/IconBtn";
-
-import SubHeading from "../../Typography/SubHeading";
 
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
@@ -90,10 +89,13 @@ export default function MeditateBodyScan () {
          addMeditationRecord(meditationRecord);         
          reset();
          setIsEnded(!isEnded);
-         console.log("Play Ending Gong and setIsEnded set to true:", isEnded);
+         // console.log("Play Ending Gong and setIsEnded set to true:", isEnded);
       } 
    };
 
+   const handleClickSame = () => {
+      setIsEnded(!isEnded);
+   }
 
    useEffect( () => {
 
@@ -111,11 +113,8 @@ export default function MeditateBodyScan () {
          interval = setInterval(() => {
             setTimeInSec((s) => s - 1);
          }, 1000);
-         console.log("interval:", interval);
 
          const lastTwoDigits = parseInt(interval.toString().slice(-2)); 
-
-         console.log("lastTwoDigits:", lastTwoDigits);
 
          if (((lastTwoDigits !== 10)) && (lastTwoDigits % 5 === 0) && (lastTwoDigits % 4 === 0)) {
             hitGong();
@@ -206,21 +205,23 @@ export default function MeditateBodyScan () {
          
             <>
                <stack>
-               <MeditationSuccess />
-               <Box
-          width={"100%"}
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            margin: "3.2rem auto",
-          }}>
-          <Link to='/'>
-            <IconBtn />
-          </Link>
-          <Link to='/meditation'>
-            <StandardBtn name={"Meditate Again"} />
-          </Link>
-        </Box>
+                  <MeditationSuccess />
+                  <Box
+                     width={"100%"}
+                     sx={{
+                        display: "flex",
+                        justifyContent: "space-evenly",
+                        margin: "3.2rem auto",
+                        }}>
+                           
+                     <Link to='/'>
+                        <IconBtn />
+                     </Link>
+
+                     <Link to='/meditation'>
+                        <StandardBtn name={"Meditate Again"} onClick={handleClickSame}/>
+                     </Link>
+                  </Box>
                </stack>
                
             </>
