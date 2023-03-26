@@ -33,10 +33,12 @@ export default function MeditateReflect () {
 
    const timeStamp = new Date().toISOString();
 
-   const meditationRecord = {
-      meditation: "Reflect",
+
+   let meditationRecord = {
+      meditation: "Reflection",
       time: timeStamp,
    };
+
 
 
    function addMeditationRecord(meditationRecord) {
@@ -85,8 +87,13 @@ export default function MeditateReflect () {
       setIsEnded(false); 
    };
 
+
+   const handleClickSame = () => {
+      setIsEnded(!isEnded);
+   }
+
    //--PW hit the gong when session has ended.
-   const playSound = () => { 
+   const playSound = (medDurationMin) => { 
       if (!isEnded) { 
       hitGong(); 
       setTimeInSec(true); 
@@ -96,9 +103,7 @@ export default function MeditateReflect () {
       } 
    };
 
-   const handleClickSame = () => {
-      setIsEnded(!isEnded);
-   }
+
 
    useEffect( () => {
 
@@ -124,7 +129,8 @@ export default function MeditateReflect () {
       }
       , [isActive, timeInSec, playSound]
    );
-
+   
+   //--PW Prepare the timer countdown as a string
    let timeString =(Math.floor(timeInSec / 60)) + `:` + timePadding(timeInSec % 60, 2);
 
    return (
