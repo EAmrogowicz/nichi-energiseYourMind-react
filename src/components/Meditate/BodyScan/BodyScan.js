@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import PageContainer from "../../PageContainer";
 import useSound from 'use-sound';
 import SubHeading from "../../Typography/SubHeading";
 
@@ -14,12 +13,38 @@ import gongBell from '../audio/gong3.mp3';
 
 export default function MeditateBodyScan () {
 
+
+   //--PW (1) Local Storage for activity log
+   //--PW Get Data from local storage and set them into (default) state "existingMeditationData"
+
+   const userData = JSON.parse(localStorage.getItem("userData"));
+
+   const [existingMeditationData, setExistingMeditationData] = useState(userData.meditation || []);
+
+   const timeStamp = new Date().toISOString();
+
+   const meditationRecord = {
+      meditation: "Breathing",
+      time: timeStamp,
+   };
+
+
+   function addMeditationRecord(meditationRecord) {
+      const updatedMeditationData = [...existingMeditationData, meditationRecord];
+      setExistingMeditationData(updatedMeditationData);
+      userData.meditation = updatedMeditationData;
+      localStorage.setItem("userData", JSON.stringify(userData));
+      console.log("userData", userData)
+      // setSubmitted(true);
+   }
+
+
+   //--PW (2) Run the meditation process   
    //--PW set the default meditation duration to 60s
    const startTime = 60;
 
    //--PW Play the gong
    const [hitGong] = useSound(gongBell);
-
 
    //--PW Function to display the time string
    function timePadding (num, padding) {
@@ -96,7 +121,6 @@ export default function MeditateBodyScan () {
    );
 
    return (
-      <PageContainer size='md'>
       <div className="meditateContainer">
          <h1>
             Body Scan Meditation
@@ -161,6 +185,6 @@ export default function MeditateBodyScan () {
             </button>
          </div>
       </div>
-      </PageContainer>
+
    );
 };
