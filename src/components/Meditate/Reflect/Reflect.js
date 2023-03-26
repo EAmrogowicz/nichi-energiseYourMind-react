@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import useSound from 'use-sound';
-import SubHeading from "../../Typography/SubHeading";
+
+import { Box, Stack } from "@mui/material";
+import { Link } from "react-router-dom";
+import StandardBtn from "../../Button/StandardBtn";
+import IconBtn from "../../Button/IconBtn";
 
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 
 import Reflections from './reflections.json';
+import MeditationSuccess from '../MeditationSuccess';
+
 import './style.css';
 import gongBell from '../audio/gong2.mp3';
 
@@ -84,15 +90,17 @@ export default function MeditateReflect () {
       setTimeInSec(true); 
       addMeditationRecord(meditationRecord);    
       reset();
+      setIsEnded(!isEnded);
       } 
    };
 
+   const handleClickSame = () => {
+      setIsEnded(!isEnded);
+   }
 
    useEffect( () => {
 
       let interval = null;
-
-
 
       //--PW when time is up!
       if (timeInSec <= 0) {
@@ -116,79 +124,110 @@ export default function MeditateReflect () {
    );
 
    return (
+      <>
+      {(!isEnded) ? (
 
-      <div className="meditateContainer">
-         <h1>
-            Reflect Meditation
-         </h1>
-         <br/>
-         <h3>
-            {reflectionText}
-         </h3>
+            <div className="meditateContainer">
+               <h1>
+                  Reflect Meditation
+               </h1>
+               <br/>
+               <h3>
+                  {reflectionText}
+               </h3>
 
-         <div className="animeContainer">
+               <div className="animeContainer">
 
-            <div className="droplet dropletLeft">    
+                  <div className="droplet dropletLeft">    
+                  </div>
+
+                  <div className="cup">
+                     <div className="ripples"></div>
+                     <div className="cupLid"></div>
+                     <div className="cupBody"></div>
+                     <div className="cupFeet"></div>
+
+                     <div className="cup2Lid"></div>
+                     <div className="cup2Body"></div>
+                     <div className="cup2Feet"></div>
+                  </div>
+
+               </div>
+               <div className="playPause" onClick={playPause}>
+                     {isActive
+                        ? <PauseIcon fontSize="sm" />
+                        : <PlayArrowIcon fontSize="sm"/>
+                     }
+                  </div>
+               <h2>
+                  <div className="timerCount">
+                     {(Math.floor(timeInSec / 60))}:{timePadding(timeInSec % 60, 2)}
+                  </div>            
+               </h2>      
+
+
+               <div className="row">
+                  <button className='btnRound' onClick={() => setTimeInSec(600)}>
+                     10min
+                  </button>
+
+                  <button className='btnRound' onClick={() => setTimeInSec(300)}>
+                     5min
+                  </button>
+
+                  <button className='btnRound' onClick={() => setTimeInSec(120)}>
+                     2min
+                  </button>
+
+                  <button className='btnRound' onClick={() => setTimeInSec(60)}>
+                     1min
+                  </button>
+                  {/* //--PW 10sec button for testing only  */}
+                  <button className='btnRound' onClick={() => setTimeInSec(10)}>
+                     10sec
+                  </button>
+               </div>
+
+               <div className='row'>
+                  <button className={`btnRound btnRound-${isActive ? 'active' : 'inactive'}`} onClick={playPause}>
+                     {isActive
+                        ? <PauseIcon />
+                     : <PlayArrowIcon />}
+                  </button>
+
+                  <button className='btnRound' onClick={reset}>
+                     <RestartAltIcon />
+                  </button>
+               </div>
             </div>
+            
+         ) : (
+            <>
+               <stack>
+                  <MeditationSuccess />
+                  <Box
+                     width={"100%"}
+                     sx={{
+                        display: "flex",
+                        justifyContent: "space-evenly",
+                        margin: "3.2rem auto",
+                        }}>
+                     
+                     <Link to='/'>
+                        <IconBtn />
+                     </Link>
 
-            <div className="cup">
-               <div className="ripples"></div>
-               <div className="cupLid"></div>
-               <div className="cupBody"></div>
-               <div className="cupFeet"></div>
+                     <Link to='/meditation'>
+                        <StandardBtn name={"Meditate Again"} onClick={handleClickSame}/>
+                     </Link>
+                  </Box>
+               </stack>
+               
+            </>
 
-               <div className="cup2Lid"></div>
-               <div className="cup2Body"></div>
-               <div className="cup2Feet"></div>
-            </div>
+         )}  
+      </>
 
-         </div>
-         <div className="playPause" onClick={playPause}>
-               {isActive
-                  ? <PauseIcon fontSize="sm" />
-                  : <PlayArrowIcon fontSize="sm"/>
-               }
-            </div>
-         <h2>
-            <div className="timerCount">
-               {(Math.floor(timeInSec / 60))}:{timePadding(timeInSec % 60, 2)}
-            </div>            
-         </h2>      
-
-
-         <div className="row">
-            <button className='btnRound' onClick={() => setTimeInSec(600)}>
-               10min
-            </button>
-
-            <button className='btnRound' onClick={() => setTimeInSec(300)}>
-               5min
-            </button>
-
-            <button className='btnRound' onClick={() => setTimeInSec(120)}>
-               2min
-            </button>
-
-            <button className='btnRound' onClick={() => setTimeInSec(60)}>
-               1min
-            </button>
-            {/* //--PW 10sec button for testing only  */}
-            <button className='btnRound' onClick={() => setTimeInSec(10)}>
-               10sec
-            </button>
-         </div>
-
-         <div className='row'>
-            <button className={`btnRound btnRound-${isActive ? 'active' : 'inactive'}`} onClick={playPause}>
-               {isActive
-                  ? <PauseIcon />
-               : <PlayArrowIcon />}
-            </button>
-
-            <button className='btnRound' onClick={reset}>
-               <RestartAltIcon />
-            </button>
-         </div>
-      </div>
    );
 };
+
