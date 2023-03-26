@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { AppBar, Box, Toolbar } from "@mui/material";
 import AddReactionOutlinedIcon from "@mui/icons-material/AddReactionOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
+import SpaOutlinedIcon from "@mui/icons-material/SpaOutlined";
 // import SettingsIcon from "@mui/icons-material/Settings";
 import Typography from "@mui/material/Typography";
 import { useState, useEffect } from "react";
@@ -58,12 +58,46 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 
 export default function Nav() {
-  const [theme, setTheme] = useState("light");
+  const getStoredTheme = () => {
+    try {
+      if (localStorage.getItem("userData") !== null) {
+        const userData = JSON.parse(localStorage.getItem("userData"));
+        if (userData.theme) {
+          return userData.theme;
+        }
+      }
+    } catch (e) {
+      console.log(`error reading theme from local storage ${e}`);
+    }
+    return "light";
+  };
+
+  const persistTheme = (theme) => {
+    try {
+      const storedUserData = localStorage.getItem("userData");
+      let userData;
+      if (storedUserData) {
+        userData = JSON.parse(storedUserData);
+        userData.theme = theme;
+      } else {
+        userData = { theme: theme };
+      }
+      localStorage.setItem("userData", JSON.stringify(userData));
+      setTheme(theme);
+    } catch (e) {
+      console.log(`error setting theme to local storage ${e}`);
+    }
+  };
+
+  const [theme, setTheme] = useState(getStoredTheme());
+
+  // ("light");
   const toggleTheme = () => {
+    console.log(`switching theme from ${theme}`);
     if (theme === "light") {
-      setTheme("dark");
+      persistTheme("dark");
     } else {
-      setTheme("light");
+      persistTheme("light");
     }
   };
   useEffect(() => {
@@ -132,7 +166,7 @@ export default function Nav() {
                 />
               </Link>
               <Link to="/meditation">
-                <PersonOutlineOutlinedIcon
+                <SpaOutlinedIcon
                   edge="start"
                   color="inherit"
                   aria-label="user"
