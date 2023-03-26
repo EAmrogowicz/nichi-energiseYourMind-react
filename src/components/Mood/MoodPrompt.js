@@ -6,7 +6,7 @@ import StandardBtn from "../Button/StandardBtn";
 import MoodIcon from "./MoodIcon";
 import MoodBtn from "../Button/MoodBtn";
 import { moods } from "./Moods";
-import MotionPage from "../Motion/MotionPage";
+// import MotionPage from "../Motion/MotionPage";
 import MotionItem from "../Motion/MotionItem";
 import MotionScrollIn from "../Motion/MotionScrollIn";
 

@@ -2,10 +2,11 @@ import { useNavigate } from "react-router-dom";
 import { Box, Grid } from "@mui/material";
 import PageContainer from "../components/PageContainer";
 import MotionPage from "../components/Motion/MotionPage";
-import MotionItem from "../components/Motion/MotionItem";
+// import MotionItem from "../components/Motion/MotionItem";
 import SubHeading from "../components/Typography/SubHeading";
 import Heading4 from "../components/Typography/Heading4";
 import StandardCard from "../components/StandardCard";
+import ZenQuote from "../components/Quotes";
 
 export default function Dashboard() {
   //
@@ -16,6 +17,7 @@ export default function Dashboard() {
   if (localStorage.getItem("userData") === null) {
     navigate("/user-login");
   }
+
   return (
     <MotionPage>
       <PageContainer>
@@ -74,6 +76,7 @@ export default function Dashboard() {
             />
           </Grid>
         </Grid>
+        <ZenQuote mood='explore' />
       </PageContainer>
     </MotionPage>
   );

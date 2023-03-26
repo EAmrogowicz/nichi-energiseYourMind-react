@@ -18,15 +18,17 @@
   --fontRoboto: "Roboto", sans-serif;
   --fontVidaloka: "Vidaloka", serif;
 
-  --shadow: -5px -5px 9px rgba(255, 255, 255, 0.8),
-    5px 5px 9px rgba(94, 104, 121, 0.6);
+  --shadow: -4px -4px 8px rgba(255, 255, 255, 0.8),
+    4px 4px 8px rgba(97, 121, 142, 0.4);
+  --shadow-dark: -4px -4px 8px rgba(255, 255, 255, 0.4),
+    4px 4px 8px rgba(97, 121, 142, 0.4);
+
   --shadowSM: -2px -2px 4px rgba(255, 255, 255, 0.8),
-    2px 2px 4px rgba(94, 104, 121, 0.6);
-  --shadow-dark: -5px -5px 9px rgba(255, 255, 255, 0.4),
-    5px 5px 9px rgba(94, 104, 121, 0.6);
+    2px 2px 4px rgba(97, 121, 142, 0.4);
   --shadowSM-dark: -2px -2px 4px rgba(255, 255, 255, 0.4),
-    2px 2px 4px rgba(94, 104, 121, 0.6);
-  --shadowNAV: 2px 2px 4px rgba(94, 104, 121, 0.6);
+    2px 2px 4px rgba(97, 121, 142, 0.4);
+
+  --shadowNAV: 4px 4px 8px rgba(97, 121, 142, 0.8);
   --transition: all 0.3s ease-in-out;
 
   --backdrop: blur(10px);
@@ -85,7 +87,6 @@ h5 {
   font-family: var(--fontRoboto) !important;
   text-transform: uppercase;
   font-weight: 700 !important;
-  color: var(--accent);
 }
 
 .paragraphLg {
@@ -106,6 +107,14 @@ a:hover {
 
 .m-bottom {
   margin-bottom: 1rem;
+}
+
+.neumorph-box {
+  background-color: var(--tint);
+  box-shadow: var(--shadowNAV);
+  border-top: 1px solid var(--white);
+  padding: 1.6rem;
+  border-radius: 4px;
 }
 
 /* NAVIGATION 
@@ -283,6 +292,8 @@ body.dark .moodBtn.selected {
   border-left: 1px solid var(--white);
   box-shadow: var(--shadow);
   border-radius: 4px;
+  display: flex;
+  min-height: 25rem;
 }
 
 body.dark .stnCard {
@@ -293,6 +304,11 @@ body.dark .stnCard {
 
 .stnCard-text {
   height: 9.6rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  backdrop-filter: blur(15px);
+  box-shadow: -10px 0 10px #00000070;
 }
 
 .stnCard:hover {
@@ -562,4 +578,25 @@ body.dark .moodlog-item {
 
 body.dark .streak-box {
   box-shadow: var(--shadowSM-dark);
+}
+
+/* QUOTE
+-------------------------------------------------- */
+.quote {
+  font-family: var(--fontVidaloka);
+  text-align: center;
+  color: var(--accent);
+  margin-left: 1.6rem;
+}
+.quote span {
+  font-family: var(--fontRoboto);
+  font-weight: 100;
+  font-size: 1rem;
+  color: var(--mid-tone);
+}
+
+.quote-error {
+  font-family: var(--fontRoboto);
+  color: var(--mid-tone);
+  font-weight: 100;
 }

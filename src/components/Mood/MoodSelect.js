@@ -10,6 +10,7 @@ import StandardCard from "../StandardCard";
 import MoodIcon from "./MoodIcon";
 import StandardBtn from "../Button/StandardBtn";
 import IconBtn from "../Button/IconBtn";
+import ZenQuote from "../Quotes";
 import { meditations } from "../Meditate/Meditations";
 
 export default function MoodSelect({ moods, moodRecord }) {
@@ -41,9 +42,9 @@ export default function MoodSelect({ moods, moodRecord }) {
         </Box>
         <MoodIcon padding={"3.2rem"}>
           <SelectedMoodIcon
-            edge='center'
-            color='inherit'
-            className='btn moodBtn'
+            edge="center"
+            color="inherit"
+            className="btn moodBtn"
             sx={{ width: "6.4rem", height: "6.4rem", borderRadius: "50%" }}
           />
         </MoodIcon>
@@ -53,13 +54,17 @@ export default function MoodSelect({ moods, moodRecord }) {
           </Box>
         )}
       </Paper>
-      {/* <ZenQuote /> */}
+
+      {/* adds quote per mood type */}
+
+      {/*  */}
       <Stack>
         <MotionItem>
           <Box
             sx={{ m: "3.2rem auto", fontStyle: "italic" }}
-            className='zen-quote'>
-            <ParagraphLg text={"Some zen quote from API would go here"} />
+            className="zen-quote"
+        >
+            <ZenQuote mood="selectedMood" />
           </Box>
         </MotionItem>
         {matchingMeditation && (

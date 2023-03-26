@@ -1,4 +1,9 @@
-import { Route, Routes, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  // useLocation,
+} from "react-router-dom";
 import Home from "./pages/Home";
 import MoodTracker from "./pages/MoodTracker";
 import UserLogin from "./pages/UserLogin";
@@ -19,16 +24,21 @@ export default function App() {
         }}>
         <Nav />
         <AnimatePresence>
-          <Routes key={useLocation().path}>
-            <Route path='/' element={<Home />} />
-            <Route path='/mood-tracker' element={<MoodTracker />} />
-            <Route path='/user-login' element={<UserLogin />} />
-            <Route path='/dashboard' element={<Dashboard />} />
-            <Route path='/meditation' element={<Meditation />} />
-            <Route path='/activity-log' element={<ActivityLog />} />
-          </Routes>
+          <Router
+          // basename='/EAmrogowicz/nichi-energiseYourMind-react'
+          >
+            <Routes
+            // key={useLocation().path}
+            >
+              <Route path='/' element={<Home />} />
+              <Route path='/mood-tracker' element={<MoodTracker />} />
+              <Route path='/user-login' element={<UserLogin />} />
+              <Route path='/dashboard' element={<Dashboard />} />
+              <Route path='/meditation' element={<Meditation />} />
+              <Route path='/activity-log' element={<ActivityLog />} />
+            </Routes>
+          </Router>
         </AnimatePresence>
-
         <Footer />
       </main>
     </StyledEngineProvider>
