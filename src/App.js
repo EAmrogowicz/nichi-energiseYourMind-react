@@ -1,8 +1,8 @@
 import {
-  BrowserRouter as Router,
+  // BrowserRouter as Router,
   Route,
   Routes,
-  // useLocation,
+  useLocation,
 } from "react-router-dom";
 import Home from "./pages/Home";
 import MoodTracker from "./pages/MoodTracker";
@@ -13,33 +13,30 @@ import Dashboard from "./pages/Dashboard";
 import Meditation from "./pages/Meditation";
 import ActivityLog from "./pages/ActivityLog";
 import { StyledEngineProvider } from "@mui/material/styles";
+import { AnimatePresence } from "framer-motion";
 
 export default function App() {
-  // const location = useLocation();
-
-  // should default page be user dashboard or start?
   return (
     <StyledEngineProvider injectFirst>
-      <Router basename="/EAmrogowicz/nichi-energiseYourMind-react">
-        <main
-          style={{
-            minHeight: "100%",
-          }}
-        >
-          <Nav />
-          <Routes
-          // key={location.path} location={location}
-          >
-            <Route path="/" element={<Home />} />
-            <Route path="/mood-tracker" element={<MoodTracker />} />
-            <Route path="/user-login" element={<UserLogin />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/meditation" element={<Meditation />} />
-            <Route path="/activity-log" element={<ActivityLog />} />
+      <main
+        style={{
+          minHeight: "100%",
+        }}>
+        <Nav />
+        <AnimatePresence>
+          {/* <Router basename='/EAmrogowicz/nichi-energiseYourMind-react'> */}
+          <Routes key={useLocation().path}>
+            <Route path='/' element={<Home />} />
+            <Route path='/mood-tracker' element={<MoodTracker />} />
+            <Route path='/user-login' element={<UserLogin />} />
+            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/meditation' element={<Meditation />} />
+            <Route path='/activity-log' element={<ActivityLog />} />
           </Routes>
-          <Footer />
-        </main>
-      </Router>
+          {/* </Router> */}
+        </AnimatePresence>
+        <Footer />
+      </main>
     </StyledEngineProvider>
   );
 }

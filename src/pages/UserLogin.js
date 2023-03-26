@@ -2,6 +2,8 @@ import { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Box, FormControl } from "@mui/material";
 import PageContainer from "../components/PageContainer";
+import MotionPage from "../components/Motion/MotionPage";
+import MotionItem from "../components/Motion/MotionItem";
 import SubHeading from "../components/Typography/SubHeading";
 import StandardBtn from "../components/Button/StandardBtn";
 import IconBtn from "../components/Button/IconBtn";
@@ -32,42 +34,46 @@ export default function UserLogin({ onSubmit }) {
   }
 
   return (
-    <PageContainer>
-      <Box sx={{ mb: "4.8rem" }}>
-        <SubHeading text={"Hello, stranger!"} />
-        <Heading4 text={"What is your name?"} />
-      </Box>
+    <MotionPage>
+      <PageContainer>
+        <MotionItem>
+          <Box sx={{ mb: "4.8rem" }}>
+            <SubHeading text={"Hello, stranger!"} />
+            <Heading4 text={"What is your name?"} />
+          </Box>
+        </MotionItem>
+        <MotionItem>
+          <FormControl className='form'>
+            <TextField
+              className='inputField'
+              id='name'
+              label='Name'
+              variant='outlined'
+              value={username}
+              onChange={handleChange}
+              ref={inputRef}
+              helperText='Please enter your name'
+            />
 
-      <FormControl className="form">
-        <TextField
-          className="inputField"
-          id="name"
-          label="Name"
-          variant="outlined"
-          value={username}
-          onChange={handleChange}
-          ref={inputRef}
-          helperText="Please enter your name"
-        />
-
-        <Box
-          sx={{
-            width: "100%",
-            display: "flex",
-            justifyContent: "space-around",
-            alignItems: "center",
-          }}
-        >
-          <Link to="/">
-            <IconBtn />
-          </Link>
-          <StandardBtn
-            name={"Login"}
-            onClick={handleLogin}
-            disabled={!username}
-          />
-        </Box>
-      </FormControl>
-    </PageContainer>
+            <Box
+              sx={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "space-around",
+                alignItems: "center",
+              }}>
+              <Link to='/'>
+                <IconBtn />
+              </Link>
+              <StandardBtn
+                name={"Login"}
+                onClick={handleLogin}
+                disabled={!username}
+              />
+            </Box>
+          </FormControl>
+        </MotionItem>
+      </PageContainer>
+    </MotionPage>
   );
 }
