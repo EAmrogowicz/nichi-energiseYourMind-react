@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import useSound from 'use-sound';
+import { Box, Stack } from "@mui/material";
+import { Link } from "react-router-dom";
+import StandardBtn from "../../Button/StandardBtn";
+import IconBtn from "../../Button/IconBtn";
+
 import SubHeading from "../../Typography/SubHeading";
 
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
+
+import MeditationSuccess from '../MeditationSuccess';
 
 import './style.css';
 import gongBell from '../audio/gong3.mp3';
@@ -82,6 +89,8 @@ export default function MeditateBodyScan () {
          setTimeInSec(true); 
          addMeditationRecord(meditationRecord);         
          reset();
+         setIsEnded(!isEnded);
+         console.log("Play Ending Gong and setIsEnded set to true:", isEnded);
       } 
    };
 
@@ -113,6 +122,7 @@ export default function MeditateBodyScan () {
          };
       } else if (!isActive && timeInSec !== 0) {
          clearInterval(interval);
+         interval = 0;
       };
 
       return () => clearInterval(interval);
@@ -122,70 +132,103 @@ export default function MeditateBodyScan () {
    );
 
    return (
-      <div className="meditateContainer">
-         <h1>
-            Body Scan Meditation
-         </h1>
-         <br/>
-         <h3>
-            Starting from your feet, focus on the sensations there when the first bell rings.
-            <br/>With subsequent bells, move on to your abdomen, your chest and your forehead on each ring of the bell. 
-            <br/>On the next bell ring after spotlighting on your forehead, go back your feet again and restart the whole process.
-            <br/>It's alright if your mind wanders, just gently bring your mind back and start from your feet again. 
-         </h3>
 
-         <div className="animeContainer">
-            <div className="mug">
+      <>
+         {(!isEnded) ? (
+
+            <div className="meditateContainer">
+            <h1>
+               Body Scan Meditation
+            </h1>
+            <br/>
+            <h3>
+               Starting from your feet, focus on the sensations there when the first bell rings.
+               <br/>With subsequent bells, move on to your abdomen, your chest and your forehead on each ring of the bell. 
+               <br/>On the next bell ring after spotlighting on your forehead, go back your feet again and restart the whole process.
+               <br/>It's alright if your mind wanders, just gently bring your mind back and start from your feet again. 
+            </h3>
+
+            <div className="animeContainer">
+               <div className="mug">
+               </div>
             </div>
-         </div>
 
-         <div className="playPause" onClick={playPause}>
-            {isActive
-               ? <PauseIcon fontSize="sm" />
-               : <PlayArrowIcon fontSize="sm"/>}
-         </div>
-
-         <h2>
-            <div className="timerCount">
-               {(Math.floor(timeInSec / 60))}:{timePadding(timeInSec % 60, 2)}
-            </div>            
-         </h2>   
-
-         <div className="row">
-            <button className='btnRound' onClick={() => setTimeInSec(600)}>
-               10min
-            </button>
-
-            <button className='btnRound' onClick={() => setTimeInSec(300)}>
-               5min
-            </button>
-
-            <button className='btnRound' onClick={() => setTimeInSec(120)}>
-               2min
-            </button>
-
-            <button className='btnRound' onClick={() => setTimeInSec(60)}>
-               1min
-            </button>
-            {/* //--PW 10sec button for testing only  */}
-            <button className='btnRound' onClick={() => setTimeInSec(10)}>
-               10sec
-            </button>
-         </div>
-
-         <div className='row'>
-            <button className={`btnRound btnRound-${isActive ? 'active' : 'inactive'}`} onClick={playPause}>
+            <div className="playPause" onClick={playPause}>
                {isActive
-                  ? <PauseIcon />
-                  : <PlayArrowIcon />}
-            </button>
+                  ? <PauseIcon fontSize="sm" />
+                  : <PlayArrowIcon fontSize="sm"/>}
+            </div>
 
-            <button className='btnRound' onClick={reset}>
-               <RestartAltIcon />
-            </button>
-            
-         </div>
-      </div>
+            <h2>
+               <div className="timerCount">
+                  {(Math.floor(timeInSec / 60))}:{timePadding(timeInSec % 60, 2)}
+               </div>            
+            </h2>   
+
+            <div className="row">
+               <button className='btnRound' onClick={() => setTimeInSec(600)}>
+                  10min
+               </button>
+
+               <button className='btnRound' onClick={() => setTimeInSec(300)}>
+                  5min
+               </button>
+
+               <button className='btnRound' onClick={() => setTimeInSec(120)}>
+                  2min
+               </button>
+
+               <button className='btnRound' onClick={() => setTimeInSec(60)}>
+                  1min
+               </button>
+               {/* //--PW 10sec button for testing only  */}
+               <button className='btnRound' onClick={() => setTimeInSec(10)}>
+                  10sec
+               </button>
+            </div>
+
+            <div className='row'>
+               <button className={`btnRound btnRound-${isActive ? 'active' : 'inactive'}`} onClick={playPause}>
+                  {isActive
+                     ? <PauseIcon />
+                     : <PlayArrowIcon />}
+               </button>
+
+               <button className='btnRound' onClick={reset}>
+                  <RestartAltIcon />
+               </button>
+
+            </div>
+            </div>
+
+
+         ) : (
+         
+            <>
+               <stack>
+               <MeditationSuccess />
+               <Box
+          width={"100%"}
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            margin: "3.2rem auto",
+          }}>
+          <Link to='/'>
+            <IconBtn />
+          </Link>
+          <Link to='/meditation'>
+            <StandardBtn name={"Meditate Again"} />
+          </Link>
+        </Box>
+               </stack>
+               
+            </>
+
+         )}  
+      </>
+
+
 
    );
 };
