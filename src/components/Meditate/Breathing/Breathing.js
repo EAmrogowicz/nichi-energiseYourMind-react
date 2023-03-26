@@ -5,6 +5,8 @@ import { Box, Stack } from "@mui/material";
 import { Link } from "react-router-dom";
 import StandardBtn from "../../Button/StandardBtn";
 import IconBtn from "../../Button/IconBtn";
+import IconButton from "@mui/material/IconButton";
+import SubHeading from "../../Typography/SubHeading";
 
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
@@ -120,6 +122,8 @@ export default function MeditateBreath () {
    }
    , [isActive, timeInSec, playSound]
    );
+
+   let timeString =(Math.floor(timeInSec / 60)) + `:` + timePadding(timeInSec % 60, 2);
    
    return (
 
@@ -128,7 +132,7 @@ export default function MeditateBreath () {
 
             <div className="meditateContainer">
                <h1>
-                  Breathe Meditation
+                  Breath Meditation
                </h1>
                <br/>
                <h3>
@@ -140,20 +144,49 @@ export default function MeditateBreath () {
                   <div className={`blobbly-blob ${isActive ? 'blobbly-blob-swell' : ''}`}>
                   </div>
                </div>
+               <stack>
+                  <Box
+                     width={"100%"}
+                     sx={{
+                        display: "flex",
+                        justifyContent: "space-evenly",
+                        margin: "0.2rem auto",
+                        }}>
+                     <div className="playPause" onClick={playPause}>
+                        {isActive
+                           ? (<IconButton className='btn btnRound' aria-label='Pause'><PauseIcon fontSize="sm" /></IconButton>)
+                           : (<IconButton className='btn btnRound' aria-label='Pause'><PlayArrowIcon fontSize="sm" /></IconButton>)
+                        }
+                     </div>
 
-               <div className="playPause" onClick={playPause}>
-                  {isActive
-                     ? <PauseIcon fontSize="sm" />
-                     : <PlayArrowIcon fontSize="sm"/>}
-               </div>
+                     <IconButton className='btn btnRound' aria-label='reset'>
+                        <RestartAltIcon onClick={reset} />
+                     </IconButton>   
+
+                  </Box>
                
-               <h2>
-                  <div className="timerCount">
-                     {(Math.floor(timeInSec / 60))}:{timePadding(timeInSec % 60, 2)}
-                  </div>            
-               </h2>      
+                  <Box
+                     width={"100%"}
+                     sx={{
+                        margin: "1.2rem auto",
+                        }}>
+                     <SubHeading text={timeString}></SubHeading> 
+                  </Box>   
 
+                  <Box
+                     width={"100%"}
+                     sx={{
+                        display: "flex",
+                        justifyContent: "space-evenly",
+                        margin: "0.2rem auto",
+                        }}>
 
+                     <Link to='/'>
+                        <IconBtn />
+                     </Link>
+                  </Box>
+
+               </stack>
                <div className="row">
                   <button className='btnRound' onClick={() => setTimeInSec(600)}>
                      10min
@@ -176,18 +209,7 @@ export default function MeditateBreath () {
                   </button>
                </div>
 
-               <div className='row'>
-                  <button className={`btnRound btnRound-${isActive ? 'active' : 'inactive'}`} onClick={playPause}>
-                     {isActive
-                        ? <PauseIcon />
-                        : <PlayArrowIcon  />}
-                  </button>
 
-                  <button className='btnRound' onClick={reset}>
-                     <RestartAltIcon />
-                  </button>
-
-               </div>
             </div>
             
          ) : (
