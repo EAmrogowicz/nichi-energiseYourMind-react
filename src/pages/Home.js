@@ -3,6 +3,8 @@ import { Box } from "@mui/material";
 import StandardBtn from "../components/Button/StandardBtn";
 import Logo from "../components/Logo";
 import PageContainer from "../components/PageContainer";
+import MotionPage from "../components/Motion/MotionPage";
+import MotionItem from "../components/Motion/MotionItem";
 import PageTitle from "../components/Typography/Title";
 import SubHeading from "../components/Typography/SubHeading";
 import Dashboard from "./Dashboard";
@@ -17,21 +19,23 @@ export default function Home() {
   return (
     <>
       {!userData ? (
-        <div className="hero">
+        <div className='hero'>
           <PageContainer>
-            <Box sx={{ mt: "2.4rem" }}>
-              <PageTitle text="Nichi" />
-              <SubHeading
-                text="Energise Your Mind"
-                classCss={"fontWeight100"}
-              />
-            </Box>
+            <MotionPage>
+              <Box sx={{ mt: "2.4rem" }}>
+                <PageTitle text='Nichi' />
+                <SubHeading
+                  text='Energise Your Mind'
+                  classCss={"fontWeight100"}
+                />
+              </Box>
 
-            <Logo />
+              <Logo />
 
-            <Link to="/user-login">
-              <StandardBtn name="Get Started" />
-            </Link>
+              <Link to='/user-login'>
+                <StandardBtn name='Get Started' />
+              </Link>
+            </MotionPage>
           </PageContainer>
         </div>
       ) : (

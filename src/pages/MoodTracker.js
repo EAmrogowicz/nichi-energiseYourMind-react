@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PageContainer from "../components/PageContainer";
+import MotionPage from "../components/Motion/MotionPage";
 import MoodPrompt from "../components/Mood/MoodPrompt";
 import MoodSelect from "../components/Mood/MoodSelect";
 import { moods } from "../components/Mood/Moods";
@@ -20,12 +21,16 @@ export default function MoodTracker() {
   return (
     <PageContainer size='md'>
       {submitted ? (
-        <MoodSelect
-          moods={moods}
-          moodRecord={existingMoodData[existingMoodData.length - 1]}
-        />
+        <MotionPage>
+          <MoodSelect
+            moods={moods}
+            moodRecord={existingMoodData[existingMoodData.length - 1]}
+          />
+        </MotionPage>
       ) : (
-        <MoodPrompt moods={moods} onSubmit={handleMoodSubmit} />
+        <MotionPage>
+          <MoodPrompt moods={moods} onSubmit={handleMoodSubmit} />
+        </MotionPage>
       )}
     </PageContainer>
   );

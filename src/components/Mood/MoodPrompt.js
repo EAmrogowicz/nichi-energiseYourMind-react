@@ -6,6 +6,9 @@ import StandardBtn from "../Button/StandardBtn";
 import MoodIcon from "./MoodIcon";
 import MoodBtn from "../Button/MoodBtn";
 import { moods } from "./Moods";
+import MotionPage from "../Motion/MotionPage";
+import MotionItem from "../Motion/MotionItem";
+import MotionScrollIn from "../Motion/MotionScrollIn";
 
 export default function MoodPrompt({ onSubmit }) {
   const [selectedMood, setSelectedMood] = useState("");
@@ -29,7 +32,9 @@ export default function MoodPrompt({ onSubmit }) {
 
   return (
     <>
-      <SubHeading text={"How are you feeling today?"} />
+      <MotionItem>
+        <SubHeading text={"How are you feeling today?"} />
+      </MotionItem>
       <Grid
         container
         columns={6}
@@ -41,6 +46,7 @@ export default function MoodPrompt({ onSubmit }) {
               key={mood.description}
               onClick={() => setSelectedMood(mood.description)}
               padding={"3.2rem"}>
+              {/* <MotionItem> */}
               <MoodBtn
                 className={selectedMood === mood.description ? "selected" : ""}>
                 <mood.icon
@@ -49,6 +55,7 @@ export default function MoodPrompt({ onSubmit }) {
                   sx={{ width: "3rem", height: "3rem", borderRadius: "50%" }}
                 />
               </MoodBtn>
+              {/* </MotionItem> */}
               <ParagraphLg text={mood.description} />
             </MoodIcon>
           );
@@ -66,13 +73,15 @@ export default function MoodPrompt({ onSubmit }) {
             onChange={handleChange}
           />
         </Box>
-        <Box sx={{ m: "2.4rem" }}>
-          <StandardBtn
-            name={"Submit"}
-            onClick={handleSubmit}
-            disabled={!selectedMood}
-          />
-        </Box>
+        <MotionScrollIn>
+          <Box sx={{ m: "2.4rem" }}>
+            <StandardBtn
+              name={"Submit"}
+              onClick={handleSubmit}
+              disabled={!selectedMood}
+            />
+          </Box>
+        </MotionScrollIn>
       </FormControl>
     </>
   );
