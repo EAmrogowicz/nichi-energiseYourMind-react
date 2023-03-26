@@ -5,6 +5,8 @@ import { Box, Stack } from "@mui/material";
 import { Link } from "react-router-dom";
 import StandardBtn from "../../Button/StandardBtn";
 import IconBtn from "../../Button/IconBtn";
+import IconButton from "@mui/material/IconButton";
+import SubHeading from "../../Typography/SubHeading";
 
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
@@ -130,6 +132,8 @@ export default function MeditateBodyScan () {
       , [isActive, timeInSec, playSound]
    );
 
+   let timeString =(Math.floor(timeInSec / 60)) + `:` + timePadding(timeInSec % 60, 2);
+
    return (
 
       <>
@@ -152,57 +156,75 @@ export default function MeditateBodyScan () {
                </div>
             </div>
 
-            <div className="playPause" onClick={playPause}>
-               {isActive
-                  ? <PauseIcon fontSize="sm" />
-                  : <PlayArrowIcon fontSize="sm"/>}
+            <stack>
+                  <Box
+                     width={"100%"}
+                     sx={{
+                        display: "flex",
+                        justifyContent: "space-evenly",
+                        margin: "0.2rem auto",
+                        }}>
+                     <div className="playPause" onClick={playPause}>
+                        {isActive
+                           ? (<IconButton className='btn btnRound' aria-label='Pause'><PauseIcon fontSize="sm" /></IconButton>)
+                           : (<IconButton className='btn btnRound' aria-label='Pause'><PlayArrowIcon fontSize="sm" /></IconButton>)
+                        }
+                     </div>
+
+                     <IconButton className='btn btnRound' aria-label='reset'>
+                        <RestartAltIcon onClick={reset} />
+                     </IconButton>   
+
+                  </Box>
+               
+                  <Box
+                     width={"100%"}
+                     sx={{
+                        margin: "1.2rem auto",
+                        }}>
+                     <SubHeading text={timeString}></SubHeading> 
+                  </Box>   
+
+                  <Box
+                     width={"100%"}
+                     sx={{
+                        display: "flex",
+                        justifyContent: "space-evenly",
+                        margin: "0.2rem auto",
+                        }}>
+
+                     <Link to='/'>
+                        <IconBtn />
+                     </Link>
+                  </Box>
+
+               </stack>
+               <div className="row">
+                  <button className='btnRound' onClick={() => setTimeInSec(600)}>
+                     10min
+                  </button>
+
+                  <button className='btnRound' onClick={() => setTimeInSec(300)}>
+                     5min
+                  </button>
+
+                  <button className='btnRound' onClick={() => setTimeInSec(120)}>
+                     2min
+                  </button>
+
+                  <button className='btnRound' onClick={() => setTimeInSec(60)}>
+                     1min
+                  </button>
+               {/* //--Pei 10sec button for testing only  */}
+                  <button className='btnRound' onClick={() => setTimeInSec(10)}>
+                     10sec
+                  </button>
+               </div>
+
+
             </div>
-
-            <h2>
-               <div className="timerCount">
-                  {(Math.floor(timeInSec / 60))}:{timePadding(timeInSec % 60, 2)}
-               </div>            
-            </h2>   
-
-            <div className="row">
-               <button className='btnRound' onClick={() => setTimeInSec(600)}>
-                  10min
-               </button>
-
-               <button className='btnRound' onClick={() => setTimeInSec(300)}>
-                  5min
-               </button>
-
-               <button className='btnRound' onClick={() => setTimeInSec(120)}>
-                  2min
-               </button>
-
-               <button className='btnRound' onClick={() => setTimeInSec(60)}>
-                  1min
-               </button>
-               {/* //--PW 10sec button for testing only  */}
-               <button className='btnRound' onClick={() => setTimeInSec(10)}>
-                  10sec
-               </button>
-            </div>
-
-            <div className='row'>
-               <button className={`btnRound btnRound-${isActive ? 'active' : 'inactive'}`} onClick={playPause}>
-                  {isActive
-                     ? <PauseIcon />
-                     : <PlayArrowIcon />}
-               </button>
-
-               <button className='btnRound' onClick={reset}>
-                  <RestartAltIcon />
-               </button>
-
-            </div>
-            </div>
-
-
+            
          ) : (
-         
             <>
                <stack>
                   <MeditationSuccess />
@@ -213,7 +235,7 @@ export default function MeditateBodyScan () {
                         justifyContent: "space-evenly",
                         margin: "3.2rem auto",
                         }}>
-                           
+                     
                      <Link to='/'>
                         <IconBtn />
                      </Link>
@@ -228,8 +250,6 @@ export default function MeditateBodyScan () {
 
          )}  
       </>
-
-
 
    );
 };
