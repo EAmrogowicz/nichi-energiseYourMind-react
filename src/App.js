@@ -20,7 +20,7 @@ export default function App() {
   // should default page be user dashboard or start?
   return (
     <StyledEngineProvider injectFirst>
-      <Router>
+      <Router basename="/EAmrogowicz/nichi-energiseYourMind-react">
         <main
           style={{
             minHeight: "100%",
