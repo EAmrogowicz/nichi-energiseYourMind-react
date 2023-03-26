@@ -1,26 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import useSound from 'use-sound';
 
-import { Box, Stack } from "@mui/material";
+import { Drawer, Box, Stack, Grid} from "@mui/material";
+
 import { Link } from "react-router-dom";
 import StandardBtn from "../../Button/StandardBtn";
 import IconBtn from "../../Button/IconBtn";
 import IconButton from "@mui/material/IconButton";
 import SubHeading from "../../Typography/SubHeading";
+import ButtonGroup from '@mui/material/ButtonGroup';
+import Button from '@mui/material/Button';
 
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
+import TimerIcon from '@mui/icons-material/Timer';
 
+import TimerDrawer from '../TimerDrawer';
 import MeditationSuccess from '../MeditationSuccess';
+
 
 import './style.css';
 import gongBell from '../audio/gong3.mp3';
 
 
-
 export default function MeditateBodyScan () {
 
+   function valuetext(value: number) {
+      return `${value}min`;
+   }
 
    //--PW (1) Local Storage for activity log
    //--PW Get Data from local storage and set them into (default) state "existingMeditationData"
@@ -45,6 +53,7 @@ export default function MeditateBodyScan () {
       console.log("userData", userData)
    }
 
+   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
    //--PW (2) Run the meditation process   
    //--PW set the default meditation duration to 60s
@@ -157,12 +166,26 @@ export default function MeditateBodyScan () {
             </div>
 
             <stack>
+            <Grid
+      item
+      md={1}
+      sm={2}
+      xs={3}
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "1rem",
+      }}>
                   <Box
                      width={"100%"}
                      sx={{
                         display: "flex",
-                        justifyContent: "space-evenly",
+                        flexDirection: "row",
+                        justifyContent: "center",
+                        alignItems: "center",
                         margin: "0.2rem auto",
+                        display: "flex",
                         }}>
                      <div className="playPause" onClick={playPause}>
                         {isActive
@@ -171,12 +194,16 @@ export default function MeditateBodyScan () {
                         }
                      </div>
 
+                     <IconButton className='btn btnRound' aria-label='timer menu'>
+                        <TimerIcon onClick={() => setIsDrawerOpen(true)} />
+                     </IconButton>
+
                      <IconButton className='btn btnRound' aria-label='reset'>
                         <RestartAltIcon onClick={reset} />
                      </IconButton>   
 
                   </Box>
-               
+               </Grid>
                   <Box
                      width={"100%"}
                      sx={{
@@ -196,30 +223,32 @@ export default function MeditateBodyScan () {
                      <Link to='/'>
                         <IconBtn />
                      </Link>
+
                   </Box>
 
                </stack>
-               <div className="row">
-                  <button className='btnRound' onClick={() => setTimeInSec(600)}>
-                     10min
-                  </button>
 
-                  <button className='btnRound' onClick={() => setTimeInSec(300)}>
-                     5min
-                  </button>
+      <Drawer 
+         anchor='bottom'
+         open={isDrawerOpen} 
+         onClose={() => setIsDrawerOpen(false)}
+      >
+                           <Box
+                     width={"100%"}
+                     sx={{
+                        display: "flex",
+                        justifyContent: "space-evenly",
+                        margin: "0.2rem auto",
+                        }}>
+         <ButtonGroup variant="text" className='btn btnPill' aria-label="button group">
+      <Button onClick={() => setTimeInSec(60)}>1min</Button>
+      <Button onClick={() => setTimeInSec(120)}>2min</Button>
+      <Button onClick={() => setTimeInSec(300)}>5min</Button>
+      <Button onClick={() => setTimeInSec(600)}>10min</Button>
+         </ButtonGroup>
+         </Box>   
 
-                  <button className='btnRound' onClick={() => setTimeInSec(120)}>
-                     2min
-                  </button>
-
-                  <button className='btnRound' onClick={() => setTimeInSec(60)}>
-                     1min
-                  </button>
-               {/* //--Pei 10sec button for testing only  */}
-                  <button className='btnRound' onClick={() => setTimeInSec(10)}>
-                     10sec
-                  </button>
-               </div>
+      </Drawer>   
 
 
             </div>
