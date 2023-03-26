@@ -35,7 +35,6 @@ export default function MeditateBreath () {
       userData.meditation = updatedMeditationData;
       localStorage.setItem("userData", JSON.stringify(userData));
       console.log("userData", userData)
-      // setSubmitted(true);
    }
 
 
@@ -54,13 +53,13 @@ export default function MeditateBreath () {
 
    const [timeInSec, setTimeInSec] = useState(startTime);
 
-   //--Pei Create the state of whether the meditation timer is currently running
+   //--PW Create the state of whether the meditation timer is currently running
    const [isActive, setIsActive] = useState(false);
 
   //--Pei Create the state of whether the meditation timer has ended
    const [isEnded, setIsEnded] = useState(false);
 
-   //--Pei To toggle between playing or pausing the meditation timer
+   //--PW To toggle between playing or pausing the meditation timer
    const playPause = () => { 
       setIsActive(!isActive); 
       setIsEnded(false); 
@@ -76,7 +75,7 @@ export default function MeditateBreath () {
       setIsEnded(false); 
    };
 
-   //--Pei hit the gong when session has ended.
+   //--PW hit the gong when session has ended.
    const playSound = () => { 
       if (!isEnded) { 
          hitGong(); 
@@ -91,13 +90,13 @@ export default function MeditateBreath () {
 
       let interval = null;
 
-      //--Pei when time is up!
+      //--PW when time is up!
       if (timeInSec <= 0) {
          setIsActive(false);
          playSound();
       };
 
-      //--Pei setinterval to reduce time by 1 second
+      //--PW setinterval to reduce time by 1 second
       if (isActive) {
          interval = setInterval(() => {
             setTimeInSec((s) => s - 1);
@@ -114,7 +113,7 @@ export default function MeditateBreath () {
    return (
       <div className="meditateContainer">
          <h1>
-            Breath Meditation
+            Breathe Meditation
          </h1>
          <br/>
          <h3>
@@ -173,10 +172,9 @@ export default function MeditateBreath () {
                <RestartAltIcon />
             </button>
 
-
          </div>
       </div>
-          
+
    // End of Return  
    );
 };

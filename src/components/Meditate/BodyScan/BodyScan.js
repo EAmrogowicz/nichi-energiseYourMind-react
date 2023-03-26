@@ -24,7 +24,7 @@ export default function MeditateBodyScan () {
    const timeStamp = new Date().toISOString();
 
    const meditationRecord = {
-      meditation: "Breathing",
+      meditation: "Spotlighting",
       time: timeStamp,
    };
 
@@ -35,7 +35,6 @@ export default function MeditateBodyScan () {
       userData.meditation = updatedMeditationData;
       localStorage.setItem("userData", JSON.stringify(userData));
       console.log("userData", userData)
-      // setSubmitted(true);
    }
 
 
@@ -81,6 +80,7 @@ export default function MeditateBodyScan () {
       if (!isEnded) { 
          hitGong(); 
          setTimeInSec(true); 
+         addMeditationRecord(meditationRecord);         
          reset();
       } 
    };
@@ -97,6 +97,7 @@ export default function MeditateBodyScan () {
       };
 
       //--PW setinterval to reduce time by 1 second
+      //--PW also set the gong to go off every 20sec
       if (isActive) {
          interval = setInterval(() => {
             setTimeInSec((s) => s - 1);
@@ -135,7 +136,6 @@ export default function MeditateBodyScan () {
 
          <div className="animeContainer">
             <div className="mug">
-
             </div>
          </div>
 
@@ -183,6 +183,7 @@ export default function MeditateBodyScan () {
             <button className='btnRound' onClick={reset}>
                <RestartAltIcon />
             </button>
+            
          </div>
       </div>
 
