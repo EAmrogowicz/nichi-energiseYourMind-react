@@ -127,7 +127,7 @@ export default function Nav() {
               variant="h4"
               noWrap
               component="a"
-              href="/"
+              href="/EAmrogowicz/nichi-energiseYourMind-react"
               className="navLogo"
               sx={{
                 mr: 1,
@@ -176,7 +176,12 @@ export default function Nav() {
               </Link>
               <FormControlLabel
                 onClick={toggleTheme}
-                control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
+                control={
+                  <MaterialUISwitch
+                    sx={{ m: 1 }}
+                    defaultChecked={theme === "light"}
+                  />
+                }
               />
               {/* <button onClick={toggleTheme}>Toggle Theme</button> */}
             </Box>
