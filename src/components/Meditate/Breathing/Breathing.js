@@ -1,25 +1,51 @@
 import React, { useEffect, useState } from 'react';
-import PageContainer from "../../PageContainer";
 import useSound from 'use-sound';
+import SubHeading from "../../Typography/SubHeading";
+
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
-import SubHeading from "../../Typography/SubHeading";
 
 import './style.css';
-
 import gongBell from '../audio/gong1.mp3';
+
 
 
 export default function MeditateBreath () {
 
-   //--Pei set the default meditation duration to 60s
+
+   //--PW (1) Local Storage for activity log
+   //--PW  Get Data from local storage and set them into (default) state "existingMeditationData"
+
+   const userData = JSON.parse(localStorage.getItem("userData"));
+
+   const [existingMeditationData, setExistingMeditationData] = useState(userData.meditation || []);
+
+   const timeStamp = new Date().toISOString();
+
+   const meditationRecord = {
+      meditation: "Breathing",
+      time: timeStamp,
+   };
+
+
+   function addMeditationRecord(meditationRecord) {
+      const updatedMeditationData = [...existingMeditationData, meditationRecord];
+      setExistingMeditationData(updatedMeditationData);
+      userData.meditation = updatedMeditationData;
+      localStorage.setItem("userData", JSON.stringify(userData));
+      console.log("userData", userData)
+   }
+
+
+   //--PW (2) Run the meditation process
+   //--PW set the default meditation duration to 60s
    const startTime = 60;
 
-   //--Pei Play the gong
+   //--PW Play the gong
    const [hitGong] = useSound(gongBell);
 
-   //--Pei Function to display the time string
+   //--PW Function to display the time string
    function timePadding (num, padding) {
       let numString = (num).toString().padStart(padding, '0');
       return numString;
@@ -27,13 +53,13 @@ export default function MeditateBreath () {
 
    const [timeInSec, setTimeInSec] = useState(startTime);
 
-   //--Pei Create the state of whether the meditation timer is currently running
+   //--PW Create the state of whether the meditation timer is currently running
    const [isActive, setIsActive] = useState(false);
 
   //--Pei Create the state of whether the meditation timer has ended
    const [isEnded, setIsEnded] = useState(false);
 
-   //--Pei To toggle between playing or pausing the meditation timer
+   //--PW To toggle between playing or pausing the meditation timer
    const playPause = () => { 
       setIsActive(!isActive); 
       setIsEnded(false); 
@@ -49,11 +75,12 @@ export default function MeditateBreath () {
       setIsEnded(false); 
    };
 
-   //--Pei hit the gong when session has ended.
+   //--PW hit the gong when session has ended.
    const playSound = () => { 
       if (!isEnded) { 
          hitGong(); 
          setTimeInSec(true); 
+         addMeditationRecord(meditationRecord);
          reset();
       } 
    };
@@ -63,13 +90,13 @@ export default function MeditateBreath () {
 
       let interval = null;
 
-      //--Pei when time is up!
+      //--PW when time is up!
       if (timeInSec <= 0) {
          setIsActive(false);
          playSound();
       };
 
-      //--Pei setinterval to reduce time by 1 second
+      //--PW setinterval to reduce time by 1 second
       if (isActive) {
          interval = setInterval(() => {
             setTimeInSec((s) => s - 1);
@@ -84,10 +111,9 @@ export default function MeditateBreath () {
    );
    
    return (
-      <PageContainer size='md'>
       <div className="meditateContainer">
          <h1>
-            Breath Meditation
+            Breathe Meditation
          </h1>
          <br/>
          <h3>
@@ -146,10 +172,9 @@ export default function MeditateBreath () {
                <RestartAltIcon />
             </button>
 
-
          </div>
       </div>
-      </PageContainer>            
+
    // End of Return  
    );
 };

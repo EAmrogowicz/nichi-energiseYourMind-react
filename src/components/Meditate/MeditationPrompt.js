@@ -1,5 +1,4 @@
 import { useState, useRef } from "react";
-import PageContainer from "../../components/PageContainer";
 import { Grid, Box, FormControl } from "@mui/material";
 import SubHeading from "../Typography/SubHeading";
 import ParagraphLg from "../Typography/ParagraphLg";
@@ -42,43 +41,44 @@ export default function MeditationPrompt({ onSubmit }) {
         )
           
         ) : (
-          <>
-          <SubHeading text={"Which meditation would you like to do now?"} />
-          <Grid
-        container
-        columns={3}
-        // rowSpacing={{ xs: 2, sm: 6 }}
-      >
-        {MeditationItems.map((meditation) => {
-          return (
-            <MeditationIcon
-              key={meditation.description}
-              onClick={() => setSelectedMeditation(meditation.description)}
-              padding={"3.2rem"}>
-              <MoodBtn
-                className={selectedMeditation === meditation.description ? "selected" : ""}>
-                <meditation.icon
-                  edge='center'
-                  color='inherit'
-                  sx={{ width: "3rem", height: "3rem", borderRadius: "50%" }}
+            <>
+            <SubHeading text={"Which meditation would you like to do now?"} />
+            <Grid
+              container
+              columns={3}
+              // rowSpacing={{ xs: 2, sm: 6 }}
+            >
+            {MeditationItems.map((meditation) => {
+              return (
+                <MeditationIcon
+                  key={meditation.description}
+                  onClick={() => setSelectedMeditation(meditation.description)}
+                  padding={"3.2rem"}>
+                  <MoodBtn
+                    className={selectedMeditation === meditation.description ? "selected" : ""}>
+                      <meditation.icon
+                      edge='center'
+                      color='inherit'
+                      sx={{ width: "3rem", height: "3rem", borderRadius: "50%" }}
+                      />
+                  </MoodBtn>
+                  <ParagraphLg text={meditation.description} />
+                </MeditationIcon>
+              );
+            })}
+            </Grid>
+            <FormControl className='form'>
+              <Box sx={{ m: "2.4rem" }}>
+                <StandardBtn
+                  name={"Meditate"}
+                  onClick={handleSubmit}
+                  disabled={!selectedMeditation}
                 />
-              </MoodBtn>
-              <ParagraphLg text={meditation.description} />
-            </MeditationIcon>
-          );
-        })}
-      </Grid>
-      <FormControl className='form'>
-        <Box sx={{ m: "2.4rem" }}>
-          <StandardBtn
-            name={"Meditate"}
-            onClick={handleSubmit}
-            disabled={!selectedMeditation}
-          />
-        </Box>
-      </FormControl>
-          </>
-        )}
+              </Box>
+            </FormControl>
+            </>
+          )
+      }
     </>
   );
 }
