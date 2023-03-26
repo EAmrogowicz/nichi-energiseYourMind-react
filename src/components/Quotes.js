@@ -20,8 +20,7 @@ export default function ZenQuote({ mood }) {
   useEffect(() => {
     fetch(
       "https://marvel-cors.mrof.workers.dev/corsproxy/?apiurl=https://zenquotes.io/api/quotes&keyword=" +
-        mood,
-      []
+        mood
     )
       .then((res) => res.json())
       .then(
@@ -35,7 +34,7 @@ export default function ZenQuote({ mood }) {
           setError(error);
         }
       );
-  });
+  }, []);
 
   if (error) {
     return <div className="quote-error">Error: {error.message}</div>;
