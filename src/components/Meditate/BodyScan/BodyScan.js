@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useSound from 'use-sound';
 
-import { Drawer, Box, Stack, Grid} from "@mui/material";
+import { Drawer, Box, Stack } from "@mui/material";
 
 import { Link } from "react-router-dom";
 import StandardBtn from "../../Button/StandardBtn";
@@ -16,19 +16,14 @@ import PauseIcon from '@mui/icons-material/Pause';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import TimerIcon from '@mui/icons-material/Timer';
 
-import TimerDrawer from '../TimerDrawer';
-import MeditationSuccess from '../MeditationSuccess';
 
+import MeditationSuccess from '../MeditationSuccess';
 
 import './style.css';
 import gongBell from '../audio/gong3.mp3';
 
 
 export default function MeditateBodyScan () {
-
-   function valuetext(value: number) {
-      return `${value}min`;
-   }
 
    //--PW (1) Local Storage for activity log
    //--PW Get Data from local storage and set them into (default) state "existingMeditationData"
@@ -53,6 +48,7 @@ export default function MeditateBodyScan () {
       console.log("userData", userData)
    }
 
+   //--PW State for timer drawer
    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
    //--PW (2) Run the meditation process   
@@ -161,49 +157,37 @@ export default function MeditateBodyScan () {
             </h3>
 
             <div className="animeContainer">
-               <div className="mug">
+               <div className={`mug ${isActive ? 'mugTea' : ''}`}>
                </div>
             </div>
 
             <stack>
-            <Grid
-      item
-      md={1}
-      sm={2}
-      xs={3}
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        padding: "1rem",
-      }}>
-                  <Box
-                     width={"100%"}
-                     sx={{
+
+               <Box
+                  width={"100%"}
+                  sx={{
                         display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "center",
-                        alignItems: "center",
+                        justifyContent: "space-evenly",
                         margin: "0.2rem auto",
-                        display: "flex",
-                        }}>
+                     }}>
                      <div className="playPause" onClick={playPause}>
                         {isActive
-                           ? (<IconButton className='btn btnRound' aria-label='Pause'><PauseIcon fontSize="sm" /></IconButton>)
-                           : (<IconButton className='btn btnRound' aria-label='Pause'><PlayArrowIcon fontSize="sm" /></IconButton>)
+                           ? (<IconButton className='btn btnRound btnSpacing' aria-label='Pause'><PauseIcon fontSize="sm" /></IconButton>)
+                           : (<IconButton className='btn btnRound btnSpacing' aria-label='Pause'><PlayArrowIcon fontSize="sm" /></IconButton>)
                         }
                      </div>
 
-                     <IconButton className='btn btnRound' aria-label='timer menu'>
+                     <IconButton className='btn btnRound btnSpacing' aria-label='timer menu'>
                         <TimerIcon onClick={() => setIsDrawerOpen(true)} />
                      </IconButton>
 
-                     <IconButton className='btn btnRound' aria-label='reset'>
+                     <IconButton className='btn btnRound btnSpacing' aria-label='reset'>
                         <RestartAltIcon onClick={reset} />
                      </IconButton>   
 
                   </Box>
-               </Grid>
+
+
                   <Box
                      width={"100%"}
                      sx={{
@@ -228,28 +212,22 @@ export default function MeditateBodyScan () {
 
                </stack>
 
-      <Drawer 
-         anchor='bottom'
-         open={isDrawerOpen} 
-         onClose={() => setIsDrawerOpen(false)}
-      >
-                           <Box
+               <Drawer anchor='bottom' open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
+                  <Box
                      width={"100%"}
                      sx={{
                         display: "flex",
                         justifyContent: "space-evenly",
                         margin: "0.2rem auto",
                         }}>
-         <ButtonGroup variant="text" className='btn btnPill' aria-label="button group">
-      <Button onClick={() => setTimeInSec(60)}>1min</Button>
-      <Button onClick={() => setTimeInSec(120)}>2min</Button>
-      <Button onClick={() => setTimeInSec(300)}>5min</Button>
-      <Button onClick={() => setTimeInSec(600)}>10min</Button>
-         </ButtonGroup>
-         </Box>   
-
-      </Drawer>   
-
+                     <ButtonGroup variant="text" className='btn btnPill' aria-label="button group">
+                        <Button className="btnFont" onClick={() => setTimeInSec(60)}>1min</Button>
+                        <Button className="btnFont" onClick={() => setTimeInSec(120)}>2min</Button>
+                        <Button className="btnFont" onClick={() => setTimeInSec(300)}>5min</Button>
+                        <Button className="btnFont" onClick={() => setTimeInSec(600)}>10min</Button>
+                     </ButtonGroup>
+                  </Box>   
+               </Drawer>   
 
             </div>
             

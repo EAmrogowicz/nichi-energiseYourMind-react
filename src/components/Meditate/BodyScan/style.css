@@ -24,14 +24,32 @@
   font-size: 1.4rem;
 }
 
+.btnSpacing {
+  margin: 1rem;
+}
+
+.btnFont {
+  color: var(--primary);
+
+}
+
 .mug {
   height: 120px;
   width: 100px;
   border: 6px solid var(--shade);
   position: relative;
   border-radius: 0px 0px 70px 70px;
-  background: url("./tealiquid.png");
   box-shadow: 0px 0px 0px 1px var(--tint);
+  /* background: url("./tealiquid.png");
+  background-repeat: repeat-x;
+  background-position: 0% 0%;
+  animation: pourTea 10s infinite; */
+}
+
+.mugTea {
+  height: 120px;
+  width: 100px;
+  background: url("./tealiquid.png");
   background-repeat: repeat-x;
   background-position: 0% 0%;
   animation: pourTea 10s infinite;

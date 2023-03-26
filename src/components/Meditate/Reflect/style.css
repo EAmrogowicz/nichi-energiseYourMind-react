@@ -24,6 +24,13 @@
    font-size: 1.4rem;
 }
 
+.btnSpacing {
+   margin: 1rem;
+}
+
+.btnFont {
+   color: var(--primary);
+}
 
 /* Tea Pot/cup and ripple */
 
@@ -106,6 +113,15 @@
    border: 1px solid var(--shade);
 }
 
+
+.dropletPre {
+   width: 20px;
+   height: 74px;
+   position: relative;
+   z-index: 990;
+   border-radius: 100%;
+}
+
 .droplet {
    width: 20px;
    height: 74px;
@@ -113,6 +129,7 @@
    z-index: 990;
    border-radius: 100%;
 }
+
 
 .droplet::after {
    content: '';
