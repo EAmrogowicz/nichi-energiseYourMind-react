@@ -161,7 +161,7 @@ export default function MeditateBodyScan () {
                </div>
             </div>
 
-            <stack>
+            <Stack>
 
                <Box
                   width={"100%"}
@@ -204,13 +204,13 @@ export default function MeditateBodyScan () {
                         margin: "0.2rem auto",
                         }}>
 
-                     <Link to='/'>
+                     <Link to='/meditation'>
                         <IconBtn />
                      </Link>
 
                   </Box>
 
-               </stack>
+               </Stack>
 
                <Drawer anchor='bottom' open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
                   <Box

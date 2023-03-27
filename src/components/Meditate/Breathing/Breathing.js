@@ -150,7 +150,7 @@ export default function MeditateBreath () {
                   <div className={`blobbly-blob ${isActive ? 'blobbly-blob-swell' : ''}`}>
                   </div>
                </div>
-               <stack>
+               <Stack>
                   <Box
                      width={"100%"}
                      sx={{
@@ -191,12 +191,12 @@ export default function MeditateBreath () {
                         margin: "0.2rem auto",
                         }}>
 
-                     <Link to='/'>
+                     <Link to='/meditation'>
                         <IconBtn />
                      </Link>
                   </Box>
 
-               </stack>
+               </Stack>
                
                <Drawer anchor='bottom' open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
                   <Box
