@@ -21,19 +21,16 @@ export default function ActivityLog() {
   const userData = JSON.parse(localStorage.getItem("userData"));
   const moodData = userData.mood;
   const meditationData = userData.meditation;
-  const activityData = [moodData, meditationData].flat();
+  const activityData =
+    (moodData != null || meditationData != null) &&
+    [moodData, meditationData].flat();
   const iconSource = [moods, MeditationItems].flat();
   const [filteredData, setFilteredData] = useState([]);
   const [selectedDate, setSelectedDate] = useState("");
   const calendarRef = useRef();
   const minDate =
     activityData &&
-    new Date(Math.min(...activityData.map((data) => new Date(data.time))));
-
-  console.log("acti");
-  console.log(activityData);
-  console.log("icnsrd");
-  console.log(iconSource);
+    new Date(Math.min(...activityData.map((data) => new Date(data?.time))));
 
   function handleDateSelect(value) {
     const selectedDate = new Date(value.toISOString().substring(0, 10));
