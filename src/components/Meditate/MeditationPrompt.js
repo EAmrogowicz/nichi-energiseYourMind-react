@@ -10,6 +10,8 @@ import { MeditationItems } from "./MeditationItems";
 import MeditateBodyScan from "./BodyScan/BodyScan.js";
 import MeditateBreathing from "./Breathing/Breathing.js";
 import MeditateReflect from "./Reflect/Reflect.js";
+import MotionPage from "../Motion/MotionPage";
+import MotionScrollIn from "../Motion/MotionScrollIn";
 
 export default function MeditationPrompt({ onSubmit }) {
   const location = useLocation();
@@ -29,11 +31,17 @@ export default function MeditationPrompt({ onSubmit }) {
     <>
       {submitted || meditationSuggested ? (
         selectedMeditation === "Breathing" ? (
-          <MeditateBreathing />
+          <MotionPage>
+            <MeditateBreathing />
+          </MotionPage>
         ) : selectedMeditation === "Reflection" ? (
-          <MeditateReflect />
+          <MotionPage>
+            <MeditateReflect />
+          </MotionPage>
         ) : (
-          <MeditateBodyScan />
+          <MotionPage>
+            <MeditateBodyScan />
+          </MotionPage>
         )
       ) : (
         <>
@@ -61,20 +69,22 @@ export default function MeditationPrompt({ onSubmit }) {
                       }}
                     />
                   </MoodBtn>
-                  <ParagraphLg text={meditation.meditation} />
+                  <ParagraphLg text={meditation.description} />
                 </MeditationIcon>
               );
             })}
           </Grid>
-          <FormControl className='form'>
-            <Box sx={{ m: "0.2rem" }}>
-              <StandardBtn
-                name={"Meditate"}
-                onClick={handleSubmit}
-                disabled={!selectedMeditation}
-              />
-            </Box>
-          </FormControl>
+          <MotionScrollIn>
+            <FormControl className='form'>
+              <Box sx={{ m: "0.2rem" }}>
+                <StandardBtn
+                  name={"Meditate"}
+                  onClick={handleSubmit}
+                  disabled={!selectedMeditation}
+                />
+              </Box>
+            </FormControl>
+          </MotionScrollIn>
         </>
       )}
     </>
