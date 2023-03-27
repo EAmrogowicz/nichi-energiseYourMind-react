@@ -16,7 +16,7 @@ export default function StandardCard({
   address,
 }) {
   return (
-    <Card sx={{ maxWidth: 620 }} className={classCss}>
+    <Card sx={{ maxWidth: 620, minWidth: " 100% " }} className={classCss}>
       <CardActionArea component={RouterLink} to={address}>
         <CardMedia
           component="img"
