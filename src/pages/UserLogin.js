@@ -2,8 +2,6 @@ import { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Box, FormControl } from "@mui/material";
 import PageContainer from "../components/PageContainer";
-import MotionPage from "../components/Motion/MotionPage";
-import MotionItem from "../components/Motion/MotionItem";
 import SubHeading from "../components/Typography/SubHeading";
 import StandardBtn from "../components/Button/StandardBtn";
 import IconBtn from "../components/Button/IconBtn";
