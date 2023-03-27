@@ -67,10 +67,11 @@ export default function MoodPrompt({ onSubmit }) {
       <FormControl className="form">
         <Box sx={{ minWidth: "75%", ml: "4.8rem" }}>
           <TextField
+            className="inputField"
             ref={notesRef}
             id="mood-notes"
             label="Notes"
-            multiline
+            variant="outlined"
             fullWidth
             maxRows={4}
             onChange={handleChange}
