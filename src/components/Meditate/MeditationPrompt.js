@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { Grid, Box, FormControl } from "@mui/material";
 import SubHeading from "../Typography/SubHeading";
 import ParagraphLg from "../Typography/ParagraphLg";
@@ -6,7 +6,6 @@ import StandardBtn from "../Button/StandardBtn";
 import MeditationIcon from "./MeditationIcon";
 import MoodBtn from "../Button/MoodBtn";
 import { MeditationItems } from "./MeditationItems";
-import StandardCard from "../StandardCard";
 import MeditateBodyScan from "./BodyScan/BodyScan.js";
 import MeditateBreathing from "./Breathing/Breathing.js";
 import MeditateReflect from "./Reflect/Reflect.js";
@@ -40,13 +39,13 @@ export default function MeditationPrompt({ onSubmit }) {
             {MeditationItems.map((meditation) => {
               return (
                 <MeditationIcon
-                  key={meditation.description}
-                  onClick={() => setSelectedMeditation(meditation.description)}
+                  key={meditation.meditation}
+                  onClick={() => setSelectedMeditation(meditation.meditation)}
                   padding={"3.2rem"}
                 >
                   <MoodBtn
                     className={
-                      selectedMeditation === meditation.description
+                      selectedMeditation === meditation.meditation
                         ? "selected"
                         : ""
                     }
@@ -61,7 +60,7 @@ export default function MeditationPrompt({ onSubmit }) {
                       }}
                     />
                   </MoodBtn>
-                  <ParagraphLg text={meditation.description} />
+                  <ParagraphLg text={meditation.meditation} />
                 </MeditationIcon>
               );
             })}

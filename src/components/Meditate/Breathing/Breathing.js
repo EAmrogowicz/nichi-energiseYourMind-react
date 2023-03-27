@@ -219,7 +219,7 @@ export default function MeditateBreath () {
             
          ) : (
             <>
-               <stack>
+               <Stack>
                   <MeditationSuccess />
                   <Box
                      width={"100%"}
@@ -237,7 +237,7 @@ export default function MeditateBreath () {
                         <StandardBtn name={"Meditate Again"} onClick={handleClickSame}/>
                      </Link>
                   </Box>
-               </stack>
+               </Stack>
                
             </>
 
