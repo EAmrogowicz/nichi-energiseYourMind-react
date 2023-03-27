@@ -34,7 +34,7 @@ export default function ZenQuote({ mood }) {
           setError(error);
         }
       );
-  }, []);
+  }, [mood]);
 
   if (error) {
     return <div className="quote-error">Error: {error.message}</div>;

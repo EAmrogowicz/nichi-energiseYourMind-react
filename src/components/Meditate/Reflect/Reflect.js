@@ -95,6 +95,7 @@ export default function MeditateReflect() {
   };
 
   //--PW hit the gong when session has ended.
+  // eslint-disable-next-line
   const playSound = (medDurationMin) => {
     if (!isEnded) {
       hitGong();
@@ -133,26 +134,25 @@ export default function MeditateReflect() {
   return (
     <>
       {!isEnded ? (
-        <div className='meditateContainer'>
+        <div className="meditateContainer">
           <h1>Reflect Meditation</h1>
           <br />
           <h3>{reflectionText}</h3>
 
-          <div className='animeContainer'>
+          <div className="animeContainer">
             <div
-              className={`dropletPre ${
-                isActive ? "droplet dropletLeft" : ""
-              }`}></div>
+              className={`dropletPre ${isActive ? "droplet dropletLeft" : ""}`}
+            ></div>
 
-            <div className='cup'>
+            <div className="cup">
               <div className={`${isActive ? "ripples" : ""}`}></div>
-              <div className='cupLid'></div>
-              <div className='cupBody'></div>
-              <div className='cupFeet'></div>
+              <div className="cupLid"></div>
+              <div className="cupBody"></div>
+              <div className="cupFeet"></div>
 
-              <div className='cup2Lid'></div>
-              <div className='cup2Body'></div>
-              <div className='cup2Feet'></div>
+              <div className="cup2Lid"></div>
+              <div className="cup2Body"></div>
+              <div className="cup2Feet"></div>
             </div>
           </div>
 
@@ -163,32 +163,37 @@ export default function MeditateReflect() {
                 display: "flex",
                 justifyContent: "space-evenly",
                 margin: "0.2rem auto",
-              }}>
-              <div className='playPause' onClick={playPause}>
+              }}
+            >
+              <div className="playPause" onClick={playPause}>
                 {isActive ? (
                   <IconButton
-                    className='btn btnRound btnSpacing'
-                    aria-label='Pause'>
-                    <PauseIcon fontSize='sm' />
+                    className="btn btnRound btnSpacing"
+                    aria-label="Pause"
+                  >
+                    <PauseIcon fontSize="sm" />
                   </IconButton>
                 ) : (
                   <IconButton
-                    className='btn btnRound btnSpacing'
-                    aria-label='Pause'>
-                    <PlayArrowIcon fontSize='sm' />
+                    className="btn btnRound btnSpacing"
+                    aria-label="Pause"
+                  >
+                    <PlayArrowIcon fontSize="sm" />
                   </IconButton>
                 )}
               </div>
 
               <IconButton
-                className='btn btnRound btnSpacing'
-                aria-label='timer menu'>
+                className="btn btnRound btnSpacing"
+                aria-label="timer menu"
+              >
                 <TimerIcon onClick={() => setIsDrawerOpen(true)} />
               </IconButton>
 
               <IconButton
-                className='btn btnRound btnSpacing'
-                aria-label='reset'>
+                className="btn btnRound btnSpacing"
+                aria-label="reset"
+              >
                 <RestartAltIcon onClick={reset} />
               </IconButton>
             </Box>
@@ -197,7 +202,8 @@ export default function MeditateReflect() {
               width={"100%"}
               sx={{
                 margin: "1.2rem auto",
-              }}>
+              }}
+            >
               <SubHeading text={timeString}></SubHeading>
             </Box>
 
@@ -207,38 +213,42 @@ export default function MeditateReflect() {
                 display: "flex",
                 justifyContent: "space-evenly",
                 margin: "0.2rem auto",
-              }}>
-              <Link to='/meditation'>
+              }}
+            >
+              <Link to="/meditation">
                 <IconBtn />
               </Link>
             </Box>
           </Stack>
 
           <Drawer
-            anchor='bottom'
+            anchor="bottom"
             open={isDrawerOpen}
-            onClose={() => setIsDrawerOpen(false)}>
+            onClose={() => setIsDrawerOpen(false)}
+          >
             <Box
               width={"100%"}
               sx={{
                 display: "flex",
                 justifyContent: "space-evenly",
                 margin: "0.2rem auto",
-              }}>
+              }}
+            >
               <ButtonGroup
-                variant='text'
-                className='btn btnPill'
-                aria-label='button group'>
-                <Button className='btnFont' onClick={() => setTimeInSec(60)}>
+                variant="text"
+                className="btn btnPill"
+                aria-label="button group"
+              >
+                <Button className="btnFont" onClick={() => setTimeInSec(60)}>
                   1min
                 </Button>
-                <Button className='btnFont' onClick={() => setTimeInSec(120)}>
+                <Button className="btnFont" onClick={() => setTimeInSec(120)}>
                   2min
                 </Button>
-                <Button className='btnFont' onClick={() => setTimeInSec(300)}>
+                <Button className="btnFont" onClick={() => setTimeInSec(300)}>
                   5min
                 </Button>
-                <Button className='btnFont' onClick={() => setTimeInSec(600)}>
+                <Button className="btnFont" onClick={() => setTimeInSec(600)}>
                   10min
                 </Button>
               </ButtonGroup>
@@ -255,12 +265,13 @@ export default function MeditateReflect() {
                 display: "flex",
                 justifyContent: "space-evenly",
                 margin: "3.2rem auto",
-              }}>
-              <Link to='/'>
+              }}
+            >
+              <Link to="/">
                 <IconBtn />
               </Link>
 
-              <Link to='/meditation'>
+              <Link to="/meditation">
                 <StandardBtn
                   name={"Meditate Again"}
                   onClick={handleClickSame}

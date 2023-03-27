@@ -28,7 +28,7 @@ export default function MeditationPrompt({ onSubmit }) {
   };
 
   return (
-    <>
+    <Box className={"boxCenter"}>
       {submitted || meditationSuggested ? (
         selectedMeditation === "Breathing" ? (
           <MotionPage>
@@ -52,16 +52,18 @@ export default function MeditationPrompt({ onSubmit }) {
                 <MeditationIcon
                   key={meditation.meditation}
                   onClick={() => setSelectedMeditation(meditation.meditation)}
-                  padding={"3.2rem"}>
+                  padding={"3.2rem"}
+                >
                   <MoodBtn
                     className={
                       selectedMeditation === meditation.meditation
                         ? "selected"
                         : ""
-                    }>
+                    }
+                  >
                     <meditation.icon
-                      edge='center'
-                      color='inherit'
+                      edge="center"
+                      color="inherit"
                       sx={{
                         width: "3rem",
                         height: "3rem",
@@ -77,7 +79,7 @@ export default function MeditationPrompt({ onSubmit }) {
             })}
           </Grid>
           <MotionScrollIn>
-            <FormControl className='form'>
+            <FormControl className="form">
               <Box sx={{ mt: "3.2rem" }}>
                 <StandardBtn
                   name={"Meditate"}
@@ -89,6 +91,6 @@ export default function MeditationPrompt({ onSubmit }) {
           </MotionScrollIn>
         </>
       )}
-    </>
+    </Box>
   );
 }

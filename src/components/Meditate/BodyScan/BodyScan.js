@@ -88,6 +88,7 @@ export default function MeditateBodyScan() {
   };
 
   //--PW hit the gong when session has ended.
+  // eslint-disable-next-line
   const playSound = () => {
     if (!isEnded) {
       hitGong();
@@ -134,7 +135,7 @@ export default function MeditateBodyScan() {
     }
 
     return () => clearInterval(interval);
-  }, [isActive, timeInSec, playSound]);
+  }, [isActive, timeInSec, playSound, hitGong]);
 
   let timeString =
     Math.floor(timeInSec / 60) + `:` + timePadding(timeInSec % 60, 2);
@@ -142,7 +143,7 @@ export default function MeditateBodyScan() {
   return (
     <>
       {!isEnded ? (
-        <div className='meditateContainer'>
+        <div className="meditateContainer">
           <h1>Body Scan Meditation</h1>
           <br />
           <h3>
@@ -159,7 +160,7 @@ export default function MeditateBodyScan() {
             and start from your feet again.
           </h3>
 
-          <div className='animeContainer'>
+          <div className="animeContainer">
             <div className={`mug ${isActive ? "mugTea" : ""}`}></div>
           </div>
 
@@ -170,32 +171,37 @@ export default function MeditateBodyScan() {
                 display: "flex",
                 justifyContent: "space-evenly",
                 margin: "0.2rem auto",
-              }}>
-              <div className='playPause' onClick={playPause}>
+              }}
+            >
+              <div className="playPause" onClick={playPause}>
                 {isActive ? (
                   <IconButton
-                    className='btn btnRound btnSpacing'
-                    aria-label='Pause'>
-                    <PauseIcon fontSize='sm' />
+                    className="btn btnRound btnSpacing"
+                    aria-label="Pause"
+                  >
+                    <PauseIcon fontSize="sm" />
                   </IconButton>
                 ) : (
                   <IconButton
-                    className='btn btnRound btnSpacing'
-                    aria-label='Pause'>
-                    <PlayArrowIcon fontSize='sm' />
+                    className="btn btnRound btnSpacing"
+                    aria-label="Pause"
+                  >
+                    <PlayArrowIcon fontSize="sm" />
                   </IconButton>
                 )}
               </div>
 
               <IconButton
-                className='btn btnRound btnSpacing'
-                aria-label='timer menu'>
+                className="btn btnRound btnSpacing"
+                aria-label="timer menu"
+              >
                 <TimerIcon onClick={() => setIsDrawerOpen(true)} />
               </IconButton>
 
               <IconButton
-                className='btn btnRound btnSpacing'
-                aria-label='reset'>
+                className="btn btnRound btnSpacing"
+                aria-label="reset"
+              >
                 <RestartAltIcon onClick={reset} />
               </IconButton>
             </Box>
@@ -204,7 +210,8 @@ export default function MeditateBodyScan() {
               width={"100%"}
               sx={{
                 margin: "1.2rem auto",
-              }}>
+              }}
+            >
               <SubHeading text={timeString}></SubHeading>
             </Box>
 
@@ -214,38 +221,42 @@ export default function MeditateBodyScan() {
                 display: "flex",
                 justifyContent: "space-evenly",
                 margin: "0.2rem auto",
-              }}>
-              <Link to='/meditation'>
+              }}
+            >
+              <Link to="/meditation">
                 <IconBtn />
               </Link>
             </Box>
           </Stack>
 
           <Drawer
-            anchor='bottom'
+            anchor="bottom"
             open={isDrawerOpen}
-            onClose={() => setIsDrawerOpen(false)}>
+            onClose={() => setIsDrawerOpen(false)}
+          >
             <Box
               width={"100%"}
               sx={{
                 display: "flex",
                 justifyContent: "space-evenly",
                 margin: "0.2rem auto",
-              }}>
+              }}
+            >
               <ButtonGroup
-                variant='text'
-                className='btn btnPill'
-                aria-label='button group'>
-                <Button className='btnFont' onClick={() => setTimeInSec(60)}>
+                variant="text"
+                className="btn btnPill"
+                aria-label="button group"
+              >
+                <Button className="btnFont" onClick={() => setTimeInSec(60)}>
                   1min
                 </Button>
-                <Button className='btnFont' onClick={() => setTimeInSec(120)}>
+                <Button className="btnFont" onClick={() => setTimeInSec(120)}>
                   2min
                 </Button>
-                <Button className='btnFont' onClick={() => setTimeInSec(300)}>
+                <Button className="btnFont" onClick={() => setTimeInSec(300)}>
                   5min
                 </Button>
-                <Button className='btnFont' onClick={() => setTimeInSec(600)}>
+                <Button className="btnFont" onClick={() => setTimeInSec(600)}>
                   10min
                 </Button>
               </ButtonGroup>
@@ -262,12 +273,13 @@ export default function MeditateBodyScan() {
                 display: "flex",
                 justifyContent: "space-evenly",
                 margin: "3.2rem auto",
-              }}>
-              <Link to='/'>
+              }}
+            >
+              <Link to="/">
                 <IconBtn />
               </Link>
 
-              <Link to='/meditation'>
+              <Link to="/meditation">
                 <StandardBtn
                   name={"Meditate Again"}
                   onClick={handleClickSame}
