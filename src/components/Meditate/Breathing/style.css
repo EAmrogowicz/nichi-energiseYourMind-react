@@ -42,15 +42,14 @@
   font-size: 1.4rem;
 }
 
-
-.btnRound-active {
-  background: var(--shade);
+.btnSpacing {
+  margin: 1rem;
 }
 
-.btnRound-inactive {
-  background-color: var(--tint);
-}
+.btnFont {
+  color: var(--primary);
 
+}
 
 
 @keyframes giggle {

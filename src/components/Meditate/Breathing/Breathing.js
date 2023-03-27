@@ -1,10 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import useSound from 'use-sound';
+
+import { Drawer, Box, Stack } from "@mui/material";
+import { Link } from "react-router-dom";
+import StandardBtn from "../../Button/StandardBtn";
+import IconBtn from "../../Button/IconBtn";
+import IconButton from "@mui/material/IconButton";
 import SubHeading from "../../Typography/SubHeading";
+import ButtonGroup from '@mui/material/ButtonGroup';
+import Button from '@mui/material/Button';
 
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
+import TimerIcon from '@mui/icons-material/Timer';
+
+import MeditationSuccess from '../MeditationSuccess';
 
 import './style.css';
 import gongBell from '../audio/gong1.mp3';
@@ -36,6 +47,9 @@ export default function MeditateBreath () {
       localStorage.setItem("userData", JSON.stringify(userData));
       console.log("userData", userData)
    }
+
+   //--PW State for timer drawer
+   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
 
    //--PW (2) Run the meditation process
@@ -82,8 +96,13 @@ export default function MeditateBreath () {
          setTimeInSec(true); 
          addMeditationRecord(meditationRecord);
          reset();
+         setIsEnded(!isEnded);
       } 
    };
+
+   const handleClickSame = () => {
+      setIsEnded(!isEnded);
+   }
 
 
    useEffect( () => {
@@ -109,73 +128,122 @@ export default function MeditateBreath () {
    }
    , [isActive, timeInSec, playSound]
    );
+
+   let timeString =(Math.floor(timeInSec / 60)) + `:` + timePadding(timeInSec % 60, 2);
    
    return (
-      <div className="meditateContainer">
-         <h1>
-            Breathe Meditation
-         </h1>
-         <br/>
-         <h3>
-            As the blob swells, breathe in and <br/>
-            then breathe out as it contracts.
-         </h3>
 
-         <div className="animeContainer">
-            <div className={`blobbly-blob ${isActive ? 'blobbly-blob-swell' : ''}`}>
+      <>
+      {(!isEnded) ? (
+
+            <div className="meditateContainer">
+               <h1>
+                  Breath Meditation
+               </h1>
+               <br/>
+               <h3>
+                  As the blob swells, breathe in and <br/>
+                  then breathe out as it contracts.
+               </h3>
+
+               <div className="animeContainer">
+                  <div className={`blobbly-blob ${isActive ? 'blobbly-blob-swell' : ''}`}>
+                  </div>
+               </div>
+               <stack>
+                  <Box
+                     width={"100%"}
+                     sx={{
+                        display: "flex",
+                        justifyContent: "space-evenly",
+                        margin: "0.2rem auto",
+                        }}>
+                     <div className="playPause" onClick={playPause}>
+                        {isActive
+                           ? (<IconButton className='btn btnRound btnSpacing' aria-label='Pause'><PauseIcon fontSize="sm" /></IconButton>)
+                           : (<IconButton className='btn btnRound btnSpacing' aria-label='Pause'><PlayArrowIcon fontSize="sm" /></IconButton>)
+                        }
+                     </div>
+
+                     <IconButton className='btn btnRound btnSpacing' aria-label='timer menu'>
+                        <TimerIcon onClick={() => setIsDrawerOpen(true)} />
+                     </IconButton>
+
+                     <IconButton className='btn btnRound btnSpacing' aria-label='reset'>
+                        <RestartAltIcon onClick={reset} />
+                     </IconButton>   
+
+                  </Box>
+               
+                  <Box
+                     width={"100%"}
+                     sx={{
+                        margin: "1.2rem auto",
+                        }}>
+                     <SubHeading text={timeString}></SubHeading> 
+                  </Box>   
+
+                  <Box
+                     width={"100%"}
+                     sx={{
+                        display: "flex",
+                        justifyContent: "space-evenly",
+                        margin: "0.2rem auto",
+                        }}>
+
+                     <Link to='/'>
+                        <IconBtn />
+                     </Link>
+                  </Box>
+
+               </stack>
+               
+               <Drawer anchor='bottom' open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
+                  <Box
+                     width={"100%"}
+                     sx={{
+                        display: "flex",
+                        justifyContent: "space-evenly",
+                        margin: "0.2rem auto",
+                        }}>
+                     <ButtonGroup variant="text" className='btn btnPill' aria-label="button group">
+                        <Button className="btnFont" onClick={() => setTimeInSec(60)}>1min</Button>
+                        <Button className="btnFont" onClick={() => setTimeInSec(120)}>2min</Button>
+                        <Button className="btnFont" onClick={() => setTimeInSec(300)}>5min</Button>
+                        <Button className="btnFont" onClick={() => setTimeInSec(600)}>10min</Button>
+                     </ButtonGroup>
+                  </Box>   
+               </Drawer>   
+
             </div>
-         </div>
+            
+         ) : (
+            <>
+               <stack>
+                  <MeditationSuccess />
+                  <Box
+                     width={"100%"}
+                     sx={{
+                        display: "flex",
+                        justifyContent: "space-evenly",
+                        margin: "3.2rem auto",
+                        }}>
+                     
+                     <Link to='/'>
+                        <IconBtn />
+                     </Link>
 
-         <div className="playPause" onClick={playPause}>
-            {isActive
-               ? <PauseIcon fontSize="sm" />
-               : <PlayArrowIcon fontSize="sm"/>}
-         </div>
-         
-         <h2>
-            <div className="timerCount">
-               {(Math.floor(timeInSec / 60))}:{timePadding(timeInSec % 60, 2)}
-            </div>            
-         </h2>      
+                     <Link to='/meditation'>
+                        <StandardBtn name={"Meditate Again"} onClick={handleClickSame}/>
+                     </Link>
+                  </Box>
+               </stack>
+               
+            </>
 
+         )}  
+      </>
 
-         <div className="row">
-            <button className='btnRound' onClick={() => setTimeInSec(600)}>
-               10min
-            </button>
-
-            <button className='btnRound' onClick={() => setTimeInSec(300)}>
-               5min
-            </button>
-
-            <button className='btnRound' onClick={() => setTimeInSec(120)}>
-               2min
-            </button>
-
-            <button className='btnRound' onClick={() => setTimeInSec(60)}>
-               1min
-            </button>
-         {/* //--Pei 10sec button for testing only  */}
-            <button className='btnRound' onClick={() => setTimeInSec(10)}>
-               10sec
-            </button>
-         </div>
-
-         <div className='row'>
-            <button className={`btnRound btnRound-${isActive ? 'active' : 'inactive'}`} onClick={playPause}>
-               {isActive
-                  ? <PauseIcon />
-                  : <PlayArrowIcon  />}
-            </button>
-
-            <button className='btnRound' onClick={reset}>
-               <RestartAltIcon />
-            </button>
-
-         </div>
-      </div>
-
-   // End of Return  
    );
 };
 

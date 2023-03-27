@@ -13,11 +13,9 @@ import MeditateReflect from "./Reflect/Reflect.js"
 
 
 export default function MeditationPrompt({ onSubmit }) {
+  
   const [selectedMeditation, setSelectedMeditation] = useState("");
-  const timeStamp = new Date().toISOString();
-  const [notes, setNotes] = useState("");
-  const notesRef = useRef();
-
+  
   const [submitted, setSubmitted] = useState(false);
 
 
@@ -46,7 +44,6 @@ export default function MeditationPrompt({ onSubmit }) {
             <Grid
               container
               columns={3}
-              // rowSpacing={{ xs: 2, sm: 6 }}
             >
             {MeditationItems.map((meditation) => {
               return (
@@ -68,7 +65,7 @@ export default function MeditationPrompt({ onSubmit }) {
             })}
             </Grid>
             <FormControl className='form'>
-              <Box sx={{ m: "2.4rem" }}>
+              <Box sx={{ m: "0.2rem" }}>
                 <StandardBtn
                   name={"Meditate"}
                   onClick={handleSubmit}

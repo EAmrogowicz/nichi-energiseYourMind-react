@@ -12,12 +12,14 @@ export default function PageContainer({ children, size }) {
         margin: "4.8rem auto 2.4rem auto",
         display: "flex",
         justifyContent: "center",
-      }}>
+      }}
+    >
       <Stack
-        direction='column'
-        justifyContent='center'
-        alignItems='center'
-        spacing={{ xs: 4, sm: 6, md: 8 }}>
+        direction="column"
+        justifyContent="center"
+        alignItems="center"
+        spacing={{ xs: 4, sm: 4, md: 8 }}
+      >
         {children}
       </Stack>
     </Container>
