@@ -19,24 +19,24 @@ export default function Home() {
   return (
     <>
       {!userData ? (
-        <div className='hero'>
-          <PageContainer>
-            <MotionPage>
+        <div className="hero">
+          <MotionPage>
+            <PageContainer>
               <Box sx={{ mt: "2.4rem" }}>
-                <PageTitle text='Nichi' />
+                <PageTitle text="Nichi" />
                 <SubHeading
-                  text='Energise Your Mind'
+                  text="Energise Your Mind"
                   classCss={"fontWeight100"}
                 />
               </Box>
 
               <Logo />
 
-              <Link to='/user-login'>
-                <StandardBtn name='Get Started' />
+              <Link to="/user-login">
+                <StandardBtn name="Get Started" />
               </Link>
-            </MotionPage>
-          </PageContainer>
+            </PageContainer>
+          </MotionPage>
         </div>
       ) : (
         <Dashboard />
