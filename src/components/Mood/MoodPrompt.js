@@ -36,19 +36,13 @@ export default function MoodPrompt({ onSubmit }) {
       <MotionItem>
         <SubHeading text={"How are you feeling today?"} />
       </MotionItem>
-      <Grid
-        container
-        columns={6}
-        sx={{ my: "2.4rem" }}
-        // rowSpacing={{ xs: 2, sm: 6 }}
-      >
+      <Grid container columns={6} sx={{ my: "2.4rem" }}>
         {moods.map((mood) => {
           return (
             <MoodIcon
               key={mood.description}
               onClick={() => setSelectedMood(mood.description)}
               padding={"3.2rem"}>
-              {/* <MotionItem> */}
               <MoodBtn
                 className={selectedMood === mood.description ? "selected" : ""}>
                 <mood.icon
@@ -57,8 +51,9 @@ export default function MoodPrompt({ onSubmit }) {
                   sx={{ width: "3rem", height: "3rem", borderRadius: "50%" }}
                 />
               </MoodBtn>
-              {/* </MotionItem> */}
-              <ParagraphLg text={mood.description} />
+              <Box sx={{ mt: "0.8rem" }}>
+                <ParagraphLg text={mood.description} />
+              </Box>
             </MoodIcon>
           );
         })}

@@ -6,8 +6,7 @@ export default function MeditationIcon({ children, ...props }) {
   return (
     <Grid
       item
-      md={1}
-      sm={2}
+      sm={1}
       xs={3}
       sx={{
         display: "flex",
