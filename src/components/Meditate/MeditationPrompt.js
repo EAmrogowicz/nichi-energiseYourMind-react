@@ -24,7 +24,7 @@ export default function MeditationPrompt({ onSubmit }) {
   };
 
   return (
-    <>
+    <Box className={"boxCenter"}>
       {submitted ? (
         selectedMeditation === "Breathing" ? (
           <MeditateBreathing />
@@ -77,6 +77,6 @@ export default function MeditationPrompt({ onSubmit }) {
           </FormControl>
         </>
       )}
-    </>
+    </Box>
   );
 }

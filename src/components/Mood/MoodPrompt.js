@@ -31,14 +31,15 @@ export default function MoodPrompt({ onSubmit }) {
   }
 
   return (
-    <>
+    <Box className={"boxCenter"}>
       <MotionItem>
         <SubHeading text={"How are you feeling today?"} />
       </MotionItem>
       <Grid
         container
         columns={6}
-        sx={{ my: "2.4rem" }}
+        spacing={2}
+        sx={{ my: "2.4rem", ml: "0.4rem" }}
         // rowSpacing={{ xs: 2, sm: 6 }}
       >
         {moods.map((mood) => {
@@ -65,7 +66,7 @@ export default function MoodPrompt({ onSubmit }) {
         })}
       </Grid>
       <FormControl className="form">
-        <Box sx={{ minWidth: "75%", ml: "4.8rem" }}>
+        <Box sx={{ minWidth: "75%" }}>
           <TextField
             className="inputField"
             ref={notesRef}
@@ -78,7 +79,7 @@ export default function MoodPrompt({ onSubmit }) {
           />
         </Box>
         <MotionScrollIn>
-          <Box sx={{ ml: "4.8rem" }}>
+          <Box>
             <StandardBtn
               name={"Submit"}
               onClick={handleSubmit}
@@ -87,6 +88,6 @@ export default function MoodPrompt({ onSubmit }) {
           </Box>
         </MotionScrollIn>
       </FormControl>
-    </>
+    </Box>
   );
 }
