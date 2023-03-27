@@ -97,26 +97,13 @@ export default function ActivityLog() {
                     sx={{
                       "@media( min-width: 900px)": { p: "2.4rem" },
                     }}>
-                    <Grid container columns={2}>
-                      <MotionItem>
+                    <MotionItem>
+                      <Grid container columns={2}>
                         <Grid item xs={2} sm={1}>
                           <Stack>
-                            <Box
-                              sx={{
-                                m: "1.2rem auto",
-                                textAlign: "center",
-                                "@media( min-width: 900px)": { my: "2.4rem" },
-                              }}>
-                              <ParagraphLg text={`Your streak is`} />
-                              <Box className='streak-box'>
-                                <span>{getStreak(moodData)}</span>
-                              </Box>
-                              <ParagraphLg text={"days"} />
-                            </Box>
+                            <Streak />
                           </Stack>
                         </Grid>
-                      </MotionItem>
-                      <MotionItem>
                         <Grid
                           item
                           xs={2}
@@ -135,8 +122,8 @@ export default function ActivityLog() {
                             </Box>
                           </Stack>
                         </Grid>
-                      </MotionItem>
-                    </Grid>
+                      </Grid>
+                    </MotionItem>
                   </Paper>
                   <MotionItem>
                     <Box sx={{ m: "2.4rem auto" }}>
