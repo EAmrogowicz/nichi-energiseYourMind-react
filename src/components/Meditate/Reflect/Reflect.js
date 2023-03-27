@@ -239,7 +239,7 @@ export default function MeditateReflect () {
             
          ) : (
             <>
-               <stack>
+               <Stack>
                   <MeditationSuccess />
                   <Box
                      width={"100%"}
@@ -257,7 +257,7 @@ export default function MeditateReflect () {
                         <StandardBtn name={"Meditate Again"} onClick={handleClickSame}/>
                      </Link>
                   </Box>
-               </stack>
+               </Stack>
                
             </>
 

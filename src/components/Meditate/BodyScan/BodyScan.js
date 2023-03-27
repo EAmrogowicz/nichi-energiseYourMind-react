@@ -233,7 +233,7 @@ export default function MeditateBodyScan () {
             
          ) : (
             <>
-               <stack>
+               <Stack>
                   <MeditationSuccess />
                   <Box
                      width={"100%"}
@@ -251,7 +251,7 @@ export default function MeditateBodyScan () {
                         <StandardBtn name={"Meditate Again"} onClick={handleClickSame}/>
                      </Link>
                   </Box>
-               </stack>
+               </Stack>
                
             </>
 
