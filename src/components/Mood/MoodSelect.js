@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import MotionPage from "../PageContainer";
 import MotionItem from "../Motion/MotionItem";
 import MotionScrollIn from "../Motion/MotionScrollIn";
-import SubHeading from "../Typography/SubHeading";
 import Heading4 from "../Typography/Heading4";
 import ParagraphLg from "../Typography/ParagraphLg";
 import StandardCard from "../StandardCard";
@@ -12,6 +11,7 @@ import StandardBtn from "../Button/StandardBtn";
 import IconBtn from "../Button/IconBtn";
 import ZenQuote from "../Quotes";
 import { meditations } from "../Meditate/Meditations";
+import Heading5 from "../Typography/Heading5";
 import { moods } from "../Mood/Moods";
 
 export default function MoodSelect({ moodRecord }) {
@@ -36,16 +36,16 @@ export default function MoodSelect({ moodRecord }) {
 
   return (
     <MotionPage>
-      <Paper elevation={5} className='paper-lg-bg' sx={{ p: "2.4rem" }}>
+      <Paper elevation={5} className='paper-lg-bg' sx={{ py: "2.4rem" }}>
+        <Box className={"backdropBlur"}> </Box>
         <Box sx={{ textAlign: "center" }} minWidth={"50vw"}>
-          <SubHeading text={"You are feeling"} />
-          <Heading4 text={selectedMood} />
+          <Heading5 text={selectedMood} />
         </Box>
         <MoodIcon padding={"3.2rem"}>
           <SelectedMoodIcon
             edge='center'
             color='inherit'
-            className='btn moodBtn'
+            className='moodBtn'
             sx={{ width: "6.4rem", height: "6.4rem", borderRadius: "50%" }}
           />
         </MoodIcon>
@@ -54,11 +54,11 @@ export default function MoodSelect({ moodRecord }) {
             <ParagraphLg text={"Sorry, you feel that way."} />
           </Box>
         )}
+        <Box sx={{ m: "1.2rem auto" }} className='zen-quote'>
+          <ZenQuote mood='selectedMood' />
+        </Box>
       </Paper>
 
-      {/* adds quote per mood type */}
-
-      {/*  */}
       <Stack>
         <MotionItem>
           <Box
@@ -69,8 +69,8 @@ export default function MoodSelect({ moodRecord }) {
         </MotionItem>
         {matchingMeditation && (
           <MotionItem>
-            <Box sx={{ m: "1.2rem auto" }}>
-              <ParagraphLg
+            <Box sx={{ m: "2.4rem auto" }}>
+              <Heading4
                 text={`${
                   badMood.includes(selectedMood)
                     ? "To improve your mood, w"
@@ -80,11 +80,10 @@ export default function MoodSelect({ moodRecord }) {
                 } for you to try:`}
               />
             </Box>
-            <Box>
+            <Box sx={{ m: "1.2rem auto", width: "100%" }}>
               <StandardCard
                 key={matchingMeditation.meditation}
-                height={"300rem"}
-                maxWidth={360}
+                height={"320rem"}
                 classCss={"stnCard"}
                 imglink={matchingMeditation.meditationImg}
                 title={matchingMeditation.meditation}
