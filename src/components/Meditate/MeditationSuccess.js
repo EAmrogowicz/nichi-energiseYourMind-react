@@ -2,8 +2,6 @@ import React from "react";
 
 import SubHeading from "../Typography/SubHeading";
 import MeditationIcon from "./MeditationIcon";
-import { Box } from "@mui/material";
-import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import CelebrationIcon from "@mui/icons-material/Celebration";
 import MotionPage from "../Motion/MotionPage";
 
@@ -12,8 +10,8 @@ export default function MeditationSuccess() {
     <MotionPage>
       <MeditationIcon padding={"0.2rem"}>
         <CelebrationIcon
-          edge='center'
-          color='inherit'
+          edge="center"
+          color="inherit"
           sx={{ width: "3rem", height: "3rem", borderRadius: "50%" }}
         />
       </MeditationIcon>

@@ -32,7 +32,7 @@ export default function MoodPrompt({ onSubmit }) {
   }
 
   return (
-    <>
+    <Box className={"boxCenter"}>
       <MotionItem>
         <SubHeading text={"How are you feeling today?"} />
       </MotionItem>
@@ -72,7 +72,7 @@ export default function MoodPrompt({ onSubmit }) {
           />
         </Box>
         <MotionScrollIn>
-          <Box sx={{ mt: "3.2rem" }}>
+          <Box>
             <StandardBtn
               name={"Submit"}
               onClick={handleSubmit}
@@ -81,6 +81,6 @@ export default function MoodPrompt({ onSubmit }) {
           </Box>
         </MotionScrollIn>
       </FormControl>
-    </>
+    </Box>
   );
 }
