@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import useSound from 'use-sound';
 
-import { Box, Stack } from "@mui/material";
+import { Drawer, Box, Stack } from "@mui/material";
 import { Link } from "react-router-dom";
 import StandardBtn from "../../Button/StandardBtn";
 import IconBtn from "../../Button/IconBtn";
 import IconButton from "@mui/material/IconButton";
 import SubHeading from "../../Typography/SubHeading";
+import ButtonGroup from '@mui/material/ButtonGroup';
+import Button from '@mui/material/Button';
 
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
+import TimerIcon from '@mui/icons-material/Timer';
 
-import Reflections from './reflections.json';
 import MeditationSuccess from '../MeditationSuccess';
+import Reflections from './reflections.json';
 
 import './style.css';
 import gongBell from '../audio/gong2.mp3';
@@ -48,6 +51,9 @@ export default function MeditateReflect () {
       localStorage.setItem("userData", JSON.stringify(userData));
       console.log("userData", userData)
    }
+
+   //--PW State for timer drawer
+   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
 
    //--PW (2) Run the meditation process   
@@ -148,11 +154,11 @@ export default function MeditateReflect () {
 
                <div className="animeContainer">
 
-                  <div className="droplet dropletLeft">    
+                  <div className={`dropletPre ${isActive ? 'droplet dropletLeft' : ''}`}>    
                   </div>
 
                   <div className="cup">
-                     <div className="ripples"></div>
+                     <div className={`${isActive ? 'ripples' : ''}`}></div>
                      <div className="cupLid"></div>
                      <div className="cupBody"></div>
                      <div className="cupFeet"></div>
@@ -174,12 +180,16 @@ export default function MeditateReflect () {
                         }}>
                      <div className="playPause" onClick={playPause}>
                         {isActive
-                           ? (<IconButton className='btn btnRound' aria-label='Pause'><PauseIcon fontSize="sm" /></IconButton>)
-                           : (<IconButton className='btn btnRound' aria-label='Pause'><PlayArrowIcon fontSize="sm" /></IconButton>)
+                           ? (<IconButton className='btn btnRound btnSpacing' aria-label='Pause'><PauseIcon fontSize="sm" /></IconButton>)
+                           : (<IconButton className='btn btnRound btnSpacing' aria-label='Pause'><PlayArrowIcon fontSize="sm" /></IconButton>)
                         }
                      </div>
 
-                     <IconButton className='btn btnRound' aria-label='reset'>
+                     <IconButton className='btn btnRound btnSpacing' aria-label='timer menu'>
+                        <TimerIcon onClick={() => setIsDrawerOpen(true)} />
+                     </IconButton>
+
+                     <IconButton className='btn btnRound btnSpacing' aria-label='reset'>
                         <RestartAltIcon onClick={reset} />
                      </IconButton>   
 
@@ -207,28 +217,23 @@ export default function MeditateReflect () {
                   </Box>
 
                </stack>
-               <div className="row">
-                  <button className='btnRound' onClick={() => setTimeInSec(600)}>
-                     10min
-                  </button>
 
-                  <button className='btnRound' onClick={() => setTimeInSec(300)}>
-                     5min
-                  </button>
-
-                  <button className='btnRound' onClick={() => setTimeInSec(120)}>
-                     2min
-                  </button>
-
-                  <button className='btnRound' onClick={() => setTimeInSec(60)}>
-                     1min
-                  </button>
-               {/* //--Pei 10sec button for testing only  */}
-                  <button className='btnRound' onClick={() => setTimeInSec(10)}>
-                     10sec
-                  </button>
-               </div>
-
+               <Drawer anchor='bottom' open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
+                  <Box
+                     width={"100%"}
+                     sx={{
+                        display: "flex",
+                        justifyContent: "space-evenly",
+                        margin: "0.2rem auto",
+                        }}>
+                     <ButtonGroup variant="text" className='btn btnPill' aria-label="button group">
+                        <Button className="btnFont" onClick={() => setTimeInSec(60)}>1min</Button>
+                        <Button className="btnFont" onClick={() => setTimeInSec(120)}>2min</Button>
+                        <Button className="btnFont" onClick={() => setTimeInSec(300)}>5min</Button>
+                        <Button className="btnFont" onClick={() => setTimeInSec(600)}>10min</Button>
+                     </ButtonGroup>
+                  </Box>   
+               </Drawer>   
 
             </div>
             
