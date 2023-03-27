@@ -10,19 +10,19 @@ import MoodIcon from "./MoodIcon";
 import StandardBtn from "../Button/StandardBtn";
 import IconBtn from "../Button/IconBtn";
 import ZenQuote from "../Quotes";
-import { meditations } from "../Meditate/Meditations";
+import { MeditationItems } from "../Meditate/MeditationItems";
 import Heading5 from "../Typography/Heading5";
 import { moods } from "../Mood/Moods";
 
 export default function MoodSelect({ moodRecord }) {
-  const selectedMood = moodRecord.mood;
+  const selectedMood = moodRecord.description;
   const badMood = ["Sad", "Awful"];
 
   const SelectedMoodIcon = moods.find(
     (mood) => mood.description === selectedMood
   ).icon;
 
-  const matchingMeditation = meditations.filter((meditation) =>
+  const matchingMeditation = MeditationItems.filter((meditation) =>
     meditation.suitableMood.includes(selectedMood)
   )[0];
 
@@ -30,7 +30,7 @@ export default function MoodSelect({ moodRecord }) {
 
   const handleMeditationCardSelect = () => {
     navigate("/meditation", {
-      state: { meditationSelected: matchingMeditation.meditation },
+      state: { meditationSuggested: matchingMeditation.description },
     });
   };
 
@@ -82,13 +82,13 @@ export default function MoodSelect({ moodRecord }) {
             </Box>
             <Box sx={{ m: "1.2rem auto", width: "100%" }}>
               <StandardCard
-                key={matchingMeditation.meditation}
+                key={matchingMeditation.description}
                 height={"320rem"}
                 classCss={"stnCard"}
                 imglink={matchingMeditation.meditationImg}
-                title={matchingMeditation.meditation}
+                title={matchingMeditation.description}
                 sx={{ my: "2.4rem" }}
-                oncClick={handleMeditationCardSelect}
+                onClick={handleMeditationCardSelect}
               />
             </Box>
           </MotionItem>

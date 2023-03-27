@@ -22,7 +22,7 @@ export default function MoodLogs() {
           .splice(0, 3)
           .map((moodRecord) => {
             const matchingMood = moods.find(
-              (mood) => mood.description === moodRecord.mood
+              (mood) => mood.description === moodRecord.description
             );
             const MoodIconRecord = matchingMood?.icon || null;
             return (

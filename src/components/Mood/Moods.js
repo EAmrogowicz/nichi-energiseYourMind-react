@@ -13,3 +13,25 @@ export const moods = [
   { icon: SentimentDissatisfiedOutlinedIcon, description: "Sad" },
   { icon: SentimentVeryDissatisfiedOutlinedIcon, description: "Awful" },
 ];
+
+// Good
+//   Accomplished
+//   Grateful
+//   Happy
+//   Hopeful
+//   Productive
+//   Relaxed
+// Average
+//   Tense
+//   Disconnected
+//   Neutral
+//   Tired
+//   Unfocussed
+//   Unmotivated
+// Not Great
+//   Angry
+//   Sad
+//   Sick
+//   Stressed
+//   Anxious
+//   Exhausted

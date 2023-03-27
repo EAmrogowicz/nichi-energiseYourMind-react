@@ -19,7 +19,8 @@ export default function MoodPrompt({ onSubmit }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const moodRecord = {
-      mood: selectedMood,
+      type: "Mood",
+      description: selectedMood,
       time: timeStamp,
       notes: notes,
     };
@@ -46,15 +47,13 @@ export default function MoodPrompt({ onSubmit }) {
             <MoodIcon
               key={mood.description}
               onClick={() => setSelectedMood(mood.description)}
-              padding={"3.2rem"}
-            >
+              padding={"3.2rem"}>
               {/* <MotionItem> */}
               <MoodBtn
-                className={selectedMood === mood.description ? "selected" : ""}
-              >
+                className={selectedMood === mood.description ? "selected" : ""}>
                 <mood.icon
-                  edge="center"
-                  color="inherit"
+                  edge='center'
+                  color='inherit'
                   sx={{ width: "3rem", height: "3rem", borderRadius: "50%" }}
                 />
               </MoodBtn>
@@ -64,14 +63,14 @@ export default function MoodPrompt({ onSubmit }) {
           );
         })}
       </Grid>
-      <FormControl className="form">
+      <FormControl className='form'>
         <Box sx={{ minWidth: "75%", ml: "4.8rem" }}>
           <TextField
-            className="inputField"
+            className='inputField'
             ref={notesRef}
-            id="mood-notes"
-            label="Notes"
-            variant="outlined"
+            id='mood-notes'
+            label='Notes'
+            variant='outlined'
             fullWidth
             maxRows={4}
             onChange={handleChange}
