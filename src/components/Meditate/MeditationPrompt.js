@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocation } from "react-router";
 import { Grid, Box, FormControl } from "@mui/material";
 import SubHeading from "../Typography/SubHeading";
 import ParagraphLg from "../Typography/ParagraphLg";
@@ -11,6 +12,8 @@ import MeditateBreathing from "./Breathing/Breathing.js";
 import MeditateReflect from "./Reflect/Reflect.js";
 
 export default function MeditationPrompt({ onSubmit }) {
+  const location = useLocation();
+  const meditationSuggested = location.state?.meditationSuggested;
   const [selectedMeditation, setSelectedMeditation] = useState("");
 
   const [submitted, setSubmitted] = useState(false);
@@ -24,7 +27,7 @@ export default function MeditationPrompt({ onSubmit }) {
 
   return (
     <>
-      {submitted ? (
+      {submitted || meditationSuggested ? (
         selectedMeditation === "Breathing" ? (
           <MeditateBreathing />
         ) : selectedMeditation === "Reflection" ? (
@@ -41,18 +44,16 @@ export default function MeditationPrompt({ onSubmit }) {
                 <MeditationIcon
                   key={meditation.meditation}
                   onClick={() => setSelectedMeditation(meditation.meditation)}
-                  padding={"3.2rem"}
-                >
+                  padding={"3.2rem"}>
                   <MoodBtn
                     className={
                       selectedMeditation === meditation.meditation
                         ? "selected"
                         : ""
-                    }
-                  >
+                    }>
                     <meditation.icon
-                      edge="center"
-                      color="inherit"
+                      edge='center'
+                      color='inherit'
                       sx={{
                         width: "3rem",
                         height: "3rem",
@@ -65,7 +66,7 @@ export default function MeditationPrompt({ onSubmit }) {
               );
             })}
           </Grid>
-          <FormControl className="form">
+          <FormControl className='form'>
             <Box sx={{ m: "0.2rem" }}>
               <StandardBtn
                 name={"Meditate"}
