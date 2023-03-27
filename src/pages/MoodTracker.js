@@ -3,7 +3,6 @@ import PageContainer from "../components/PageContainer";
 import MotionPage from "../components/Motion/MotionPage";
 import MoodPrompt from "../components/Mood/MoodPrompt";
 import MoodSelect from "../components/Mood/MoodSelect";
-import { moods } from "../components/Mood/Moods";
 
 export default function MoodTracker() {
   const userData = JSON.parse(localStorage.getItem("userData"));
@@ -29,7 +28,7 @@ export default function MoodTracker() {
         </MotionPage>
       ) : (
         <MotionPage>
-          <MoodPrompt moods={moods} onSubmit={handleMoodSubmit} />
+          <MoodPrompt onSubmit={handleMoodSubmit} />
         </MotionPage>
       )}
     </PageContainer>

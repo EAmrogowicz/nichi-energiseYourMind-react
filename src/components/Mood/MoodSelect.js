@@ -12,8 +12,9 @@ import IconBtn from "../Button/IconBtn";
 import ZenQuote from "../Quotes";
 import { meditations } from "../Meditate/Meditations";
 import Heading5 from "../Typography/Heading5";
+import { moods } from "../Mood/Moods";
 
-export default function MoodSelect({ moods, moodRecord }) {
+export default function MoodSelect({ moodRecord }) {
   const selectedMood = moodRecord.mood;
   const badMood = ["Sad", "Awful"];
 
@@ -35,16 +36,16 @@ export default function MoodSelect({ moods, moodRecord }) {
 
   return (
     <MotionPage>
-      <Paper elevation={5} className="paper-lg-bg" sx={{ py: "2.4rem" }}>
+      <Paper elevation={5} className='paper-lg-bg' sx={{ py: "2.4rem" }}>
         <Box className={"backdropBlur"}> </Box>
         <Box sx={{ textAlign: "center" }} minWidth={"50vw"}>
           <Heading5 text={selectedMood} />
         </Box>
         <MoodIcon padding={"3.2rem"}>
           <SelectedMoodIcon
-            edge="center"
-            color="inherit"
-            className="moodBtn"
+            edge='center'
+            color='inherit'
+            className='moodBtn'
             sx={{ width: "6.4rem", height: "6.4rem", borderRadius: "50%" }}
           />
         </MoodIcon>
@@ -53,12 +54,19 @@ export default function MoodSelect({ moods, moodRecord }) {
             <ParagraphLg text={"Sorry, you feel that way."} />
           </Box>
         )}
-        <Box sx={{ m: "1.2rem auto" }} className="zen-quote">
-          <ZenQuote mood="selectedMood" />
+        <Box sx={{ m: "1.2rem auto" }} className='zen-quote'>
+          <ZenQuote mood='selectedMood' />
         </Box>
       </Paper>
 
       <Stack>
+        <MotionItem>
+          <Box
+            sx={{ m: "3.2rem auto", fontStyle: "italic" }}
+            className='zen-quote'>
+            <ZenQuote mood='selectedMood' />
+          </Box>
+        </MotionItem>
         {matchingMeditation && (
           <MotionItem>
             <Box sx={{ m: "2.4rem auto" }}>
@@ -92,12 +100,11 @@ export default function MoodSelect({ moods, moodRecord }) {
               display: "flex",
               justifyContent: "space-between",
               margin: "3.2rem auto",
-            }}
-          >
-            <Link to="/">
+            }}>
+            <Link to='/'>
               <IconBtn />
             </Link>
-            <Link to="/activity-log">
+            <Link to='/activity-log'>
               <StandardBtn name={"Activity"} />
             </Link>
           </Box>

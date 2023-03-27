@@ -13,6 +13,7 @@ import MoodLogs from "../components/Mood/MoodLog";
 import MoodGrid from "../components/Mood/MoodGrid";
 import MoodMost from "../components/Mood/MoodMost";
 import { moods } from "../components/Mood/Moods";
+import Streak from "../components/Streak";
 
 export default function ActivityLog() {
   const userData = JSON.parse(localStorage.getItem("userData"));
@@ -27,21 +28,7 @@ export default function ActivityLog() {
       Math.min(...moodData.map((moodRecord) => new Date(moodRecord.time)))
     );
 
-  function getStreak(moodData) {
-    let [streak, currStreak] = [0, 0];
-    let prevDate = null;
-
-    moodData.forEach((data) => {
-      const currDate = new Date(data.time);
-      prevDate && prevDate.getDate() === currDate.getDate() - 1
-        ? currStreak++ && (streak = Math.max(streak, currStreak))
-        : (currStreak = 1);
-      prevDate = currDate;
-    });
-    return streak;
-  }
-
-  function handleDateSelect(value, event) {
+  function handleDateSelect(value) {
     const selectedDate = new Date(value.toISOString().substring(0, 10));
     const filteredData = moodData.filter((moodRecord) => {
       return (
