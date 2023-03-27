@@ -547,6 +547,7 @@ body.dark .footer {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  margin: auto;
 }
 
 .inputField {

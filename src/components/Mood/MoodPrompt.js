@@ -64,7 +64,7 @@ export default function MoodPrompt({ onSubmit }) {
         })}
       </Grid>
       <FormControl className='form'>
-        <Box sx={{ minWidth: "75%", ml: "4.8rem" }}>
+        <Box sx={{ minWidth: "75%" }}>
           <TextField
             className='inputField'
             ref={notesRef}
@@ -77,7 +77,7 @@ export default function MoodPrompt({ onSubmit }) {
           />
         </Box>
         <MotionScrollIn>
-          <Box sx={{ ml: "4.8rem", mt: "3.2rem" }}>
+          <Box sx={{ mt: "3.2rem" }}>
             <StandardBtn
               name={"Submit"}
               onClick={handleSubmit}

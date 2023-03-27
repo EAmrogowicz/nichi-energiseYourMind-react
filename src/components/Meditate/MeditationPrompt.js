@@ -76,7 +76,7 @@ export default function MeditationPrompt({ onSubmit }) {
           </Grid>
           <MotionScrollIn>
             <FormControl className='form'>
-              <Box sx={{ m: "0.2rem" }}>
+              <Box sx={{ mt: "3.2rem" }}>
                 <StandardBtn
                   name={"Meditate"}
                   onClick={handleSubmit}
