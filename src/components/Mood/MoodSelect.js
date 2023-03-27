@@ -10,18 +10,19 @@ import MoodIcon from "./MoodIcon";
 import StandardBtn from "../Button/StandardBtn";
 import IconBtn from "../Button/IconBtn";
 import ZenQuote from "../Quotes";
-import { meditations } from "../Meditate/Meditations";
+import { MeditationItems } from "../Meditate/MeditationItems";
 import Heading5 from "../Typography/Heading5";
+import { moods } from "../Mood/Moods";
 
-export default function MoodSelect({ moods, moodRecord }) {
-  const selectedMood = moodRecord.mood;
+export default function MoodSelect({ moodRecord }) {
+  const selectedMood = moodRecord.description;
   const badMood = ["Sad", "Awful"];
 
   const SelectedMoodIcon = moods.find(
     (mood) => mood.description === selectedMood
   ).icon;
 
-  const matchingMeditation = meditations.filter((meditation) =>
+  const matchingMeditation = MeditationItems.filter((meditation) =>
     meditation.suitableMood.includes(selectedMood)
   )[0];
 
@@ -29,22 +30,22 @@ export default function MoodSelect({ moods, moodRecord }) {
 
   const handleMeditationCardSelect = () => {
     navigate("/meditation", {
-      state: { meditationSelected: matchingMeditation.meditation },
+      state: { meditationSuggested: matchingMeditation.description },
     });
   };
 
   return (
     <MotionPage>
-      <Paper elevation={5} className="paper-lg-bg" sx={{ py: "2.4rem" }}>
+      <Paper elevation={5} className='paper-lg-bg' sx={{ py: "2.4rem" }}>
         <Box className={"backdropBlur"}> </Box>
         <Box sx={{ textAlign: "center" }} minWidth={"50vw"}>
           <Heading5 text={selectedMood} />
         </Box>
         <MoodIcon padding={"3.2rem"}>
           <SelectedMoodIcon
-            edge="center"
-            color="inherit"
-            className="moodBtn"
+            edge='center'
+            color='inherit'
+            className='moodBtn'
             sx={{ width: "6.4rem", height: "6.4rem", borderRadius: "50%" }}
           />
         </MoodIcon>
@@ -53,12 +54,19 @@ export default function MoodSelect({ moods, moodRecord }) {
             <ParagraphLg text={"Sorry, you feel that way."} />
           </Box>
         )}
-        <Box sx={{ m: "1.2rem auto" }} className="zen-quote">
-          <ZenQuote mood="selectedMood" />
+        <Box sx={{ m: "1.2rem auto" }} className='zen-quote'>
+          <ZenQuote mood='selectedMood' />
         </Box>
       </Paper>
 
       <Stack>
+        <MotionItem>
+          <Box
+            sx={{ m: "3.2rem auto", fontStyle: "italic" }}
+            className='zen-quote'>
+            <ZenQuote mood='selectedMood' />
+          </Box>
+        </MotionItem>
         {matchingMeditation && (
           <MotionItem>
             <Box sx={{ m: "2.4rem auto" }}>
@@ -74,13 +82,13 @@ export default function MoodSelect({ moods, moodRecord }) {
             </Box>
             <Box sx={{ m: "1.2rem auto", width: "100%" }}>
               <StandardCard
-                key={matchingMeditation.meditation}
+                key={matchingMeditation.description}
                 height={"320rem"}
                 classCss={"stnCard"}
                 imglink={matchingMeditation.meditationImg}
-                title={matchingMeditation.meditation}
+                title={matchingMeditation.description}
                 sx={{ my: "2.4rem" }}
-                oncClick={handleMeditationCardSelect}
+                onClick={handleMeditationCardSelect}
               />
             </Box>
           </MotionItem>
@@ -92,12 +100,11 @@ export default function MoodSelect({ moods, moodRecord }) {
               display: "flex",
               justifyContent: "space-between",
               margin: "3.2rem auto",
-            }}
-          >
-            <Link to="/">
+            }}>
+            <Link to='/'>
               <IconBtn />
             </Link>
-            <Link to="/activity-log">
+            <Link to='/activity-log'>
               <StandardBtn name={"Activity"} />
             </Link>
           </Box>

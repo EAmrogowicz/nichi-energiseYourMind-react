@@ -13,57 +13,53 @@ import MoodLogs from "../components/Mood/MoodLog";
 import MoodGrid from "../components/Mood/MoodGrid";
 import MoodMost from "../components/Mood/MoodMost";
 import { moods } from "../components/Mood/Moods";
+import { MeditationItems } from "../components/Meditate/MeditationItems";
+import Streak from "../components/Streak";
 
+// MAYBE: combine same moods in the display for the day?
 export default function ActivityLog() {
   const userData = JSON.parse(localStorage.getItem("userData"));
-  const moodData = userData?.mood;
-  const meditationData = userData?.meditation;
-  const [filteredMoodData, setFilteredMoodData] = useState([]);
+  const moodData = userData.mood;
+  const meditationData = userData.meditation;
+  const activityData = [moodData, meditationData].flat();
+  const iconSource = [moods, MeditationItems].flat();
+  const [filteredData, setFilteredData] = useState([]);
   const [selectedDate, setSelectedDate] = useState("");
   const calendarRef = useRef();
   const minDate =
-    moodData &&
-    new Date(
-      Math.min(...moodData.map((moodRecord) => new Date(moodRecord.time)))
-    );
+    activityData &&
+    new Date(Math.min(...activityData.map((data) => new Date(data.time))));
 
-  function getStreak(moodData) {
-    let [streak, currStreak] = [0, 0];
-    let prevDate = null;
+  console.log("acti");
+  console.log(activityData);
+  console.log("icnsrd");
+  console.log(iconSource);
 
-    moodData.forEach((data) => {
-      const currDate = new Date(data.time);
-      prevDate && prevDate.getDate() === currDate.getDate() - 1
-        ? currStreak++ && (streak = Math.max(streak, currStreak))
-        : (currStreak = 1);
-      prevDate = currDate;
-    });
-    return streak;
-  }
-
-  function handleDateSelect(value, event) {
+  function handleDateSelect(value) {
     const selectedDate = new Date(value.toISOString().substring(0, 10));
-    const filteredData = moodData.filter((moodRecord) => {
+    const dataByDate = activityData.filter((data) => {
       return (
         selectedDate.getTime() ===
-        new Date(moodRecord.time.substring(0, 10)).getTime()
+        new Date(data.time.substring(0, 10)).getTime()
       );
     });
     setSelectedDate(selectedDate);
-    setFilteredMoodData(filteredData);
+    setFilteredData(dataByDate);
+    console.log("filteredData");
+    console.log(dataByDate);
   }
 
   function dayClassName({ date }) {
     const dateString = date.toISOString().substring(0, 10);
-    const hasData = userData.mood.some(
-      (moodRecord) => moodRecord.time.substring(0, 10) === dateString
+    const hasData = activityData.some(
+      (data) => data.time.substring(0, 10) === dateString
     );
     return hasData ? "react-calendar__tile--hasActive" : null;
   }
 
   return (
     <PageContainer size={"md"}>
-      {!moodData || !meditationData ? (
+      {!activityData ? (
         <MotionPage>
           <Box sx={{ m: "1.2rem auto 2.4rem", textAlign: "center" }}>
             <SubHeading text={"Your activity"} />
@@ -110,26 +106,13 @@ export default function ActivityLog() {
                     sx={{
                       "@media( min-width: 900px)": { p: "2.4rem" },
                     }}>
-                    <Grid container columns={2}>
-                      <MotionItem>
+                    <MotionItem>
+                      <Grid container columns={2}>
                         <Grid item xs={2} sm={1}>
                           <Stack>
-                            <Box
-                              sx={{
-                                m: "1.2rem auto",
-                                textAlign: "center",
-                                "@media( min-width: 900px)": { my: "2.4rem" },
-                              }}>
-                              <ParagraphLg text={`Your streak is`} />
-                              <Box className='streak-box'>
-                                <span>{getStreak(moodData)}</span>
-                              </Box>
-                              <ParagraphLg text={"days"} />
-                            </Box>
+                            <Streak />
                           </Stack>
                         </Grid>
-                      </MotionItem>
-                      <MotionItem>
                         <Grid
                           item
                           xs={2}
@@ -148,8 +131,8 @@ export default function ActivityLog() {
                             </Box>
                           </Stack>
                         </Grid>
-                      </MotionItem>
-                    </Grid>
+                      </Grid>
+                    </MotionItem>
                   </Paper>
                   <MotionItem>
                     <Box sx={{ m: "2.4rem auto" }}>
@@ -173,7 +156,7 @@ export default function ActivityLog() {
               }}>
               <MotionItem>
                 <Stack>
-                  {selectedDate && filteredMoodData.length > 0 ? (
+                  {selectedDate && filteredData.length > 0 ? (
                     <>
                       <Heading4
                         text={`Entries for ${new Date(
@@ -185,38 +168,43 @@ export default function ActivityLog() {
                       />
                       <MotionItem>
                         <Box
-                          className='moodlog-wrapper'
+                          className='datalog-wrapper'
                           sx={{
                             width: "100%",
                             p: "2.4rem",
                             my: "1.2rem",
                             "@media (min-width: 900px)": { mx: "2.4rem" },
                           }}>
-                          {filteredMoodData
+                          {filteredData
                             .sort((a, b) => new Date(b.time) - new Date(a.time))
-                            .map((moodRecord) => {
-                              const matchingMood = moods.find(
-                                (mood) => mood.description === moodRecord.mood
+                            .map((data) => {
+                              const matchingM = iconSource.find(
+                                (src) => src.description === data.description
                               );
-                              const MoodIconRecord = matchingMood?.icon || null;
+                              console.log(matchingM);
+                              const activityIconRecord =
+                                matchingM?.icon || null;
                               return (
                                 <Box
-                                  className='moodlog-item'
+                                  className='datalog-item'
                                   sx={{
                                     p: "1.2rem",
                                   }}
-                                  key={moodRecord.time}>
+                                  key={data.time}>
                                   <MotionItem>
                                     <MoodGrid
-                                      icon={MoodIconRecord}
-                                      desc={matchingMood?.description || null}
-                                      time={new Date(
-                                        moodRecord.time
-                                      ).toLocaleString("en-GB", {
-                                        timeStyle: "short",
-                                        timeZone: "Europe/London",
-                                      })}
-                                      notes={moodRecord.notes}
+                                      icon={activityIconRecord}
+                                      desc={matchingM?.description || null}
+                                      time={new Date(data.time).toLocaleString(
+                                        "en-GB",
+                                        {
+                                          timeStyle: "short",
+                                          timeZone: "Europe/London",
+                                        }
+                                      )}
+                                      notes={data?.notes}
+                                      type={data?.type}
+                                      // duration={data?.duration}
                                       iconboxsize={20}
                                       iconsize={"3rem"}
                                     />

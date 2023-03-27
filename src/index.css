@@ -553,6 +553,7 @@ body.dark .footer {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  margin: auto;
 }
 
 .inputField {
@@ -612,13 +613,13 @@ body.dark .paper-lg-bg {
   background-image: url("https://images.unsplash.com/photo-1542268402-cb7c3023d9a9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1587&q=80");
 }
 
-.moodlog-wrapper {
+.datalog-wrapper {
   border-radius: 4px;
   border: 2px solid var(--white);
   box-shadow: var(--shadowSM);
 }
 
-body.dark .moodlog-wrapper {
+body.dark .datalog-wrapper {
   border-color: var(--shade);
   box-shadow: var(--shadowSM-dark);
 }

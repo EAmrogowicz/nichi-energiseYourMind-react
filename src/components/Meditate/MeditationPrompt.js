@@ -1,4 +1,5 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
+import { useLocation } from "react-router";
 import { Grid, Box, FormControl } from "@mui/material";
 import SubHeading from "../Typography/SubHeading";
 import ParagraphLg from "../Typography/ParagraphLg";
@@ -6,12 +7,15 @@ import StandardBtn from "../Button/StandardBtn";
 import MeditationIcon from "./MeditationIcon";
 import MoodBtn from "../Button/MoodBtn";
 import { MeditationItems } from "./MeditationItems";
-import StandardCard from "../StandardCard";
 import MeditateBodyScan from "./BodyScan/BodyScan.js";
 import MeditateBreathing from "./Breathing/Breathing.js";
 import MeditateReflect from "./Reflect/Reflect.js";
+import MotionPage from "../Motion/MotionPage";
+import MotionScrollIn from "../Motion/MotionScrollIn";
 
 export default function MeditationPrompt({ onSubmit }) {
+  const location = useLocation();
+  const meditationSuggested = location.state?.meditationSuggested;
   const [selectedMeditation, setSelectedMeditation] = useState("");
 
   const [submitted, setSubmitted] = useState(false);
@@ -25,13 +29,19 @@ export default function MeditationPrompt({ onSubmit }) {
 
   return (
     <Box className={"boxCenter"}>
-      {submitted ? (
+      {submitted || meditationSuggested ? (
         selectedMeditation === "Breathing" ? (
-          <MeditateBreathing />
+          <MotionPage>
+            <MeditateBreathing />
+          </MotionPage>
         ) : selectedMeditation === "Reflection" ? (
-          <MeditateReflect />
+          <MotionPage>
+            <MeditateReflect />
+          </MotionPage>
         ) : (
-          <MeditateBodyScan />
+          <MotionPage>
+            <MeditateBodyScan />
+          </MotionPage>
         )
       ) : (
         <>
@@ -40,13 +50,13 @@ export default function MeditationPrompt({ onSubmit }) {
             {MeditationItems.map((meditation) => {
               return (
                 <MeditationIcon
-                  key={meditation.description}
-                  onClick={() => setSelectedMeditation(meditation.description)}
+                  key={meditation.meditation}
+                  onClick={() => setSelectedMeditation(meditation.meditation)}
                   padding={"3.2rem"}
                 >
                   <MoodBtn
                     className={
-                      selectedMeditation === meditation.description
+                      selectedMeditation === meditation.meditation
                         ? "selected"
                         : ""
                     }
@@ -66,15 +76,17 @@ export default function MeditationPrompt({ onSubmit }) {
               );
             })}
           </Grid>
-          <FormControl className="form">
-            <Box sx={{ m: "0.2rem" }}>
-              <StandardBtn
-                name={"Meditate"}
-                onClick={handleSubmit}
-                disabled={!selectedMeditation}
-              />
-            </Box>
-          </FormControl>
+          <MotionScrollIn>
+            <FormControl className="form">
+              <Box sx={{ mt: "3.2rem" }}>
+                <StandardBtn
+                  name={"Meditate"}
+                  onClick={handleSubmit}
+                  disabled={!selectedMeditation}
+                />
+              </Box>
+            </FormControl>
+          </MotionScrollIn>
         </>
       )}
     </Box>

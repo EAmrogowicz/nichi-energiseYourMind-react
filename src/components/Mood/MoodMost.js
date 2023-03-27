@@ -9,7 +9,7 @@ export default function MoodMost() {
   const moodlog = userData.mood;
 
   const allMoods = moodlog.reduce((acc, curr) => {
-    acc[curr.mood] = (acc[curr.mood] || 0) + 1;
+    acc[curr.description] = (acc[curr.description] || 0) + 1;
     return acc;
   }, {});
 

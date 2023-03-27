@@ -19,7 +19,8 @@ export default function MoodPrompt({ onSubmit }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const moodRecord = {
-      mood: selectedMood,
+      type: "Mood",
+      description: selectedMood,
       time: timeStamp,
       notes: notes,
     };

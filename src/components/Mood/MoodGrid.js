@@ -3,7 +3,7 @@ import Heading5 from "../Typography/Heading5";
 import ParagraphLg from "../Typography/ParagraphLg";
 import MoodIcon from "./MoodIcon";
 
-export default function MoodGrid({ icon, desc, time, notes, ...props }) {
+export default function MoodGrid({ icon, desc, time, notes, type, ...props }) {
   const Icon = icon;
   return (
     <Grid
@@ -37,6 +37,7 @@ export default function MoodGrid({ icon, desc, time, notes, ...props }) {
           alignItems: "center",
         }}>
         <Stack>
+          {type && <ParagraphLg text={type} />}
           {desc && <Heading5 text={desc} />}
           {time && <ParagraphLg text={time} />}
           {notes && <ParagraphLg text={notes} />}

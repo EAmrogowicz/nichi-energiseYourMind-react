@@ -14,12 +14,16 @@ export default function StandardCard({
   caption,
   imglink,
   address,
+  onClick,
 }) {
   return (
-    <Card sx={{ maxWidth: 620, minWidth: " 100% " }} className={classCss}>
+    <Card
+      sx={{ maxWidth: 620, minWidth: " 100% " }}
+      className={classCss}
+      onClick={onClick}>
       <CardActionArea component={RouterLink} to={address}>
         <CardMedia
-          component="img"
+          component='img'
           height={height}
           image={imglink}
           alt={title}

@@ -108,35 +108,32 @@ export default function Nav() {
     <Box sx={{ flexGrow: 1 }} className={`App ${theme}`}>
       <nav>
         <AppBar
-          color="inherit"
-          position="fixed"
-          className="navBar"
+          color='inherit'
+          position='fixed'
+          className='navBar'
           sx={{
             "@media (max-width:900px)": { top: "auto", bottom: 0 },
-          }}
-        >
+          }}>
           <Toolbar
             sx={{
               display: "flex",
               justifyContent: { xs: "center", md: "space-between" },
               alignItems: "center",
               ml: 2,
-            }}
-          >
+            }}>
             <Typography
-              variant="h4"
+              variant='h4'
               noWrap
-              component="a"
-              href="/EAmrogowicz/nichi-energiseYourMind-react"
-              className="navLogo"
+              component='a'
+              href='/'
+              className='navLogo'
               sx={{
                 mr: 1,
                 display: { xs: "none", md: "flex" },
                 fontFamily: "Vidaloka",
                 letterSpacing: ".3rem",
                 fontWeight: 100,
-              }}
-            >
+              }}>
               NICHI
             </Typography>
             <Box
@@ -145,33 +142,32 @@ export default function Nav() {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-              }}
-            >
-              <Link to="/">
+              }}>
+              <Link to='/'>
                 <HomeOutlinedIcon
-                  edge="start"
-                  color="inherit"
-                  aria-label="home"
+                  edge='start'
+                  color='inherit'
+                  aria-label='home'
                   sx={{ mr: 4 }}
-                  className="navIcon"
+                  className='navIcon'
                 />
               </Link>
-              <Link to="/mood-tracker">
+              <Link to='/mood-tracker'>
                 <AddReactionOutlinedIcon
-                  edge="start"
-                  color="inherit"
-                  aria-label="mood"
+                  edge='start'
+                  color='inherit'
+                  aria-label='mood'
                   sx={{ mr: 4 }}
-                  className="navIcon"
+                  className='navIcon'
                 />
               </Link>
-              <Link to="/meditation">
+              <Link to='/meditation'>
                 <SpaOutlinedIcon
-                  edge="start"
-                  color="inherit"
-                  aria-label="user"
+                  edge='start'
+                  color='inherit'
+                  aria-label='user'
                   sx={{ mr: 4 }}
-                  className="navIcon"
+                  className='navIcon'
                 />
               </Link>
               <FormControlLabel
