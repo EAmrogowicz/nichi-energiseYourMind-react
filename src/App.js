@@ -16,6 +16,7 @@ import { StyledEngineProvider } from "@mui/material/styles";
 import { AnimatePresence } from "framer-motion";
 
 export default function App() {
+  const location = useLocation();
   return (
     <StyledEngineProvider injectFirst>
       <main
@@ -25,8 +26,8 @@ export default function App() {
         <Nav />
         <AnimatePresence>
           {/* <Router basename='/EAmrogowicz/nichi-energiseYourMind-react'> */}
-          <Routes key={useLocation().path}>
-            <Route path='/' element={<Home />} />
+          <Routes key={location.path} location={location}>
+            <Route exact path='/' element={<Home />} />
             <Route path='/mood-tracker' element={<MoodTracker />} />
             <Route path='/user-login' element={<UserLogin />} />
             <Route path='/dashboard' element={<Dashboard />} />
