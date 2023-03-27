@@ -55,8 +55,8 @@ export default function MeditationPrompt({ onSubmit }) {
                       edge="center"
                       color="inherit"
                       sx={{
-                        width: "6.4rem",
-                        height: "6.4rem",
+                        width: "3rem",
+                        height: "3rem",
                         borderRadius: "50%",
                       }}
                     />
