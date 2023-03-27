@@ -88,6 +88,7 @@ export default function MeditateBodyScan() {
   };
 
   //--PW hit the gong when session has ended.
+  // eslint-disable-next-line
   const playSound = () => {
     if (!isEnded) {
       hitGong();

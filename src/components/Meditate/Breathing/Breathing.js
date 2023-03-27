@@ -87,6 +87,7 @@ export default function MeditateBreath() {
   };
 
   //--PW hit the gong when session has ended.
+  // eslint-disable-next-line
   const playSound = () => {
     if (!isEnded) {
       hitGong();
