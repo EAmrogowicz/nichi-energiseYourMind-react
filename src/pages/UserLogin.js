@@ -34,46 +34,41 @@ export default function UserLogin({ onSubmit }) {
   }
 
   return (
-    <MotionPage>
-      <PageContainer>
-        <MotionItem>
-          <Box sx={{ mb: "4.8rem" }}>
-            <SubHeading text={"Hello, stranger!"} />
-            <Heading4 text={"What is your name?"} />
-          </Box>
-        </MotionItem>
-        <MotionItem>
-          <FormControl className="form">
-            <TextField
-              className="inputField"
-              id="name"
-              label="Name"
-              variant="outlined"
-              value={username}
-              onChange={handleChange}
-              ref={inputRef}
-            />
+    <PageContainer>
+      <Box sx={{ mb: "4.8rem" }}>
+        <SubHeading text={"Hello, stranger!"} />
+        <Heading4 text={"What is your name?"} />
+      </Box>
 
-            <Box
-              sx={{
-                width: "100%",
-                display: "flex",
-                justifyContent: "space-around",
-                alignItems: "center",
-              }}
-            >
-              <Link to="/">
-                <IconBtn />
-              </Link>
-              <StandardBtn
-                name={"Login"}
-                onClick={handleLogin}
-                disabled={!username}
-              />
-            </Box>
-          </FormControl>
-        </MotionItem>
-      </PageContainer>
-    </MotionPage>
+      <FormControl className="form">
+        <TextField
+          className="inputField"
+          id="name"
+          label="Name"
+          variant="outlined"
+          value={username}
+          onChange={handleChange}
+          ref={inputRef}
+        />
+
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "space-around",
+            alignItems: "center",
+          }}
+        >
+          <Link to="/">
+            <IconBtn />
+          </Link>
+          <StandardBtn
+            name={"Login"}
+            onClick={handleLogin}
+            disabled={!username}
+          />
+        </Box>
+      </FormControl>
+    </PageContainer>
   );
 }
