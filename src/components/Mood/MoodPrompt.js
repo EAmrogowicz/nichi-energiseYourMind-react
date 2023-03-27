@@ -78,7 +78,7 @@ export default function MoodPrompt({ onSubmit }) {
           />
         </Box>
         <MotionScrollIn>
-          <Box sx={{ ml: "4.8rem", mt: "3.2rem" }}>
+          <Box sx={{ ml: "4.8rem" }}>
             <StandardBtn
               name={"Submit"}
               onClick={handleSubmit}

@@ -15,7 +15,8 @@ export default function MoodIcon({ children, ...props }) {
         alignItems: "center",
         padding: padding,
       }}
-      {...props}>
+      {...props}
+    >
       <Box
         sx={{
           width: iconboxsize,
@@ -24,7 +25,8 @@ export default function MoodIcon({ children, ...props }) {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-        }}>
+        }}
+      >
         {children}
       </Box>
     </Grid>
