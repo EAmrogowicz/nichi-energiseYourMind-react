@@ -22,7 +22,6 @@ export default function MoodTracker() {
       {submitted ? (
         <MotionPage>
           <MoodSelect
-            moods={moods}
             moodRecord={existingMoodData[existingMoodData.length - 1]}
           />
         </MotionPage>
