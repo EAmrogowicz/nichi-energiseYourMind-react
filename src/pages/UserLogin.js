@@ -43,16 +43,15 @@ export default function UserLogin({ onSubmit }) {
           </Box>
         </MotionItem>
         <MotionItem>
-          <FormControl className='form'>
+          <FormControl className="form">
             <TextField
-              className='inputField'
-              id='name'
-              label='Name'
-              variant='outlined'
+              className="inputField"
+              id="name"
+              label="Name"
+              variant="outlined"
               value={username}
               onChange={handleChange}
               ref={inputRef}
-              helperText='Please enter your name'
             />
 
             <Box
@@ -61,8 +60,9 @@ export default function UserLogin({ onSubmit }) {
                 display: "flex",
                 justifyContent: "space-around",
                 alignItems: "center",
-              }}>
-              <Link to='/'>
+              }}
+            >
+              <Link to="/">
                 <IconBtn />
               </Link>
               <StandardBtn
