@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, useMemo} from "react";
 import useSound from "use-sound";
 
 import { Drawer, Box, Stack } from "@mui/material";
@@ -39,19 +39,19 @@ export default function MeditateReflect() {
 
   const timeStamp = new Date().toISOString();
 
-  const meditationRecord = {
+  const meditationRecord = useMemo(() => [{
     type: "Meditation",
     description: "Reflection",
     time: timeStamp,
-  };
+  }], [timeStamp]);
 
-  function addMeditationRecord(meditationRecord) {
+  const addMeditationRecord = useCallback((meditationRecord) => {
     const updatedMeditationData = [...existingMeditationData, meditationRecord];
     setExistingMeditationData(updatedMeditationData);
     userData.meditation = updatedMeditationData;
     localStorage.setItem("userData", JSON.stringify(userData));
     console.log("userData", userData);
-  }
+  }, [userData, existingMeditationData]);
 
   //--PW State for timer drawer
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -103,7 +103,7 @@ export default function MeditateReflect() {
   };
 
   //--PW hit the gong when session has ended.
-  // eslint-disable-next-line
+  
   const playSound = useCallback(() => {
     if (!isEnded) {
       hitGong();
@@ -112,7 +112,7 @@ export default function MeditateReflect() {
       reset();
       setIsEnded(!isEnded);
     }
-  }, [isEnded, hitGong, addMeditationRecord]);
+  }, [isEnded, hitGong, meditationRecord, addMeditationRecord]);
 
   useEffect(() => {
     let interval = null;
