@@ -497,10 +497,18 @@ body.dark .react-calendar__tile--hasActive {
 .react-calendar__tile--hasActive:enabled:hover,
 .react-calendar__tile--hasActive:enabled:focus {
   background: #cadbe8;
+}
+
+body.dark .react-calendar__tile--hasActive:enabled,
+body.dark .react-calendar__tile--hasActive:hover {
   background: #b8cbdb;
 }
 
 .react-calendar__tile--now {
+  background: #b8cbdb;
+}
+
+body.dark .react-calendar__tile--now {
   background: var(--shade-mid);
 }
 
@@ -647,7 +655,7 @@ body.dark .datalog-wrapper {
 }
 
 body.dark .moodlog-item {
-  border-color: var(--shade);
+  border-color: #363737;
 }
 
 .streak-box {

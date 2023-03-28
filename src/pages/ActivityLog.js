@@ -20,8 +20,8 @@ import dayjs from "dayjs";
 // MAYBE: combine same moods in the display for the day?
 export default function ActivityLog() {
   const userData = JSON.parse(localStorage.getItem("userData"));
-  const moodData = userData.mood;
-  const meditationData = userData.meditation;
+  const moodData = userData?.mood;
+  const meditationData = userData?.meditation;
   const activityData =
     (moodData != null || meditationData != null) &&
     [moodData ?? [], meditationData ?? []].flat();
@@ -57,15 +57,17 @@ export default function ActivityLog() {
     <PageContainer size={"md"}>
       {!activityData ? (
         <MotionPage>
-          <Box sx={{ m: "1.2rem auto 2.4rem", textAlign: "center" }}>
-            <SubHeading text={"Your activity"} />
-            <ParagraphLg text={"Nothing here yet."} />
-          </Box>
-          <Box mx={"auto"}>
-            <Link to='/'>
-              <IconBtn />
-            </Link>
-          </Box>
+          <Stack>
+            <Box sx={{ m: "1.2rem auto 2.4rem", textAlign: "center" }}>
+              <SubHeading text={"Your activity"} />
+              <ParagraphLg text={"Nothing here yet."} />
+            </Box>
+            <Box mx={"auto"}>
+              <Link to='/'>
+                <IconBtn />
+              </Link>
+            </Box>
+          </Stack>
         </MotionPage>
       ) : (
         <>
