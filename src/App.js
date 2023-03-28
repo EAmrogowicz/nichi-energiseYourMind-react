@@ -1,9 +1,4 @@
-import {
-  // BrowserRouter as Router,
-  Route,
-  Routes,
-  useLocation,
-} from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import MoodTracker from "./pages/MoodTracker";
 import UserLogin from "./pages/UserLogin";
@@ -22,10 +17,10 @@ export default function App() {
       <main
         style={{
           minHeight: "100%",
+          overflow: "hidden",
         }}>
         <Nav />
         <AnimatePresence>
-          {/* <Router basename='/EAmrogowicz/nichi-energiseYourMind-react'> */}
           <Routes key={location.path} location={location}>
             <Route exact path='/' element={<Home />} />
             <Route path='/mood-tracker' element={<MoodTracker />} />
@@ -34,7 +29,6 @@ export default function App() {
             <Route path='/meditation' element={<Meditation />} />
             <Route path='/activity-log' element={<ActivityLog />} />
           </Routes>
-          {/* </Router> */}
         </AnimatePresence>
         <Footer />
       </main>
