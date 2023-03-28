@@ -296,11 +296,13 @@ body.dark .btn:hover {
 .moodBtn {
   padding: 1rem;
   border-radius: 50%;
-  color: var(--primary);
+  color: var(--mid-tone);
 }
 
 body.dark .moodBtn {
   color: var(--tint);
+  border-top: var(--border-top-dark);
+  border-left: var(--border-left-dark);
 }
 
 .moodBtn.selected {
@@ -391,7 +393,8 @@ body.dark .stnCard {
 }
 
 body.dark .react-calendar__navigation button:disabled {
-  background-color: var(--primary);
+  background-color: var(--darkmode);
+  background-color: var(--darkmode);
 }
 
 .react-calendar__navigation button:enabled:hover,
@@ -401,7 +404,7 @@ body.dark .react-calendar__navigation button:disabled {
 
 body.dark .react-calendar__navigation button:enabled:hover,
 body.dark .react-calendar__navigation button:enabled:focus {
-  background-color: var(--shade);
+  background-color: var(--darkmode);
 }
 
 .react-calendar__month-view__weekdays {
@@ -441,7 +444,7 @@ body.dark .react-calendar__month-view__days__day--weekend {
 }
 
 body.dark .react-calendar__month-view__days__day--neighboringMonth {
-  color: var(--shade);
+  color: var(--darkmode);
 }
 
 .react-calendar__year-view .react-calendar__tile,
@@ -469,8 +472,7 @@ body.dark .react-calendar__month-view__days__day--neighboringMonth {
 }
 
 body.dark .react-calendar__tile:disabled {
-  background-color: var(--primary);
-  color: var(--shade);
+  background-color: var(--darkmode);
   color: #51616d;
 }
 
@@ -486,17 +488,22 @@ body.dark .react-calendar__tile:enabled:focus {
 
 .react-calendar__tile--hasActive {
   background: #b8cbdb;
+}
+
+body.dark .react-calendar__tile--hasActive {
   background: var(--mid-tone);
 }
 
 .react-calendar__tile--hasActive:enabled:hover,
 .react-calendar__tile--hasActive:enabled:focus {
   background: #cadbe8;
+  background: #b8cbdb;
 }
 
 .react-calendar__tile--now {
   background: var(--shade-mid);
 }
+
 .react-calendar__tile--now:enabled:hover,
 .react-calendar__tile--now:enabled:focus {
   background: #a3c3bc;
@@ -508,7 +515,9 @@ body.dark .react-calendar__tile:enabled:focus {
   box-shadow: var(--shadowSM);
 }
 
-body.dark .react-calendar__tile--active {
+body.dark .react-calendar__tile--active,
+body.dark .react-calendar__tile--active:enabled:focus {
+  background: var(--accent);
   box-shadow: var(--shadowSM-dark);
 }
 
@@ -583,7 +592,7 @@ body.dark label.Mui-focused {
   color: var(--white);
 }
 
-/* MOOD pages
+/* ACTIVITY
 -------------------------------------------------- */
 .paper-lg-bg {
   border-top: var(--border-top);
@@ -609,8 +618,8 @@ body.dark label.Mui-focused {
 body.dark .paper-lg-bg {
   border-top: var(--border-top-dark);
   border-left: var(--border-left-dark);
-  background-color: var(--shade);
-  box-shadow: var(--shadow-dark);
+  border-color: #33373f;
+  box-shadow: -4px -4px 8px rgb(34 37 39 / 51%), 4px 4px 8px rgba(0, 0, 0, 0.4);
   color: var(--white);
 
   background-image: url("https://images.unsplash.com/photo-1542268402-cb7c3023d9a9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1587&q=80");
@@ -625,6 +634,12 @@ body.dark .paper-lg-bg {
 body.dark .datalog-wrapper {
   border-color: var(--shade);
   box-shadow: var(--shadowSM-dark);
+  border-color: #33373f;
+  box-shadow: -4px -4px 8px rgb(34 37 39 / 51%), 4px 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.datalog-wrapper h5 {
+  color: var(--accent);
 }
 
 .moodlog-item:not(:last-of-type) {
@@ -635,8 +650,6 @@ body.dark .moodlog-item {
   border-color: var(--shade);
 }
 
-/* ACTIVITY
--------------------------------------------------- */
 .streak-box {
   width: 100px;
   height: 100px;
