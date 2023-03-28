@@ -34,22 +34,20 @@ export default function ActivityLog() {
 
   function handleDateSelect(value) {
     const selectedDate = new Date(value.toISOString().substring(0, 10));
-    const dataByDate = activityData.filter((data) => {
+    const dataByDate = activityData?.filter((data) => {
       return (
         selectedDate.getTime() ===
-        new Date(data.time.substring(0, 10)).getTime()
+        new Date(data?.time?.substring(0, 10)).getTime()
       );
     });
     setSelectedDate(selectedDate);
     setFilteredData(dataByDate);
-    console.log("filteredData");
-    console.log(dataByDate);
   }
 
   function dayClassName({ date }) {
     const dateString = date.toISOString().substring(0, 10);
-    const hasData = activityData.some(
-      (data) => data.time.substring(0, 10) === dateString
+    const hasData = activityData?.some(
+      (data) => data?.time?.substring(0, 10) === dateString
     );
     return hasData ? "react-calendar__tile--hasActive" : null;
   }
@@ -62,7 +60,7 @@ export default function ActivityLog() {
             <SubHeading text={"Your activity"} />
             <ParagraphLg text={"Nothing here yet."} />
           </Box>
-          <Box>
+          <Box mx={"auto"}>
             <Link to='/'>
               <IconBtn />
             </Link>
