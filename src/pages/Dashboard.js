@@ -1,4 +1,4 @@
-import { useLocation } from "react-router";
+import { useNavigate } from "react-router";
 import { Box, Grid } from "@mui/material";
 import PageContainer from "../components/PageContainer";
 import MotionPage from "../components/Motion/MotionPage";
@@ -8,22 +8,17 @@ import Heading4 from "../components/Typography/Heading4";
 import StandardCard from "../components/StandardCard";
 import ZenQuote from "../components/Quotes";
 
-export default function Dashboard({ user }) {
+export default function Dashboard() {
   //
   //
-  // const location = useLocation();
-  // console.log(location.state?.user);
-  const userData =
-    // location.state?.user ??
-    JSON.parse(localStorage.getItem("userData"));
+  const userData = JSON.parse(localStorage.getItem("userData"));
   const username = userData.username;
 
-  // navigation is in the App now
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // if (localStorage.getItem("userData") === null) {
-  //   navigate("/user-login");
-  // }
+  if (localStorage.getItem("userData") === null) {
+    navigate("/user-login");
+  }
 
   return (
     <MotionPage>

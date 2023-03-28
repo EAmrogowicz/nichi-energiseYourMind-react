@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation, Navigate } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import MoodTracker from "./pages/MoodTracker";
 import UserLogin from "./pages/UserLogin";
@@ -9,26 +9,6 @@ import Meditation from "./pages/Meditation";
 import ActivityLog from "./pages/ActivityLog";
 import { StyledEngineProvider } from "@mui/material/styles";
 import { AnimatePresence } from "framer-motion";
-
-// can navigate to '/' instead of /user-login??
-// note: passing userData as a prop to logged pages doesn't work
-const userData = JSON.parse(localStorage.getItem("userData")) || [];
-const LoggedInRoute = (Component) => {
-  return (props) => (
-    <>
-      {userData?.username ? (
-        <Component {...props} />
-      ) : (
-        <Navigate to='/user-login' replace={true} />
-      )}
-    </>
-  );
-};
-
-const LoggedDashboard = LoggedInRoute(Dashboard);
-const LoggedMeditation = LoggedInRoute(Meditation);
-const LoggedMoodTracker = LoggedInRoute(MoodTracker);
-const LoggedActivityLog = LoggedInRoute(ActivityLog);
 
 export default function App() {
   const location = useLocation();
@@ -44,10 +24,10 @@ export default function App() {
           <Routes key={location.path} location={location}>
             <Route exact path='/' element={<Home />} />
             <Route path='/user-login' element={<UserLogin />} />
-            <Route path='/dashboard' element={<LoggedDashboard />} />
-            <Route path='/meditation' element={<LoggedMeditation />} />
-            <Route path='/mood-tracker' element={<LoggedMoodTracker />} />
-            <Route path='/activity-log' element={<LoggedActivityLog />} />
+            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/meditation' element={<Meditation />} />
+            <Route path='/mood-tracker' element={<MoodTracker />} />
+            <Route path='/activity-log' element={<ActivityLog />} />
           </Routes>
         </AnimatePresence>
         <Footer />
