@@ -21,19 +21,16 @@ export default function ActivityLog() {
   const userData = JSON.parse(localStorage.getItem("userData"));
   const moodData = userData.mood;
   const meditationData = userData.meditation;
-  const activityData = [moodData, meditationData].flat();
+  const activityData =
+    (moodData != null || meditationData != null) &&
+    [moodData, meditationData].flat();
   const iconSource = [moods, MeditationItems].flat();
   const [filteredData, setFilteredData] = useState([]);
   const [selectedDate, setSelectedDate] = useState("");
   const calendarRef = useRef();
   const minDate =
     activityData &&
-    new Date(Math.min(...activityData.map((data) => new Date(data.time))));
-
-  console.log("activityData");
-  console.log(activityData);
-  console.log("iconSource");
-  console.log(iconSource);
+    new Date(Math.min(...activityData.map((data) => new Date(data?.time))));
 
   function handleDateSelect(value) {
     const selectedDate = new Date(value.toISOString().substring(0, 10));
@@ -66,7 +63,7 @@ export default function ActivityLog() {
             <ParagraphLg text={"Nothing here yet."} />
           </Box>
           <Box>
-            <Link to="/">
+            <Link to='/'>
               <IconBtn />
             </Link>
           </Box>
@@ -86,30 +83,26 @@ export default function ActivityLog() {
               "@media( min-width: 900px)": {
                 gridTemplateColumns: "repeat(12, 1fr)",
               },
-            }}
-          >
+            }}>
             <Box
               sx={{
                 mx: "auto",
                 "@media( min-width: 900px)": { gridArea: "1/1/1/6" },
                 width: "100%",
-              }}
-            >
+              }}>
               <MotionItem>
                 <Stack
                   sx={{
                     "@media(min-width:900px)": {
                       flexDirection: "column-reverse",
                     },
-                  }}
-                >
+                  }}>
                   <Paper
                     elevation={5}
-                    className="paper-lg-bg"
+                    className='paper-lg-bg'
                     sx={{
                       "@media( min-width: 900px)": { p: "2.4rem" },
-                    }}
-                  >
+                    }}>
                     <MotionItem>
                       <Grid container columns={2}>
                         <Grid item xs={2} sm={1}>
@@ -125,14 +118,12 @@ export default function ActivityLog() {
                             display: "flex",
                             justifyContent: "center",
                             alignItems: "center",
-                          }}
-                        >
+                          }}>
                           <Stack>
                             <Box
                               sx={{
                                 "@media( max-width: 900px)": { mb: "2.4rem" },
-                              }}
-                            >
+                              }}>
                               <MoodMost />
                             </Box>
                           </Stack>
@@ -159,8 +150,7 @@ export default function ActivityLog() {
                 mx: "auto",
                 "@media( min-width: 900px)": { gridArea: "1/6/1/13" },
                 width: "100%",
-              }}
-            >
+              }}>
               <MotionItem>
                 <Stack>
                   {selectedDate && filteredData.length > 0 ? (
@@ -175,14 +165,13 @@ export default function ActivityLog() {
                       />
                       <MotionItem>
                         <Box
-                          className="datalog-wrapper"
+                          className='datalog-wrapper'
                           sx={{
                             width: "100%",
                             p: "2.4rem",
                             my: "1.2rem",
                             "@media (min-width: 900px)": { mx: "2.4rem" },
-                          }}
-                        >
+                          }}>
                           {filteredData
                             .sort((a, b) => new Date(b.time) - new Date(a.time))
                             .map((data) => {
@@ -194,12 +183,11 @@ export default function ActivityLog() {
                                 matchingM?.icon || null;
                               return (
                                 <Box
-                                  className="datalog-item"
+                                  className='datalog-item'
                                   sx={{
                                     p: "1.2rem",
                                   }}
-                                  key={data.time}
-                                >
+                                  key={data.time}>
                                   <MotionItem>
                                     <MoodGrid
                                       icon={activityIconRecord}

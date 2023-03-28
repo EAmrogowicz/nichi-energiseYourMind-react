@@ -6,7 +6,9 @@ import MoodSelect from "../components/Mood/MoodSelect";
 
 export default function MoodTracker() {
   const userData = JSON.parse(localStorage.getItem("userData"));
-  const [existingMoodData, setExistingMoodData] = useState(userData.mood || []);
+  const [existingMoodData, setExistingMoodData] = useState(
+    userData?.mood || []
+  );
   const [submitted, setSubmitted] = useState(false);
 
   function handleMoodSubmit(moodRecord) {
