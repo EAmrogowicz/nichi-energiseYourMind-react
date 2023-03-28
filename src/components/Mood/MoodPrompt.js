@@ -36,44 +36,36 @@ export default function MoodPrompt({ onSubmit }) {
       <MotionItem>
         <SubHeading text={"How are you feeling today?"} />
       </MotionItem>
-      <Grid
-        container
-        columns={6}
-        spacing={2}
-        sx={{ my: "2.4rem", ml: "0.4rem" }}
-        // rowSpacing={{ xs: 2, sm: 6 }}
-      >
+      <Grid container columns={6} sx={{ my: "2.4rem" }}>
         {moods.map((mood) => {
           return (
             <MoodIcon
               key={mood.description}
               onClick={() => setSelectedMood(mood.description)}
-              padding={"3.2rem"}
-            >
-              {/* <MotionItem> */}
+              padding={"3.2rem"}>
               <MoodBtn
-                className={selectedMood === mood.description ? "selected" : ""}
-              >
+                className={selectedMood === mood.description ? "selected" : ""}>
                 <mood.icon
-                  edge="center"
-                  color="inherit"
+                  edge='center'
+                  color='inherit'
                   sx={{ width: "3rem", height: "3rem", borderRadius: "50%" }}
                 />
               </MoodBtn>
-              {/* </MotionItem> */}
-              <ParagraphLg text={mood.description} />
+              <Box sx={{ mt: "0.8rem" }}>
+                <ParagraphLg text={mood.description} />
+              </Box>
             </MoodIcon>
           );
         })}
       </Grid>
-      <FormControl className="form">
+      <FormControl className='form'>
         <Box sx={{ minWidth: "75%" }}>
           <TextField
-            className="inputField"
+            className='inputField'
             ref={notesRef}
-            id="mood-notes"
-            label="Notes"
-            variant="outlined"
+            id='mood-notes'
+            label='Notes'
+            variant='outlined'
             fullWidth
             maxRows={4}
             onChange={handleChange}

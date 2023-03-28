@@ -71,7 +71,9 @@ export default function MeditationPrompt({ onSubmit }) {
                       }}
                     />
                   </MoodBtn>
-                  <ParagraphLg text={meditation.description} />
+                  <Box sx={{ mt: "0.8rem" }}>
+                    <ParagraphLg text={meditation.description} />
+                  </Box>
                 </MeditationIcon>
               );
             })}

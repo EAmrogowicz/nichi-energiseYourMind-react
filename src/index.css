@@ -294,6 +294,8 @@ body.dark .btn:hover {
 }
 
 .moodBtn {
+  padding: 1rem;
+  border-radius: 50%;
   color: var(--primary);
 }
 
