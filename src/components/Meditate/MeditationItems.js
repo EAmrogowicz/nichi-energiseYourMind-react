@@ -8,7 +8,7 @@ export const MeditationItems = [
     meditation: "Breathing",
     description: "Breathing",
     meditationImg:
-      "https://images.unsplash.com/photo-1601779144646-5e6a43c5d615?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fG1lZGl0YXRlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60",
+      "https://images.unsplash.com/photo-1585185160068-8175b6a39d84?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2970&q=80",
     suitableMood: ["Happy", "Good", "OK", "Sad", "Awful"],
   },
   {
@@ -16,7 +16,7 @@ export const MeditationItems = [
     meditation: "SpotLighting",
     description: "Spotlighting",
     meditationImg:
-      "https://images.unsplash.com/photo-1602144564887-e2be90e0ab11?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80",
+      "https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80",
     suitableMood: ["Good", "Sad", "Awful"],
   },
   {
@@ -24,7 +24,7 @@ export const MeditationItems = [
     meditation: "Reflection",
     description: "Reflection",
     meditationImg:
-      "https://images.unsplash.com/photo-1601779144646-5e6a43c5d615?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fG1lZGl0YXRlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60",
+      "https://images.unsplash.com/photo-1586010339640-0cee8a975977?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fGhvcGV8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",
     suitableMood: ["Happy", "Neutral", "OK", "Sad"],
   },
 ];

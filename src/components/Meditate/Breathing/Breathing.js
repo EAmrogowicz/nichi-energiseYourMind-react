@@ -6,9 +6,12 @@ import { Link } from "react-router-dom";
 import StandardBtn from "../../Button/StandardBtn";
 import IconBtn from "../../Button/IconBtn";
 import IconButton from "@mui/material/IconButton";
-import SubHeading from "../../Typography/SubHeading";
+
 import ButtonGroup from "@mui/material/ButtonGroup";
 import Button from "@mui/material/Button";
+
+import SubHeading from "../../Typography/SubHeading";
+import ParagraphLg from "../../Typography/ParagraphLg";
 
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import PauseIcon from "@mui/icons-material/Pause";
@@ -73,7 +76,7 @@ export default function MeditateBreath() {
   //--PW To toggle between playing or pausing the meditation timer
   //--PW There are 2 ways to solve the React warning "Function makes the dependencies of useEffect Hook change on every render":
   //-- (Option 1) cannot move playPause() into useEffect as it is needed inside the JSX when playPause button is clicked
-  //-- (Option 2) so instead wrap the playPause() function definition in a useCallback hook which will hopefully return a memoized function whose reference will only change if something in the hook's dependency array changes. 
+  //-- (Option 2) so instead wrap the playPause() function definition in a useCallback hook which will hopefully return a memoized function whose reference will only change if something in the hook's dependency array changes.
 
   const playPause = useCallback(() => {
     setIsActive(!isActive);
@@ -81,9 +84,9 @@ export default function MeditateBreath() {
     if (setIsActive) {
       hitGong();
     }
-  },[isActive, hitGong]);
+  }, [isActive, hitGong]);
 
-  //--Pei to reset the meditation session timer
+  //--PW to reset the meditation session timer
   const reset = () => {
     setTimeInSec(startTime);
     setIsActive(false);
@@ -91,8 +94,8 @@ export default function MeditateBreath() {
   };
 
   //--PW hit the gong when session has ended.
-  // eslint-disable-next-line
-  const playSound = () => {
+ 
+  const playSound = useCallback(() => {
     if (!isEnded) {
       hitGong();
       setTimeInSec(true);
@@ -100,7 +103,7 @@ export default function MeditateBreath() {
       reset();
       setIsEnded(!isEnded);
     }
-  };
+  }, [isEnded, hitGong, addMeditationRecord]);
 
   const handleClickSame = () => {
     setIsEnded(!isEnded);
@@ -130,16 +133,15 @@ export default function MeditateBreath() {
   let timeString =
     Math.floor(timeInSec / 60) + `:` + timePadding(timeInSec % 60, 2);
 
+  let paragraphText = `As the blob swells, breathe in and \n then breathe out as it contracts.`;
+
   return (
     <>
       {!isEnded ? (
         <div className="meditateContainer">
-          <h1>Breath Meditation</h1>
+          <SubHeading text="Breath Meditation" />
           <br />
-          <h3>
-            As the blob swells, breathe in and <br />
-            then breathe out as it contracts.
-          </h3>
+          <ParagraphLg text={paragraphText} />
 
           <div className="animeContainer">
             <div
@@ -194,7 +196,7 @@ export default function MeditateBreath() {
                 margin: "1.2rem auto",
               }}
             >
-              <SubHeading text={timeString}></SubHeading>
+              <SubHeading text={timeString} />
             </Box>
 
             <Box
@@ -214,9 +216,10 @@ export default function MeditateBreath() {
           <Drawer
             anchor="bottom"
             open={isDrawerOpen}
-            onClose={() => setIsDrawerOpen(false)}
+            onClick={() => setIsDrawerOpen(false)}
           >
             <Box
+              className="drawer"
               width={"100%"}
               sx={{
                 display: "flex",
@@ -224,11 +227,7 @@ export default function MeditateBreath() {
                 margin: "0.2rem auto",
               }}
             >
-              <ButtonGroup
-                variant="text"
-                className="btn btnPill"
-                aria-label="button group"
-              >
+              <ButtonGroup variant="text" aria-label="button group">
                 <Button className="btnFont" onClick={() => setTimeInSec(60)}>
                   1min
                 </Button>
