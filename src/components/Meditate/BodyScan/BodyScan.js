@@ -42,13 +42,13 @@ export default function MeditateBodyScan() {
     time: timeStamp,
   };
 
-  function addMeditationRecord(meditationRecord) {
+  const addMeditationRecord = useCallback((meditationRecord) =>{
     const updatedMeditationData = [...existingMeditationData, meditationRecord];
     setExistingMeditationData(updatedMeditationData);
     userData.meditation = updatedMeditationData;
     localStorage.setItem("userData", JSON.stringify(userData));
     console.log("userData", userData);
-  }
+  }, [userData, existingMeditationData]); 
 
   //--PW State for timer drawer
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
