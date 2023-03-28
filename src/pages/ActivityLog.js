@@ -15,6 +15,7 @@ import MoodMost from "../components/Mood/MoodMost";
 import { moods } from "../components/Mood/Moods";
 import { MeditationItems } from "../components/Meditate/MeditationItems";
 import Streak from "../components/Streak";
+import dayjs from "dayjs";
 
 // MAYBE: combine same moods in the display for the day?
 export default function ActivityLog() {
@@ -23,7 +24,7 @@ export default function ActivityLog() {
   const meditationData = userData.meditation;
   const activityData =
     (moodData != null || meditationData != null) &&
-    [moodData, meditationData].flat();
+    [moodData ?? [], meditationData ?? []].flat();
   const iconSource = [moods, MeditationItems].flat();
   const [filteredData, setFilteredData] = useState([]);
   const [selectedDate, setSelectedDate] = useState("");
@@ -32,16 +33,33 @@ export default function ActivityLog() {
     activityData &&
     new Date(Math.min(...activityData.map((data) => new Date(data?.time))));
 
+  // function handleDateSelect(value) {
+  //   const selectedDate = new Date(value.toISOString().substring(0, 10));
+  //   const dataByDate = activityData?.filter((data) => {
+  //     return (
+  //       selectedDate.getTime() ===
+  //       new Date(data?.time?.substring(0, 10)).getTime()
+  //     );
+  //   });
+  //   setSelectedDate(selectedDate);
+  //   setFilteredData(dataByDate);
+  // }
+
   function handleDateSelect(value) {
-    const selectedDate = new Date(value.toISOString().substring(0, 10));
+    const selectedDate = dayjs(value).toDate();
     const dataByDate = activityData?.filter((data) => {
-      return (
-        selectedDate.getTime() ===
-        new Date(data?.time?.substring(0, 10)).getTime()
-      );
+      const recordDate = dayjs(data.time).startOf("day").toDate();
+      // console.log("recordDate");
+      // console.log(recordDate);
+      // return selectedDate === recordDate;
+      return dayjs(selectedDate).isSame(recordDate);
     });
     setSelectedDate(selectedDate);
     setFilteredData(dataByDate);
+    console.log("filteredData");
+    console.log(dataByDate);
+    console.log("selectedDate");
+    console.log(selectedDate);
   }
 
   function dayClassName({ date }) {
