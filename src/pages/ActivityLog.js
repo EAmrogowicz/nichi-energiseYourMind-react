@@ -48,8 +48,8 @@ export default function ActivityLog() {
 
   function dayClassName({ date }) {
     const dateString = date.toISOString().substring(0, 10);
-    const hasData = activityData.some(
-      (data) => data.time.substring(0, 10) === dateString
+    const hasData = activityData?.some(
+      (data) => data?.time?.substring(0, 10) === dateString
     );
     return hasData ? "react-calendar__tile--hasActive" : null;
   }
