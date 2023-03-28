@@ -391,7 +391,7 @@ body.dark .stnCard {
 }
 
 body.dark .react-calendar__navigation button:disabled {
-  background-color: var(--primary);
+  background-color: var(--darkmode);
 }
 
 .react-calendar__navigation button:enabled:hover,
@@ -469,8 +469,7 @@ body.dark .react-calendar__month-view__days__day--neighboringMonth {
 }
 
 body.dark .react-calendar__tile:disabled {
-  background-color: var(--primary);
-  color: var(--shade);
+  background-color: var(--darkmode);
   color: #51616d;
 }
 
@@ -497,6 +496,7 @@ body.dark .react-calendar__tile:enabled:focus {
 .react-calendar__tile--now {
   background: var(--shade-mid);
 }
+
 .react-calendar__tile--now:enabled:hover,
 .react-calendar__tile--now:enabled:focus {
   background: #a3c3bc;
