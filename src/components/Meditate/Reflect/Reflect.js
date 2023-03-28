@@ -6,9 +6,12 @@ import { Link } from "react-router-dom";
 import StandardBtn from "../../Button/StandardBtn";
 import IconBtn from "../../Button/IconBtn";
 import IconButton from "@mui/material/IconButton";
-import SubHeading from "../../Typography/SubHeading";
+
 import ButtonGroup from "@mui/material/ButtonGroup";
 import Button from "@mui/material/Button";
+
+import SubHeading from "../../Typography/SubHeading";
+import ParagraphLg from "../../Typography/ParagraphLg";
 
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import PauseIcon from "@mui/icons-material/Pause";
@@ -101,7 +104,7 @@ export default function MeditateReflect() {
 
   //--PW hit the gong when session has ended.
   // eslint-disable-next-line
-  const playSound = (medDurationMin) => {
+  const playSound = useCallback(() => {
     if (!isEnded) {
       hitGong();
       setTimeInSec(true);
@@ -109,7 +112,7 @@ export default function MeditateReflect() {
       reset();
       setIsEnded(!isEnded);
     }
-  };
+  }, [isEnded, hitGong]);
 
   useEffect(() => {
     let interval = null;
@@ -135,14 +138,15 @@ export default function MeditateReflect() {
   //--PW Prepare the timer countdown as a string
   let timeString =
     Math.floor(timeInSec / 60) + `:` + timePadding(timeInSec % 60, 2);
+  
 
   return (
     <>
       {!isEnded ? (
         <div className="meditateContainer">
-          <h1>Reflect Meditation</h1>
+          <SubHeading text="Reflect Meditation" />
           <br />
-          <h3>{reflectionText}</h3>
+          <ParagraphLg text={reflectionText} />
 
           <div className="animeContainer">
             <div
@@ -209,7 +213,7 @@ export default function MeditateReflect() {
                 margin: "1.2rem auto",
               }}
             >
-              <SubHeading text={timeString}></SubHeading>
+              <SubHeading text={timeString} />
             </Box>
 
             <Box
@@ -229,9 +233,10 @@ export default function MeditateReflect() {
           <Drawer
             anchor="bottom"
             open={isDrawerOpen}
-            onClose={() => setIsDrawerOpen(false)}
+            onClick={() => setIsDrawerOpen(false)}
           >
             <Box
+            className="drawer"
               width={"100%"}
               sx={{
                 display: "flex",
@@ -239,11 +244,7 @@ export default function MeditateReflect() {
                 margin: "0.2rem auto",
               }}
             >
-              <ButtonGroup
-                variant="text"
-                className="btn btnPill"
-                aria-label="button group"
-              >
+              <ButtonGroup variant="text" aria-label="button group">
                 <Button className="btnFont" onClick={() => setTimeInSec(60)}>
                   1min
                 </Button>

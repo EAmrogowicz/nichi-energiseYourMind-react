@@ -7,9 +7,12 @@ import { Link } from "react-router-dom";
 import StandardBtn from "../../Button/StandardBtn";
 import IconBtn from "../../Button/IconBtn";
 import IconButton from "@mui/material/IconButton";
-import SubHeading from "../../Typography/SubHeading";
+
 import ButtonGroup from "@mui/material/ButtonGroup";
 import Button from "@mui/material/Button";
+
+import SubHeading from "../../Typography/SubHeading";
+import ParagraphLg from "../../Typography/ParagraphLg";
 
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import PauseIcon from "@mui/icons-material/Pause";
@@ -93,17 +96,16 @@ export default function MeditateBodyScan() {
   };
 
   //--PW hit the gong when session has ended.
-  // eslint-disable-next-line
-  const playSound = () => {
+
+  const playSound = useCallback(() => {
     if (!isEnded) {
       hitGong();
       setTimeInSec(true);
       addMeditationRecord(meditationRecord);
       reset();
       setIsEnded(!isEnded);
-      // console.log("Play Ending Gong and setIsEnded set to true:", isEnded);
     }
-  };
+  }, [isEnded, hitGong]);
 
   const handleClickSame = () => {
     setIsEnded(!isEnded);
@@ -140,30 +142,21 @@ export default function MeditateBodyScan() {
     }
 
     return () => clearInterval(interval);
-  }, [isActive, timeInSec, playSound, hitGong]);
+  }, [isActive, timeInSec, playSound]);
 
   let timeString =
     Math.floor(timeInSec / 60) + `:` + timePadding(timeInSec % 60, 2);
+
+    let paragraphText = `Starting from your feet, focus on the sensations there when the
+    first bell rings. \n With subsequent bells, move on to your abdomen, your chest and your forehead on each ring of the bell. \n On the next bell ring after spotlighting on your forehead, go back to your feet again and restart the whole process. \n It's alright if your mind wanders, just gently bring your mind back and start from your feet again.`;
 
   return (
     <>
       {!isEnded ? (
         <div className="meditateContainer">
-          <h1>Body Scan Meditation</h1>
+          <SubHeading text="Body Scan Meditation" />
           <br />
-          <h3>
-            Starting from your feet, focus on the sensations there when the
-            first bell rings.
-            <br />
-            With subsequent bells, move on to your abdomen, your chest and your
-            forehead on each ring of the bell.
-            <br />
-            On the next bell ring after spotlighting on your forehead, go back
-            your feet again and restart the whole process.
-            <br />
-            It's alright if your mind wanders, just gently bring your mind back
-            and start from your feet again.
-          </h3>
+          <ParagraphLg text={paragraphText} />
 
           <div className="animeContainer">
             <div className={`mug ${isActive ? "mugTea" : ""}`}></div>
@@ -217,7 +210,7 @@ export default function MeditateBodyScan() {
                 margin: "1.2rem auto",
               }}
             >
-              <SubHeading text={timeString}></SubHeading>
+              <SubHeading text={timeString} />
             </Box>
 
             <Box
@@ -237,9 +230,10 @@ export default function MeditateBodyScan() {
           <Drawer
             anchor="bottom"
             open={isDrawerOpen}
-            onClose={() => setIsDrawerOpen(false)}
+            onClick={() => setIsDrawerOpen(false)}
           >
             <Box
+              className="drawer"
               width={"100%"}
               sx={{
                 display: "flex",
@@ -247,11 +241,7 @@ export default function MeditateBodyScan() {
                 margin: "0.2rem auto",
               }}
             >
-              <ButtonGroup
-                variant="text"
-                className="btn btnPill"
-                aria-label="button group"
-              >
+              <ButtonGroup variant="text" aria-label="button group">
                 <Button className="btnFont" onClick={() => setTimeInSec(60)}>
                   1min
                 </Button>
