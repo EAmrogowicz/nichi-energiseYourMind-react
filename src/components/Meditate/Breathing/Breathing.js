@@ -73,7 +73,7 @@ export default function MeditateBreath() {
   //--PW To toggle between playing or pausing the meditation timer
   //--PW There are 2 ways to solve the React warning "Function makes the dependencies of useEffect Hook change on every render":
   //-- (Option 1) cannot move playPause() into useEffect as it is needed inside the JSX when playPause button is clicked
-  //-- (Option 2) so instead wrap the playPause() function definition in a useCallback hook which will hopefully return a memoized function whose reference will only change if something in the hook's dependency array changes. 
+  //-- (Option 2) so instead wrap the playPause() function definition in a useCallback hook which will hopefully return a memoized function whose reference will only change if something in the hook's dependency array changes.
 
   const playPause = useCallback(() => {
     setIsActive(!isActive);
@@ -81,7 +81,7 @@ export default function MeditateBreath() {
     if (setIsActive) {
       hitGong();
     }
-  },[isActive, hitGong]);
+  }, [isActive, hitGong]);
 
   //--Pei to reset the meditation session timer
   const reset = () => {
@@ -214,9 +214,10 @@ export default function MeditateBreath() {
           <Drawer
             anchor="bottom"
             open={isDrawerOpen}
-            onClose={() => setIsDrawerOpen(false)}
+            onClick={() => setIsDrawerOpen(false)}
           >
             <Box
+              className="drawer"
               width={"100%"}
               sx={{
                 display: "flex",
@@ -224,11 +225,7 @@ export default function MeditateBreath() {
                 margin: "0.2rem auto",
               }}
             >
-              <ButtonGroup
-                variant="text"
-                className="btn btnPill"
-                aria-label="button group"
-              >
+              <ButtonGroup variant="text" aria-label="button group">
                 <Button className="btnFont" onClick={() => setTimeInSec(60)}>
                   1min
                 </Button>
