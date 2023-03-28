@@ -211,7 +211,7 @@ export default function MeditateBodyScan() {
                 margin: "1.2rem auto",
               }}
             >
-              <ParagraphLg text={timeString}></ParagraphLg>
+              <SubHeading text={timeString}></SubHeading>
             </Box>
 
             <Box
