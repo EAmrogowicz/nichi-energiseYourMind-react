@@ -105,7 +105,7 @@ export default function MeditateBodyScan() {
       reset();
       setIsEnded(!isEnded);
     }
-  }, [isEnded, hitGong]);
+  }, [isEnded, hitGong, meditationRecord]);
 
   const handleClickSame = () => {
     setIsEnded(!isEnded);
@@ -142,7 +142,7 @@ export default function MeditateBodyScan() {
     }
 
     return () => clearInterval(interval);
-  }, [isActive, timeInSec, playSound]);
+  }, [isActive, timeInSec, playSound, hitGong]);
 
   let timeString =
     Math.floor(timeInSec / 60) + `:` + timePadding(timeInSec % 60, 2);

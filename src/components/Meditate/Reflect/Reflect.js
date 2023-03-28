@@ -39,7 +39,7 @@ export default function MeditateReflect() {
 
   const timeStamp = new Date().toISOString();
 
-  let meditationRecord = {
+  const meditationRecord = {
     type: "Meditation",
     description: "Reflection",
     time: timeStamp,
@@ -112,7 +112,7 @@ export default function MeditateReflect() {
       reset();
       setIsEnded(!isEnded);
     }
-  }, [isEnded, hitGong]);
+  }, [isEnded, hitGong, meditationRecord]);
 
   useEffect(() => {
     let interval = null;
