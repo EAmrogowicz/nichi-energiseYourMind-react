@@ -12,19 +12,22 @@ import { AnimatePresence } from "framer-motion";
 
 // can navigate to '/' instead of /user-login??
 // note: passing userData as a prop to logged pages doesn't work
+const userData = JSON.parse(localStorage.getItem("userData")) || [];
 const LoggedInRoute = (Component) => {
-  const userData = JSON.parse(localStorage.getItem("userData")) || {};
   return (props) => (
     <>
-      {!userData?.username && <Navigate to='/user-login' replace={true} />}
-      <Component {...props} />
+      {userData?.username ? (
+        <Component {...props} />
+      ) : (
+        <Navigate to='/user-login' replace={true} />
+      )}
     </>
   );
 };
 
-const LoggedMoodTracker = LoggedInRoute(MoodTracker);
 const LoggedDashboard = LoggedInRoute(Dashboard);
 const LoggedMeditation = LoggedInRoute(Meditation);
+const LoggedMoodTracker = LoggedInRoute(MoodTracker);
 const LoggedActivityLog = LoggedInRoute(ActivityLog);
 
 export default function App() {
@@ -41,9 +44,9 @@ export default function App() {
           <Routes key={location.path} location={location}>
             <Route exact path='/' element={<Home />} />
             <Route path='/user-login' element={<UserLogin />} />
-            <Route path='/mood-tracker' element={<LoggedMoodTracker />} />
             <Route path='/dashboard' element={<LoggedDashboard />} />
             <Route path='/meditation' element={<LoggedMeditation />} />
+            <Route path='/mood-tracker' element={<LoggedMoodTracker />} />
             <Route path='/activity-log' element={<LoggedActivityLog />} />
           </Routes>
         </AnimatePresence>

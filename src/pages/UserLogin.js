@@ -22,9 +22,13 @@ export default function UserLogin({ onSubmit }) {
   function handleLogin(e) {
     e.preventDefault();
     const userData = { username };
-    localStorage.setItem("userData", JSON.stringify(userData));
     !user && setUser(userData);
-    navigate("/");
+    localStorage.setItem("userData", JSON.stringify(userData));
+    // i tried passing user value, but it doesn't want to work either
+    navigate("/", { state: { user } });
+
+    // FIXME: this is a very stupid solution *cry*
+    window.location.reload();
   }
 
   function handleChange(e) {
@@ -38,12 +42,12 @@ export default function UserLogin({ onSubmit }) {
         <Heading4 text={"What is your name?"} />
       </Box>
 
-      <FormControl className="form">
+      <FormControl className='form'>
         <TextField
-          className="inputField"
-          id="name"
-          label="Name"
-          variant="outlined"
+          className='inputField'
+          id='name'
+          label='Name'
+          variant='outlined'
           value={username}
           onChange={handleChange}
           ref={inputRef}
@@ -55,9 +59,8 @@ export default function UserLogin({ onSubmit }) {
             display: "flex",
             justifyContent: "space-around",
             alignItems: "center",
-          }}
-        >
-          <Link to="/">
+          }}>
+          <Link to={"/"}>
             <IconBtn />
           </Link>
           <StandardBtn
