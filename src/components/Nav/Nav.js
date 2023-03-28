@@ -137,53 +137,55 @@ export default function Nav() {
               }}>
               NICHI
             </Typography>
-            {userData && (
-              <Box
-                sx={{
-                  gap: 1,
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}>
-                <Link to='/'>
-                  <HomeOutlinedIcon
-                    edge='start'
-                    color='inherit'
-                    aria-label='home'
-                    sx={{ mr: 4 }}
-                    className='navIcon'
-                  />
-                </Link>
-                <Link to='/mood-tracker'>
-                  <AddReactionOutlinedIcon
-                    edge='start'
-                    color='inherit'
-                    aria-label='mood'
-                    sx={{ mr: 4 }}
-                    className='navIcon'
-                  />
-                </Link>
-                <Link to='/meditation'>
-                  <SpaOutlinedIcon
-                    edge='start'
-                    color='inherit'
-                    aria-label='user'
-                    sx={{ mr: 4 }}
-                    className='navIcon'
-                  />
-                </Link>
-                <FormControlLabel
-                  onClick={toggleTheme}
-                  control={
-                    <MaterialUISwitch
-                      sx={{ m: 1 }}
-                      defaultChecked={theme === "light"}
+            <Box
+              sx={{
+                gap: 1,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}>
+              {userData && (
+                <>
+                  <Link to='/'>
+                    <HomeOutlinedIcon
+                      edge='start'
+                      color='inherit'
+                      aria-label='home'
+                      sx={{ mr: 4 }}
+                      className='navIcon'
                     />
-                  }
-                />
-                {/* <button onClick={toggleTheme}>Toggle Theme</button> */}
-              </Box>
-            )}
+                  </Link>
+                  <Link to='/mood-tracker'>
+                    <AddReactionOutlinedIcon
+                      edge='start'
+                      color='inherit'
+                      aria-label='mood'
+                      sx={{ mr: 4 }}
+                      className='navIcon'
+                    />
+                  </Link>
+                  <Link to='/meditation'>
+                    <SpaOutlinedIcon
+                      edge='start'
+                      color='inherit'
+                      aria-label='user'
+                      sx={{ mr: 4 }}
+                      className='navIcon'
+                    />
+                  </Link>
+                </>
+              )}
+              <FormControlLabel
+                onClick={toggleTheme}
+                control={
+                  <MaterialUISwitch
+                    sx={{ m: 1 }}
+                    defaultChecked={theme === "light"}
+                  />
+                }
+              />
+              {/* <button onClick={toggleTheme}>Toggle Theme</button> */}
+            </Box>
 
             {/* <SettingsIcon
               size="large"
