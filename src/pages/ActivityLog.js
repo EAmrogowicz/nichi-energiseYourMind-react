@@ -25,13 +25,14 @@ export default function ActivityLog() {
   const activityData =
     (moodData != null || meditationData != null) &&
     [moodData ?? [], meditationData ?? []].flat();
+  [moodData ?? [], meditationData ?? []].flat();
   const iconSource = [moods, MeditationItems].flat();
   const [filteredData, setFilteredData] = useState([]);
   const [selectedDate, setSelectedDate] = useState("");
   const calendarRef = useRef();
-  const minDate =
-    activityData &&
-    new Date(Math.min(...activityData.map((data) => new Date(data?.time))));
+  const minDate = activityData
+    ? new Date(Math.min(...activityData?.map((data) => new Date(data?.time))))
+    : new Date();
 
   function handleDateSelect(value) {
     const selectedDate = dayjs(value).toDate();
@@ -41,12 +42,13 @@ export default function ActivityLog() {
     });
     setSelectedDate(selectedDate);
     setFilteredData(dataByDate);
+    console.log(value);
   }
 
   function dayClassName({ date }) {
     const dateString = date.toISOString().substring(0, 10);
     const hasData = activityData?.some(
-      (data) => data?.time?.substring(0, 10) === dateString
+      (data) => data.time?.substring(0, 10) === dateString
     );
     return hasData ? "react-calendar__tile--hasActive" : null;
   }

@@ -12,7 +12,7 @@ export default function MoodLogs() {
     <>
       {!moodlog ? (
         <Box sx={{ textAlign: "center", mt: "3.2rem" }}>
-          <ParagraphLg text={"Your activity will appear here."} />
+          <ParagraphLg text={"Your mood records will appear here."} />
         </Box>
       ) : (
         <>

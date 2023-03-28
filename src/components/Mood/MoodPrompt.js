@@ -12,7 +12,7 @@ import MotionScrollIn from "../Motion/MotionScrollIn";
 
 export default function MoodPrompt({ onSubmit }) {
   const [selectedMood, setSelectedMood] = useState("");
-  const timeStamp = new Date().toISOString();
+  const timeStamp = new Date();
   const [notes, setNotes] = useState("");
   const notesRef = useRef();
 
