@@ -10,6 +10,7 @@
 //   });
 // }
 import { useState, useEffect } from "react";
+import { Box } from "@mui/material";
 
 export default function ZenQuote({ mood }) {
   const [error, setError] = useState(null);
@@ -36,16 +37,35 @@ export default function ZenQuote({ mood }) {
       );
   }, [mood]);
 
-  if (error) {
-    return <div className="quote-error">Error: {error.message}</div>;
-  } else if (!isLoaded) {
-    return <div className="quote-error">Loading...</div>;
-  } else {
-    return (
-      <div className="quote">
-        "{items[0].q}" <br />
-        <span>{items[0].a}</span>
-      </div>
-    );
-  }
+  // if (error) {
+  //   return <div className='quote-error'>Error: {error.message}</div>;
+  // } else if (!isLoaded) {
+  //   return <div className='quote-error'>Loading...</div>;
+  // } else {
+  //   return (
+  //     <Box className='quote' sx={{ maxWidth: "600px", minHeight: "100px" }}>
+  //       "{items[0].q}" <br />
+  //       <span>{items[0].a}</span>
+  //     </Box>
+  //   );
+  // }
+
+  // separate return for loading was causing the jitter
+  // NOTE: max width of 600px should be on majority of text elements as it is easier to read
+  return (
+    <Box
+      className={`${error || !isLoaded ? "quote-error" : "quote"}`}
+      sx={{ maxWidth: "600px", minHeight: "100px" }}>
+      {error ? (
+        <span>Error: {error.message}</span>
+      ) : !isLoaded ? (
+        <span>Loading...</span>
+      ) : (
+        <div>
+          "{items[0].q}" <br />
+          <span>{items[0].a}</span>
+        </div>
+      )}
+    </Box>
+  );
 }
