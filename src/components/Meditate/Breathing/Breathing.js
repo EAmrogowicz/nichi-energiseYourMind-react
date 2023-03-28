@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import useSound from "use-sound";
 
 import { Drawer, Box, Stack } from "@mui/material";
@@ -71,13 +71,17 @@ export default function MeditateBreath() {
   const [isEnded, setIsEnded] = useState(false);
 
   //--PW To toggle between playing or pausing the meditation timer
-  const playPause = () => {
+  //--PW There are 2 ways to solve the React warning "Function makes the dependencies of useEffect Hook change on every render":
+  //-- (Option 1) cannot move playPause() into useEffect as it is needed inside the JSX when playPause button is clicked
+  //-- (Option 2) so instead wrap the playPause() function definition in a useCallback hook which will hopefully return a memoized function whose reference will only change if something in the hook's dependency array changes. 
+
+  const playPause = useCallback(() => {
     setIsActive(!isActive);
     setIsEnded(false);
     if (setIsActive) {
       hitGong();
     }
-  };
+  },[isActive, hitGong]);
 
   //--Pei to reset the meditation session timer
   const reset = () => {
