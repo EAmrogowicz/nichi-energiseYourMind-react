@@ -12,11 +12,13 @@ export default function Dashboard() {
   //
   //
   const username = JSON.parse(localStorage.getItem("userData")).username;
-  const navigate = useNavigate();
 
-  if (localStorage.getItem("userData") === null) {
-    navigate("/user-login");
-  }
+  // navigation is in the App now
+  // const navigate = useNavigate();
+
+  // if (localStorage.getItem("userData") === null) {
+  //   navigate("/user-login");
+  // }
 
   return (
     <MotionPage>
@@ -29,8 +31,7 @@ export default function Dashboard() {
         <Grid
           container
           spacing={{ xs: 2, md: 4 }}
-          columns={{ xs: 4, sm: 8, md: 12 }}
-        >
+          columns={{ xs: 4, sm: 8, md: 12 }}>
           <Grid item xs={12} sm={4}>
             <StandardCard
               address={"/meditation"}
@@ -77,7 +78,7 @@ export default function Dashboard() {
             />
           </Grid>
         </Grid>
-        <ZenQuote mood="explore" />
+        <ZenQuote mood='explore' />
       </PageContainer>
     </MotionPage>
   );

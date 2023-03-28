@@ -144,7 +144,7 @@ export default function Nav() {
                 justifyContent: "center",
                 alignItems: "center",
               }}>
-              {userData && (
+              {userData?.username && (
                 <>
                   <Link to='/'>
                     <HomeOutlinedIcon
