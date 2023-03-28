@@ -23,8 +23,8 @@ export default function MeditationPrompt({ onSubmit }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
-    console.log("submitted:", submitted);
-    console.log("selectedMeditation", selectedMeditation);
+    // console.log("submitted:", submitted);
+    // console.log("selectedMeditation", selectedMeditation);
   };
 
   return (

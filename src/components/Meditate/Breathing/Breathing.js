@@ -1,14 +1,19 @@
 import React, { useEffect, useState, useCallback } from "react";
 import useSound from "use-sound";
+import { Link } from "react-router-dom";
 
 import { Drawer, Box, Stack } from "@mui/material";
-import { Link } from "react-router-dom";
+
+
 import StandardBtn from "../../Button/StandardBtn";
 import IconBtn from "../../Button/IconBtn";
 import IconButton from "@mui/material/IconButton";
-import SubHeading from "../../Typography/SubHeading";
+
 import ButtonGroup from "@mui/material/ButtonGroup";
 import Button from "@mui/material/Button";
+
+import SubHeading from "../../Typography/SubHeading";
+import ParagraphLg from "../../Typography/ParagraphLg";
 
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import PauseIcon from "@mui/icons-material/Pause";
@@ -19,6 +24,7 @@ import MeditationSuccess from "../MeditationSuccess";
 
 import "./style.css";
 import gongBell from "../audio/gong1.mp3";
+
 
 export default function MeditateBreath() {
   //--PW (1) Local Storage for activity log
@@ -91,8 +97,8 @@ export default function MeditateBreath() {
   };
 
   //--PW hit the gong when session has ended.
-  // eslint-disable-next-line
-  const playSound = () => {
+
+  const playSound = useCallback(() => {
     if (!isEnded) {
       hitGong();
       setTimeInSec(true);
@@ -100,7 +106,7 @@ export default function MeditateBreath() {
       reset();
       setIsEnded(!isEnded);
     }
-  };
+  },[isEnded, hitGong]);
 
   const handleClickSame = () => {
     setIsEnded(!isEnded);
@@ -130,16 +136,15 @@ export default function MeditateBreath() {
   let timeString =
     Math.floor(timeInSec / 60) + `:` + timePadding(timeInSec % 60, 2);
 
+  let paragraphText = "As the blob swells, breathe in \n and then breathe out as it contracts." ;
+
   return (
     <>
       {!isEnded ? (
         <div className="meditateContainer">
-          <h1>Breath Meditation</h1>
-          <br />
-          <h3>
-            As the blob swells, breathe in and <br />
-            then breathe out as it contracts.
-          </h3>
+          <SubHeading text="Breath Meditation" />
+          <br/>
+          <ParagraphLg text={paragraphText} />
 
           <div className="animeContainer">
             <div
@@ -214,7 +219,7 @@ export default function MeditateBreath() {
           <Drawer
             anchor="bottom"
             open={isDrawerOpen}
-            onClose={() => setIsDrawerOpen(false)}
+            onClick={() => setIsDrawerOpen(false)}
           >
             <Box
               width={"100%"}
@@ -226,7 +231,6 @@ export default function MeditateBreath() {
             >
               <ButtonGroup
                 variant="text"
-                className="btn btnPill"
                 aria-label="button group"
               >
                 <Button className="btnFont" onClick={() => setTimeInSec(60)}>

@@ -1,14 +1,19 @@
 import React, { useEffect, useState, useCallback } from "react";
 import useSound from "use-sound";
+import { Link } from "react-router-dom";
 
 import { Drawer, Box, Stack } from "@mui/material";
-import { Link } from "react-router-dom";
+
+
 import StandardBtn from "../../Button/StandardBtn";
 import IconBtn from "../../Button/IconBtn";
 import IconButton from "@mui/material/IconButton";
-import SubHeading from "../../Typography/SubHeading";
+
 import ButtonGroup from "@mui/material/ButtonGroup";
 import Button from "@mui/material/Button";
+
+import SubHeading from "../../Typography/SubHeading";
+import ParagraphLg from "../../Typography/ParagraphLg";
 
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import PauseIcon from "@mui/icons-material/Pause";
@@ -16,13 +21,14 @@ import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import TimerIcon from "@mui/icons-material/Timer";
 
 import MeditationSuccess from "../MeditationSuccess";
-import Reflections from "./reflections.json";
 
 import "./style.css";
 import gongBell from "../audio/gong2.mp3";
 
+import Reflections from "./reflections.json";  
 const reflectionText =
   Reflections[Math.floor(Math.random() * Reflections.length)].toReflectOn;
+
 
 export default function MeditateReflect() {
   //--PW (1) Local Storage for activity log
@@ -100,8 +106,8 @@ export default function MeditateReflect() {
   };
 
   //--PW hit the gong when session has ended.
-  // eslint-disable-next-line
-  const playSound = (medDurationMin) => {
+
+  const playSound = useCallback(() => {
     if (!isEnded) {
       hitGong();
       setTimeInSec(true);
@@ -109,7 +115,7 @@ export default function MeditateReflect() {
       reset();
       setIsEnded(!isEnded);
     }
-  };
+  }, [isEnded, hitGong]);
 
   useEffect(() => {
     let interval = null;
@@ -136,13 +142,14 @@ export default function MeditateReflect() {
   let timeString =
     Math.floor(timeInSec / 60) + `:` + timePadding(timeInSec % 60, 2);
 
+
   return (
     <>
       {!isEnded ? (
         <div className="meditateContainer">
-          <h1>Reflect Meditation</h1>
+          <SubHeading text="Reflect Meditation" />
           <br />
-          <h3>{reflectionText}</h3>
+          <ParagraphLg text={reflectionText} />
 
           <div className="animeContainer">
             <div
@@ -229,7 +236,7 @@ export default function MeditateReflect() {
           <Drawer
             anchor="bottom"
             open={isDrawerOpen}
-            onClose={() => setIsDrawerOpen(false)}
+            onClick={() => setIsDrawerOpen(false)}
           >
             <Box
               width={"100%"}
@@ -241,7 +248,6 @@ export default function MeditateReflect() {
             >
               <ButtonGroup
                 variant="text"
-                className="btn btnPill"
                 aria-label="button group"
               >
                 <Button className="btnFont" onClick={() => setTimeInSec(60)}>
