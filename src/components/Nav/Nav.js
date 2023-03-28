@@ -58,10 +58,10 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 
 export default function Nav() {
+  const userData = JSON.parse(localStorage.getItem("userData"));
   const getStoredTheme = () => {
     try {
       if (localStorage.getItem("userData") !== null) {
-        const userData = JSON.parse(localStorage.getItem("userData"));
         if (userData.theme) {
           return userData.theme;
         }
@@ -108,27 +108,25 @@ export default function Nav() {
     <Box sx={{ flexGrow: 1 }} className={`App ${theme}`}>
       <nav>
         <AppBar
-          color="inherit"
-          position="fixed"
-          className="navBar"
+          color='inherit'
+          position='fixed'
+          className='navBar'
           sx={{
             "@media (max-width:900px)": { top: "auto", bottom: 0 },
-          }}
-        >
+          }}>
           <Toolbar
             sx={{
               display: "flex",
               justifyContent: { xs: "center", md: "space-between" },
               alignItems: "center",
               ml: 2,
-            }}
-          >
+            }}>
             <Typography
-              variant="h2"
+              variant='h2'
               noWrap
-              component="a"
-              href="/"
-              className="navLogo"
+              component='a'
+              href='/'
+              className='navLogo'
               sx={{
                 mr: 1,
                 display: { xs: "none", md: "flex" },
@@ -136,56 +134,56 @@ export default function Nav() {
                 fontFamily: "Vidaloka",
                 letterSpacing: ".3rem",
                 fontWeight: 100,
-              }}
-            >
+              }}>
               NICHI
             </Typography>
-            <Box
-              sx={{
-                gap: 1,
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Link to="/">
-                <HomeOutlinedIcon
-                  edge="start"
-                  color="inherit"
-                  aria-label="home"
-                  sx={{ mr: 4 }}
-                  className="navIcon"
-                />
-              </Link>
-              <Link to="/mood-tracker">
-                <AddReactionOutlinedIcon
-                  edge="start"
-                  color="inherit"
-                  aria-label="mood"
-                  sx={{ mr: 4 }}
-                  className="navIcon"
-                />
-              </Link>
-              <Link to="/meditation">
-                <SpaOutlinedIcon
-                  edge="start"
-                  color="inherit"
-                  aria-label="user"
-                  sx={{ mr: 4 }}
-                  className="navIcon"
-                />
-              </Link>
-              <FormControlLabel
-                onClick={toggleTheme}
-                control={
-                  <MaterialUISwitch
-                    sx={{ m: 1 }}
-                    defaultChecked={theme === "light"}
+            {userData && (
+              <Box
+                sx={{
+                  gap: 1,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}>
+                <Link to='/'>
+                  <HomeOutlinedIcon
+                    edge='start'
+                    color='inherit'
+                    aria-label='home'
+                    sx={{ mr: 4 }}
+                    className='navIcon'
                   />
-                }
-              />
-              {/* <button onClick={toggleTheme}>Toggle Theme</button> */}
-            </Box>
+                </Link>
+                <Link to='/mood-tracker'>
+                  <AddReactionOutlinedIcon
+                    edge='start'
+                    color='inherit'
+                    aria-label='mood'
+                    sx={{ mr: 4 }}
+                    className='navIcon'
+                  />
+                </Link>
+                <Link to='/meditation'>
+                  <SpaOutlinedIcon
+                    edge='start'
+                    color='inherit'
+                    aria-label='user'
+                    sx={{ mr: 4 }}
+                    className='navIcon'
+                  />
+                </Link>
+                <FormControlLabel
+                  onClick={toggleTheme}
+                  control={
+                    <MaterialUISwitch
+                      sx={{ m: 1 }}
+                      defaultChecked={theme === "light"}
+                    />
+                  }
+                />
+                {/* <button onClick={toggleTheme}>Toggle Theme</button> */}
+              </Box>
+            )}
 
             {/* <SettingsIcon
               size="large"
