@@ -28,7 +28,7 @@ export default function UserLogin({ onSubmit }) {
     navigate("/", { state: { user } });
 
     // FIXME: this is a very stupid solution *cry*
-    window.location.reload();
+    // window.location.reload();
   }
 
   function handleChange(e) {
