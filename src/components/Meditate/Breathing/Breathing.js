@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, useMemo } from "react";
 import useSound from "use-sound";
 
 import { Drawer, Box, Stack } from "@mui/material";
@@ -35,11 +35,11 @@ export default function MeditateBreath() {
 
   const timeStamp = new Date().toISOString();
 
-  const meditationRecord = {
+  const meditationRecord = useMemo (() =>[{
     type: "Meditation",
     description: "Breathing",
     time: timeStamp,
-  };
+  }], [timeStamp]);
 
   const addMeditationRecord = useCallback((meditationRecord) => {
     const updatedMeditationData = [...existingMeditationData, meditationRecord];
