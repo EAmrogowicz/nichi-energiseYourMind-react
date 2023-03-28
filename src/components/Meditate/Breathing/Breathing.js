@@ -103,7 +103,7 @@ export default function MeditateBreath() {
       reset();
       setIsEnded(!isEnded);
     }
-  }, [isEnded, hitGong, addMeditationRecord]);
+  }, [isEnded, hitGong, meditationRecord, addMeditationRecord]);
 
   const handleClickSame = () => {
     setIsEnded(!isEnded);

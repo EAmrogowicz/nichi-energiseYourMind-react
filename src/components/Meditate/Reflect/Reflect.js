@@ -112,7 +112,7 @@ export default function MeditateReflect() {
       reset();
       setIsEnded(!isEnded);
     }
-  }, [isEnded, hitGong, addMeditationRecord]);
+  }, [isEnded, hitGong, meditationRecord, addMeditationRecord]);
 
   useEffect(() => {
     let interval = null;
