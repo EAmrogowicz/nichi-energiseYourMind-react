@@ -9,7 +9,7 @@ export default function PageContainer({ children, size }) {
       sx={{
         width: "100%",
         minHeight: "100vh",
-        margin: "4.8rem auto 2.4rem auto",
+        margin: "3.2rem auto 2.4rem auto",
         display: "flex",
         justifyContent: "center",
       }}
