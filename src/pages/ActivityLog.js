@@ -17,7 +17,6 @@ import { MeditationItems } from "../components/Meditate/MeditationItems";
 import Streak from "../components/Streak";
 import dayjs from "dayjs";
 
-// MAYBE: combine same moods in the display for the day?
 export default function ActivityLog() {
   const userData = JSON.parse(localStorage.getItem("userData"));
   const moodData = userData?.mood;
@@ -25,7 +24,6 @@ export default function ActivityLog() {
   const activityData =
     (moodData != null || meditationData != null) &&
     [moodData ?? [], meditationData ?? []].flat();
-  [moodData ?? [], meditationData ?? []].flat();
   const iconSource = [moods, MeditationItems].flat();
   const [filteredData, setFilteredData] = useState([]);
   const [selectedDate, setSelectedDate] = useState("");
@@ -38,11 +36,12 @@ export default function ActivityLog() {
     const selectedDate = dayjs(value).toDate();
     const dataByDate = activityData?.filter((data) => {
       const recordDate = dayjs(data.time).startOf("day").toDate();
+      console.log(recordDate);
       return dayjs(selectedDate).isSame(recordDate);
     });
     setSelectedDate(selectedDate);
     setFilteredData(dataByDate);
-    console.log(value);
+    console.log(selectedDate);
   }
 
   function dayClassName({ date }) {
@@ -72,7 +71,7 @@ export default function ActivityLog() {
       ) : (
         <>
           <MotionItem>
-            <Box sx={{ m: "1.2rem auto 2.4rem" }}>
+            <Box sx={{ m: "2.4rem auto" }}>
               <SubHeading text={"Your activity"} />
             </Box>
           </MotionItem>
@@ -83,6 +82,7 @@ export default function ActivityLog() {
               display: "grid",
               "@media( min-width: 900px)": {
                 gridTemplateColumns: "repeat(12, 1fr)",
+                columnGap: "5%",
               },
             }}>
             <Box
@@ -106,7 +106,7 @@ export default function ActivityLog() {
                     }}>
                     <MotionItem>
                       <Grid container columns={2}>
-                        <Grid item xs={2} sm={1}>
+                        <Grid item xs={2} sm={1} md={2}>
                           <Stack>
                             <Streak />
                           </Stack>
@@ -115,6 +115,7 @@ export default function ActivityLog() {
                           item
                           xs={2}
                           sm={1}
+                          md={2}
                           sx={{
                             display: "flex",
                             justifyContent: "center",
@@ -149,40 +150,43 @@ export default function ActivityLog() {
             <Box
               sx={{
                 mx: "auto",
-                "@media( min-width: 900px)": { gridArea: "1/6/1/13" },
+                "@media( min-width: 900px)": {
+                  gridArea: "1/6/1/13",
+                },
                 width: "100%",
               }}>
               <MotionItem>
                 <Stack>
                   {selectedDate && filteredData.length > 0 ? (
                     <>
-                      <Heading4
-                        text={`Entries for ${new Date(
-                          selectedDate
-                        ).toLocaleString("en-GB", {
-                          dateStyle: "short",
-                          timeZone: "Europe/London",
-                        })}`}
-                      />
-                      <MotionItem>
-                        <Box
-                          className='datalog-wrapper'
-                          sx={{
-                            width: "100%",
-                            p: "2.4rem",
-                            my: "1.2rem",
-                            "@media (min-width: 900px)": { mx: "2.4rem" },
-                          }}>
-                          {filteredData
-                            .sort((a, b) => new Date(b.time) - new Date(a.time))
-                            .map((data) => {
-                              const matchingM = iconSource.find(
-                                (src) => src.description === data.description
-                              );
-                              console.log(matchingM);
-                              const activityIconRecord =
-                                matchingM?.icon || null;
-                              return (
+                      <Box m={"2.4rem 1.2rem"}>
+                        <Heading4
+                          text={`Entries for ${new Date(
+                            selectedDate
+                          ).toLocaleString("en-GB", {
+                            dateStyle: "short",
+                            timeZone: "Europe/London",
+                          })}`}
+                        />
+                      </Box>
+                      {filteredData
+                        .sort((a, b) => new Date(b.time) - new Date(a.time))
+                        .map((data) => {
+                          const matchingM = iconSource.find(
+                            (src) => src.description === data.description
+                          );
+                          console.log(matchingM);
+                          const activityIconRecord = matchingM?.icon || null;
+                          return (
+                            <MotionItem>
+                              <Box
+                                className='datalog-wrapper'
+                                sx={{
+                                  width: "100%",
+                                  p: "1.2rem",
+                                  my: "1.2rem",
+                                  "@media (min-width: 900px)": { mx: "2.4rem" },
+                                }}>
                                 <Box
                                   className='datalog-item'
                                   sx={{
@@ -208,10 +212,10 @@ export default function ActivityLog() {
                                     />
                                   </MotionItem>
                                 </Box>
-                              );
-                            })}
-                        </Box>
-                      </MotionItem>
+                              </Box>
+                            </MotionItem>
+                          );
+                        })}
                     </>
                   ) : (
                     <MotionItem>
