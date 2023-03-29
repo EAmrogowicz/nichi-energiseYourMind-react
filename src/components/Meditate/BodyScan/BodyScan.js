@@ -36,19 +36,30 @@ export default function MeditateBodyScan() {
 
   const timeStamp = new Date().toISOString();
 
-  const meditationRecord = useMemo(() => [{
-    type: "Meditation",
-    description: "Spotlighting",
-    time: timeStamp,
-  }], [timeStamp]);
+  const meditationRecord = useMemo(
+    () => [
+      {
+        type: "Meditation",
+        description: "Spotlighting",
+        time: timeStamp,
+      },
+    ],
+    [timeStamp]
+  );
 
-  const addMeditationRecord = useCallback((meditationRecord) =>{
-    const updatedMeditationData = [...existingMeditationData, meditationRecord];
-    setExistingMeditationData(updatedMeditationData);
-    userData.meditation = updatedMeditationData;
-    localStorage.setItem("userData", JSON.stringify(userData));
-    console.log("userData", userData);
-  }, [userData, existingMeditationData]); 
+  const addMeditationRecord = useCallback(
+    (meditationRecord) => {
+      const updatedMeditationData = [
+        ...existingMeditationData,
+        meditationRecord,
+      ];
+      setExistingMeditationData(updatedMeditationData);
+      userData.meditation = updatedMeditationData;
+      localStorage.setItem("userData", JSON.stringify(userData));
+      console.log("userData", userData);
+    },
+    [userData, existingMeditationData]
+  );
 
   //--PW State for timer drawer
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -74,11 +85,10 @@ export default function MeditateBodyScan() {
   //--PW Create the state of whether the meditation timer has ended
   const [isEnded, setIsEnded] = useState(false);
 
-
   //--PW To toggle between playing or pausing the meditation timer
   //--PW There are 2 ways to solve the React warning "Function makes the dependencies of useEffect Hook change on every render":
   //-- (Option 1) cannot move playPause() into useEffect as it is needed inside the JSX when playPause button is clicked
-  //-- (Option 2) so instead wrap the playPause() function definition in a useCallback hook which will hopefully return a memoized function whose reference will only change if something in the hook's dependency array changes. 
+  //-- (Option 2) so instead wrap the playPause() function definition in a useCallback hook which will hopefully return a memoized function whose reference will only change if something in the hook's dependency array changes.
 
   const playPause = useCallback(() => {
     setIsActive(!isActive);
@@ -86,8 +96,8 @@ export default function MeditateBodyScan() {
     if (setIsActive) {
       hitGong();
     }
-  },[isActive, hitGong]);
-  
+  }, [isActive, hitGong]);
+
   //--PW to reset the meditation session timer
   const reset = () => {
     setTimeInSec(startTime);
@@ -147,7 +157,7 @@ export default function MeditateBodyScan() {
   let timeString =
     Math.floor(timeInSec / 60) + `:` + timePadding(timeInSec % 60, 2);
 
-    let paragraphText = `Starting from your feet, focus on the sensations there when the
+  let paragraphText = `Starting from your feet, focus on the sensations there when the
     first bell rings. \n With subsequent bells, move on to your abdomen, your chest and your forehead on each ring of the bell. \n On the next bell ring after spotlighting on your forehead, go back to your feet again and restart the whole process. \n It's alright if your mind wanders, just gently bring your mind back and start from your feet again.`;
 
   return (
@@ -155,7 +165,6 @@ export default function MeditateBodyScan() {
       {!isEnded ? (
         <div className="meditateContainer">
           <SubHeading text="Body Scan Meditation" />
-          <br />
           <ParagraphLg text={paragraphText} />
 
           <div className="animeContainer">
