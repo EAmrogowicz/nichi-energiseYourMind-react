@@ -4,7 +4,6 @@ export default function UserDataGenerator() {
   // let now = new Date();
   // let yest = new Date(now.setDate(now.getDate() - 1));
   // let dayB4Yest = new Date(yest.setDate(yest.getDate() - 1));
-
   
   const userData = {
     username: "Beyoncé",
