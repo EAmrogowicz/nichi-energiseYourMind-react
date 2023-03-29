@@ -154,6 +154,12 @@ body.dark .navBar {
   transition: var(--transition);
 }
 
+@media (max-width: 450px) {
+  .navIcon {
+    padding: 0;
+  }
+}
+
 body.dark .navIcon {
   color: var(--tint);
   border-top: 1px solid var(--primary);

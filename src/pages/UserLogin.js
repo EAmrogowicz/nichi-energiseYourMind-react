@@ -9,6 +9,7 @@ import Heading4 from "../components/Typography/Heading4";
 import TextField from "@mui/material/TextField";
 
 export default function UserLogin({ onSubmit }) {
+  // it likes as many checks as possible for null/existing
   const [user, setUser] = useState(
     localStorage.getItem("userData") !== null
       ? JSON.parse(localStorage.getItem("userData"))
@@ -16,6 +17,7 @@ export default function UserLogin({ onSubmit }) {
   );
   const [username, setUsername] = useState("");
 
+  // don't really need input ref, but keep just in case
   const inputRef = useRef();
   const navigate = useNavigate();
 
@@ -24,14 +26,11 @@ export default function UserLogin({ onSubmit }) {
     const userData = { username };
     !user && setUser(userData);
     localStorage.setItem("userData", JSON.stringify(userData));
-    // i tried passing user value, but it doesn't want to work either
-    navigate("/", { state: { user } });
-
-    // FIXME: this is a very stupid solution *cry*
-    // window.location.reload();
+    navigate("/");
   }
 
   function handleChange(e) {
+    // controlled input setting username on change
     setUsername(e.target.value);
   }
 

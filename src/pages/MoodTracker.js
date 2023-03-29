@@ -11,7 +11,9 @@ export default function MoodTracker() {
   );
   const [submitted, setSubmitted] = useState(false);
 
+  // pass as prop to prompt and get back moodRecord data to submit
   function handleMoodSubmit(moodRecord) {
+    // add data instead of overriding mood record
     const updatedMoodData = [...existingMoodData, moodRecord];
     setExistingMoodData(updatedMoodData);
     userData.mood = updatedMoodData;
@@ -24,6 +26,7 @@ export default function MoodTracker() {
       {submitted ? (
         <MotionPage>
           <MoodSelect
+            // extract last recorded mood in the localStorage and pass to mood select page to display
             moodRecord={existingMoodData[existingMoodData.length - 1]}
           />
         </MotionPage>
