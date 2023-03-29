@@ -1,7 +1,6 @@
 import React from "react";
 import { Box } from "@mui/material";
 import SubHeading from "../Typography/SubHeading";
-import MeditationIcon from "./MeditationIcon";
 import CelebrationIcon from "@mui/icons-material/Celebration";
 import MotionPage from "../Motion/MotionPage";
 import ParagraphLg from "../Typography/ParagraphLg";
