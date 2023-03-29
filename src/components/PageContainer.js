@@ -6,10 +6,13 @@ export default function PageContainer({ children, size }) {
     <Container
       maxWidth={size ?? ""}
       fixed
+      // marginTop={{ xs: "2.4rem", sm: "2.4rem", md: "9.6rem" }}
       sx={{
         width: "100%",
-        minHeight: "100vh",
-        margin: "3.2rem auto 2.4rem auto",
+        minHeight: "84vh",
+        marginTop: { xs: "1.6rem", md: "4.8rem" },
+        marginBottom: { xs: "2.4rem", md: "3.2rem" },
+        // margin: "3.2rem auto 2.4rem auto",
         display: "flex",
         justifyContent: "center",
       }}
