@@ -41,12 +41,16 @@ export default function MoodSelect({ moodRecord }) {
         <Box sx={{ textAlign: "center" }} minWidth={"50vw"}>
           <Heading5 text={selectedMood} />
         </Box>
-        <MoodIcon padding={"3.2rem"}>
+        <MoodIcon padding={"2.4rem"} margin=" 0 auto">
           <SelectedMoodIcon
             edge="center"
             color="inherit"
             className="moodBtn"
-            sx={{ width: "6.4rem", height: "6.4rem", borderRadius: "50%" }}
+            sx={{
+              width: "6.4rem",
+              height: "6.4rem",
+              borderRadius: "50%",
+            }}
           />
         </MoodIcon>
         {badMood.includes(selectedMood) && (
@@ -54,7 +58,7 @@ export default function MoodSelect({ moodRecord }) {
             <ParagraphLg text={"Sorry, you feel that way."} />
           </Box>
         )}
-        <Box sx={{ m: "1.2rem auto" }} className="zen-quote">
+        <Box className="zen-quote">
           <ZenQuote mood="selectedMood" />
         </Box>
       </Paper>

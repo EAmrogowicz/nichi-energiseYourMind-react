@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
-import { Grid, Box, TextField, FormControl } from "@mui/material";
+import { Box, TextField, FormControl } from "@mui/material";
+import Grid from "@mui/material/Unstable_Grid2";
 import SubHeading from "../Typography/SubHeading";
 import ParagraphLg from "../Typography/ParagraphLg";
 import StandardBtn from "../Button/StandardBtn";
@@ -36,18 +37,25 @@ export default function MoodPrompt({ onSubmit }) {
       <MotionItem>
         <SubHeading text={"How are you feeling today?"} />
       </MotionItem>
-      <Grid container columns={6} sx={{ my: "2.4rem" }}>
+      <Grid
+        container
+        spacing={{ xs: "4.8rem", md: "9.6rem" }}
+        columns={{ xs: 4, sm: 12 }}
+        sx={{ my: "2.4rem" }}
+      >
         {moods.map((mood) => {
           return (
             <MoodIcon
               key={mood.description}
               onClick={() => setSelectedMood(mood.description)}
-              padding={"3.2rem"}>
+              padding={"3.2rem"}
+            >
               <MoodBtn
-                className={selectedMood === mood.description ? "selected" : ""}>
+                className={selectedMood === mood.description ? "selected" : ""}
+              >
                 <mood.icon
-                  edge='center'
-                  color='inherit'
+                  edge="center"
+                  color="inherit"
                   sx={{ width: "3rem", height: "3rem", borderRadius: "50%" }}
                 />
               </MoodBtn>
@@ -58,14 +66,14 @@ export default function MoodPrompt({ onSubmit }) {
           );
         })}
       </Grid>
-      <FormControl className='form'>
+      <FormControl className="form">
         <Box sx={{ minWidth: "75%" }}>
           <TextField
-            className='inputField'
+            className="inputField"
             ref={notesRef}
-            id='mood-notes'
-            label='Notes'
-            variant='outlined'
+            id="mood-notes"
+            label="Notes"
+            variant="outlined"
             fullWidth
             maxRows={4}
             onChange={handleChange}

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLocation } from "react-router";
-import { Grid, Box, FormControl } from "@mui/material";
+import { Box, FormControl } from "@mui/material";
+import Grid from "@mui/material/Unstable_Grid2";
 import SubHeading from "../Typography/SubHeading";
 import ParagraphLg from "../Typography/ParagraphLg";
 import StandardBtn from "../Button/StandardBtn";
@@ -44,15 +45,21 @@ export default function MeditationPrompt({ onSubmit }) {
           </MotionPage>
         )
       ) : (
-        <>
+        <Box className={"boxCenter"}>
           <SubHeading text={"Which meditation would you like to do now?"} />
-          <Grid container columns={3}>
+
+          <Grid
+            container
+            spacing={{ xs: "4.8rem", md: "9.6rem" }}
+            columns={{ xs: 4, sm: 12 }}
+            sx={{ my: "2.4rem" }}
+          >
             {MeditationItems.map((meditation) => {
               return (
                 <MeditationIcon
                   key={meditation.meditation}
                   onClick={() => setSelectedMeditation(meditation.meditation)}
-                  padding={"3.2rem"}
+                  // padding={"3.2rem"}
                 >
                   <MoodBtn
                     className={
@@ -78,9 +85,10 @@ export default function MeditationPrompt({ onSubmit }) {
               );
             })}
           </Grid>
+
           <MotionScrollIn>
             <FormControl className="form">
-              <Box sx={{ mt: "3.2rem" }}>
+              <Box>
                 <StandardBtn
                   name={"Meditate"}
                   onClick={handleSubmit}
@@ -89,7 +97,7 @@ export default function MeditationPrompt({ onSubmit }) {
               </Box>
             </FormControl>
           </MotionScrollIn>
-        </>
+        </Box>
       )}
     </Box>
   );

@@ -1,20 +1,23 @@
-import { Box, Grid } from "@mui/material";
+import { Box } from "@mui/material";
+import Grid from "@mui/material/Unstable_Grid2";
 
 export default function MoodIcon({ children, ...props }) {
   const iconboxsize = props.iconboxsize ?? 100;
-  const padding = props.padding ?? "1rem";
+  // const padding = props.padding ?? "1rem";
   return (
     <Grid
-      item
-      md={1}
-      sm={2}
-      xs={3}
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        padding: padding,
-      }}
+      container
+      md={2}
+      sm={4}
+      xs={6}
+      spacing={1}
+      justifyContent="center"
+      // sx={{
+      //   display: "flex",
+      //   justifyContent: "center",
+      //   alignItems: "center",
+      //   padding: padding,
+      // }}
       {...props}
     >
       <Box

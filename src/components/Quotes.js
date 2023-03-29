@@ -55,7 +55,8 @@ export default function ZenQuote({ mood }) {
   return (
     <Box
       className={`${error || !isLoaded ? "quote-error" : "quote"}`}
-      sx={{ maxWidth: "600px", minHeight: "100px" }}>
+      sx={{ maxWidth: "600px", minHeight: "100px" }}
+    >
       {error ? (
         <span>Error: {error.message}</span>
       ) : !isLoaded ? (
