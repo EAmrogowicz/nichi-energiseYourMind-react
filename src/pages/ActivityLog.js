@@ -21,13 +21,17 @@ export default function ActivityLog() {
   const userData = JSON.parse(localStorage.getItem("userData"));
   const moodData = userData?.mood;
   const meditationData = userData?.meditation;
+  // flattening array (I do this in multiple files - todo: DRY it out)
   const activityData =
     (moodData != null || meditationData != null) &&
     [moodData ?? [], meditationData ?? []].flat();
+  // get a flat array with both object files with data
   const iconSource = [moods, MeditationItems].flat();
   const [filteredData, setFilteredData] = useState([]);
   const [selectedDate, setSelectedDate] = useState("");
+  // keep the ref just in case
   const calendarRef = useRef();
+  // set the clickable dates in the calendar no earlier than first record, set to today if there is no data
   const minDate = activityData
     ? new Date(Math.min(...activityData?.map((data) => new Date(data?.time))))
     : new Date();
@@ -36,15 +40,16 @@ export default function ActivityLog() {
     const selectedDate = dayjs(value).toDate();
     const dataByDate = activityData?.filter((data) => {
       const recordDate = dayjs(data.time).startOf("day").toDate();
-      console.log(recordDate);
       return dayjs(selectedDate).isSame(recordDate);
     });
+
+    // filter activity data by selected date in the calendar
     setSelectedDate(selectedDate);
     setFilteredData(dataByDate);
-    console.log(selectedDate);
   }
 
   function dayClassName({ date }) {
+    // add class to calendar to highlight days that have records for that day
     const dateString = date.toISOString().substring(0, 10);
     const hasData = activityData?.some(
       (data) => data.time?.substring(0, 10) === dateString
@@ -55,6 +60,7 @@ export default function ActivityLog() {
   return (
     <PageContainer size={"md"}>
       {!activityData ? (
+        // empty activity page
         <MotionPage>
           <Stack>
             <Box sx={{ m: "1.2rem auto 2.4rem", textAlign: "center" }}>
@@ -62,7 +68,7 @@ export default function ActivityLog() {
               <ParagraphLg text={"Nothing here yet."} />
             </Box>
             <Box mx={"auto"}>
-              <Link to="/">
+              <Link to='/'>
                 <IconBtn />
               </Link>
             </Box>
@@ -84,30 +90,27 @@ export default function ActivityLog() {
                 gridTemplateColumns: "repeat(12, 1fr)",
                 columnGap: "5%",
               },
-            }}
-          >
+            }}>
             <Box
               sx={{
                 mx: "auto",
                 "@media( min-width: 900px)": { gridArea: "1/1/1/6" },
                 width: "100%",
-              }}
-            >
+              }}>
               <MotionItem>
                 <Stack
                   sx={{
                     "@media(min-width:900px)": {
                       flexDirection: "column-reverse",
                     },
-                  }}
-                >
+                  }}>
+                  {/* streak and common mood container */}
                   <Paper
                     elevation={5}
-                    className="paper-lg-bg"
+                    className='paper-lg-bg'
                     sx={{
                       "@media( min-width: 900px)": { p: "2.4rem" },
-                    }}
-                  >
+                    }}>
                     <MotionItem>
                       <Grid container columns={2}>
                         <Grid item xs={2} sm={1} md={2}>
@@ -124,14 +127,12 @@ export default function ActivityLog() {
                             display: "flex",
                             justifyContent: "center",
                             alignItems: "center",
-                          }}
-                        >
+                          }}>
                           <Stack>
                             <Box
                               sx={{
                                 "@media( max-width: 900px)": { mb: "2.4rem" },
-                              }}
-                            >
+                              }}>
                               <MoodMost />
                             </Box>
                           </Stack>
@@ -139,6 +140,8 @@ export default function ActivityLog() {
                       </Grid>
                     </MotionItem>
                   </Paper>
+                  {/* streak and common mood container end*/}
+                  {/* calendar */}
                   <MotionItem>
                     <Box sx={{ m: "2.4rem auto 4.8rem auto" }}>
                       <Calendar
@@ -150,6 +153,7 @@ export default function ActivityLog() {
                       />
                     </Box>
                   </MotionItem>
+                  {/* calendar end */}
                 </Stack>
               </MotionItem>
             </Box>
@@ -160,12 +164,12 @@ export default function ActivityLog() {
                   gridArea: "1/6/1/13",
                 },
                 width: "100%",
-              }}
-            >
+              }}>
               <MotionItem>
                 <Stack>
                   {selectedDate && filteredData.length > 0 ? (
                     <>
+                      {/* filtered data from activities container */}
                       <Box m={"2.4rem 1.2rem"}>
                         <Heading4
                           text={`Entries for ${new Date(
@@ -187,21 +191,19 @@ export default function ActivityLog() {
                           return (
                             <MotionItem>
                               <Box
-                                className="datalog-wrapper"
+                                className='datalog-wrapper'
                                 sx={{
                                   width: "100%",
                                   p: "1.2rem",
                                   my: "1.2rem",
                                   "@media (min-width: 900px)": { mx: "2.4rem" },
-                                }}
-                              >
+                                }}>
                                 <Box
-                                  className="datalog-item"
+                                  className='datalog-item'
                                   sx={{
                                     p: "1.2rem",
                                   }}
-                                  key={data.time}
-                                >
+                                  key={data.time}>
                                   <MotionItem>
                                     <MoodGrid
                                       icon={activityIconRecord}
@@ -225,9 +227,11 @@ export default function ActivityLog() {
                             </MotionItem>
                           );
                         })}
+                      {/* filtered data from activities container end */}
                     </>
                   ) : (
                     <MotionItem>
+                      {/* recent mood entries container */}
                       <MoodLogs />
                     </MotionItem>
                   )}

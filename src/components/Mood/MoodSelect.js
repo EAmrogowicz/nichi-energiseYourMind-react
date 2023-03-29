@@ -16,6 +16,7 @@ import { moods } from "../Mood/Moods";
 
 export default function MoodSelect({ moodRecord }) {
   const selectedMood = moodRecord.description;
+  // array to display sorries for nasty moods, have some compassion for users
   const badMood = ["Sad", "Awful"];
 
   const SelectedMoodIcon = moods.find(
@@ -28,6 +29,7 @@ export default function MoodSelect({ moodRecord }) {
 
   const navigate = useNavigate();
 
+  // navigate to suggested meditation screen
   const handleMeditationCardSelect = () => {
     navigate("/meditation", {
       state: { meditationSuggested: matchingMeditation.description },
@@ -36,16 +38,16 @@ export default function MoodSelect({ moodRecord }) {
 
   return (
     <MotionPage>
-      <Paper elevation={5} className="paper-lg-bg" sx={{ py: "2.4rem" }}>
+      <Paper elevation={5} className='paper-lg-bg' sx={{ py: "2.4rem" }}>
         <Box className={"backdropBlur"}> </Box>
         <Box sx={{ textAlign: "center" }} minWidth={"50vw"}>
           <Heading5 text={selectedMood} />
         </Box>
-        <MoodIcon padding={"2.4rem"} margin=" 0 auto">
+        <MoodIcon padding={"2.4rem"} margin=' 0 auto'>
           <SelectedMoodIcon
-            edge="center"
-            color="inherit"
-            className="moodBtn"
+            edge='center'
+            color='inherit'
+            className='moodBtn'
             sx={{
               width: "6.4rem",
               height: "6.4rem",
@@ -58,11 +60,12 @@ export default function MoodSelect({ moodRecord }) {
             <ParagraphLg text={"Sorry, you feel that way."} />
           </Box>
         )}
-        <Box className="zen-quote">
-          <ZenQuote mood="selectedMood" />
+        <Box className='zen-quote'>
+          <ZenQuote mood='selectedMood' />
         </Box>
       </Paper>
 
+      {/* meditation suggestion */}
       <Stack>
         {matchingMeditation && (
           <MotionItem>
@@ -77,6 +80,7 @@ export default function MoodSelect({ moodRecord }) {
                 } for you to try:`}
               />
             </Box>
+            {/* meditation card */}
             <Box sx={{ m: "1.2rem auto", width: "100%" }}>
               <StandardCard
                 key={matchingMeditation.description}
@@ -88,8 +92,10 @@ export default function MoodSelect({ moodRecord }) {
                 onClick={handleMeditationCardSelect}
               />
             </Box>
+            {/* meditation card end */}
           </MotionItem>
         )}
+        {/* navigation button */}
         <MotionScrollIn>
           <Box
             width={"100%"}
@@ -97,17 +103,18 @@ export default function MoodSelect({ moodRecord }) {
               display: "flex",
               justifyContent: "space-between",
               margin: "3.2rem auto",
-            }}
-          >
-            <Link to="/">
+            }}>
+            <Link to='/'>
               <IconBtn />
             </Link>
-            <Link to="/activity-log">
+            <Link to='/activity-log'>
               <StandardBtn name={"Activity"} />
             </Link>
           </Box>
         </MotionScrollIn>
+        {/* navigation buttons end */}
       </Stack>
+      {/* meditation suggestion end */}
     </MotionPage>
   );
 }
