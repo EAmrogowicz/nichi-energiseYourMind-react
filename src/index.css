@@ -724,6 +724,7 @@ body.dark .moodlog-item {
 }
 
 body.dark .streak-box {
+  color: var(--tint);
   box-shadow: var(--shadowSM-dark);
 }
 
