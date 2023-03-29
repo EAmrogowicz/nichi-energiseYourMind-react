@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useMemo} from "react";
+import React, { useEffect, useState, useCallback, useMemo } from "react";
 import useSound from "use-sound";
 
 import { Drawer, Box, Stack } from "@mui/material";
@@ -39,19 +39,30 @@ export default function MeditateReflect() {
 
   const timeStamp = new Date().toISOString();
 
-  const meditationRecord = useMemo(() => [{
-    type: "Meditation",
-    description: "Reflection",
-    time: timeStamp,
-  }], [timeStamp]);
+  const meditationRecord = useMemo(
+    () => [
+      {
+        type: "Meditation",
+        description: "Reflection",
+        time: timeStamp,
+      },
+    ],
+    [timeStamp]
+  );
 
-  const addMeditationRecord = useCallback((meditationRecord) => {
-    const updatedMeditationData = [...existingMeditationData, meditationRecord];
-    setExistingMeditationData(updatedMeditationData);
-    userData.meditation = updatedMeditationData;
-    localStorage.setItem("userData", JSON.stringify(userData));
-    console.log("userData", userData);
-  }, [userData, existingMeditationData]);
+  const addMeditationRecord = useCallback(
+    (meditationRecord) => {
+      const updatedMeditationData = [
+        ...existingMeditationData,
+        meditationRecord,
+      ];
+      setExistingMeditationData(updatedMeditationData);
+      userData.meditation = updatedMeditationData;
+      localStorage.setItem("userData", JSON.stringify(userData));
+      console.log("userData", userData);
+    },
+    [userData, existingMeditationData]
+  );
 
   //--PW State for timer drawer
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -77,11 +88,10 @@ export default function MeditateReflect() {
   //--PW Create the state of whether the meditation timer has ended
   const [isEnded, setIsEnded] = useState(false);
 
-
   //--PW To toggle between playing or pausing the meditation timer
   //--PW There are 2 ways to solve the React warning "Function makes the dependencies of useEffect Hook change on every render":
   //-- (Option 1) cannot move playPause() into useEffect as it is needed inside the JSX when playPause button is clicked
-  //-- (Option 2) so instead wrap the playPause() function definition in a useCallback hook which will hopefully return a memoized function whose reference will only change if something in the hook's dependency array changes. 
+  //-- (Option 2) so instead wrap the playPause() function definition in a useCallback hook which will hopefully return a memoized function whose reference will only change if something in the hook's dependency array changes.
 
   const playPause = useCallback(() => {
     setIsActive(!isActive);
@@ -89,7 +99,7 @@ export default function MeditateReflect() {
     if (setIsActive) {
       hitGong();
     }
-  },[isActive, hitGong]);
+  }, [isActive, hitGong]);
 
   //--PW to reset the meditation session timer
   const reset = () => {
@@ -103,7 +113,7 @@ export default function MeditateReflect() {
   };
 
   //--PW hit the gong when session has ended.
-  
+
   const playSound = useCallback(() => {
     if (!isEnded) {
       hitGong();
@@ -138,14 +148,12 @@ export default function MeditateReflect() {
   //--PW Prepare the timer countdown as a string
   let timeString =
     Math.floor(timeInSec / 60) + `:` + timePadding(timeInSec % 60, 2);
-  
 
   return (
     <>
       {!isEnded ? (
         <div className="meditateContainer">
           <SubHeading text="Reflect Meditation" />
-          <br />
           <ParagraphLg text={reflectionText} />
 
           <div className="animeContainer">
@@ -236,7 +244,7 @@ export default function MeditateReflect() {
             onClick={() => setIsDrawerOpen(false)}
           >
             <Box
-            className="drawer"
+              className="drawer"
               width={"100%"}
               sx={{
                 display: "flex",

@@ -140,7 +140,6 @@ export default function MeditateBreath() {
       {!isEnded ? (
         <div className="meditateContainer">
           <SubHeading text="Breath Meditation" />
-          <br />
           <ParagraphLg text={paragraphText} />
 
           <div className="animeContainer">
