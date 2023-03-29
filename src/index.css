@@ -543,17 +543,21 @@ body.dark .react-calendar__tile--active:enabled:focus {
 -------------------------------------------------- */
 .footerSection {
   position: relative;
-  bottom: 0rem;
+  bottom: 1rem;
   left: 0;
   right: 0;
   z-index: 2;
-  padding-bottom: 1rem;
+  border-top: 1px solid var(--shade);
+}
+
+body.dark .footerSection {
+  border-top: 1px solid var(--mid-tone);
 }
 
 .footer {
+  font-family: var(--fontVidaloka);
   font-size: 0.8rem;
   color: var(--shade);
-  border-top: 1px solid var(--shade);
   text-align: center;
   margin: 0rem 0;
   padding-top: 0.2rem;
@@ -561,7 +565,23 @@ body.dark .react-calendar__tile--active:enabled:focus {
 
 body.dark .footer {
   color: var(--mid-tone);
-  border-top: 1px solid var(--mid-tone);
+}
+
+.footerIcon {
+  margin: 0.4rem 0 0 1.6rem;
+  color: var(--shade);
+}
+
+.footerIcon:hover {
+  color: var(--accent);
+}
+
+body.dark .footerIcon {
+  color: var(--mid-tone);
+}
+
+body.dark .footerIcon:hover {
+  color: var(--accent-mid);
 }
 
 /* FORM 
