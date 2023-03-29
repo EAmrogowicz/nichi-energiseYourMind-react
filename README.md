@@ -85,22 +85,32 @@ Technologies that have been used:
 
 ## Usage
 
-[URL to Deployed Site](https://nichi-energiseyourmind.netlify.app)
+[URL to Deployed Site on Netlify](https://nichi-energiseyourmind.netlify.app)
 
 [GitHub source files](https://github.com/EAmrogowicz/nichi-energiseYourMind-react)
 
+Screen Shot: Home Page
 ![Screen Shot: Home Page](./public/images/nichi1.png) 
 
+
+Screen Shot: User Log In Page
 ![Screen Shot: User Log In Page](./public/images/nichi2.png) 
 
+
+Screen Shot: Dashboard in Dark Mode
 ![Screen Shot: Dashboard in Dark Mode](./public/images/nichi3.png) 
 
+
+Screen Shot: Meditation on Reflection
 ![Screen Shot: Meditation on Reflection](./public/images/nichi4.png) 
 
+
+Screen Shot: Mood Tracker Page
 ![Screen Shot: Mood Tracker Page](./public/images/nichi5.png) 
 
-![Screen Shot: Activity Log Page](./public/images/nichi6.png) 
 
+Screen Shot: Activity Log Page
+![Screen Shot: Activity Log Page](./public/images/nichi6.png) 
 
 
 
@@ -155,4 +165,4 @@ for more information.
 If you have any queries about Nichi App, please contact one of us via
 * Ewelina
 * Alexandra
-* Pei Wang's email <havetimedrinktea@gmai.com>
+* Pei Wang's email <havetimedrinktea@gmail.com>
