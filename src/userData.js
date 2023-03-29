@@ -6,38 +6,44 @@ export default function UserDataGenerator() {
   // let dayB4Yest = new Date(yest.setDate(yest.getDate() - 1));
 
   const userData = {
-    username: "Pikachu",
+    username: "Beyoncé",
     mood: [
       {
         type: "Mood",
         description: "OK",
         time: "2023-03-19T11:11:18.640Z",
-        notes: "Just ok, waiting for someone who is late.",
+        notes: "Just ok. I can't believe I HAVE TO wait for my lunch.",
       },
       {
         type: "Mood",
         description: "Happy",
         time: "2023-03-22T13:04:19.640Z",
-        notes: "Had a great time with my friends!",
+        notes: "I looked at my last crush and thought: Wait, you kinda ugly!",
       },
       {
         type: "Mood",
         description: "Happy",
         time: "2023-03-23T14:15:01.640Z",
-        notes: "It is so good to hear the good news from my best friend!",
+        notes: "You know? Who needs a ring on one's finger?",
       },
       {
         type: "Mood",
         description: "Neutral",
         time: "2023-03-24T06:00:59.640Z",
-        notes: "Feeling slightly disconnected now.",
+        notes: "Underneath the pretty face is something complicated. I come with a side of trouble.",
       },
       {
         type: "Mood",
         description: "Sad",
         time: "2023-03-24T21:57:19.640Z",
-        notes: "Just can't get rid of this blah feeling.",
+        notes: "Six inch heels, she walked in the club like nobody's business. Damn! She murdered everybody and I was her witness.",
       },
+      {
+        type: "Mood",
+        description: "Sad",
+        time: "2023-03-25T19:39:24.640Z",
+        notes: "I was served lemons, but I made lemonade.",
+      },      
       {
         type: "Mood",
         description: "OK",
@@ -48,25 +54,25 @@ export default function UserDataGenerator() {
         type: "Mood",
         description: "Neutral",
         time: "2023-03-26T09:13:01.640Z",
-        notes: "Feeling tired because of the time change.",
+        notes: "Some call it 'arrogant.' I call it 'confident.'",
       },
       {
         type: "Mood",
         description: "Happy",
         time: "2023-03-27T15:04:15.640Z",
-        notes: "There is a new leaf bud on my bonsai!",
+        notes: "I am the dragon breathing fire. Beautiful mane, I'm the lion.",
       },
       {
         type: "Mood",
         description: "Happy",
         time: "2023-03-28T08:11:49.640Z",
-        notes: "Looking forward to meet with my best friend tomorrow!",
+        notes: "I hop up out my bed and get my swag on. I look in the mirror, say, What's up?",
       },
       {
         type: "Mood",
         description: "Happy",
         time: "2023-03-28T13:48:01.640Z",
-        notes: "My partner cooked my favourite food for dinner! Yummy!",
+        notes: "Got diamonds on my neck, got diamonds on my records.",
       },
     ],
     meditation: [
