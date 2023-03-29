@@ -25,6 +25,7 @@ export default function ActivityLog() {
   const activityData =
     (moodData != null || meditationData != null) &&
     [moodData ?? [], meditationData ?? []].flat();
+  // console.log(activityData);
   // get a flat array with both object files with data
   const iconSource = [moods, MeditationItems].flat();
   const [filteredData, setFilteredData] = useState([]);
@@ -147,9 +148,9 @@ export default function ActivityLog() {
                       <Calendar
                         ref={calendarRef}
                         onClickDay={handleDateSelect}
+                        minDate={minDate}
                         maxDate={new Date()}
                         tileClassName={dayClassName}
-                        minDate={minDate}
                       />
                     </Box>
                   </MotionItem>
@@ -186,7 +187,7 @@ export default function ActivityLog() {
                           const matchingM = iconSource.find(
                             (src) => src.description === data.description
                           );
-                          console.log(matchingM);
+                          // console.log(matchingM);
                           const activityIconRecord = matchingM?.icon || null;
                           return (
                             <MotionItem>
