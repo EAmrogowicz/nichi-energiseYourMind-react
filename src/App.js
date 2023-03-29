@@ -20,16 +20,17 @@ export default function App() {
         style={{
           minHeight: "100%",
           overflow: "hidden",
-        }}>
+        }}
+      >
         <Nav />
         <AnimatePresence>
           <Routes key={location.path} location={location}>
-            <Route exact path='/' element={<Home />} />
-            <Route path='/user-login' element={<UserLogin />} />
-            <Route path='/dashboard' element={<Dashboard />} />
-            <Route path='/meditation' element={<Meditation />} />
-            <Route path='/mood-tracker' element={<MoodTracker />} />
-            <Route path='/activity-log' element={<ActivityLog />} />
+            <Route exact path="/" element={<Home />} />
+            <Route path="/user-login" element={<UserLogin />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/meditation" element={<Meditation />} />
+            <Route path="/mood-tracker" element={<MoodTracker />} />
+            <Route path="/activity-log" element={<ActivityLog />} />
           </Routes>
         </AnimatePresence>
         <Footer />

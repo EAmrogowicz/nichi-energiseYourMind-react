@@ -62,7 +62,7 @@ export default function ActivityLog() {
               <ParagraphLg text={"Nothing here yet."} />
             </Box>
             <Box mx={"auto"}>
-              <Link to='/'>
+              <Link to="/">
                 <IconBtn />
               </Link>
             </Box>
@@ -84,26 +84,30 @@ export default function ActivityLog() {
                 gridTemplateColumns: "repeat(12, 1fr)",
                 columnGap: "5%",
               },
-            }}>
+            }}
+          >
             <Box
               sx={{
                 mx: "auto",
                 "@media( min-width: 900px)": { gridArea: "1/1/1/6" },
                 width: "100%",
-              }}>
+              }}
+            >
               <MotionItem>
                 <Stack
                   sx={{
                     "@media(min-width:900px)": {
                       flexDirection: "column-reverse",
                     },
-                  }}>
+                  }}
+                >
                   <Paper
                     elevation={5}
-                    className='paper-lg-bg'
+                    className="paper-lg-bg"
                     sx={{
                       "@media( min-width: 900px)": { p: "2.4rem" },
-                    }}>
+                    }}
+                  >
                     <MotionItem>
                       <Grid container columns={2}>
                         <Grid item xs={2} sm={1} md={2}>
@@ -120,12 +124,14 @@ export default function ActivityLog() {
                             display: "flex",
                             justifyContent: "center",
                             alignItems: "center",
-                          }}>
+                          }}
+                        >
                           <Stack>
                             <Box
                               sx={{
                                 "@media( max-width: 900px)": { mb: "2.4rem" },
-                              }}>
+                              }}
+                            >
                               <MoodMost />
                             </Box>
                           </Stack>
@@ -134,7 +140,7 @@ export default function ActivityLog() {
                     </MotionItem>
                   </Paper>
                   <MotionItem>
-                    <Box sx={{ m: "2.4rem auto" }}>
+                    <Box sx={{ m: "2.4rem auto 4.8rem auto" }}>
                       <Calendar
                         ref={calendarRef}
                         onClickDay={handleDateSelect}
@@ -154,7 +160,8 @@ export default function ActivityLog() {
                   gridArea: "1/6/1/13",
                 },
                 width: "100%",
-              }}>
+              }}
+            >
               <MotionItem>
                 <Stack>
                   {selectedDate && filteredData.length > 0 ? (
@@ -180,19 +187,21 @@ export default function ActivityLog() {
                           return (
                             <MotionItem>
                               <Box
-                                className='datalog-wrapper'
+                                className="datalog-wrapper"
                                 sx={{
                                   width: "100%",
                                   p: "1.2rem",
                                   my: "1.2rem",
                                   "@media (min-width: 900px)": { mx: "2.4rem" },
-                                }}>
+                                }}
+                              >
                                 <Box
-                                  className='datalog-item'
+                                  className="datalog-item"
                                   sx={{
                                     p: "1.2rem",
                                   }}
-                                  key={data.time}>
+                                  key={data.time}
+                                >
                                   <MotionItem>
                                     <MoodGrid
                                       icon={activityIconRecord}

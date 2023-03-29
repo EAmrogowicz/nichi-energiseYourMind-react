@@ -11,7 +11,7 @@ theme = responsiveFontSizes(theme);
 export default function ParagraphSm({ classCss, text }) {
   return (
     <ThemeProvider theme={theme}>
-      <Typography variant="body2" className={classCss}>
+      <Typography variant="body2" className={classCss} sx={{ mb: "1.2rem" }}>
         {text}
       </Typography>
     </ThemeProvider>

@@ -23,7 +23,7 @@ export default function Footer() {
     <Box
       className="footerSection"
       padding={{ xs: "0 1.2rem", sm: "0 2.4rem", md: "0 3.2rem" }}
-      marginBottom={{ xs: "4rem", sm: "4rem", md: "1rem" }}
+      marginBottom={{ xs: "4.8rem", sm: "4.8rem", md: "2.4rem" }}
     >
       <Stack direction="row" justifyContent="space-between" alignItems="center">
         <ParagraphSm
