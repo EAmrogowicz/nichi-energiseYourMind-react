@@ -33,6 +33,7 @@ export default function MoodLogs() {
                   (mood) => mood.description === moodRecord?.description
                 );
                 const MoodIconRecord = matchingMood?.icon || null;
+
                 return (
                   <MotionItem>
                     <Box

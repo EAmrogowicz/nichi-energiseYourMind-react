@@ -17,6 +17,7 @@ export default function Dashboard() {
 
   const navigate = useNavigate();
 
+  // redirect to user login page if there is no user data
   if (localStorage.getItem("userData") === null) {
     navigate("/user-login");
   }
@@ -25,6 +26,7 @@ export default function Dashboard() {
     <MotionPage>
       <PageContainer size={"md"}>
         <Box>
+          {/* extra checks for username just in case */}
           <SubHeading text={`Hi, ${username ?? "stranger"}!`} />
           <Heading4 text={"Explore your meditations"} />
         </Box>
@@ -32,8 +34,7 @@ export default function Dashboard() {
         <Grid
           container
           spacing={{ xs: 2, md: 4 }}
-          columns={{ xs: 4, sm: 8, md: 12 }}
-        >
+          columns={{ xs: 4, sm: 8, md: 12 }}>
           <Grid xs={12} sm={4}>
             <StandardCard
               address={"/meditation"}
@@ -80,7 +81,7 @@ export default function Dashboard() {
             />
           </Grid>
         </Grid>
-        <ZenQuote mood="explore" />
+        <ZenQuote mood='explore' />
       </PageContainer>
     </MotionPage>
   );

@@ -4,6 +4,7 @@ import AddReactionOutlinedIcon from "@mui/icons-material/AddReactionOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import SpaOutlinedIcon from "@mui/icons-material/SpaOutlined";
 // import SettingsIcon from "@mui/icons-material/Settings";
+import RestoreIcon from "@mui/icons-material/Restore";
 import Typography from "@mui/material/Typography";
 import { useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
@@ -100,6 +101,7 @@ export default function Nav() {
       persistTheme("light");
     }
   };
+
   useEffect(() => {
     document.body.className = theme;
   }, [theme]);
@@ -137,9 +139,10 @@ export default function Nav() {
               }}>
               NICHI
             </Typography>
+            {/* menu */}
             <Box
               sx={{
-                gap: 1,
+                gap: { xs: 0, sm: 1 },
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
@@ -151,7 +154,10 @@ export default function Nav() {
                       edge='start'
                       color='inherit'
                       aria-label='home'
-                      sx={{ mr: 4 }}
+                      sx={{
+                        mx: 2,
+                        "@media(maxWidth(450px)": { mx: 0.5 },
+                      }}
                       className='navIcon'
                     />
                   </Link>
@@ -160,7 +166,10 @@ export default function Nav() {
                       edge='start'
                       color='inherit'
                       aria-label='mood'
-                      sx={{ mr: 4 }}
+                      sx={{
+                        mx: 2,
+                        "@media(maxWidth(450px)": { mx: 0.5 },
+                      }}
                       className='navIcon'
                     />
                   </Link>
@@ -169,7 +178,22 @@ export default function Nav() {
                       edge='start'
                       color='inherit'
                       aria-label='user'
-                      sx={{ mr: 4 }}
+                      sx={{
+                        mx: 2,
+                        "@media(maxWidth(450px)": { mx: 0.5 },
+                      }}
+                      className='navIcon'
+                    />
+                  </Link>
+                  <Link to='/activity-log'>
+                    <RestoreIcon
+                      edge='start'
+                      color='inherit'
+                      aria-label='user'
+                      sx={{
+                        mx: 2,
+                        "@media(maxWidth(450px)": { mx: 0.5 },
+                      }}
                       className='navIcon'
                     />
                   </Link>
@@ -186,6 +210,7 @@ export default function Nav() {
               />
               {/* <button onClick={toggleTheme}>Toggle Theme</button> */}
             </Box>
+            {/* menu end */}
 
             {/* <SettingsIcon
               size="large"
