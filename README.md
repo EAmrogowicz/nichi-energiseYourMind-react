@@ -85,21 +85,22 @@ Technologies that have been used:
 
 ## Usage
 
-[URL to Deployed Site](https://); 
+[URL to Deployed Site](https://nichi-energiseyourmind.netlify.app)
 
 [GitHub source files](https://github.com/EAmrogowicz/nichi-energiseYourMind-react)
 
-[Screen Shot: Home Page](./public/images/nichi1.png) 
+![Screen Shot: Home Page](./public/images/nichi1.png) 
 
-[Screen Shot: User Log In Page](./public/images/nichi2.png) 
+![Screen Shot: User Log In Page](./public/images/nichi2.png) 
 
-[Screen Shot: Dashboard in Dark Mode](./public/images/nichi3.png) 
+![Screen Shot: Dashboard in Dark Mode](./public/images/nichi3.png) 
 
-[Screen Shot: Meditation on Reflection](./public/images/nichi4.png) 
+![Screen Shot: Meditation on Reflection](./public/images/nichi4.png) 
 
-[Screen Shot: Mood Tracker Page](./public/images/nichi5.png) 
+![Screen Shot: Mood Tracker Page](./public/images/nichi5.png) 
 
-[Screen Shot: Activity Log Page](./public/images/nichi6.png) 
+![Screen Shot: Activity Log Page](./public/images/nichi6.png) 
+
 
 
 
