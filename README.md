@@ -22,11 +22,11 @@ The user mood tracking data and meditation history is currently stored in local 
 
 This project is the collective efforts of:
 * Ewelina Amrogowicz [Github Page](https://github.com/EAmrogowicz)
-* Alexandra Batrak [Github Page](hhttps://github.com/alexandrabatrak)
+* Alexandra Batrak [Github Page](https://github.com/alexandrabatrak)
 * Pei Wang [Github Page](https://github.com/HaveTimeDrinkTea)
 
 
-[Presentation Slides](https://)
+[Presentation Slides](https://www.canva.com/design/DAFeevC9oFE/MXPTLTBBf_51d5HEzakfwg/view?utm_content=DA[…]mpaign=designshare&utm_medium=link&utm_source=publishsharelink)
 
 
 [Video Presentation](https://)
@@ -85,19 +85,22 @@ Technologies that have been used:
 
 ## Usage
 
-[URL to Deployed Site](https://); 
+[URL to Deployed Site](https://nichi-energiseyourmind.netlify.app)
 
 [GitHub source files](https://github.com/EAmrogowicz/nichi-energiseYourMind-react)
 
-[Screen Shot: Home Page](./public/images/) 
+![Screen Shot: Home Page](./public/images/nichi1.png) 
 
-[Screen Shot: User Log In Page](./public/images/) 
+![Screen Shot: User Log In Page](./public/images/nichi2.png) 
 
-[Screen Shot: Meditation Page](./public/images/) 
+![Screen Shot: Dashboard in Dark Mode](./public/images/nichi3.png) 
 
-[Screen Shot: Mood Tracker Page](./public/images/) 
+![Screen Shot: Meditation on Reflection](./public/images/nichi4.png) 
 
-[Screen Shot: Activity Log Page](./public/images/) 
+![Screen Shot: Mood Tracker Page](./public/images/nichi5.png) 
+
+![Screen Shot: Activity Log Page](./public/images/nichi6.png) 
+
 
 
 
