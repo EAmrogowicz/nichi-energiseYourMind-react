@@ -1,6 +1,7 @@
 import { Grid, Stack } from "@mui/material";
 import Heading5 from "../Typography/Heading5";
 import ParagraphLg from "../Typography/ParagraphLg";
+import ParagraphSm from "../Typography/ParagraphSm";
 import MoodIcon from "./MoodIcon";
 
 export default function MoodGrid({ icon, desc, time, notes, type, ...props }) {
@@ -12,12 +13,13 @@ export default function MoodGrid({ icon, desc, time, notes, type, ...props }) {
         xs={2}
         sx={{
           display: "flex",
-          alignItems: "top",
-        }}>
+          alignItems: "center",
+        }}
+      >
         <MoodIcon iconboxsize={props.iconboxsize}>
           <Icon
-            edge='center'
-            color='inherit'
+            edge="center"
+            color="inherit"
             sx={{
               width: props.iconsize ?? "3rem",
               height: props.iconsize ?? "3rem",
@@ -31,11 +33,12 @@ export default function MoodGrid({ icon, desc, time, notes, type, ...props }) {
         sx={{
           display: "flex",
           alignItems: "center",
-        }}>
+        }}
+      >
         <Stack>
           {type && <ParagraphLg text={type} />}
           {desc && <Heading5 text={desc} />}
-          {time && <ParagraphLg text={time} />}
+          {time && <ParagraphSm text={time} />}
           {notes && <ParagraphLg text={notes} />}
         </Stack>
       </Grid>

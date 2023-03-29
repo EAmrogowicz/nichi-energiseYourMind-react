@@ -33,10 +33,11 @@ export default function Streak() {
       sx={{
         m: "1.2rem auto",
         textAlign: "center",
-        "@media( min-width: 900px)": { my: "2.4rem" },
-      }}>
+        "@media( min-width: 900px)": { my: "0.8rem" },
+      }}
+    >
       <ParagraphLg text={`Your streak is`} />
-      <Box className='streak-box'>
+      <Box className="streak-box">
         <span>{getStreak(activityData)}</span>
       </Box>
       <ParagraphLg text={"days"} />
