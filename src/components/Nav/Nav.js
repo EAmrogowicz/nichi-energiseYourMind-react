@@ -121,7 +121,7 @@ export default function Nav() {
               display: "flex",
               justifyContent: { xs: "center", md: "space-between" },
               alignItems: "center",
-              ml: 2,
+              ml: { xs: 0, sm: 2 },
             }}>
             <Typography
               variant='h2'
@@ -146,6 +146,7 @@ export default function Nav() {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
+                "@media(maxWidth(300px)": { flexWrap: "wrap" },
               }}>
               {userData?.username && (
                 <>
