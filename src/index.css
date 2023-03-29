@@ -452,7 +452,7 @@ body.dark .react-calendar__month-view__weekdays {
 }
 
 body.dark .react-calendar__month-view__days__day--neighboringMonth {
-  color: var(--darkmode);
+  color: var(--darkmode-lighter);
 }
 
 .react-calendar__year-view .react-calendar__tile,
