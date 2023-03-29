@@ -22,11 +22,11 @@ The user mood tracking data and meditation history is currently stored in local 
 
 This project is the collective efforts of:
 * Ewelina Amrogowicz [Github Page](https://github.com/EAmrogowicz)
-* Alexandra Batrak [Github Page](hhttps://github.com/alexandrabatrak)
+* Alexandra Batrak [Github Page](https://github.com/alexandrabatrak)
 * Pei Wang [Github Page](https://github.com/HaveTimeDrinkTea)
 
 
-[Presentation Slides](https://)
+[Presentation Slides](https://www.canva.com/design/DAFeevC9oFE/MXPTLTBBf_51d5HEzakfwg/view?utm_content=DA[…]mpaign=designshare&utm_medium=link&utm_source=publishsharelink)
 
 
 [Video Presentation](https://)
