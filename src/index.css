@@ -684,7 +684,8 @@ body.dark .streak-box {
   font-family: var(--fontVidaloka);
   text-align: center;
   color: var(--accent);
-  margin-left: 1.6rem;
+  /* margin-left: 1.6rem; */
+  margin: auto;
   font-size: 1.2rem;
 }
 
