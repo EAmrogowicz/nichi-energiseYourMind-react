@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router";
-import { Box, Grid } from "@mui/material";
+import { Box } from "@mui/material";
+import Grid from "@mui/material/Unstable_Grid2";
 import PageContainer from "../components/PageContainer";
 import MotionPage from "../components/Motion/MotionPage";
 // import MotionItem from "../components/Motion/MotionItem";
@@ -31,8 +32,9 @@ export default function Dashboard() {
         <Grid
           container
           spacing={{ xs: 2, md: 4 }}
-          columns={{ xs: 4, sm: 8, md: 12 }}>
-          <Grid item xs={12} sm={4}>
+          columns={{ xs: 4, sm: 8, md: 12 }}
+        >
+          <Grid xs={12} sm={4}>
             <StandardCard
               address={"/meditation"}
               height={"300rem"}
@@ -47,7 +49,7 @@ export default function Dashboard() {
               }
             />
           </Grid>
-          <Grid item xs={12} sm={4}>
+          <Grid xs={12} sm={4}>
             <StandardCard
               address={"/mood-tracker"}
               height={"300rem"}
@@ -62,7 +64,7 @@ export default function Dashboard() {
               }
             />
           </Grid>
-          <Grid item xs={12} sm={4}>
+          <Grid xs={12} sm={4}>
             <StandardCard
               address={"/activity-log"}
               height={"300rem"}
@@ -78,7 +80,7 @@ export default function Dashboard() {
             />
           </Grid>
         </Grid>
-        <ZenQuote mood='explore' />
+        <ZenQuote mood="explore" />
       </PageContainer>
     </MotionPage>
   );

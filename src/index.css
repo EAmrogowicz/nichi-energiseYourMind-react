@@ -29,7 +29,7 @@
 
   --shadow: -4px -4px 8px rgba(255, 255, 255, 0.8),
     4px 4px 8px rgba(23, 43, 41, 0.6);
-  --shadow-dark: -2px -2px 4px rgba(97, 121, 142, 0.8),
+  --shadow-dark: -4px -4px 8px rgba(97, 121, 142, 0.4),
     4px 4px 4px rgba(0, 0, 0, 0.6);
 
   --shadowSM: -2px -2px 4px rgba(255, 255, 255, 0.8),
@@ -336,7 +336,8 @@ body.dark .stnCard {
 }
 
 .stnCard-text {
-  height: 9.6rem;
+  /* height: 9.6rem; */
+  width: 100%;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -542,17 +543,21 @@ body.dark .react-calendar__tile--active:enabled:focus {
 -------------------------------------------------- */
 .footerSection {
   position: relative;
-  bottom: 0rem;
+  bottom: 1rem;
   left: 0;
   right: 0;
   z-index: 2;
-  padding-bottom: 1rem;
+  border-top: 1px solid var(--shade);
+}
+
+body.dark .footerSection {
+  border-top: 1px solid var(--mid-tone);
 }
 
 .footer {
+  font-family: var(--fontVidaloka);
   font-size: 0.8rem;
   color: var(--shade);
-  border-top: 1px solid var(--shade);
   text-align: center;
   margin: 0rem 0;
   padding-top: 0.2rem;
@@ -560,7 +565,23 @@ body.dark .react-calendar__tile--active:enabled:focus {
 
 body.dark .footer {
   color: var(--mid-tone);
-  border-top: 1px solid var(--mid-tone);
+}
+
+.footerIcon {
+  margin: 0.4rem 0 0 1.6rem;
+  color: var(--shade);
+}
+
+.footerIcon:hover {
+  color: var(--accent);
+}
+
+body.dark .footerIcon {
+  color: var(--mid-tone);
+}
+
+body.dark .footerIcon:hover {
+  color: var(--accent-mid);
 }
 
 /* FORM 
@@ -686,6 +707,7 @@ body.dark .streak-box {
   color: var(--accent);
   /* margin-left: 1.6rem; */
   margin: auto;
+  padding: 0 1.2rem;
   font-size: 1.2rem;
 }
 

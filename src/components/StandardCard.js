@@ -18,12 +18,13 @@ export default function StandardCard({
 }) {
   return (
     <Card
-      sx={{ maxWidth: 620, minWidth: " 100% " }}
+      sx={{ maxWidth: "52rem", minWidth: " 100% " }}
       className={classCss}
-      onClick={onClick}>
+      onClick={onClick}
+    >
       <CardActionArea component={RouterLink} to={address}>
         <CardMedia
-          component='img'
+          component="img"
           height={height}
           image={imglink}
           alt={title}
@@ -31,6 +32,7 @@ export default function StandardCard({
         <CardContent className={classCssIn}>
           <Heading5 text={title} classCss={"m-bottom"} />
           <ParagraphLg text={caption}></ParagraphLg>
+          <br />
         </CardContent>
       </CardActionArea>
     </Card>
