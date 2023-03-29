@@ -18,21 +18,21 @@ export default function Home() {
   return (
     <>
       {!userData?.username ? (
-        <div className='hero'>
+        <div className="hero">
           <MotionPage>
             <PageContainer>
-              <Box sx={{ mt: "2.4rem" }}>
-                <PageTitle text='Nichi' />
+              <Box sx={{ mt: "3.2rem" }}>
+                <PageTitle text="Nichi" />
                 <SubHeading
-                  text='Energise Your Mind'
+                  text="Energise Your Mind"
                   classCss={"fontWeight100"}
                 />
               </Box>
 
               <Logo />
 
-              <Link to='/user-login'>
-                <StandardBtn name='Get Started' />
+              <Link to="/user-login">
+                <StandardBtn name="Get Started" />
               </Link>
             </PageContainer>
           </MotionPage>
