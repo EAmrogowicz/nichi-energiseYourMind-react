@@ -9,11 +9,13 @@ import Meditation from "./pages/Meditation";
 import ActivityLog from "./pages/ActivityLog";
 import { StyledEngineProvider } from "@mui/material/styles";
 import { AnimatePresence } from "framer-motion";
+import UserDataGenerator from "./userData";
 
 export default function App() {
   const location = useLocation();
   return (
     <StyledEngineProvider injectFirst>
+      <UserDataGenerator />;
       <main
         style={{
           minHeight: "100%",
