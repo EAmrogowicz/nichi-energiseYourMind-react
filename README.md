@@ -89,15 +89,17 @@ Technologies that have been used:
 
 [GitHub source files](https://github.com/EAmrogowicz/nichi-energiseYourMind-react)
 
-[Screen Shot: Home Page](./public/images/) 
+[Screen Shot: Home Page](./public/images/nichi1.png) 
 
-[Screen Shot: User Log In Page](./public/images/) 
+[Screen Shot: User Log In Page](./public/images/nichi2.png) 
 
-[Screen Shot: Meditation Page](./public/images/) 
+[Screen Shot: Dashboard in Dark Mode](./public/images/nichi3.png) 
 
-[Screen Shot: Mood Tracker Page](./public/images/) 
+[Screen Shot: Meditation on Reflection](./public/images/nichi4.png) 
 
-[Screen Shot: Activity Log Page](./public/images/) 
+[Screen Shot: Mood Tracker Page](./public/images/nichi5.png) 
+
+[Screen Shot: Activity Log Page](./public/images/nichi6.png) 
 
 
 
