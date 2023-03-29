@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { Box, Grid } from "@mui/material";
 import PageContainer from "../components/PageContainer";
 import MotionPage from "../components/Motion/MotionPage";
@@ -11,7 +11,9 @@ import ZenQuote from "../components/Quotes";
 export default function Dashboard() {
   //
   //
-  const username = JSON.parse(localStorage.getItem("userData")).username;
+  const userData = JSON.parse(localStorage.getItem("userData"));
+  const username = userData.username;
+
   const navigate = useNavigate();
 
   if (localStorage.getItem("userData") === null) {
@@ -22,15 +24,14 @@ export default function Dashboard() {
     <MotionPage>
       <PageContainer size={"md"}>
         <Box>
-          <SubHeading text={`Hi, ${username}!`} />
+          <SubHeading text={`Hi, ${username ?? "stranger"}!`} />
           <Heading4 text={"Explore your meditations"} />
         </Box>
 
         <Grid
           container
           spacing={{ xs: 2, md: 4 }}
-          columns={{ xs: 4, sm: 8, md: 12 }}
-        >
+          columns={{ xs: 4, sm: 8, md: 12 }}>
           <Grid item xs={12} sm={4}>
             <StandardCard
               address={"/meditation"}
@@ -77,7 +78,7 @@ export default function Dashboard() {
             />
           </Grid>
         </Grid>
-        <ZenQuote mood="explore" />
+        <ZenQuote mood='explore' />
       </PageContainer>
     </MotionPage>
   );

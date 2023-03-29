@@ -6,11 +6,7 @@ import MoodIcon from "./MoodIcon";
 export default function MoodGrid({ icon, desc, time, notes, type, ...props }) {
   const Icon = icon;
   return (
-    <Grid
-      container
-      columns={12}
-      key={props.key}
-      sx={{ minWidth: "40vw", maxWidth: "80vw" }}>
+    <Grid container columns={12} key={props.key} sx={{ maxWidth: "80vw" }}>
       <Grid
         item
         xs={2}

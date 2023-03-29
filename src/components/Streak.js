@@ -1,23 +1,30 @@
 import { Box } from "@mui/material";
 import ParagraphLg from "./Typography/ParagraphLg";
+import dayjs from "dayjs";
 
 export default function Streak() {
   const userData = JSON.parse(localStorage.getItem("userData"));
-  const moodData = userData?.mood ?? [];
-  const meditationData = userData?.meditation ?? [];
-  const activityData = [moodData, meditationData].flat();
+  const moodData = userData?.mood;
+  const meditationData = userData?.meditation;
+  const activityData =
+    (moodData != null || meditationData != null) &&
+    [moodData ?? [], meditationData ?? []].flat();
+
+  console.log(activityData);
 
   function getStreak(activityData) {
-    let [streak, currStreak] = [0, 0];
-    let prevDate = null;
+    const dates = activityData.map((data) => dayjs(data.time).startOf("day"));
+    const uniqueDates = [...new Set(dates)];
+    const sortedDates = uniqueDates.sort((a, b) => a.diff(b));
 
-    activityData.forEach((data) => {
-      const currDate = new Date(data.time);
-      prevDate && prevDate.getDate() === currDate.getDate() - 1
-        ? currStreak++ && (streak = Math.max(streak, currStreak))
-        : (currStreak = 1);
-      prevDate = currDate;
-    });
+    let streak = 0;
+
+    for (let i = 0; i < sortedDates.length; i++) {
+      if (i === 0 || sortedDates[i].diff(sortedDates[i - 1], "day") === 1) {
+        streak++;
+      }
+    }
+
     return streak;
   }
 

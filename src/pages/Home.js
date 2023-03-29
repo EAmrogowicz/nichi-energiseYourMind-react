@@ -10,7 +10,6 @@ import SubHeading from "../components/Typography/SubHeading";
 import Dashboard from "./Dashboard";
 
 export default function Home() {
-  // redirects and rerender isn't perfect when deleting user from Application tab
   const userData =
     localStorage.getItem("userData") !== null
       ? JSON.parse(localStorage.getItem("userData"))
@@ -18,22 +17,22 @@ export default function Home() {
 
   return (
     <>
-      {!userData ? (
-        <div className="hero">
+      {!userData?.username ? (
+        <div className='hero'>
           <MotionPage>
             <PageContainer>
               <Box sx={{ mt: "2.4rem" }}>
-                <PageTitle text="Nichi" />
+                <PageTitle text='Nichi' />
                 <SubHeading
-                  text="Energise Your Mind"
+                  text='Energise Your Mind'
                   classCss={"fontWeight100"}
                 />
               </Box>
 
               <Logo />
 
-              <Link to="/user-login">
-                <StandardBtn name="Get Started" />
+              <Link to='/user-login'>
+                <StandardBtn name='Get Started' />
               </Link>
             </PageContainer>
           </MotionPage>
