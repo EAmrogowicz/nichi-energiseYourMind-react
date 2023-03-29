@@ -11,7 +11,7 @@ theme = responsiveFontSizes(theme);
 export default function SubHeading({ classCss, text }) {
   return (
     <ThemeProvider theme={theme}>
-      <Typography variant="h3" className={classCss}>
+      <Typography variant="h3" className={classCss} sx={{ mb: "1.2rem" }}>
         {text}
       </Typography>
     </ThemeProvider>

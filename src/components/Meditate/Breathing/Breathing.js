@@ -35,19 +35,30 @@ export default function MeditateBreath() {
 
   const timeStamp = new Date().toISOString();
 
-  const meditationRecord = useMemo (() =>[{
-    type: "Meditation",
-    description: "Breathing",
-    time: timeStamp,
-  }], [timeStamp]);
+  const meditationRecord = useMemo(
+    () => [
+      {
+        type: "Meditation",
+        description: "Breathing",
+        time: timeStamp,
+      },
+    ],
+    [timeStamp]
+  );
 
-  const addMeditationRecord = useCallback((meditationRecord) => {
-    const updatedMeditationData = [...existingMeditationData, meditationRecord];
-    setExistingMeditationData(updatedMeditationData);
-    userData.meditation = updatedMeditationData;
-    localStorage.setItem("userData", JSON.stringify(userData));
-    console.log("userData", userData);
-  }, [userData, existingMeditationData]);
+  const addMeditationRecord = useCallback(
+    (meditationRecord) => {
+      const updatedMeditationData = [
+        ...existingMeditationData,
+        meditationRecord,
+      ];
+      setExistingMeditationData(updatedMeditationData);
+      userData.meditation = updatedMeditationData;
+      localStorage.setItem("userData", JSON.stringify(userData));
+      console.log("userData", userData);
+    },
+    [userData, existingMeditationData]
+  );
 
   //--PW State for timer drawer
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -94,7 +105,7 @@ export default function MeditateBreath() {
   };
 
   //--PW hit the gong when session has ended.
- 
+
   const playSound = useCallback(() => {
     if (!isEnded) {
       hitGong();
@@ -140,7 +151,6 @@ export default function MeditateBreath() {
       {!isEnded ? (
         <div className="meditateContainer">
           <SubHeading text="Breath Meditation" />
-          <br />
           <ParagraphLg text={paragraphText} />
 
           <div className="animeContainer">
