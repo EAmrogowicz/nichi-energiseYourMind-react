@@ -6,7 +6,7 @@ export default function UserDataGenerator() {
   // let dayB4Yest = new Date(yest.setDate(yest.getDate() - 1));
 
   const userData = {
-    username: "Pei",
+    username: "Pikachu",
     mood: [
       {
         type: "Mood",
