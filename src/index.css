@@ -452,7 +452,7 @@ body.dark .react-calendar__month-view__weekdays {
 }
 
 body.dark .react-calendar__month-view__days__day--neighboringMonth {
-  color: var(--darkmode);
+  color: var(--darkmode-lighter);
 }
 
 .react-calendar__year-view .react-calendar__tile,
@@ -608,28 +608,44 @@ body.dark .footerIcon:hover {
   margin-bottom: 3.2rem;
   background-color: var(--tint);
   box-shadow: inset -4px -4px 4px rgba(var(--white-rgb), 0.8),
-    inset 2px 2px 2px rgba(var(--mid-tone), 0.6);
+    inset 2px 2px 2px rgba(var(--mid-tone-rgb), 0.6);
   border-radius: 4px;
 }
+
+.inputField
+  .MuiOutlinedInput-root.Mui-focused
+  .MuiOutlinedInput-notchedOutline {
+  border-color: var(--accent);
+}
+
+label[data-shrink="true"] {
+  color: var(--accent) !important;
+}
+
+body.dark label[data-shrink="true"] {
+  color: var(--white);
+}
+
+/* body.dark
+  .inputField
+  .MuiOutlinedInput-root.Mui-focused
+  .MuiOutlinedInput-notchedOutline {
+  border-color: var(--shade);
+} */
 
 body.dark .inputField {
   /* background-color: var(--shade); */
   background-color: var(--darkmode-lighter);
-  box-shadow: inset -4px -4px 4px rgba(var(--mid-tone), 0.8),
+  box-shadow: inset -4px -4px 4px rgba(var(--mid-tone-rgb), 0.8),
     inset 2px 2px 2px rgba(var(--black-rgb), 0.8);
-  border-radius: 4px;
 }
 
 body.dark .inputField input {
   color: var(--white);
 }
 
-body.dark input > * {
+body.dark .inputField label {
   color: var(--tint) !important;
-}
-
-body.dark label.Mui-focused {
-  color: var(--white);
 }
 
 /* ACTIVITY
@@ -708,6 +724,7 @@ body.dark .moodlog-item {
 }
 
 body.dark .streak-box {
+  color: var(--tint);
   box-shadow: var(--shadowSM-dark);
 }
 
