@@ -29,7 +29,8 @@ This project is the collective efforts of:
 [Presentation Slides](https://www.canva.com/design/DAFeevC9oFE/MXPTLTBBf_51d5HEzakfwg/view?utm_content=DA[…]mpaign=designshare&utm_medium=link&utm_source=publishsharelink)
 
 
-[Video Presentation](https://)
+Video Presentation (2mins 9 sec) on on [YouTube](https://youtu.be/1fG3ZxOHuVY) or [Google Drive](https://drive.google.com/file/d/1Er0LUH09027YDBuHhXKjsJxPrdyAiCgz/view?usp=sharing).
+
 
 
 
@@ -62,12 +63,11 @@ The Nichi App:
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [Requirements](#requirements)
 - [Credits](#credits)
 - [License](#license)
 - [Features](#features)
 - [Testing](#testing)
-- [Contributions](#Contributions)
+- [Contributions](#contributions)
 
 
 ## Installation
@@ -85,20 +85,31 @@ Technologies that have been used:
 
 ## Usage
 
-[URL to Deployed Site](https://nichi-energiseyourmind.netlify.app)
+[URL to Deployed Site: https://nichi-energiseyourmind.netlify.app](https://nichi-energiseyourmind.netlify.app)
 
 [GitHub source files](https://github.com/EAmrogowicz/nichi-energiseYourMind-react)
 
+
+**Screen Shot: Home Page**
 ![Screen Shot: Home Page](./public/images/nichi1.png) 
 
+
+**Screen Shot: User Log In Page**
 ![Screen Shot: User Log In Page](./public/images/nichi2.png) 
 
+
+**Screen Shot: Dashboard in Dark Mode**
 ![Screen Shot: Dashboard in Dark Mode](./public/images/nichi3.png) 
 
+
+**Screen Shot: Meditation on Reflection**
 ![Screen Shot: Meditation on Reflection](./public/images/nichi4.png) 
 
+**Screen Shot: Mood Tracker Page**
 ![Screen Shot: Mood Tracker Page](./public/images/nichi5.png) 
 
+
+**Screen Shot: Activity Log Page**
 ![Screen Shot: Activity Log Page](./public/images/nichi6.png) 
 
 
@@ -140,7 +151,7 @@ for more information.
   * do at least one meditation a day
   * record their moods and journal and see the results of daily meditation practice and weekly goals
 * More types of Meditations and audio guided meditations based on scientific research.
-  * Nichi app can be used to details around 18 different types of meditations to handle all kinds of moods from anger, sickness, frustrations to feeling accomplished, joyful and hope. 
+  * Nichi app can be used to details around 18 different types of meditations to handle all kinds of moods from anger, sickness or frustrations to feeling accomplished, joyful or hope. 
 * Awards badges to user for completing daily/weekly challenges as a motivation  
 * Add user Profile and Settings
 * Utilize MIU Theme and discard CSS
@@ -155,4 +166,4 @@ for more information.
 If you have any queries about Nichi App, please contact one of us via
 * Ewelina
 * Alexandra
-* Pei Wang's email <havetimedrinktea@gmai.com>
+* Pei's email: <havetimedrinktea@gmail.com>
