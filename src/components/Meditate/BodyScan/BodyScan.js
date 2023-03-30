@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useMemo } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import useSound from "use-sound";
 
 import { Drawer, Box, Stack } from "@mui/material";
@@ -34,32 +34,18 @@ export default function MeditateBodyScan() {
     userData.meditation || []
   );
 
-  const timeStamp = new Date().toISOString();
-
-  const meditationRecord = useMemo(
-    () => [
-      {
-        type: "Meditation",
-        description: "Spotlighting",
-        time: timeStamp,
-      },
-    ],
-    [timeStamp]
-  );
-
-  const addMeditationRecord = useCallback(
-    (meditationRecord) => {
-      const updatedMeditationData = [
-        ...existingMeditationData,
-        meditationRecord,
-      ];
-      setExistingMeditationData(updatedMeditationData);
-      userData.meditation = updatedMeditationData;
-      localStorage.setItem("userData", JSON.stringify(userData));
-      console.log("userData", userData);
-    },
-    [userData, existingMeditationData]
-  );
+  const addMeditationRecord = useCallback(() => {
+    const meditationRecord = {
+      type: "Meditation",
+      description: "Spotlighting",
+      time: new Date(),
+    };
+    const updatedMeditationData = [...existingMeditationData, meditationRecord];
+    setExistingMeditationData(updatedMeditationData);
+    userData.meditation = updatedMeditationData;
+    localStorage.setItem("userData", JSON.stringify(userData));
+    // console.log("userData", userData);
+  }, [userData, existingMeditationData]);
 
   //--PW State for timer drawer
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -111,11 +97,11 @@ export default function MeditateBodyScan() {
     if (!isEnded) {
       hitGong();
       setTimeInSec(true);
-      addMeditationRecord(meditationRecord);
+      addMeditationRecord();
       reset();
       setIsEnded(!isEnded);
     }
-  }, [isEnded, hitGong, meditationRecord, addMeditationRecord]);
+  }, [isEnded, hitGong, addMeditationRecord]);
 
   const handleClickSame = () => {
     setIsEnded(!isEnded);
