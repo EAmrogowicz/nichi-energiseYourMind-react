@@ -135,15 +135,14 @@ export default function MeditateBreath() {
   return (
     <>
       {!isEnded ? (
-        <div className='meditateContainer'>
-          <SubHeading text='Breath Meditation' />
+        <div className="meditateContainer">
+          <SubHeading text="Breath Meditation" />
           <ParagraphLg text={paragraphText} />
 
-          <div className='animeContainer'>
+          <div className="animeContainer">
             <div
-              className={`blobbly-blob ${
-                isActive ? "blobbly-blob-swell" : ""
-              }`}></div>
+              className={`blobbly-blob ${isActive ? "blobbly-blob-swell" : ""}`}
+            ></div>
           </div>
           <Stack>
             <Box
@@ -152,32 +151,37 @@ export default function MeditateBreath() {
                 display: "flex",
                 justifyContent: "space-evenly",
                 margin: "0.2rem auto",
-              }}>
-              <div className='playPause' onClick={playPause}>
+              }}
+            >
+              <div className="playPause" onClick={playPause}>
                 {isActive ? (
                   <IconButton
-                    className='btn btnRound btnSpacing'
-                    aria-label='Pause'>
-                    <PauseIcon fontSize='sm' />
+                    className="btn btnRound btnSpacing"
+                    aria-label="Pause"
+                  >
+                    <PauseIcon fontSize="sm" />
                   </IconButton>
                 ) : (
                   <IconButton
-                    className='btn btnRound btnSpacing'
-                    aria-label='Pause'>
-                    <PlayArrowIcon fontSize='sm' />
+                    className="btn btnRound btnSpacing"
+                    aria-label="Pause"
+                  >
+                    <PlayArrowIcon fontSize="sm" />
                   </IconButton>
                 )}
               </div>
 
               <IconButton
-                className='btn btnRound btnSpacing'
-                aria-label='timer menu'>
+                className="btn btnRound btnSpacing"
+                aria-label="timer menu"
+              >
                 <TimerIcon onClick={() => setIsDrawerOpen(true)} />
               </IconButton>
 
               <IconButton
-                className='btn btnRound btnSpacing'
-                aria-label='reset'>
+                className="btn btnRound btnSpacing"
+                aria-label="reset"
+              >
                 <RestartAltIcon onClick={reset} />
               </IconButton>
             </Box>
@@ -186,7 +190,8 @@ export default function MeditateBreath() {
               width={"100%"}
               sx={{
                 margin: "1.2rem auto",
-              }}>
+              }}
+            >
               <SubHeading text={timeString} />
             </Box>
 
@@ -196,39 +201,42 @@ export default function MeditateBreath() {
                 display: "flex",
                 justifyContent: "space-evenly",
                 margin: "0.2rem auto",
-              }}>
-              <Link to='/meditation'>
+              }}
+            >
+              <Link to="/meditation">
                 <IconBtn />
               </Link>
             </Box>
           </Stack>
 
           <Drawer
-            anchor='bottom'
+            anchor="bottom"
             open={isDrawerOpen}
-            onClick={() => setIsDrawerOpen(false)}>
+            onClick={() => setIsDrawerOpen(false)}
+          >
             <Box
-              className='drawer'
+              className="drawer"
               width={"100%"}
               sx={{
                 display: "flex",
                 justifyContent: "space-evenly",
                 margin: "0.2rem auto",
-              }}>
-              <ButtonGroup variant='text' aria-label='button group'>
-                <Button className='btnFont' onClick={() => setTimeInSec(2)}>
+              }}
+            >
+              <ButtonGroup variant="text" aria-label="button group">
+                <Button className="btnFont" onClick={() => setTimeInSec(2)}>
                   test
                 </Button>
-                <Button className='btnFont' onClick={() => setTimeInSec(60)}>
+                <Button className="btnFont" onClick={() => setTimeInSec(60)}>
                   1min
                 </Button>
-                <Button className='btnFont' onClick={() => setTimeInSec(120)}>
+                <Button className="btnFont" onClick={() => setTimeInSec(120)}>
                   2min
                 </Button>
-                <Button className='btnFont' onClick={() => setTimeInSec(300)}>
+                <Button className="btnFont" onClick={() => setTimeInSec(300)}>
                   5min
                 </Button>
-                <Button className='btnFont' onClick={() => setTimeInSec(600)}>
+                <Button className="btnFont" onClick={() => setTimeInSec(600)}>
                   10min
                 </Button>
               </ButtonGroup>
@@ -245,12 +253,13 @@ export default function MeditateBreath() {
                 display: "flex",
                 justifyContent: "space-evenly",
                 margin: "3.2rem auto",
-              }}>
-              <Link to='/'>
+              }}
+            >
+              <Link to="/">
                 <IconBtn />
               </Link>
 
-              <Link to='/meditation'>
+              <Link to="/meditation">
                 <StandardBtn
                   name={"Meditate Again"}
                   onClick={handleClickSame}
